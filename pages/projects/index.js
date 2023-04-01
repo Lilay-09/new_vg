@@ -5,7 +5,7 @@ import styles from "../../styles/Project.module.css";
 import { data } from "../../utils/data";
 const Projects = () => {
   return (
-    <Layout map>
+    <Layout>
       {data.slice(0, 6).map((item, i) => {
         return (
           <div className={styles.container} key={i}>

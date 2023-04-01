@@ -11,8 +11,8 @@ const renderData = (datafetch) => {
         return (
           <Image
             src={`/${item.url}`}
-            width={400}
-            height={400}
+            width={4000}
+            height={4000}
             key={index}
             priority
             alt={item.url}

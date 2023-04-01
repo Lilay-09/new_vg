@@ -12,14 +12,14 @@
 
 /* Track */
 .cate::-webkit-scrollbar-track {
-  box-shadow: inset 0 0 5px rgb(219, 29, 29);
+  box-shadow: inset 0 0 5px #b6aaaa;
   border-radius: 10px;
-  transition: background-color 0.8s;
+  /* transition: background-color 0.8s; */
 }
 
 /* Handle */
 .cate::-webkit-scrollbar-thumb {
-  background: rgba(216, 112, 147, 0.562);
+  background: black;
   border-radius: 10px;
 }
 

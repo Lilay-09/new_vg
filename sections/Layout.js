@@ -24,11 +24,11 @@ const Layout = ({ title, children, noSlide, noFind, map }) => {
     <div className="body">
       <Header title={title ? `${title} ~ Vanguard` : "Vanguard"} />
       {map && <GoogleMapComp />}
-      {/* {!noSlide && (
+      {!noSlide && (
         <div style={{ width: "85%", margin: "0 auto" }}>
           <SwiperComp />
         </div>
-      )} */}
+      )}
       {!noFind && (
         <div style={findDream}>
           <span className="fs-5 fw-bold">Find Your Dream Property</span>
