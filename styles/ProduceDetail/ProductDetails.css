@@ -1,0 +1,54 @@
+.product_details {
+  width: 100%;
+  height: 40vw;
+  min-height: 250px;
+  padding: 0.3rem;
+  border-radius: 15px;
+}
+.product_details img {
+  width: 100%;
+  height: 100%;
+  border-radius: 15px;
+}
+.pagination_number {
+  display: flex;
+  gap: 1.5rem;
+  margin: 0 auto;
+  align-items: center;
+}
+.current_num {
+  width: 30px;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  color: blue;
+}
+.current_num.active {
+  background-color: #e6e6e6;
+  color: black;
+}
+.pagination_key {
+  width: 20vw;
+  display: flex;
+  min-width: 300px;
+  list-style-type: none;
+  align-items: center;
+  position: relative;
+  align-self: flex-end;
+  padding: 0 1.5rem;
+}
+.back_btn {
+  position: absolute;
+  left: 0;
+}
+.next_btn {
+  position: absolute;
+  right: 0;
+}
+@media screen and (max-width: 768px) {
+  .pagination_key {
+    align-self: center;
+  }
+}

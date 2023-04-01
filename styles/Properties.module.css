@@ -1,0 +1,67 @@
+.cate {
+  display: flex;
+  overflow-x: scroll;
+  padding: 0.5rem;
+  gap: 1.5rem;
+}
+/* width */
+.cate::-webkit-scrollbar {
+  height: 0.8vw;
+  min-height: 5px;
+}
+
+/* Track */
+.cate::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px rgb(219, 29, 29);
+  border-radius: 10px;
+  transition: background-color 0.8s;
+}
+
+/* Handle */
+.cate::-webkit-scrollbar-thumb {
+  background: rgba(216, 112, 147, 0.562);
+  border-radius: 10px;
+}
+
+/* Handle on hover */
+/* .cate::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(
+    90deg,
+    rgba(2, 0, 36, 1) 0%,
+    rgba(121, 9, 98, 1) 35%,
+    rgba(0, 212, 255, 1) 100%
+  );
+} */
+.link_category {
+  color: black;
+  text-decoration: none;
+}
+.link_category:hover {
+  color: black;
+}
+.cate_card {
+  min-width: 450px;
+  background-color: #ffffff;
+}
+.cate_card_img {
+  width: 100%;
+  height: 18vw;
+  min-height: 280px;
+}
+.cate_card_img img {
+  width: 100%;
+  height: 100%;
+}
+.cate_card_text {
+  width: 100%;
+  display: flex;
+  padding: 0.8rem;
+  flex-direction: column;
+}
+.cate::-webkit-scrollbar {
+}
+@media screen and (max-width: 550px) {
+  .cate_card {
+    min-width: 300px;
+  }
+}

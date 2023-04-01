@@ -1,0 +1,31 @@
+.container {
+  background-color: #ffffff;
+}
+.about_company {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+.side_container {
+  flex: 0 0 34vw;
+  padding: 1.5rem 0;
+  min-width: 300px;
+  display: flex;
+  flex-flow: column;
+  /* gap: 1.5vw; */
+}
+/* .side_container1 {
+  flex: 0 0 34vw;
+  padding: 1.5rem 0;
+  min-width: 300px;
+} */
+.about_company img {
+  width: 100%;
+  height: 25vw;
+  min-height: 260px;
+}
+@media screen and (max-width: 705px) {
+  .side_container {
+    flex: 0 0 80%;
+  }
+}

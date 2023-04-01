@@ -1,0 +1,62 @@
+.navbar_container {
+  background-color: #ffffff;
+  /* display: flex; */
+}
+.navbar {
+  width: 85%;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  padding: 0.3rem 0rem;
+}
+.navbar_logo {
+  width: 4vw;
+  min-width: 60px;
+  height: 90%;
+}
+.navbar_logo img {
+  width: 100%;
+  height: 100%;
+}
+.navbar_link {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  margin-left: 2rem;
+}
+.get_intouch {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.lang {
+  display: flex;
+}
+.lang img {
+  border-radius: 50%;
+}
+.menuBars {
+  display: none;
+}
+
+@media screen and (max-width: 1310px) {
+  .navbar {
+    width: 100%;
+    padding: 0.3rem 2rem;
+  }
+}
+@media screen and (max-width: 1165px) {
+  .navbar_link {
+    display: none;
+  }
+  .get_in_touch_btn {
+    display: none;
+  }
+  .menuBars {
+    display: block;
+    transition: all 0.3s;
+  }
+  .menuBars.active {
+    transform: rotate(30deg);
+  }
+}
