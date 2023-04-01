@@ -19,7 +19,7 @@
 
 /* Handle */
 .cate::-webkit-scrollbar-thumb {
-  background: black;
+  background: rgba(0, 0, 0, 0.514);
   border-radius: 10px;
 }
 

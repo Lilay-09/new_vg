@@ -28,6 +28,7 @@
 } */
 .project_link:hover .project_lists {
   display: flex;
+  z-index: 1000;
 }
 .project_lists {
   position: absolute;
@@ -48,10 +49,10 @@
   transition: all 0.3s;
 }
 
-.project_lists.active {
+/* .project_lists.active {
   display: block;
   top: 3.3rem;
-}
+} */
 
 @media only screen and (max-width: 1165px) {
   .menuBar {
