@@ -7,7 +7,7 @@ import Footer from "./Footer";
 import styles from "../styles/Layout.module.css";
 import Header from "./Header";
 
-const Layout = ({ title, children, noSlide, noFind, map }) => {
+const Layout = ({ title, children, noSlide, noFind, map, width }) => {
   const findDream = {
     display: "flex",
     flexFlow: "column",
@@ -19,6 +19,15 @@ const Layout = ({ title, children, noSlide, noFind, map }) => {
   const findDreamDropdown = {
     display: "flex",
     justifyContent: "space-between",
+  };
+  const main = {
+    width: width ? `${width}%` : "85%",
+    margin: "0 auto",
+    display: "flex",
+    flexFlow: "column",
+    gap: "3rem",
+    marginBottom: "3rem",
+    minWidth: "320px",
   };
   return (
     <div className="body">
@@ -63,7 +72,7 @@ const Layout = ({ title, children, noSlide, noFind, map }) => {
           </div>
         </div>
       )}
-      <main className={styles.layout_main}>{children}</main>
+      <main style={main}>{children}</main>
       <Footer />
     </div>
   );

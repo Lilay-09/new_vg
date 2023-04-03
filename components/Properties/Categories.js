@@ -7,10 +7,13 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import Image from "next/image";
 import { data } from "../../utils/data";
 import Link from "next/link";
-const Categories = () => {
+import Scrollable from "../Scrollable";
+
+const Categories = ({ width }) => {
   return (
     <CardComp
       title="Categories"
+      width={100}
       see_all={
         <Link
           className={`d-flex align-items-center ${styles.link_category}`}
@@ -22,7 +25,7 @@ const Categories = () => {
         </Link>
       }
     >
-      <div className={styles.cate}>
+      <Scrollable>
         {data.map((item, i) => {
           return (
             <div className={styles.cate_card} key={i}>
@@ -49,9 +52,37 @@ const Categories = () => {
             </div>
           );
         })}
-      </div>
+      </Scrollable>
     </CardComp>
   );
 };
 
 export default Categories;
+// {/* <div className={styles.cate}> */}
+// {data.map((item, i) => {
+//   return (
+//     <div className={styles.cate_card} key={i}>
+//       <div className={styles.cate_card_img}>
+//         <Image
+//           src="/images/l1.png"
+//           width={3000}
+//           height={3000}
+//           alt="l1"
+//           priority
+//         />
+//       </div>
+//       <div className={styles.cate_card_text}>
+//         <h5>Name</h5>
+//         <div>
+//           <span>Type : </span>
+//           <span>Condo</span>
+//         </div>
+//         <div>
+//           <span>Address :</span>
+//           <span>{item.country}</span>
+//         </div>
+//       </div>
+//     </div>
+//   );
+// })}
+// {/* </div> */}

@@ -57,3 +57,10 @@ a:link {
     background: black;
   }
 } */
+.scrollable {
+  margin-left: 1.6vw;
+  scroll-behavior: smooth;
+}
+.scrollable::-webkit-scrollbar {
+  display: none;
+}

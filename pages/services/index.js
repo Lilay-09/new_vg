@@ -6,7 +6,7 @@ import { data } from "../../utils/data";
 
 const Services = () => {
   return (
-    <Layout>
+    <Layout width={100}>
       <Categories />
       <CardFrame
         data={data.slice(0, 6)}
