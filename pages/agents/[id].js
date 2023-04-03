@@ -19,8 +19,8 @@ const Accomplishments = () => {
                     src={`/${item.profile}`}
                     alt={item.profile}
                     priority
-                    width={500}
-                    height={500}
+                    width={5000}
+                    height={5000}
                   />
                 </div>
                 <div className={styles.list_text}>
@@ -50,8 +50,8 @@ const Accomplishments = () => {
                       <Image
                         src={`/${acc.url}`}
                         alt="acc"
-                        width={300}
-                        height={300}
+                        width={3000}
+                        height={3000}
                         priority
                       />
                     </div>

@@ -24,8 +24,8 @@ const AllCategories = () => {
                   <Image
                     src={`/${item.url}`}
                     alt="l1"
-                    width={300}
-                    height={300}
+                    width={3000}
+                    height={3000}
                     priority
                   />
                 </div>

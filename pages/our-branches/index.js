@@ -34,8 +34,8 @@ const OutBranches = () => {
         <div className={styles.history_img}>
           <Image
             src="/images/building2.png"
-            width={400}
-            height={400}
+            width={4000}
+            height={4000}
             alt="building"
             priority
           />

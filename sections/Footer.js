@@ -18,8 +18,8 @@ const Footer = () => {
           <Image
             src="/images/logo2.png"
             alt="logo"
-            width={300}
-            height={300}
+            width={3000}
+            height={3000}
             priority
           />
         </div>

@@ -40,8 +40,8 @@ const AboutUs = () => {
           <div className={styles.side_container}>
             <Image
               src="/images/building2.png"
-              width={300}
-              height={300}
+              width={3000}
+              height={3000}
               alt="act1"
             />
           </div>

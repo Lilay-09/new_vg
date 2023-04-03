@@ -7,8 +7,8 @@ export const data = [
     country: "Nigeria",
     url: "images/l1.png",
     profile: "images/p1.png",
-    description: `This meta description generator uses machine learning (GPT-3 from Open AI) to generate short description ideas for your articles. 
-      It has been trained specifically for pages with long content and is best suited for guides, how-to articles, listicles, etc.`,
+    description: `Real estate is a form of real property, meaning that it is something you own that is attached to a piece of land. It can be used for residential, commercial or industrial purposes, 
+    and typically includes any resources on the land such as water or minerals.`,
     accomplished: [
       {
         id: 1,
@@ -16,8 +16,8 @@ export const data = [
         type: "Condo",
         title: "Project Name",
         address: "2972 Westheimer Rd. Santa Ana, Illinois 85486 ",
-        description: `This meta description generator uses machine learning (GPT-3 from Open AI) to generate short description ideas for your articles. 
-    It has been trained specifically for pages with long content and is best suited for guides, how-to articles, listicles, etc.`,
+        description: `Real estate is a form of real property, meaning that it is something you own that is attached to a piece of land. It can be used for residential, commercial or industrial purposes, 
+        and typically includes any resources on the land such as water or minerals.`,
       },
       {
         id: 2,
@@ -25,8 +25,8 @@ export const data = [
         type: "Condo",
         title: "Project Name",
         address: "2972 Westheimer Rd. Santa Ana, Illinois 85486 ",
-        description: `This meta description generator uses machine learning (GPT-3 from Open AI) to generate short description ideas for your articles. 
-        It has been trained specifically for pages with long content and is best suited for guides, how-to articles, listicles, etc.`,
+        description: `Real estate is a form of real property, meaning that it is something you own that is attached to a piece of land. It can be used for residential, commercial or industrial purposes, 
+        and typically includes any resources on the land such as water or minerals.`,
       },
       {
         id: 3,
@@ -34,8 +34,8 @@ export const data = [
         type: "Condo",
         title: "Project Name",
         address: "2972 Westheimer Rd. Santa Ana, Illinois 85486 ",
-        description: `This meta description generator uses machine learning (GPT-3 from Open AI) to generate short description ideas for your articles. 
-        It has been trained specifically for pages with long content and is best suited for guides, how-to articles, listicles, etc.`,
+        description: `Real estate is a form of real property, meaning that it is something you own that is attached to a piece of land. It can be used for residential, commercial or industrial purposes, 
+        and typically includes any resources on the land such as water or minerals.`,
       },
     ],
   },
@@ -58,10 +58,8 @@ export const data = [
         type: "Condo",
         title: "Project Name",
         address: "2972 Westheimer Rd. Santa Ana, Illinois 85486 ",
-        description: `This meta description generator uses machine learning (GPT-3 from Open AI) to generate short description ideas for your articles. 
-    It has been trained specifically for pages with long content and is best suited for guides, how-to articles, listicles, etc.To use the generator, 
-    specify the subject of your article (which can be your title or simply the topic of your content) along with some keywords you like to see in the meta description and click 
-    "Generate Ideas". Note: There is no guarantee that the keywords will be included in the description.`,
+        description: `Real estate is a form of real property, meaning that it is something you own that is attached to a piece of land. It can be used for residential, commercial or industrial purposes, 
+        and typically includes any resources on the land such as water or minerals.`,
       },
       {
         id: 2,
@@ -95,10 +93,8 @@ export const data = [
     country: "Norway",
     url: "images/l3.png",
     profile: "images/p3.png",
-    description: `This meta description generator uses machine learning (GPT-3 from Open AI) to generate short description ideas for your articles. 
-    It has been trained specifically for pages with long content and is best suited for guides, how-to articles, listicles, etc.To use the generator, 
-    specify the subject of your article (which can be your title or simply the topic of your content) along with some keywords you like to see in the meta description and click 
-    "Generate Ideas". Note: There is no guarantee that the keywords will be included in the description.`,
+    description: `Real estate is a form of real property, meaning that it is something you own that is attached to a piece of land. It can be used for residential, commercial or industrial purposes, 
+    and typically includes any resources on the land such as water or minerals.`,
     accomplished: [
       {
         id: 1,
@@ -106,10 +102,8 @@ export const data = [
         type: "Condo",
         title: "Project Name",
         address: "2972 Westheimer Rd. Santa Ana, Illinois 85486 ",
-        description: `This meta description generator uses machine learning (GPT-3 from Open AI) to generate short description ideas for your articles. 
-    It has been trained specifically for pages with long content and is best suited for guides, how-to articles, listicles, etc.To use the generator, 
-    specify the subject of your article (which can be your title or simply the topic of your content) along with some keywords you like to see in the meta description and click 
-    "Generate Ideas". Note: There is no guarantee that the keywords will be included in the description.`,
+        description: `Real estate is a form of real property, meaning that it is something you own that is attached to a piece of land. It can be used for residential, commercial or industrial purposes, 
+        and typically includes any resources on the land such as water or minerals.`,
       },
       {
         id: 2,
@@ -117,10 +111,8 @@ export const data = [
         type: "Condo",
         title: "Project Name",
         address: "2972 Westheimer Rd. Santa Ana, Illinois 85486 ",
-        description: `This meta description generator uses machine learning (GPT-3 from Open AI) to generate short description ideas for your articles. 
-        It has been trained specifically for pages with long content and is best suited for guides, how-to articles, listicles, etc.To use the generator, 
-        specify the subject of your article (which can be your title or simply the topic of your content) along with some keywords you like to see in the meta description and click 
-        "Generate Ideas". Note: There is no guarantee that the keywords will be included in the description.`,
+        description: `Real estate is a form of real property, meaning that it is something you own that is attached to a piece of land. It can be used for residential, commercial or industrial purposes, 
+        and typically includes any resources on the land such as water or minerals.`,
       },
       {
         id: 3,
@@ -128,10 +120,8 @@ export const data = [
         type: "Condo",
         title: "Project Name",
         address: "2972 Westheimer Rd. Santa Ana, Illinois 85486 ",
-        description: `This meta description generator uses machine learning (GPT-3 from Open AI) to generate short description ideas for your articles. 
-        It has been trained specifically for pages with long content and is best suited for guides, how-to articles, listicles, etc.To use the generator, 
-        specify the subject of your article (which can be your title or simply the topic of your content) along with some keywords you like to see in the meta description and click 
-        "Generate Ideas". Note: There is no guarantee that the keywords will be included in the description.`,
+        description: `Real estate is a form of real property, meaning that it is something you own that is attached to a piece of land. It can be used for residential, commercial or industrial purposes, 
+        and typically includes any resources on the land such as water or minerals.`,
       },
     ],
   },

@@ -50,14 +50,14 @@ const TeamComp = ({ showItems }) => {
                 <Image
                   src={`/${item.profile}`}
                   alt="l1"
-                  width={300}
-                  height={300}
+                  width={3000}
+                  height={3000}
                   priority
                 />
               </div>
               <div className={styles.team_card_text}>
                 <p>{item.name}</p>
-                <Link href="">View Profile</Link>
+                <Link href={`agents/${item.id}`}>View Profile</Link>
               </div>
             </div>
           );

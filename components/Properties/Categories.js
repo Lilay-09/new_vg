@@ -29,8 +29,8 @@ const Categories = () => {
               <div className={styles.cate_card_img}>
                 <Image
                   src="/images/l1.png"
-                  width={300}
-                  height={300}
+                  width={3000}
+                  height={3000}
                   alt="l1"
                   priority
                 />

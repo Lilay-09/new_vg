@@ -9,7 +9,7 @@ const NewDetails = () => {
   return (
     <Layout noFind noSlide>
       <div className="d-flex gap-3 flex-column">
-        <BannerImg img="building3.png" height="35" alt="building3" />
+        <BannerImg img="building3.png" height="40" alt="building3" />
         <div className="p-1">
           <h4>Condo Name</h4>
           <span className="text-muted">February 22, 2023 9:24 am</span>

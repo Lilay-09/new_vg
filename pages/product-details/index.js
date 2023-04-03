@@ -77,9 +77,9 @@ const ProductDetails = () => {
                       </div>
                       <div className={styles.project_container_img}>
                         <Image
-                          src={`/images/p1.png`}
-                          width={400}
-                          height={400}
+                          src={`/${item.url}`}
+                          width={4000}
+                          height={4000}
                           priority
                           alt={"p1"}
                         />
@@ -89,9 +89,9 @@ const ProductDetails = () => {
                     <>
                       <div className={styles.project_container_img}>
                         <Image
-                          src={`/images/p1.png`}
-                          width={400}
-                          height={400}
+                          src={`/${item.url}`}
+                          width={4000}
+                          height={4000}
                           priority
                           alt={"p1"}
                         />

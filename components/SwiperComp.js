@@ -18,8 +18,8 @@ const SwiperComp = () => {
     >
       <SwiperSlide className="swiper_item">
         <Image
-          width={400}
-          height={400}
+          width={4000}
+          height={4000}
           alt="slide"
           priority
           src="/images/slide.png"
@@ -27,8 +27,8 @@ const SwiperComp = () => {
       </SwiperSlide>
       <SwiperSlide className="swiper_item">
         <Image
-          width={400}
-          height={400}
+          width={4000}
+          height={4000}
           alt="slide"
           priority
           src="/images/slide.png"
@@ -36,8 +36,8 @@ const SwiperComp = () => {
       </SwiperSlide>
       <SwiperSlide className="swiper_item">
         <Image
-          width={400}
-          height={400}
+          width={4000}
+          height={4000}
           alt="slide"
           priority
           src="/images/slide.png"
@@ -45,8 +45,8 @@ const SwiperComp = () => {
       </SwiperSlide>
       <SwiperSlide className="swiper_item">
         <Image
-          width={400}
-          height={400}
+          width={4000}
+          height={4000}
           alt="slide"
           priority
           src="/images/slide.png"
@@ -54,8 +54,8 @@ const SwiperComp = () => {
       </SwiperSlide>
       <SwiperSlide className="swiper_item">
         <Image
-          width={400}
-          height={400}
+          width={4000}
+          height={4000}
           alt="slide"
           priority
           src="/images/slide.png"

@@ -18,8 +18,8 @@ const Blogs = () => {
                 src="/images/building3.png"
                 alt="building3"
                 priority
-                width={300}
-                height={300}
+                width={3000}
+                height={3000}
               />
               <div className={styles.new_inner_text}>
                 <BtnComp isRed>Condos</BtnComp>
@@ -35,8 +35,8 @@ const Blogs = () => {
                   src="/images/building3.png"
                   alt="building3"
                   priority
-                  width={300}
-                  height={300}
+                  width={3000}
+                  height={3000}
                 />
                 <div className={styles.new_container_top_inner_text}>
                   <BtnComp isRed>Condos</BtnComp>
@@ -51,8 +51,8 @@ const Blogs = () => {
                   src="/images/building3.png"
                   alt="building3"
                   priority
-                  width={300}
-                  height={300}
+                  width={3000}
+                  height={3000}
                 />
                 <div className={styles.new_container_bottom_inner_text}>
                   <BtnComp isRed>Agriculture Lands</BtnComp>
@@ -70,8 +70,8 @@ const Blogs = () => {
             <Image
               src="/images/announcement.png"
               alt="announcement"
-              width={500}
-              height={500}
+              width={5000}
+              height={5000}
             />
           </div>
           <div className={styles.announcement_text}>
@@ -104,8 +104,8 @@ const Blogs = () => {
                 src="/images/act1.png"
                 alt="building3"
                 priority
-                width={300}
-                height={300}
+                width={3000}
+                height={3000}
               />
               <div className={styles.new_inner_text}>
                 <BtnComp isRed>Condos</BtnComp>
@@ -121,8 +121,8 @@ const Blogs = () => {
                   src="/images/act.png"
                   alt="building3"
                   priority
-                  width={300}
-                  height={300}
+                  width={3000}
+                  height={3000}
                 />
                 <div className={styles.new_container_top_inner_text}>
                   <BtnComp isRed>Condos</BtnComp>
@@ -137,8 +137,8 @@ const Blogs = () => {
                   src="/images/act2.png"
                   alt="building3"
                   priority
-                  width={300}
-                  height={300}
+                  width={3000}
+                  height={3000}
                 />
                 <div className={styles.new_container_bottom_inner_text}>
                   <BtnComp isRed>Agriculture Lands</BtnComp>
@@ -158,8 +158,8 @@ const Blogs = () => {
                 src="/images/l2.png"
                 alt="building3"
                 priority
-                width={300}
-                height={300}
+                width={3000}
+                height={3000}
               />
             </div>
             <div className={styles.blog_card_text}>
@@ -191,8 +191,8 @@ const Blogs = () => {
                 src="/images/l2.png"
                 alt="building3"
                 priority
-                width={300}
-                height={300}
+                width={3000}
+                height={3000}
               />
             </div>
             <div className={styles.blog_card_text}>

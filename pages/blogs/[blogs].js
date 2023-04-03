@@ -50,7 +50,7 @@ const BlogDetails = () => {
         <h4>Map</h4>
         <GoogleMapComp width="100%" />
       </div>
-      <CardFrame data={data} title="More Blogs" />
+      <CardFrame data={data} title="More Blogs" href="/blogs/blog2" />
     </Layout>
   );
 };

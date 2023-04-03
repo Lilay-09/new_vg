@@ -45,15 +45,15 @@ const LastProjectComp = ({ showItems }) => {
         {data.slice(0, showVisible).map((item, i) => {
           return (
             <div className={styles.card_frame} key={i}>
-              <div className={styles.card_img}>
+              <Link className={styles.card_img} href="product-details">
                 <Image
                   src={`/${item.url}`}
                   alt="l1"
-                  width={300}
-                  height={300}
+                  width={3000}
+                  height={3000}
                   priority
                 />
-              </div>
+              </Link>
               <div className={styles.card_text}>
                 <span className={styles.title}>Your Project Name</span>
                 <div>

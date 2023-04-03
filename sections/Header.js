@@ -144,10 +144,14 @@ const Header = ({ title }) => {
       <div className={`menu_drop_down ${isOpenMenu && "active"}`}>
         <div className={`menu_list ${isOpenMenu && "active"}`} ref={menuRef}>
           <ActiveChild href="/">Home</ActiveChild>
-          <ActiveChild href="/">Home</ActiveChild>
-          <ActiveChild href="/">Home</ActiveChild>
-          <ActiveChild href="/">Home</ActiveChild>
-          <ActiveChild href="/">Home</ActiveChild>
+          <ActiveChild href="/projects">Projects</ActiveChild>
+          <ActiveChild href="/agents">Agents</ActiveChild>
+          <ActiveChild href="/our-branches">Our Branches</ActiveChild>
+          <ActiveChild href="/properties">Properties</ActiveChild>
+          <ActiveChild href="/services">Services</ActiveChild>
+          <ActiveChild href="/blogs">Blogs</ActiveChild>
+          <ActiveChild href="/careers">Careers</ActiveChild>
+          <ActiveChild href="/about-us">About Us</ActiveChild>
         </div>
       </div>
     </div>
