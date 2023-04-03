@@ -80,6 +80,7 @@ const Scrollable = ({ children }) => {
   }, [onMouseDown, onMouseUp, onMouseMove, onMouseLeave]);
   const scrollStyles = {
     display: "flex",
+    gap: "2rem",
     overflowX: "scroll",
   };
   return (

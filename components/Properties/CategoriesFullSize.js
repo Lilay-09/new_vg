@@ -9,11 +9,11 @@ import { data } from "../../utils/data";
 import Link from "next/link";
 import Scrollable from "../Scrollable";
 
-const Categories = ({ width }) => {
+const CategoriesFullSize = ({ width }) => {
   return (
     <CardComp
       title="Categories"
-      titleWidth={100}
+      titleWidth={85}
       see_all={
         <Link
           className={`d-flex align-items-center ${styles.link_category}`}
@@ -57,7 +57,7 @@ const Categories = ({ width }) => {
   );
 };
 
-export default Categories;
+export default CategoriesFullSize;
 // {/* <div className={styles.cate}> */}
 // {data.map((item, i) => {
 //   return (
