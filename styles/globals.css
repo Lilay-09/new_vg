@@ -27,7 +27,7 @@ a:link {
 .option_selection {
   display: flex;
   flex-wrap: wrap;
-  margin: 1rem 0;
+
   justify-content: space-between;
 }
 .option_selection select {

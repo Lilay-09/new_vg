@@ -2,9 +2,6 @@ import React, { useCallback, useEffect, useRef, useState } from "react";
 
 const Scrollable = ({ children }) => {
   let ref = useRef();
-  //   let isDown = false;
-  //   let clientX;
-  //   let scrollLeft;
   const [state, setState] = useState({
     isDown: false,
     clientX: 0,
@@ -27,21 +24,22 @@ const Scrollable = ({ children }) => {
     }
   }, []);
 
-  const onMouseUp = useCallback((e) => {
-    setState({
-      isDown: false,
-    });
-  }, []);
+  const onMouseUp = useCallback(
+    (e) => {
+      setState({ ...state, isDown: false, clientX: 0, scrollLeft: 0 });
+    },
+    [state]
+  );
 
   const onMouseDown = useCallback(
     (e) => {
-      e.preventDefault();
       setState({
         ...state,
         isDown: true,
         clientX: e.pageX - ref.current.offsetLeft,
         scrollLeft: ref.current.scrollLeft,
       });
+      e.preventDefault();
     },
     [state]
   );
@@ -50,31 +48,39 @@ const Scrollable = ({ children }) => {
       if (!state.isDown) {
         return;
       }
-      e.preventDefault();
+
       const x = e.pageX - ref.current.offsetLeft;
       const walk = x - state.clientX;
       ref.current.scrollLeft = state.scrollLeft - walk;
+      e.preventDefault();
     },
     [state]
   );
-  const onMouseLeave = (e) => {
-    setState({ ...state, isDown: false });
-  };
+  const onMouseLeave = useCallback(
+    (e) => {
+      setState({ ...state, isDown: false, clientX: 0, scrollLeft: 0 });
+    },
+    [state]
+  );
   useEffect(() => {
+    if (ref && ref.current && ref.current) {
+      return;
+    }
     document.addEventListener("mousedown", onMouseDown);
     document.addEventListener("mouseup", onMouseUp);
     document.addEventListener("mousemove", onMouseMove);
+    document.addEventListener("mouseleave", onMouseLeave);
 
     return () => {
       document.removeEventListener("mousedown", onMouseDown);
       document.removeEventListener("mouseup", onMouseUp);
       document.removeEventListener("mousemove", onMouseMove);
+      document.removeEventListener("mouseleave", onMouseLeave);
     };
-  }, [onMouseDown, onMouseUp, onMouseMove]);
+  }, [onMouseDown, onMouseUp, onMouseMove, onMouseLeave]);
   const scrollStyles = {
     display: "flex",
     overflowX: "scroll",
-    gap: "2rem",
   };
   return (
     <div

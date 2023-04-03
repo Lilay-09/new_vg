@@ -2,13 +2,13 @@ import { faAngleRight } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
 import styles from "../styles/Home.module.css";
-const CardComp = ({ title, children, see_all, width }) => {
+const CardComp = ({ title, children, see_all, width, titleWidth }) => {
   const childStyles = {
-    width: width ? `${width}%` : "85%",
+    width: width ? `${width}%` : "100%",
     margin: "0  auto",
   };
   const titleStyles = {
-    width: "85%",
+    width: titleWidth ? `${titleWidth}%` : "100%",
     margin: "0 auto",
   };
   return (

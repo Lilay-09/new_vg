@@ -13,7 +13,7 @@ const Categories = ({ width }) => {
   return (
     <CardComp
       title="Categories"
-      width={100}
+      titleWidth={85}
       see_all={
         <Link
           className={`d-flex align-items-center ${styles.link_category}`}

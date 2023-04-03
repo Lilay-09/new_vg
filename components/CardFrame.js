@@ -11,6 +11,8 @@ const CardFrame = ({ data, title, href }) => {
   return (
     <CardComp
       title={`${title}`}
+      width={85}
+      titleWidth={85}
       // see_all={
       //   <Link className={`d-flex align-items-center`} passHref href={`${href}`}>
       //     <span>View All</span>

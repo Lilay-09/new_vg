@@ -14,6 +14,7 @@ const Layout = ({ title, children, noSlide, noFind, map, width }) => {
     margin: "4.5rem auto",
     width: "85%",
     padding: "0.8rem",
+    zIndex: "1000",
     backgroundColor: "#ffffff",
   };
   const findDreamDropdown = {
@@ -22,6 +23,7 @@ const Layout = ({ title, children, noSlide, noFind, map, width }) => {
   };
   const main = {
     width: width ? `${width}%` : "85%",
+    // backgroundColor: "yellow",
     margin: "0 auto",
     display: "flex",
     flexFlow: "column",
