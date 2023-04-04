@@ -93,7 +93,7 @@
     justify-content: center;
   }
   .list_img {
-    flex: 0 0 60%;
+    flex: 0 0 40%;
     height: 30vw;
     display: flex;
     margin: 0 auto;

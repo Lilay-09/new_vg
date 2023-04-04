@@ -80,3 +80,9 @@
     transform: translateX(0%);
   }
 }
+.menu__list_frame {
+  display: flex;
+  flex-flow: column;
+  padding: 2rem;
+  gap: 2vw;
+}

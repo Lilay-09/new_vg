@@ -44,11 +44,11 @@ const Header = ({ title }) => {
     };
   }, []);
   const [openProject, setOpenProject] = useState(false);
-
+  const [menuDropDown, setMenuDropDown] = useState(false);
   const projectOnClickHandler = () => {
     setOpenProject(!openProject);
   };
-
+  const href = "/projects";
   return (
     <div>
       <Head>
@@ -143,15 +143,64 @@ const Header = ({ title }) => {
       </nav>
       <div className={`menu_drop_down ${isOpenMenu && "active"}`}>
         <div className={`menu_list ${isOpenMenu && "active"}`} ref={menuRef}>
-          <ActiveChild href="/">Home</ActiveChild>
-          <ActiveChild href="/projects">Projects</ActiveChild>
-          <ActiveChild href="/agents">Agents</ActiveChild>
-          <ActiveChild href="/our-branches">Our Branches</ActiveChild>
-          <ActiveChild href="/properties">Properties</ActiveChild>
-          <ActiveChild href="/services">Services</ActiveChild>
-          <ActiveChild href="/blogs">Blogs</ActiveChild>
-          <ActiveChild href="/careers">Careers</ActiveChild>
-          <ActiveChild href="/about-us">About Us</ActiveChild>
+          <div className="menu__list_frame">
+            <ActiveLink href="/" noBd>
+              Home
+            </ActiveLink>
+            <div
+              onClick={() => {
+                setMenuDropDown(true);
+                {
+                  menuDropDown && setMenuDropDown(!menuDropDown);
+                }
+              }}
+            >
+              <span
+                noBd
+                style={{
+                  color:
+                    menuDropDown || router.asPath == href ? "black" : "#6D6D75",
+                  fontWeight:
+                    menuDropDown || router.asPath == href ? "700" : "normal",
+                }}
+              >
+                Projects
+              </span>
+              {menuDropDown && (
+                <ul>
+                  <ActiveChild href="/projects">All Projects</ActiveChild>
+                  <ActiveChild href="/villa">Villa</ActiveChild>
+                  <ActiveChild href="/condo">Condo</ActiveChild>
+                  <ActiveChild href="/apartment">Apartments</ActiveChild>
+                  <ActiveChild href="/shop-house">Shop House</ActiveChild>
+                  <ActiveChild href="/flat-house">Flat House</ActiveChild>
+                  <ActiveChild href="/borey">Borey</ActiveChild>
+                </ul>
+              )}
+            </div>
+            {}
+            <ActiveLink href="/agents" noBd>
+              Agents
+            </ActiveLink>
+            <ActiveLink href="/our-branches" noBd>
+              Our Branches
+            </ActiveLink>
+            <ActiveLink href="/properties" noBd>
+              Properties
+            </ActiveLink>
+            <ActiveLink href="/services" noBd>
+              Services
+            </ActiveLink>
+            <ActiveLink href="/blogs" noBd>
+              Blogs
+            </ActiveLink>
+            <ActiveLink href="/careers" noBd>
+              Careers
+            </ActiveLink>
+            <ActiveLink href="/about-us" noBd>
+              About Us
+            </ActiveLink>
+          </div>
         </div>
       </div>
     </div>

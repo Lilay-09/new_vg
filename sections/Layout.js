@@ -13,7 +13,7 @@ const Layout = ({ title, children, noSlide, noFind, map, width }) => {
     flexFlow: "column",
     margin: "4.5rem auto",
     width: "85%",
-    padding: "0.8rem",
+    padding: "1.2rem",
     zIndex: "1000",
     backgroundColor: "#ffffff",
   };
@@ -69,7 +69,7 @@ const Layout = ({ title, children, noSlide, noFind, map, width }) => {
               <option value="">3</option>
             </select>
           </div>
-          <div style={{ alignSelf: "flex-end" }}>
+          <div style={{ alignSelf: "flex-end", margin: "1.2vw 0" }}>
             <BtnComp>Search</BtnComp>
           </div>
         </div>

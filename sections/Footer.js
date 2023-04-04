@@ -7,10 +7,12 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Image from "next/image";
-import React from "react";
+import React, { useState } from "react";
 import styles from "../styles/Footer.module.css";
+import Link from "next/link";
 
 const Footer = () => {
+  const [menuDropDown, setMenuDropDown] = useState(false);
   return (
     <div className={styles.footer}>
       <div className={styles.left_footer}>
@@ -74,13 +76,52 @@ const Footer = () => {
       <div className={styles.mid_footer}>
         <h5>Company</h5>
         <div>
-          <a className="nav-link" href={"#home"}>
+          <Link className="nav-link" href="/">
             Home
-          </a>
-          <a className="nav-link">Projects</a>
-          <a className="nav-link">News</a>
-          <a className="nav-link">About Us</a>
-          <a className="nav-link">Contact Us</a>
+          </Link>
+          <div
+            onClick={() => {
+              setMenuDropDown(true);
+              {
+                menuDropDown && setMenuDropDown(!menuDropDown);
+              }
+            }}
+          >
+            <span className="">Projects</span>
+            {menuDropDown && (
+              <ul className={styles.footer__link}>
+                <Link href="/projects">All Projects</Link>
+                <Link href="/villa">Villa</Link>
+                <Link href="/condo">Condo</Link>
+                <Link href="/apartment">Apartments</Link>
+                <Link href="/shop-house">Shop House</Link>
+                <Link href="/flat-house">Flat House</Link>
+                <Link href="/borey">Borey</Link>
+              </ul>
+            )}
+          </div>
+          <Link className="nav-link" href="/agents">
+            Agents
+          </Link>
+          <Link className="nav-link" href="/our-branches">
+            Our Branches
+          </Link>
+          <Link className="nav-link" href="/properties">
+            Properites
+          </Link>
+
+          <Link className="nav-link" href="/services">
+            Services
+          </Link>
+          <Link className="nav-link" href="/blogs">
+            Blogs
+          </Link>
+          <Link className="nav-link" href="/careers">
+            Carrers
+          </Link>
+          <Link className="nav-link" href="/about-us">
+            About Us
+          </Link>
         </div>
       </div>
       <div className={styles.right_footer}>

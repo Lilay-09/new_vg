@@ -28,8 +28,8 @@ const Agents = () => {
                 src={`/${item.profile}`}
                 alt={item.profile}
                 priority
-                width={500}
-                height={500}
+                width={6000}
+                height={6000}
               />
             </div>
             <div className={styles.list_text}>
