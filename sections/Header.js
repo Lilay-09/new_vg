@@ -144,9 +144,7 @@ const Header = ({ title }) => {
       <div className={`menu_drop_down ${isOpenMenu && "active"}`}>
         <div className={`menu_list ${isOpenMenu && "active"}`} ref={menuRef}>
           <div className="menu__list_frame">
-            <ActiveLink href="/" noBd>
-              Home
-            </ActiveLink>
+            <ActiveLink href="/">Home</ActiveLink>
             <div
               onClick={() => {
                 setMenuDropDown(true);
@@ -156,12 +154,14 @@ const Header = ({ title }) => {
               }}
             >
               <span
-                noBd
                 style={{
                   color:
                     menuDropDown || router.asPath == href ? "black" : "#6D6D75",
                   fontWeight:
                     menuDropDown || router.asPath == href ? "700" : "normal",
+                  // padding: `1.3vw ${
+                  //   menuDropDown || router.asPath == href ? "0.3rem" : "0"
+                  // }`,
                 }}
               >
                 Projects
@@ -179,27 +179,13 @@ const Header = ({ title }) => {
               )}
             </div>
             {}
-            <ActiveLink href="/agents" noBd>
-              Agents
-            </ActiveLink>
-            <ActiveLink href="/our-branches" noBd>
-              Our Branches
-            </ActiveLink>
-            <ActiveLink href="/properties" noBd>
-              Properties
-            </ActiveLink>
-            <ActiveLink href="/services" noBd>
-              Services
-            </ActiveLink>
-            <ActiveLink href="/blogs" noBd>
-              Blogs
-            </ActiveLink>
-            <ActiveLink href="/careers" noBd>
-              Careers
-            </ActiveLink>
-            <ActiveLink href="/about-us" noBd>
-              About Us
-            </ActiveLink>
+            <ActiveLink href="/agents">Agents</ActiveLink>
+            <ActiveLink href="/our-branches">Our Branches</ActiveLink>
+            <ActiveLink href="/properties">Properties</ActiveLink>
+            <ActiveLink href="/services">Services</ActiveLink>
+            <ActiveLink href="/blogs">Blogs</ActiveLink>
+            <ActiveLink href="/careers">Careers</ActiveLink>
+            <ActiveLink href="/about-us">About Us</ActiveLink>
           </div>
         </div>
       </div>

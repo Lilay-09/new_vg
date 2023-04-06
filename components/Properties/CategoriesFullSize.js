@@ -39,7 +39,7 @@ const CategoriesFullSize = ({ width }) => {
                 />
               </div>
               <div className={styles.cate_card_text}>
-                <h5>Name</h5>
+                <h5>Name{item.id}</h5>
                 <div>
                   <span>Type : </span>
                   <span>Condo</span>

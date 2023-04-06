@@ -18,6 +18,8 @@ const PropertiesComp = ({ showItems }) => {
   return (
     <CardComp
       title="Properties"
+      width={85}
+      titleWidth={85}
       see_all={
         <Link
           className={`d-flex align-items-center ${styles.link_category}`}

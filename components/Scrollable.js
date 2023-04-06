@@ -1,99 +1,99 @@
+import Image from "next/image";
 import React, { useCallback, useEffect, useRef, useState } from "react";
+import styles from "../styles/Properties.module.css";
+const Scrollable = ({ children, data }) => {
+  const ref = useRef();
+  const innerRef = useRef();
+  let pressed = false;
+  let startX;
+  let x;
+  // useEffect(() => {
+  //   const el = ref.current;
+  //   if (el) {
+  //     const onWheel = (e) => {
+  //       if (e.deltaY == 0) return;
+  //       e.preventDefault();
+  //       el.scrollTo({
+  //         left: el.scrollLeft + e.deltaY * 3,
+  //         behavior: "smooth",
+  //       });
+  //       console.log(e.deltaY);
+  //     };
 
-const Scrollable = ({ children }) => {
-  let ref = useRef();
-  const [state, setState] = useState({
-    isDown: false,
-    clientX: 0,
-    scrollLeft: 0,
-  });
-  useEffect(() => {
-    const el = ref.current;
-    if (el) {
-      const onWheel = (e) => {
-        e.preventDefault();
-        el.scrollTo({
-          left: el.scrollLeft + e.deltaY * 9.5,
-          behavior: "smooth",
-        });
-      };
-      el.addEventListener("wheel", onWheel);
-      return () => {
-        el.removeEventListener("wheel", onWheel);
-      };
+  //     el.addEventListener("wheel", onWheel);
+  //     return () => el.removeEventListener("wheel", onWheel);
+  //   }
+  // }, []);
+
+  const mouseDown = (e) => {
+    ref.current.addEventListener("mousedown", (e) => {
+      pressed = true;
+      startX = e.offsetX - innerRef.current.offsetLeft;
+      ref.current.style.cursor = "grabbing";
+    });
+  };
+  const mouseEnter = (e) => {
+    ref.current.addEventListener("mouseenter", (e) => {
+      ref.current.style.cursor = "grab";
+    });
+  };
+  const mouseUp = (e) => {
+    ref.current.addEventListener("mouseup", (e) => {
+      ref.current.style.cursor = "grab";
+      pressed = false;
+    });
+  };
+  const checkBoundary = () => {
+    let outer = ref.current.getBoundingClientRect();
+    let inner = innerRef.current.getBoundingClientRect();
+    if (parseInt(innerRef.current.style.left) > 0) {
+      innerRef.current.style.left = "0px";
+    } else if (inner.right < outer.right) {
+      innerRef.current.style.left = `-${inner.width - outer.width}px`;
     }
-  }, []);
-
-  const onMouseUp = useCallback(
-    (e) => {
-      setState({ ...state, isDown: false, clientX: 0, scrollLeft: 0 });
-    },
-    [state]
-  );
-
-  const onMouseDown = useCallback(
-    (e) => {
-      setState({
-        ...state,
-        isDown: true,
-        clientX: e.pageX - ref.current.offsetLeft,
-        scrollLeft: ref.current.scrollLeft,
-      });
+  };
+  const mouseMove = (e) => {
+    ref.current.addEventListener("mousemove", (e) => {
+      if (!pressed) return;
       e.preventDefault();
-    },
-    [state]
-  );
-  const onMouseMove = useCallback(
-    (e) => {
-      if (!state.isDown) {
-        return;
-      }
 
-      const x = e.pageX - ref.current.offsetLeft;
-      const walk = x - state.clientX;
-      ref.current.scrollLeft = state.scrollLeft - walk;
+      x = e.offsetX;
+      innerRef.current.style.left = `${x - startX}px`;
+      checkBoundary();
+    });
+  };
+  const mouseLeave = (e) => {
+    ref.current.addEventListener("mouseleave", (e) => {
+      if (!pressed) return;
       e.preventDefault();
-    },
-    [state]
-  );
-  const onMouseLeave = useCallback(
-    (e) => {
-      setState({ ...state, isDown: false, clientX: 0, scrollLeft: 0 });
-    },
-    [state]
-  );
-  useEffect(() => {
-    if (ref && ref.current && ref.current) {
-      return;
-    }
-    document.addEventListener("mousedown", onMouseDown);
-    document.addEventListener("mouseup", onMouseUp);
-    document.addEventListener("mousemove", onMouseMove);
-    document.addEventListener("mouseleave", onMouseLeave);
-
-    return () => {
-      document.removeEventListener("mousedown", onMouseDown);
-      document.removeEventListener("mouseup", onMouseUp);
-      document.removeEventListener("mousemove", onMouseMove);
-      document.removeEventListener("mouseleave", onMouseLeave);
-    };
-  }, [onMouseDown, onMouseUp, onMouseMove, onMouseLeave]);
-  const scrollStyles = {
-    display: "flex",
-    gap: "2rem",
-    overflowX: "scroll",
+      pressed = false;
+    });
   };
   return (
     <div
-      style={scrollStyles}
       ref={ref}
-      onMouseDown={onMouseDown}
-      onMouseUp={onMouseUp}
-      onMouseMove={onMouseMove}
-      onMouseLeave={onMouseLeave}
+      onMouseDown={mouseDown}
+      onMouseUp={mouseUp}
+      onMouseMove={mouseMove}
+      onMouseEnter={mouseEnter}
+      onMouseLeave={mouseLeave}
       className="scrollable"
     >
-      {children}
+      <div
+        ref={innerRef}
+        style={{
+          display: "flex",
+          gap: "3rem",
+          position: "relative",
+          top: 0,
+          left: 0,
+          // overflowX: "hidden",
+          pointerEvents: "none",
+        }}
+        // className="inner"
+      >
+        {children}
+      </div>
     </div>
   );
 };
