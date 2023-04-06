@@ -34,7 +34,7 @@ a:link {
   flex: 0 0 20vw;
   min-width: 160px;
   height: 2vw;
-  min-height: 30px;
+  min-height: 38px;
 }
 @media screen and (max-width: 783px) {
   .option_selection {
