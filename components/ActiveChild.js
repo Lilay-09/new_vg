@@ -23,7 +23,7 @@ const ActiveChild = ({ router, href, children, color, id }) => {
           textDecoration: "none",
           fontSize: isCurrentPath ? "16px" : "13px",
           fontWeight: isCurrentPath ? "700" : "normal",
-          color: isCurrentPath ? "black" : `grey`,
+          color: isCurrentPath ? "black" : `#6D6D75`,
           opacity: isCurrentPath ? 1 : 0.8,
         }}
       >

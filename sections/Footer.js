@@ -100,28 +100,30 @@ const Footer = () => {
               </ul>
             )}
           </div>
-          <Link className="nav-link" href="/agents">
-            Agents
-          </Link>
-          <Link className="nav-link" href="/our-branches">
-            Our Branches
-          </Link>
-          <Link className="nav-link" href="/properties">
-            Properites
-          </Link>
+          <div style={{ color: "white" }}>
+            <Link className="nav-link" href="/agents">
+              Agents
+            </Link>
+            <Link className="nav-link" href="/our-branches">
+              Our Branches
+            </Link>
+            <Link className="nav-link" href="/properties">
+              Properites
+            </Link>
 
-          <Link className="nav-link" href="/services">
-            Services
-          </Link>
-          <Link className="nav-link" href="/blogs">
-            Blogs
-          </Link>
-          <Link className="nav-link" href="/careers">
-            Carrers
-          </Link>
-          <Link className="nav-link" href="/about-us">
-            About Us
-          </Link>
+            <Link className="nav-link" href="/services">
+              Services
+            </Link>
+            <Link className="nav-link" href="/blogs">
+              Blogs
+            </Link>
+            <Link className="nav-link" href="/careers">
+              Carrers
+            </Link>
+            <Link className="nav-link" href="/about-us">
+              About Us
+            </Link>
+          </div>
         </div>
       </div>
       <div className={styles.right_footer}>
