@@ -41,10 +41,36 @@ const Layout = ({ title, children, noSlide, noFind, map, width }) => {
         </div>
       )}
       {!noFind && (
-        <div style={findDream}>
+        <div className="find_dream">
           <span className="fs-5 fw-bold">Find Your Dream Property</span>
-          <div className="option_selection">
-            <select>
+          <div className="select_option">
+            <select className="form-select">
+              <option defaultValue>Open this select menu</option>
+              <option value="1">One</option>
+              <option value="2">Two</option>
+              <option value="3">Three</option>
+            </select>
+            <select className="form-select">
+              <option defaultValue>Open this select menu</option>
+              <option value="1">One</option>
+              <option value="2">Two</option>
+              <option value="3">Three</option>
+            </select>
+            <select className="form-select">
+              <option defaultValue>Open this select menu</option>
+              <option value="1">One</option>
+              <option value="2">Two</option>
+              <option value="3">Three</option>
+            </select>
+            <select className="form-select">
+              <option defaultValue>Open this select menu</option>
+              <option value="1">One</option>
+              <option value="2">Two</option>
+              <option value="3">Three</option>
+            </select>
+          </div>
+          {/* <div className="option_selection">
+            <select style={{pa}}>
               <option defaultValue="Location">Locations</option>
               <option value="">1</option>
               <option value="">2</option>
@@ -68,7 +94,7 @@ const Layout = ({ title, children, noSlide, noFind, map, width }) => {
               <option value="">2</option>
               <option value="">3</option>
             </select>
-          </div>
+          </div> */}
           <div style={{ alignSelf: "flex-end", margin: "1.2vw 0" }}>
             <BtnComp>Search</BtnComp>
           </div>
