@@ -197,7 +197,6 @@ const Home = () => {
           >
             <option value="buy">Buy</option>
             <option value="rent">Rent</option>
-            <option value="sell">Sell</option>
           </select>
           <select
             value={optVal}
