@@ -11,7 +11,7 @@ const OurTeam = () => {
       <div className={styles._our_team__container}>
         <div className={`${styles._our__team_manager}`}>
           <div>
-            <h2>Manager Team</h2>
+            <h2>Team Manager</h2>
           </div>
           <div className={styles._our_team__manager_container}>
             <div className={`${styles._manager__card} our__team_item`}>

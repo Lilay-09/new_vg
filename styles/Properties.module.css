@@ -1,5 +1,5 @@
 .banner {
-  background-color: palevioletred;
+  /* background-color: palevioletred; */
   height: 40vw;
   position: relative;
   margin: 0 0 5rem 0;
@@ -38,7 +38,7 @@
   display: flex;
 }
 .tap_pag_box {
-  background-color: aquamarine;
+  /* background-color: aquamarine; */
   padding: 1rem;
   display: flex;
   align-items: center;
@@ -137,7 +137,7 @@
   align-self: flex-end;
 }
 .pagination_container {
-  background-color: aliceblue;
+  /* background-color: aliceblue; */
   display: flex;
   justify-content: center;
   align-items: center;
