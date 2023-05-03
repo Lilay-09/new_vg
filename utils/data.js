@@ -355,6 +355,7 @@ export const Services = [
     type: "condo",
     location: "Phnom Penh",
     url: "/images/tp1.jpg",
+    price: "120000",
   },
   {
     name: "The Platinum",
@@ -362,6 +363,7 @@ export const Services = [
     type: "office",
     location: "Kompong Som",
     url: "/images/tp2.jpg",
+    price: "165000",
   },
   {
     name: "The Platinum",
@@ -369,6 +371,7 @@ export const Services = [
     type: "condo",
     location: "Kandal",
     url: "/images/tp3.jpg",
+    price: "120000",
   },
   {
     name: "The Platinum",
@@ -376,6 +379,7 @@ export const Services = [
     type: "market",
     location: "Prey Veng",
     url: "/images/tp4.jpg",
+    price: "140000",
   },
   {
     name: "The Platinum",
@@ -383,6 +387,7 @@ export const Services = [
     type: "condo",
     location: "Siem Reap",
     url: "/images/tp5.jpg",
+    price: "95000",
   },
   {
     name: "The Platinum",
@@ -390,5 +395,117 @@ export const Services = [
     type: "Apartment",
     location: "Koh Kong",
     url: "/images/tp6.jpg",
+    price: "80000",
+  },
+  {
+    name: "The Platinum",
+    status: "Buying",
+    type: "condo",
+    location: "Phnom Penh",
+    url: "/images/tp1.jpg",
+    price: "120000",
+  },
+  {
+    name: "The Platinum",
+    status: "Rent",
+    type: "office",
+    location: "Kompong Som",
+    url: "/images/tp2.jpg",
+    price: "165000",
+  },
+  {
+    name: "The Platinum",
+    status: "Selling",
+    type: "condo",
+    location: "Kandal",
+    url: "/images/tp3.jpg",
+    price: "120000",
+  },
+  {
+    name: "The Platinum",
+    status: "Buying",
+    type: "market",
+    location: "Prey Veng",
+    url: "/images/tp4.jpg",
+    price: "140000",
+  },
+  {
+    name: "The Platinum",
+    status: "Buying",
+    type: "condo",
+    location: "Siem Reap",
+    url: "/images/tp5.jpg",
+    price: "95000",
+  },
+  {
+    name: "The Platinum",
+    status: "Selling",
+    type: "Apartment",
+    location: "Koh Kong",
+    url: "/images/tp6.jpg",
+    price: "80000",
+  },
+  {
+    name: "The Platinum",
+    status: "Buying",
+    type: "condo",
+    location: "Phnom Penh",
+    url: "/images/tp1.jpg",
+    price: "120000",
+  },
+  {
+    name: "The Platinum",
+    status: "Rent",
+    type: "office",
+    location: "Kompong Som",
+    url: "/images/tp2.jpg",
+    price: "165000",
+  },
+  {
+    name: "The Platinum",
+    status: "Selling",
+    type: "condo",
+    location: "Kandal",
+    url: "/images/tp3.jpg",
+    price: "120000",
+  },
+  {
+    name: "The Platinum",
+    status: "Buying",
+    type: "market",
+    location: "Prey Veng",
+    url: "/images/tp4.jpg",
+    price: "140000",
+  },
+  {
+    name: "The Platinum",
+    status: "Buying",
+    type: "condo",
+    location: "Siem Reap",
+    url: "/images/tp5.jpg",
+    price: "95000",
+  },
+  {
+    name: "The Platinum",
+    status: "Selling",
+    type: "Apartment",
+    location: "Koh Kong",
+    url: "/images/tp6.jpg",
+    price: "80000",
+  },
+];
+
+export const locationData = [
+  {
+    location: "Phnom Penh",
+  },
+  {
+    location: "Koh Kong",
+  },
+  {
+    location: "Kompong Som",
+  },
+  {
+    location: "Kandal",
   },
 ];
