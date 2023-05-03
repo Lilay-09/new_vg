@@ -4,13 +4,14 @@ import React, { use, useEffect, useRef, useState } from "react";
 
 import Layout from "../sections/Layout";
 import styles from "../styles/Home.module.css";
-import { blog, data } from "../utils/data";
+import { blog, data, locationData } from "../utils/data";
 import Accomplished from "../components/Home/Accomplished";
 import UsewindowSize from "../utils/windowSize";
 import Scrollable from "../components/Scrollable";
 import ScrollableContainer from "../components/ScrollableContainer";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowRight, faLocationDot } from "@fortawesome/free-solid-svg-icons";
+import { useRouter } from "next/router";
 
 const renderHtml = () => {
   const size = UsewindowSize();
@@ -119,10 +120,13 @@ const renderHtml = () => {
   }
 };
 const Home = () => {
-  const [optVal, setOptVal] = useState("buy");
+  const router = useRouter();
+  const [status, setStatus] = useState("buy");
+  const [type, setType] = useState("shop-house");
+  const [location, setLocation] = useState("phnom-penh");
   const searchRef = useRef();
   const handleSearchOption = () => {
-    console.log(optVal);
+    router.push(`/search?=/${status}&${type}&${location}`);
   };
 
   return (
@@ -188,40 +192,49 @@ const Home = () => {
         </div>
       </section>
       <div className={styles.search_section} ref={searchRef}>
-        <div className={styles.selection_opt}>
-          <select
-            value={optVal}
-            onChange={(e) => {
-              setOptVal(e.target.value);
-            }}
-          >
-            <option value="buy">Buy</option>
-            <option value="rent">Rent</option>
-          </select>
-          <select
-            value={optVal}
-            onChange={(e) => {
-              setOptVal(e.target.value);
-            }}
-          >
-            <option value="buy">Buy</option>
-            <option value="rent">Rent</option>
-            <option value="sell">Sell</option>
-          </select>
-          <select
-            value={optVal}
-            onChange={(e) => {
-              setOptVal(e.target.value);
-            }}
-          >
-            <option value="buy">Buy</option>
-            <option value="rent">Rent</option>
-            <option value="sell">Sell</option>
-          </select>
-        </div>
-        <div>getting value = {optVal}</div>
-        <div className="btn btn-info" onClick={handleSearchOption}>
-          Submit
+        <h5>Find Your Dream</h5>
+        <div className={styles.find_dream}>
+          <div className={styles.selection_opt}>
+            <select
+              value={status}
+              onChange={(e) => {
+                setStatus(e.target.value);
+              }}
+            >
+              <option value="buy">Buy</option>
+              <option value="rent">Rent</option>
+            </select>
+            <select
+              value={type}
+              onChange={(e) => {
+                setType(e.target.value);
+              }}
+            >
+              <option value="shop-house">Shop House</option>
+              <option value="condo">Condo</option>
+              <option value="villa">Villa</option>
+            </select>
+            <select
+              value={location}
+              onChange={(e) => {
+                setLocation(e.target.value);
+              }}
+            >
+              {locationData.map((item, i) => {
+                return (
+                  <option value={item.location} key={i}>
+                    {item.location}
+                  </option>
+                );
+              })}
+            </select>
+          </div>
+          {/* <div>
+          get status ={status} type = {type} location = {location}
+        </div> */}
+          <div className="btn btn-info" onClick={handleSearchOption}>
+            Submit
+          </div>
         </div>
       </div>
 

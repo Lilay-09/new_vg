@@ -252,23 +252,23 @@ section {
 }
 
 .our___item:nth-child(3) {
-  transition-delay: 800ms;
+  transition-delay: 600ms;
 }
 
 .our___item:nth-child(4) {
-  transition-delay: 1000ms;
+  transition-delay: 900ms;
 }
 
 .our___item:nth-child(5) {
-  transition-delay: 2000ms;
+  transition-delay: 1200ms;
 }
 
 .our___item:nth-child(6) {
-  transition-delay: 2000ms;
+  transition-delay: 1500ms;
 }
 
 .our___item:nth-child(7) {
-  transition-delay: 1100ms;
+  transition-delay: 1800ms;
 }
 .our___item:nth-child(8) {
   transition-delay: 1300ms;
@@ -279,3 +279,4 @@ section {
 }
 @import url("./input.css");
 @import url("./Contact/Contact.css");
+@import url("./paginaiton_style.css");

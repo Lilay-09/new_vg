@@ -84,6 +84,20 @@
   min-width: 200px;
   border: none;
   padding: 0.5vw 0;
+  background-color: #e6b269;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.selection_opt select:not(:checked) {
+  color: #1e136d;
+}
+.selection_opt select option {
+  border-radius: 50%;
+  background-color: #1e136d;
+  color: white;
+  display: flex;
+  justify-content: center;
 }
 .selection_opt {
   display: flex;
@@ -300,6 +314,13 @@
 
 .banner_img_slide_content {
   animation: banner_img_slide_content 0.5s ease-out 0s 1 normal forwards;
+}
+
+.find_dream {
+  display: flex;
+  flex-flow: column;
+  gap: 1vw;
+  align-items: center;
 }
 @keyframes banner_img_slide_content {
   0% {
