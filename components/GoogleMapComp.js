@@ -4,7 +4,7 @@ const GoogleMapComp = ({ width }) => {
   return (
     <div
       style={{
-        width: width ? `${width}` : "85%",
+        width: width ? `${width}%` : "85%",
         margin: "0 auto",
         padding: "0.3rem",
       }}

@@ -1,16 +1,13 @@
 import React from "react";
-import Categories from "../../components/Properties/Categories";
-import PropertiesComp from "../../components/Properties/Properties";
 import Layout from "../../sections/Layout";
-import CategoriesFullSize from "../../components/Properties/CategoriesFullSize";
-
-const Properties = () => {
+import styles from "../../styles/Properties.module.css";
+const OurProperty = () => {
   return (
-    <Layout noFind width={100}>
-      <CategoriesFullSize />
-      <PropertiesComp showItems={3} />
+    <Layout>
+      <div></div>
+      <div className={`${styles} reveal`}></div>
     </Layout>
   );
 };
 
-export default Properties;
+export default OurProperty;

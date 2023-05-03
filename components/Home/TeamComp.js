@@ -21,17 +21,6 @@ const TeamComp = ({ showItems }) => {
         <h4>Teams</h4>
 
         <div className="d-flex align-items-center">
-          {/* {showVisible === showItems ? (
-            <div onClick={showMore} className="d-flex align-items-center">
-              <span>View All</span>
-              <FontAwesomeIcon icon={faAngleRight} width={16} height={16} />
-            </div>
-          ) : (
-            <div onClick={showLess}>
-              <span>View Less</span>
-              <FontAwesomeIcon icon={faAngleDown} width={16} height={16} />
-            </div>
-          )} */}
           <Link
             className={`d-flex align-items-center ${styles.link_category}`}
             passHref

@@ -1,72 +1,83 @@
+.__foot_container {
+  background-color: #1a1347;
+  color: white;
+}
 .footer {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
   background-color: #1a1347;
   color: #ffffff;
-  padding: 0.8rem 5vw;
-}
-.left_footer {
-  flex: 0 0 25vw;
-  min-width: 130px;
-  display: flex;
-  flex-flow: column;
+  padding: 2vw;
   gap: 1vw;
 }
-.logo {
-  width: 7vw;
-  height: 7vw;
-  min-width: 100px;
+.title {
+  width: 18vw;
+  height: 5vw;
   min-height: 100px;
+  /* background-color: #ffffff; */
+  display: flex;
+  min-width: 220px;
+  align-items: center;
+  justify-content: center;
 }
-.logo img {
-  width: 100%;
+.title img {
+  width: 80%;
   height: 100%;
 }
-.mid_footer {
-  flex: 0 0 25vw;
-  min-width: 130px;
-  margin-top: 2rem;
-}
-.right_footer {
-  flex: 0 0 25vw;
-  margin-top: 2rem;
-  min-width: 180px;
-}
-.right_footer li {
+.footer_content {
   display: flex;
+  flex-direction: column;
+  gap: 1.2vw;
+  min-width: 220px;
   align-items: center;
-  gap: 0.5rem;
-  list-style-type: none;
-}
-.right_footer_list {
-  display: flex;
-  flex-flow: column;
-  gap: 0.5rem;
 }
 .media_link {
   display: flex;
-  gap: 2rem;
-  flex-wrap: wrap;
+  gap: 1vw;
 }
 .media_link a {
-  background-color: #0962ea;
+  background-color: transparent;
+  border: 1px solid #e6b269;
   border-radius: 50%;
-  padding: 0.5rem;
-  width: 35px;
-  height: 35px;
+  padding: 0.8rem;
   display: flex;
   align-items: center;
   justify-content: center;
 }
-.media_link a img {
+.copyright_content {
+  margin: 0 auto;
   width: 100%;
-  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem 1rem;
 }
-.footer__link {
+.link_ {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8vw;
+}
+.link_ a {
+  display: flex;
+  width: 100%;
+  justify-content: stretch;
+  align-items: first baseline;
+  gap: 0.5em;
+}
+._contact_address {
   display: flex;
   flex-flow: column;
+  gap: 1vw;
 }
-.footer__link a {
-  color: white;
+@media screen and (max-width: 768px) {
+  .footer {
+    display: flex;
+    flex-wrap: wrap;
+    min-width: 220px;
+    align-items: center;
+    justify-content: center;
+  }
+  .footer_content:nth-child(2) {
+    display: none;
+  }
 }

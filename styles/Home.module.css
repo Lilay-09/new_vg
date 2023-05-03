@@ -1,93 +1,400 @@
-.last_project {
+.banner {
   width: 100%;
+  height: 100vh;
+  position: relative;
+  color: white;
+  top: 0;
 }
-.link_category {
-  color: black;
-  text-decoration: none;
+.search_section {
+  margin: 2rem auto;
+  width: 90%;
 }
-.link_category:hover {
-  color: black;
+.banner_content {
+  display: flex;
+  justify-content: center;
+  gap: 2vw;
+  flex-flow: column;
+  width: 80%;
+  z-index: 1000;
+  height: 100%;
+  margin: 0 auto;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  position: absolute;
+  top: 0;
 }
-.last_project_title {
+.content_title {
+  width: 30%;
+}
+.content_title h2 {
+  line-height: 1.5;
+}
+.banner img {
+  width: 100%;
+  height: 100%;
+  filter: brightness(40%);
+}
+.banner_img {
+  position: absolute;
+  z-index: -1000;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+.banner_btn button {
+  border: none;
+  padding: 0.6rem 2rem;
+  font-weight: 600;
+}
+.banner_btn {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.banner_img_slide_content {
+  height: 8vw;
+  width: 320px;
+  min-height: 150px;
+}
+.banner_img_slide_content img {
+  width: 100%;
+  height: 100%;
+  filter: brightness(100%);
+}
+
+.interior_title_content {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-bottom: 2px solid #6a7efc;
-  padding: 0.3rem 0;
-  margin-bottom: 1rem;
 }
-.card_container {
+.interior_title_content button {
+  color: white;
+  border: none;
+  padding: 0.6rem 2rem;
+  font-weight: 600;
+  background-color: black;
+}
+.interior_title {
+  width: 90%;
+  margin: 2rem auto;
+}
+.selection_opt select {
+  width: 20vw;
+  min-width: 200px;
+  border: none;
+  padding: 0.5vw 0;
+}
+.selection_opt {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
+  align-items: center;
+  justify-content: center;
+  gap: 1vw;
 }
-.team_card_container {
+.interior_section {
+  /* height: 95vh; */
+}
+.accomplistment {
+  /* background-color: rgba(0, 0, 0, 0.71); */
+  /* color: white; */
+  margin-bottom: 3rem;
+}
+.designers_and__architects {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
+  margin-left: 5rem;
 }
-.card_frame {
-  margin-top: 1rem;
+.accomplistment button {
+  color: black;
+  border: none;
+  padding: 0.6rem 2rem;
+  font-weight: 600;
+  background-color: white;
+}
+.designers_and__architects {
   display: flex;
   flex-flow: column;
-  flex: 0 0 25vw;
-  min-width: 300px;
-  background-color: #6a7efc;
+  gap: 1.5rem;
 }
-.card_frame {
-  color: black;
-  text-decoration: none;
-}
-.card_img {
-  width: 100%;
-  height: 70%;
-  background-color: pink;
-}
-.card_img img {
-  width: 100%;
-  height: 100%;
-}
-.card_text {
-  height: 35%;
-  width: 100%;
-  min-height: 150px;
-  background-color: #ffffff;
+._designer_architect_container {
+  /* background-color: aqua; */
   display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
-  padding: 0 2rem;
+  /* flex-wrap: wrap; */
+  justify-content: center;
+  /* background-color: rgb(189, 170, 170); */
+  gap: 2rem;
 }
-.card_text .title {
-  font-weight: 500;
-  font-size: 18px;
+._designer__details_content_g1 {
+  /* background-color: royalblue; */
+  display: flex;
+  gap: 1.2rem;
+  align-items: center;
+  width: 40%;
 }
-.team_card {
-  margin: 1rem 0;
-  flex: 0 0 12vw;
-  min-width: 150px;
+._designer__details_content_g2 {
+  display: flex;
+  gap: 1rem;
+  overflow-x: scroll;
+  width: 80%;
+  align-items: center;
 }
-.team_card_img {
-  width: 100%;
+._designer__details_content_g2::-webkit-scrollbar {
+  display: none;
+}
+._accomplished__project {
+  width: 300px;
+  min-width: 300px;
   height: 10vw;
   min-height: 120px;
+  /* background-color: black; */
 }
-.team_card_img img {
+._accomplished__project img {
   width: 100%;
   height: 100%;
 }
-.team_card_text {
-  width: 100%;
-  padding: 0.5rem;
+._designer__details_content {
+  display: flex;
+}
+._person_details {
   display: flex;
   flex-flow: column;
-  background-color: #ffffff;
-  border-radius: 10px;
+  justify-content: center;
+  gap: 0.8rem;
 }
-@media screen and (max-width: 1204px) {
-  .card_container {
-    justify-content: space-around;
+._img__circle_avatar {
+  width: 8vw;
+  height: 8vw;
+  min-height: 60px;
+  min-width: 60px;
+  /* background-color: palevioletred; */
+  border-radius: 50%;
+}
+._img__circle_avatar img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+}
+.interior_design_sample_container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  width: 90%;
+  margin: auto;
+  margin-bottom: 2rem;
+}
+
+.interior__design_card {
+  min-width: 280px;
+  height: 20vw;
+  min-height: 300px;
+  transition: all 0.4s;
+  border-radius: 15px;
+}
+.interior__design_card img {
+  width: 100%;
+  height: 100%;
+  border-radius: 15px;
+}
+.interior__design_card:hover {
+  transform: translateY(-2rem);
+}
+
+._home__blog {
+  margin: 2.5rem 0;
+  z-index: 1000;
+}
+
+._home_blog__container {
+  display: grid;
+  gap: 2rem;
+  width: 90%;
+  margin: 0 auto;
+  grid-template-columns: repeat(4, 1fr);
+}
+._home_blog__card {
+  min-width: 300px;
+  /* background-color: blueviolet; */
+  transition: all 0.5s;
+  border-radius: 10px;
+  box-shadow: 0px 43px 24px 0px rgba(0, 0, 0, 0.22);
+}
+._home_blog__card:hover {
+  transform: translateY(-2px);
+}
+._home_blog__card:hover ._home_card_image img {
+  border-radius: 1rem 0 2rem 0;
+}
+._home_card_image {
+  /* background-color: rosybrown; */
+  height: 15vw;
+  width: 100%;
+  min-height: 280px;
+  position: relative;
+  font-size: 18px;
+  font-weight: 500;
+}
+
+._home_location_dot {
+  width: 20px;
+  color: #1e136d;
+}
+._home_card_location {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  top: 0;
+  position: absolute;
+  margin: 1rem;
+  background-color: white;
+  border-radius: 0.8rem;
+  width: fit-content;
+  padding: 0.8rem 1rem;
+  box-shadow: 1px 1px 10px 0px rgba(0, 0, 0, 0.59);
+}
+._home_card_location span {
+  font-size: 16px;
+}
+._home_card_image img {
+  width: 100%;
+  height: 100%;
+  transition: all 0.5s;
+}
+._home_card_btn {
+  position: absolute;
+  margin: 0.5rem;
+  bottom: 0;
+  right: 0;
+  background-color: white;
+  border-radius: 50%;
+  padding: 0.8rem 1rem;
+  opacity: 1;
+  transition: opacity 0.5s ease 0s;
+}
+._home_card_btn:hover {
+  opacity: 0.6;
+}
+
+._home_card_details {
+  padding: 0.8rem;
+  display: flex;
+  flex-direction: column;
+}
+._home_card__title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+._home_card_arrow_icon {
+  width: 18px;
+}
+._home_card__title h6 {
+  font-weight: 700;
+  font-size: 1.2rem;
+}
+._home_card__title p {
+  position: relative;
+  top: 0.3rem;
+}
+._home_card_sqrft {
+  align-self: flex-end;
+}
+
+.banner_img_slide_content {
+  animation: banner_img_slide_content 0.5s ease-out 0s 1 normal forwards;
+}
+@keyframes banner_img_slide_content {
+  0% {
+    opacity: 0;
+    transform: translateX(250px);
   }
-  .team_card_container {
-    justify-content: space-around;
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes interior__design_card {
+  0% {
+    transform: scaleY(0.4);
+    transform-origin: 0% 100%;
+  }
+
+  100% {
+    transform: scaleY(1);
+    transform-origin: 0% 100%;
+  }
+}
+@media screen and (max-width: 1440px) {
+  ._home_blog__container {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+@media screen and (max-width: 1075px) {
+  .interior_design_sample_container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .designers_and__architects {
+    margin-left: 0;
+  }
+  ._home_blog__container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  ._home_blog__container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media screen and (max-width: 1075px) {
+  .content_title {
+    width: 80%;
+  }
+}
+@media screen and (max-width: 768px) {
+  .banner {
+    height: 80vw;
+    min-height: 400px;
+  }
+  .banner_btn {
+    display: none;
+  }
+  ._person_details {
+    align-items: center;
+    text-align: center;
+  }
+  .interior_design_sample_container {
+    display: flex;
+  }
+  .interior__design_card:hover {
+    transform: translateY(0rem);
+  }
+  ._home_blog__container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  ._home_blog__card {
+    width: 300px;
+  }
+  ._designer__details_content_g1 {
+    display: flex;
+    justify-content: center;
+    width: 80%;
+  }
+  ._designer_architect_container {
+    flex-wrap: wrap;
+  }
+  ._home_blog__container {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  ._home_blog__card:hover {
+    transform: translateY(0px);
+  }
+  ._home_blog__card:hover ._home_card_image img {
+    border-radius: 0;
+  }
+}
+@media screen and (max-width: 580px) {
+  .banner_content {
+    margin: 3rem;
   }
 }

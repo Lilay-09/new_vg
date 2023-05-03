@@ -1,9 +1,8 @@
 import Link from "next/link";
 import { withRouter } from "next/router";
 import React, { Children, use } from "react";
-import ActiveChild from "./ActiveChild";
 
-const ActiveLink = ({ router, href, children, color, id, hasChild }) => {
+const ActiveLink = ({ router, href, children, black, id, hasChild, noBd }) => {
   (function prefetchPages() {
     if (typeof window !== "undefined") {
       router.prefetch(router.pathname);
@@ -22,12 +21,16 @@ const ActiveLink = ({ router, href, children, color, id, hasChild }) => {
         onClick={handleClick}
         style={{
           textDecoration: "none",
-          // padding: noBd ? "none" : "normal",
-          padding: `1.3vw 0`,
-          borderBottom: isCurrentPath ? "3px solid #1A1347" : "none",
+          padding: `1rem 0`,
           fontSize: isCurrentPath ? "18px" : "15px",
-          fontWeight: isCurrentPath ? "700" : "normal",
-          color: isCurrentPath ? "black" : `#6D6D75`,
+          fontWeight: isCurrentPath ? "700" : "200",
+          color:
+            (isCurrentPath && black) || router.asPath !== "/"
+              ? "black"
+              : isCurrentPath
+              ? "white"
+              : `${black ? "black" : "white"}`,
+
           opacity: isCurrentPath ? 1 : 0.8,
         }}
       >

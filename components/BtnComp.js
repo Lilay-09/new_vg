@@ -6,7 +6,6 @@ const BtnComp = ({ children, isRed, onclick, href, bdr, className }) => {
     backgroundColor: isRed ? " #FF5656" : "#1A1347",
     color: "#ffffff",
     padding: "0.5rem 1.2rem",
-    // borderRadius: "10px",
     width: "fit-content",
     border: "none",
     borderRadius: `${bdr}px`,

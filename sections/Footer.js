@@ -1,9 +1,16 @@
 import {
+  faAddressCard,
+  faBookmark,
+  faBuilding,
+  faChalkboard,
+  faHome,
   faLocationDot,
   faMailBulk,
   faPhone,
   faPlane,
   faTeletype,
+  faUserGroup,
+  faUsers,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Image from "next/image";
@@ -14,134 +21,227 @@ import Link from "next/link";
 const Footer = () => {
   const [menuDropDown, setMenuDropDown] = useState(false);
   return (
-    <div className={styles.footer}>
-      <div className={styles.left_footer}>
-        <div className={styles.logo}>
-          <Image
-            src="/images/logo2.png"
-            alt="logo"
-            width={3000}
-            height={3000}
-            priority
-          />
-        </div>
-        <div>
-          <p>
-            Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet
-            sint.
-          </p>
-        </div>
-        <div className={styles.media_link}>
-          <a>
+    <div className={styles.__foot_container}>
+      <div className={styles.footer}>
+        <div className={styles.footer_content}>
+          <div className={styles.title}>
             <Image
-              src={"/images/send2.png"}
-              width={20}
-              height={20}
-              alt="telegram"
+              src="/images/logo2.png"
+              alt="logo"
+              width={3000}
+              height={3000}
               priority
             />
-          </a>
-          <a>
-            <Image
-              src="/images/facebook.png"
-              width={20}
-              height={20}
-              alt="telegram"
-              priority
-            />
-          </a>
-          <a>
-            <Image
-              src="/images/twit.png"
-              width={20}
-              height={20}
-              alt="telegram"
-              priority
-            />
-          </a>
-          <a>
-            <Image
-              src="/images/yt.png"
-              width={20}
-              height={20}
-              alt="telegram"
-              priority
-            />
-          </a>
-        </div>
-        <div>
-          <p>Copyright 2023 Real Estate. All rights reserved.</p>
-        </div>
-      </div>
-      <div className={styles.mid_footer}>
-        <h5>Company</h5>
-        <div>
-          <Link className="nav-link" href="/">
-            Home
-          </Link>
-          <div
-            onClick={() => {
-              setMenuDropDown(true);
-              {
-                menuDropDown && setMenuDropDown(!menuDropDown);
-              }
-            }}
-          >
-            <span className="">Projects</span>
-            {menuDropDown && (
-              <ul className={styles.footer__link}>
-                <Link href="/projects">All Projects</Link>
-                <Link href="/villa">Villa</Link>
-                <Link href="/condo">Condo</Link>
-                <Link href="/apartment">Apartments</Link>
-                <Link href="/shop-house">Shop House</Link>
-                <Link href="/flat-house">Flat House</Link>
-                <Link href="/borey">Borey</Link>
-              </ul>
-            )}
           </div>
-          <div style={{ color: "white" }}>
-            <Link className="nav-link" href="/agents">
-              Agents
+          <div>
+            <p>
+              The Website is diplayed our services and our properties. Contact
+              us to get more information!
+            </p>
+          </div>
+          <div className={styles.media_link}>
+            <a>
+              <Image
+                src={"/images/send2.png"}
+                width={20}
+                height={20}
+                alt="telegram"
+                priority
+              />
+            </a>
+            <a>
+              <Image
+                src="/images/facebook.png"
+                width={20}
+                height={20}
+                alt="telegram"
+                priority
+              />
+            </a>
+            <a>
+              <Image
+                src="/images/twit.png"
+                width={20}
+                height={20}
+                alt="telegram"
+                priority
+              />
+            </a>
+            <Link href={""}>
+              <Image
+                src="/images/yt.png"
+                width={20}
+                height={20}
+                alt="telegram"
+                priority
+              />
             </Link>
-            <Link className="nav-link" href="/our-branches">
-              Our Branches
+          </div>
+        </div>
+        <div className={styles.footer_content}>
+          <div className={styles.title}>
+            <h4>More About Us</h4>
+          </div>
+          <div className={styles.link_}>
+            <Link className="nav-link" href="/">
+              <FontAwesomeIcon icon={faHome} width={18} />
+              Home
+            </Link>
+            <Link className="nav-link" href="/our-team">
+              <FontAwesomeIcon icon={faUserGroup} width={18} />
+              Our Team
+            </Link>
+            <Link className="nav-link" href="/our-services">
+              <FontAwesomeIcon icon={faBookmark} width={18} />
+              Our Services
             </Link>
             <Link className="nav-link" href="/properties">
-              Properites
-            </Link>
-
-            <Link className="nav-link" href="/services">
-              Services
-            </Link>
-            <Link className="nav-link" href="/blogs">
-              Blogs
-            </Link>
-            <Link className="nav-link" href="/careers">
-              Carrers
+              <FontAwesomeIcon icon={faBuilding} width={18} />
+              Our Properties
             </Link>
             <Link className="nav-link" href="/about-us">
+              <FontAwesomeIcon icon={faUsers} width={18} />
               About Us
+            </Link>
+            <Link className="nav-link" href="/careers">
+              <FontAwesomeIcon icon={faChalkboard} width={18} />
+              Careers
+            </Link>
+            <Link className="nav-link" href="/contact-us">
+              <FontAwesomeIcon icon={faAddressCard} width={18} />
+              Contact Us
             </Link>
           </div>
         </div>
-      </div>
-      <div className={styles.right_footer}>
-        <h5>Address</h5>
-        <div className={styles.right_footer_list}>
-          <li>
-            <FontAwesomeIcon icon={faLocationDot} width={18} height={18} />
-            <span>4517 Washington Ave. Manchester, Kentucky 39495</span>
-          </li>
-          <li>
-            <FontAwesomeIcon icon={faPhone} width={18} height={18} />
-            <span>+855 960000000</span>
-          </li>
-          <li>
-            <FontAwesomeIcon icon={faMailBulk} width={18} height={18} />
-            <span>yourname@gmail.com</span>
-          </li>
+        <div className={styles.footer_content}>
+          <div className={styles.title}>
+            <h4>Address</h4>
+          </div>
+          <div className={styles._contact_address}>
+            <Link
+              className="d-flex align-items-center gap-1 nav-link"
+              href="/contact-us#contact"
+            >
+              <FontAwesomeIcon icon={faLocationDot} width={18} />
+              4517 Washington Ave. Manchester, Kentucky 39495
+            </Link>
+            <div className="d-flex align-items-center gap-1">
+              <FontAwesomeIcon icon={faPhone} width={18} />
+              +855 0965778133
+            </div>
+            <div className="d-flex align-items-center gap-1">
+              <FontAwesomeIcon icon={faMailBulk} width={18} />
+              +855 0965778133
+            </div>
+          </div>
         </div>
+
+        {/* <div className={styles.left_footer}>
+     <div className={styles.logo}>
+       <Image
+         src="/images/logo2.png"
+         alt="logo"
+         width={3000}
+         height={3000}
+         priority
+       />
+     </div>
+     <div>
+       <p>
+         This Website is diplayed our properties and services of real estate
+         contents Contact us see get more information!
+       </p>
+     </div>
+     <div className={styles.media_link}>
+       <a>
+         <Image
+           src={"/images/send2.png"}
+           width={20}
+           height={20}
+           alt="telegram"
+           priority
+         />
+       </a>
+       <a>
+         <Image
+           src="/images/facebook.png"
+           width={20}
+           height={20}
+           alt="telegram"
+           priority
+         />
+       </a>
+       <a>
+         <Image
+           src="/images/twit.png"
+           width={20}
+           height={20}
+           alt="telegram"
+           priority
+         />
+       </a>
+       <a>
+         <Image
+           src="/images/yt.png"
+           width={20}
+           height={20}
+           alt="telegram"
+           priority
+         />
+       </a>
+     </div>
+     <div>
+       <p>Copyright 2023 Real Estate. All rights reserved.</p>
+     </div>
+   </div>
+   <div className={styles.mid_footer}>
+     <div className={styles.title}>
+       <h5>More About Us</h5>
+     </div>
+     <div>
+       <Link className="nav-link" href="/">
+         Home
+       </Link>
+       <Link className="nav-link" href="/our-team">
+         Our Team
+       </Link>
+       <Link className="nav-link" href="/our-services">
+         Our Services
+       </Link>
+       <Link className="nav-link" href="/properties">
+         Our Properties
+       </Link>
+       <Link className="nav-link" href="/about-us">
+         About Us
+       </Link>
+       <Link className="nav-link" href="/careers">
+         Careers
+       </Link>
+       <Link className="nav-link" href="/contact-us">
+         Contact Us
+       </Link>
+     </div>
+   </div>
+   <div className={styles.right_footer}>
+     <h5>Address</h5>
+     <div className={styles.right_footer_list}>
+       <li>
+         <FontAwesomeIcon icon={faLocationDot} width={18} height={18} />
+         <span>4517 Washington Ave. Manchester, Kentucky 39495</span>
+       </li>
+       <li>
+         <FontAwesomeIcon icon={faPhone} width={18} height={18} />
+         <span>+855 960000000</span>
+       </li>
+       <li>
+         <FontAwesomeIcon icon={faMailBulk} width={18} height={18} />
+         <span>vengaurd.website_service@gmail.com</span>
+       </li>
+     </div>
+   </div> */}
+      </div>
+      <div className={styles.copyright_content}>
+        <span>Copyright 2023 Real Estate. All rights reserved.</span>
       </div>
     </div>
   );

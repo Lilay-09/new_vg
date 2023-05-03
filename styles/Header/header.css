@@ -1,5 +1,9 @@
 .menuBar {
   display: none;
+  color: white;
+}
+.black {
+  color: black;
 }
 /* .menu_list {
   display: none;
@@ -11,7 +15,7 @@
   position: absolute;
   width: 100%;
   background-color: rgba(0, 0, 0, 0.185);
-  z-index: 200;
+  z-index: 1000;
   height: 100vh;
   transform: translateX(-100%);
   transition: all 0.1s;
@@ -21,11 +25,6 @@
   display: flex;
   align-items: center;
 }
-/* .project_link.active {
-  position: relative;
-  border-bottom: 3px solid #1a1347;
-  padding: 1.33vw 0;
-} */
 .project_link:hover .project_lists {
   display: flex;
   z-index: 1000;

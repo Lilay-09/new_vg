@@ -1,0 +1,74 @@
+._contact_media_avatar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #281a92;
+  width: 10vw;
+  height: 10vw;
+  flex-flow: column;
+  border-radius: 50%;
+  min-width: 120px;
+  min-height: 120px;
+  padding: 1.5rem;
+  color: white;
+  position: relative;
+}
+.face {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  transition: 1s;
+  top: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+}
+.face img {
+  width: 100%;
+  height: 100%;
+}
+.front {
+  transform: perspective(600px) rotateY(0deg);
+}
+.back {
+  transform: perspective(600px) rotateY(180deg);
+}
+._contact_media_avatar .rofront {
+  transform: perspective(600px) rotateY(180deg);
+}
+._contact_media_avatar .roback {
+  transform: perspective(600px) rotateY(360deg);
+}
+
+.contact_mnu {
+  position: absolute;
+  bottom: -12rem;
+  background-color: #ffffff;
+  color: black;
+  display: flex;
+  opacity: 0;
+  min-width: 200px;
+  filter: brightness(30%);
+  transition: all 0.5s;
+  flex-flow: column;
+  justify-content: space-between;
+  padding: 0.2rem;
+  margin: 0 auto;
+  width: 13vw;
+  min-width: 200px;
+  height: 12vw;
+  min-height: 220px;
+  border-radius: 10px;
+  box-shadow: 0px 9px 24px 1px rgba(0, 0, 0, 0.29);
+}
+.active {
+  opacity: 1;
+  filter: brightness(100%);
+}
+@media screen and (max-width: 1024px) {
+  .contact_mnu {
+    bottom: -12rem;
+  }
+}

@@ -1,6 +1,14 @@
 .navbar_container {
-  background-color: #ffffff;
+  background-color: transparent;
+  position: absolute;
+  z-index: 1000;
+  top: 0;
+  width: 100%;
   /* display: flex; */
+}
+.navbar_container_relative {
+  width: 100%;
+  background-color: white;
 }
 .navbar {
   width: 85%;
@@ -12,7 +20,8 @@
 .navbar_logo {
   width: 4vw;
   min-width: 60px;
-  height: 90%;
+  height: 50px;
+  background-color: aqua;
 }
 .navbar_logo img {
   width: 100%;
