@@ -1,14 +1,33 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Layout from "../../sections/Layout";
 import styles from "../../styles/Properties.module.css";
 import Image from "next/image";
 import InputComp from "../../components/InputComp";
-import { Services } from "../../utils/data";
+import { Services, city_provinces } from "../../utils/data";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faLocationDot } from "@fortawesome/free-solid-svg-icons";
+import { faCaretDown, faLocationDot } from "@fortawesome/free-solid-svg-icons";
 import { useRouter } from "next/router";
 import PaginationBtn from "../../components/PaginationBtn";
 const OurProperty = () => {
+  const forDD = [
+    { type: "Shop House" },
+    { type: "Twin Villa" },
+    { type: "condo" },
+  ];
+  const priceLst = [
+    {
+      price: "120000",
+    },
+    {
+      price: "200000",
+    },
+    {
+      price: "300000",
+    },
+    {
+      price: "350000",
+    },
+  ];
   const router = useRouter();
   let page = "properties";
   const { query, pathname } = router;
@@ -77,6 +96,59 @@ const OurProperty = () => {
     setmaxPageNumberLimit(maxPageNumberLimit - pageNumberLimit);
     setminPageNumberLimit(minPageNumberLimit - pageNumberLimit);
   }
+  const [prpDD, setPrpDD] = useState(false);
+  const [propsVal, setPropVal] = useState("Shop House");
+  const prpRef = useRef();
+  const locRef = useRef();
+  const priceRef = useRef();
+  const handleGetDragVal = (e) => {
+    const getVal = e.target.innerHTML;
+    setPropVal(getVal);
+    setPrpDD(false);
+  };
+  const handlePrpTypeDD = () => {
+    setPrpDD(!prpDD);
+  };
+
+  const [locationVal, setLocationVal] = useState("Phnom Penh");
+  const [locationDD, setLocationDD] = useState(false);
+  const handlelocationDD = () => {
+    setLocationDD(!locationDD);
+  };
+  const handleGetLocaitonVal = (e) => {
+    const getVal = e.target.innerHTML;
+    setLocationVal(getVal);
+  };
+
+  const [priceVal, setPriceVal] = useState("10000");
+  const [priceDD, setPriceDD] = useState(false);
+
+  const handlePriceDD = () => {
+    setPriceDD(!priceDD);
+  };
+  const handleGetPriceVal = (e) => {
+    const getVal = e.target.innerHTML;
+    setPriceVal(getVal);
+  };
+  useEffect(() => {
+    let handleOpenDD = (e) => {
+      if (!prpRef.current.contains(e.target)) {
+        setPrpDD(false);
+      }
+      if (!locRef.current.contains(e.target)) {
+        setLocationDD(false);
+      }
+      if (!priceRef.current.contains(e.target)) {
+        setLocationDD(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleOpenDD, true);
+    return () => {
+      document.removeEventListener("mousedown", handleOpenDD, true);
+    };
+  }, []);
+
   return (
     <Layout width={100}>
       <div className={`${styles.banner}`}>
@@ -96,16 +168,98 @@ const OurProperty = () => {
           </div>
           <div className={styles.search_filter}>
             <div className={styles.search_box}>
-              <input type="search" placeholder="Search Keyword" />
+              <span>Keyword Search</span>
+              <div>Seacrch Container</div>
             </div>
             <div className={styles.search_box}>
               <span>Property Type</span>
+              <div className={styles.prpty__dropdown}>
+                <p onClick={handlePrpTypeDD}>
+                  <FontAwesomeIcon icon={faCaretDown} width={18} />
+                  {propsVal}
+                </p>
+                <div
+                  className={
+                    prpDD
+                      ? styles["dropdown_clicked"] + " " + styles.active
+                      : styles["dropdown_clicked"]
+                  }
+                >
+                  {forDD.map((item, i) => {
+                    return (
+                      <li key={i} onClick={handleGetDragVal} ref={prpRef}>
+                        {item.type == propsVal ? (
+                          <div className={styles["dropdown_val_selected"]}>
+                            {item.type}
+                          </div>
+                        ) : (
+                          item.type
+                        )}
+                      </li>
+                    );
+                  })}
+                </div>
+              </div>
             </div>
             <div className={styles.search_box}>
               <span>Location</span>
+              <div className={styles.prpty__dropdown}>
+                <p onClick={handlelocationDD}>
+                  <FontAwesomeIcon icon={faLocationDot} width={13} />
+                  {locationVal}
+                </p>
+                <div
+                  className={
+                    locationDD
+                      ? styles["dropdown_clicked"] + " " + styles.active
+                      : styles["dropdown_clicked"]
+                  }
+                >
+                  {city_provinces.map((item, i) => {
+                    return (
+                      <li key={i} onClick={handleGetLocaitonVal} ref={locRef}>
+                        {item.city == locationVal ? (
+                          <div className={styles["dropdown_val_selected"]}>
+                            {item.city}
+                          </div>
+                        ) : (
+                          item.city
+                        )}
+                      </li>
+                    );
+                  })}
+                </div>
+              </div>
             </div>
             <div className={styles.search_box}>
               <span>Price Limit</span>
+              <div className={styles.prpty__dropdown}>
+                <p onClick={handlePriceDD}>
+                  <FontAwesomeIcon icon={faLocationDot} width={13} />
+                  {priceVal}
+                </p>
+                <div
+                  className={
+                    priceDD
+                      ? styles["dropdown_clicked"] + " " + styles.active
+                      : styles["dropdown_clicked"]
+                  }
+                >
+                  {priceLst.map((item, i) => {
+                    return (
+                      <li key={i} onClick={handleGetPriceVal} ref={priceRef}>
+                        {item.price == priceVal ? (
+                          <div className={styles["dropdown_val_selected"]}>
+                            {item.price}
+                          </div>
+                        ) : (
+                          item.price
+                        )}
+                      </li>
+                    );
+                  })}
+                </div>
+              </div>
             </div>
             <div className={styles.search_box}>
               <span>Search</span>

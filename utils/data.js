@@ -509,3 +509,62 @@ export const locationData = [
     location: "Kandal",
   },
 ];
+
+export const city_provinces = [
+  {
+    city: "Phnom Penh",
+    district: "",
+  },
+  {
+    city: "Banteay Meanchey",
+    district: "",
+  },
+  {
+    city: "Battambang",
+    district: "",
+  },
+  {
+    city: "Kampong Chhnang",
+    district: "",
+  },
+  {
+    city: "Kampong Speu",
+    district: "",
+  },
+  {
+    city: "Kampong Thom",
+    district: "",
+  },
+  {
+    city: "Kampot",
+    district: "",
+  },
+  {
+    city: "Kandal",
+    district: "",
+  },
+  {
+    city: "Koh Kong",
+    district: "",
+  },
+  {
+    city: "Kratie (Krorjes)",
+    district: "",
+  },
+  {
+    city: "Mondulkiri",
+    district: "",
+  },
+  {
+    city: "Preah Vihear",
+    district: "",
+  },
+  {
+    city: "Prey Veng",
+    district: "",
+  },
+  {
+    city: "Pursat",
+    district: "",
+  },
+];
