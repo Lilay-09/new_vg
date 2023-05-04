@@ -131,7 +131,7 @@ const Home = () => {
 
   return (
     <Layout width={100}>
-      <section className={`${styles._home_banner} _hidden_item`}>
+      <section className={`${styles._home_banner}`}>
         <div className={`myAnim ${styles.banner}`}>
           <div className={styles.banner_img}>
             <Image
