@@ -1,10 +1,15 @@
 import Image from "next/image";
-import React from "react";
+import React, { useRef } from "react";
 import BannerImg from "../../components/BannerImg";
 import Layout from "../../sections/Layout";
 import styles from "../../styles/AboutUs.module.css";
 
 const AboutUs = () => {
+  const aboutRef = useRef();
+  const accRef = useRef();
+  const handleMoveToSection = (ref) => {
+    ref.current.scrollIntoView({ behavior: "smooth" });
+  };
   return (
     <Layout width={100}>
       <div className={`${styles.__banner} _hidden_item`}>
@@ -12,7 +17,9 @@ const AboutUs = () => {
           <h2>About Us</h2>
           <div className={styles.__banner_content_text}>
             <p>Lorem ipsum dolor sit amet consectetur.</p>
-            <button>Read More</button>
+            <button onClick={() => handleMoveToSection(aboutRef)}>
+              Read More
+            </button>
           </div>
         </div>
         <div className={styles.__banner_img}>
@@ -25,7 +32,89 @@ const AboutUs = () => {
           />
         </div>
       </div>
-      <div className="reveal"></div>
+      <div className={`${styles.about_us} _hidden_item`} ref={aboutRef}>
+        <h4>Vanguard A Real Estate Company</h4>
+        <p>
+          Lorem ipsum dolor sit amet consectetur. Turpis habitasse sit ipsum
+          dictum elit. Blandit aenean cras lectus nibh scelerisque. Iaculis
+          habitasse ut interdum quisque risus etiam. Ultrices et risus gravida
+          sagittis. Nisl at aliquam ac arcu. Consequat et viverra quis eu. Vitae
+          pellentesque est morbi in at. Etiam vivamus lacus mauris vitae
+          eleifend habitant. Egestas vulputate dolor non fames ac justo eget
+          sed. Ultrices velit felis ornare non amet libero massa. Sed vel
+          dignissim non adipiscing volutpat sagittis. Eu vel vel donec nulla a.
+          Dui et sapien sit consequat vitae faucibus. Justo mi senectus leo
+          risus.
+        </p>
+        <div className={styles._about_container}>
+          <div className={styles._about_container_img}>
+            <Image
+              src="/images/kitchen.png"
+              width={1000}
+              height={1000}
+              priority
+              alt="team"
+            />
+          </div>
+          <div className={styles._about_container_text}>
+            <div className={styles._about_list}>
+              <div className={styles._about_list_logo}>
+                <Image
+                  src="/images/quality.png"
+                  width={200}
+                  height={10}
+                  priority
+                  alt="team"
+                />
+              </div>
+              <div className={styles._about_details}>
+                <h4>Quality Properties</h4>
+                <p>
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  Nostrum iste.
+                </p>
+              </div>
+            </div>
+            <div className={styles._about_list}>
+              <div className={styles._about_list_logo}>
+                <Image
+                  src="/images/rating.png"
+                  width={200}
+                  height={10}
+                  priority
+                  alt="team"
+                />
+              </div>
+              <div className={styles._about_details}>
+                <h4>Top Rated Agents</h4>
+                <p>
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  Nostrum iste.
+                </p>
+              </div>
+            </div>
+            <div className={styles._about_list}>
+              <div className={styles._about_list_logo}>
+                <Image
+                  src="/images/safe.png"
+                  width={200}
+                  height={10}
+                  priority
+                  alt="team"
+                />
+              </div>
+              <div className={styles._about_details}>
+                <h4>EASY AND SAFE</h4>
+                <p>
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  Nostrum iste.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className={`${styles.accomplished} reveal`} ref={accRef}></div>
     </Layout>
   );
 };
