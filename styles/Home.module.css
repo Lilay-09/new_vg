@@ -104,6 +104,7 @@
   align-items: center;
   justify-content: center;
   gap: 1vw;
+  flex-wrap: wrap;
 }
 .interior_section {
   /* height: 95vh; */

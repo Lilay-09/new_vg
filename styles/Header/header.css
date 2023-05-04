@@ -54,7 +54,7 @@
   top: 3.3rem;
 } */
 
-@media only screen and (max-width: 1165px) {
+@media only screen and (max-width: 880px) {
   .menuBar {
     display: block;
     transition: all 0.3s;

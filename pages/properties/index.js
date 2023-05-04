@@ -139,7 +139,7 @@ const OurProperty = () => {
         setLocationDD(false);
       }
       if (!priceRef.current.contains(e.target)) {
-        setLocationDD(false);
+        setPriceDD(false);
       }
     };
 
@@ -211,8 +211,10 @@ const OurProperty = () => {
                 <div
                   className={
                     locationDD
-                      ? styles["dropdown_clicked"] + " " + styles.active
-                      : styles["dropdown_clicked"]
+                      ? styles["dropdown_clicked_location"] +
+                        " " +
+                        styles.active
+                      : styles["dropdown_clicked_location"]
                   }
                 >
                   {city_provinces.map((item, i) => {
