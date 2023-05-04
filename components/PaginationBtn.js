@@ -12,7 +12,7 @@ import React from "react";
 
 const PaginationBtn = ({ title, onClick }) => {
   return (
-    <div onClick={onClick} className="d-flex align-items-center btn_pag">
+    <div onClick={onClick} className="btn_pag">
       <FontAwesomeIcon
         icon={title === "Next" || title === "next" ? faCaretRight : faCaretLeft}
         width={15}

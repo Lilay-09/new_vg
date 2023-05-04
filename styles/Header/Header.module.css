@@ -21,7 +21,7 @@
   width: 4vw;
   min-width: 60px;
   height: 50px;
-  background-color: aqua;
+  /* background-color: aqua; */
 }
 .navbar_logo img {
   width: 100%;

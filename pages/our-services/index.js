@@ -14,7 +14,6 @@ const OurServices = () => {
         </div>
         <div className={styles.banner_square}>
           <div className={styles.banner_img_frame}>
-            {" "}
             <Image
               src={`/images/b2.jpg`}
               width={1000}
@@ -23,7 +22,6 @@ const OurServices = () => {
             />
           </div>
           <div className={styles.banner_img_frame}>
-            {" "}
             <Image
               src={`/images/b3.jpg`}
               width={1000}
