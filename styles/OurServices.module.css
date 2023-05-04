@@ -126,11 +126,25 @@
   display: flex;
 }
 .banner_img_frame {
-  background-color: yellowgreen;
+  /* background-color: yellowgreen; */
   width: 50%;
   height: 50%;
-
   margin: 1rem;
+}
+.banner_img_frame:nth-child(1) {
+  clip-path: polygon(
+    30% 0%,
+    70% 0%,
+    93% 10%,
+    100% 70%,
+    83% 99%,
+    33% 90%,
+    0% 70%,
+    6% 18%
+  );
+}
+.banner_img_frame:nth-child(2) img {
+  border-radius: 46% 54% 52% 48% / 40% 26% 74% 60%;
 }
 .banner_img_frame img {
   width: 100%;

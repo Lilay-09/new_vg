@@ -415,6 +415,12 @@
     border-radius: 0;
   }
 }
+@media screen and (max-width: 768px) {
+  .selection_opt select {
+    width: 100%;
+  }
+}
+
 @media screen and (max-width: 580px) {
   .banner_content {
     margin: 3rem;

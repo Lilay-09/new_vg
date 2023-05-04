@@ -5,7 +5,13 @@ import Image from "next/image";
 import InputComp from "../../components/InputComp";
 import { Services, city_provinces } from "../../utils/data";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCaretDown, faLocationDot } from "@fortawesome/free-solid-svg-icons";
+import {
+  faCaretDown,
+  faFilter,
+  faFilterCircleXmark,
+  faLocationDot,
+  faSlidersH,
+} from "@fortawesome/free-solid-svg-icons";
 import { useRouter } from "next/router";
 import PaginationBtn from "../../components/PaginationBtn";
 const OurProperty = () => {
@@ -101,6 +107,7 @@ const OurProperty = () => {
   const prpRef = useRef();
   const locRef = useRef();
   const priceRef = useRef();
+  const filterRef = useRef();
   const handleGetDragVal = (e) => {
     const getVal = e.target.innerHTML;
     setPropVal(getVal);
@@ -120,7 +127,7 @@ const OurProperty = () => {
     setLocationVal(getVal);
   };
 
-  const [priceVal, setPriceVal] = useState("10000");
+  const [priceVal, setPriceVal] = useState("120000");
   const [priceDD, setPriceDD] = useState(false);
 
   const handlePriceDD = () => {
@@ -142,6 +149,8 @@ const OurProperty = () => {
         setPriceDD(false);
       }
     };
+    let filterNav = filterRef.current;
+    console.log(filterNav);
 
     document.addEventListener("mousedown", handleOpenDD, true);
     return () => {
@@ -160,6 +169,13 @@ const OurProperty = () => {
         />
         <div className={styles.banner_title}>
           <span>Properties</span>
+        </div>
+        <div className={styles.filter_search} ref={filterRef}>
+          <div className={styles.filter_button}>
+            <FontAwesomeIcon icon={faSlidersH} width={18} />
+            Filter
+          </div>
+          <div>Sdlf;hjsdfoighlasokfdg</div>
         </div>
         <div className={styles.search_container}>
           <div className={styles.tab_pag}>
