@@ -115,8 +115,7 @@
   min-height: 220px;
   opacity: 0;
   z-index: -1;
-  /* overflow-y: scroll; */
-  /* pointer-events: unset; */
+  overflow-y: scroll;
 }
 .dropdown_val_selected {
   background-color: #e6b269;
