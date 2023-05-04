@@ -54,7 +54,7 @@
     padding: 0.3rem 2rem;
   }
 }
-@media screen and (max-width: 1165px) {
+@media screen and (max-width: 880px) {
   .navbar_link {
     display: none;
   }
