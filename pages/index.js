@@ -12,118 +12,74 @@ import ScrollableContainer from "../components/ScrollableContainer";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowRight, faLocationDot } from "@fortawesome/free-solid-svg-icons";
 import { useRouter } from "next/router";
+import SliderBanner from "../components/SliderBanner";
 
-const renderHtml = () => {
-  const size = UsewindowSize();
-  if (size.width <= 768 || size.cWidth <= 768) {
-    return (
-      <ScrollableContainer>
-        <div className={`${styles.interior_design_sample_container} `}>
-          <div className={`${styles.interior__design_card}`}>
-            <Image
-              src={`/images/pool.jpg`}
-              width={1000}
-              height={1000}
-              alt=""
-              priority
-            />
-          </div>
-          <div className={`${styles.interior__design_card} `}>
-            <Image
-              src={`/images/pool.jpg`}
-              width={1000}
-              height={1000}
-              alt=""
-              priority
-            />
-          </div>
-          <div className={`${styles.interior__design_card} `}>
-            <Image
-              src={`/images/pool.jpg`}
-              width={1000}
-              height={1000}
-              alt=""
-              priority
-            />
-          </div>
-          <div className={`${styles.interior__design_card} `}>
-            <Image
-              src={`/images/pool.jpg`}
-              width={1000}
-              height={1000}
-              alt=""
-              priority
-            />
-          </div>
-        </div>
-      </ScrollableContainer>
-    );
-  } else {
-    return (
-      <div className={styles.interior_design_sample_container}>
-        <div className={`${styles.interior__design_card} `}>
-          <Image
-            src={`/images/pool.jpg`}
-            width={1000}
-            height={1000}
-            alt=""
-            priority
-          />
-        </div>
-        <div className={`${styles.interior__design_card} `}>
-          <Image
-            src={`/images/pool.jpg`}
-            width={1000}
-            height={1000}
-            alt=""
-            priority
-          />
-        </div>
-        <div className={`${styles.interior__design_card} `}>
-          <Image
-            src={`/images/pool.jpg`}
-            width={1000}
-            height={1000}
-            alt=""
-            priority
-          />
-        </div>
-        <div className={`${styles.interior__design_card} `}>
-          <Image
-            src={`/images/pool.jpg`}
-            width={1000}
-            height={1000}
-            alt=""
-            priority
-          />
-        </div>
-        <div className={`${styles.interior__design_card} `}>
-          <Image
-            src={`/images/pool.jpg`}
-            width={1000}
-            height={1000}
-            alt=""
-            priority
-          />
-        </div>
-        <div className={`${styles.interior__design_card} `}>
-          <Image
-            src={`/images/pool.jpg`}
-            width={1000}
-            height={1000}
-            alt=""
-            priority
-          />
-        </div>
+const interior_Design = () => {
+  return (
+    <div className={styles.interior_design_sample_container}>
+      <div className={`${styles.interior__design_card}`}>
+        <Image
+          src={`/images/b2.jpg`}
+          width={1000}
+          height={1000}
+          alt=""
+          priority
+        />
       </div>
-    );
-  }
+      <div className={`${styles.interior__design_card} `}>
+        <Image
+          src={`/images/b4.jpg`}
+          width={1000}
+          height={1000}
+          alt=""
+          priority
+        />
+      </div>
+      <div className={`${styles.interior__design_card} `}>
+        <Image
+          src={`/images/tp2.jpg`}
+          width={1000}
+          height={1000}
+          alt=""
+          priority
+        />
+      </div>
+      <div className={`${styles.interior__design_card} `}>
+        <Image
+          src={`/images/bed.jpg`}
+          width={1000}
+          height={1000}
+          alt=""
+          priority
+        />
+      </div>
+      <div className={`${styles.interior__design_card} `}>
+        <Image
+          src={`/images/b5.jpg`}
+          width={1000}
+          height={1000}
+          alt=""
+          priority
+        />
+      </div>
+      <div className={`${styles.interior__design_card} `}>
+        <Image
+          src={`/images/pool.jpg`}
+          width={1000}
+          height={1000}
+          alt=""
+          priority
+        />
+      </div>
+    </div>
+  );
 };
 const Home = () => {
   const router = useRouter();
   const [status, setStatus] = useState("buy");
   const [type, setType] = useState("shop-house");
   const [location, setLocation] = useState("phnom-penh");
+  //
   const searchRef = useRef();
   const handleSearchOption = () => {
     router.push(`/search?=/${status}&${type}&${location}`);
@@ -133,60 +89,27 @@ const Home = () => {
     <Layout width={100}>
       <section className={`${styles._home_banner}`}>
         <div className={`myAnim ${styles.banner}`}>
-          <div className={styles.banner_img}>
-            <Image
-              src={`/images/home_banner.jpg`}
-              alt=""
-              width={1000}
-              height={1000}
-              priority
-            />
-            <div className={styles.banner_content}>
-              <span>This is The Banner the company</span>
-              <div className={styles.content_title}>
-                <h2>This Website Show The Content of Real Estate</h2>
-              </div>
-              <p>
-                Real estate is a form of real property, meaning that it is
-                something you own that is attached to a piece of land. It can be
-                used for residential, commercial or industrial purposes, and
-                typically includes any resources on the land such as water or
-                minerals.
-              </p>
-              <div className={styles.banner_btn}>
-                <button
-                  onClick={(e) => {
-                    searchRef.current.scrollIntoView({ behavior: "smooth" });
-                  }}
-                >
-                  Search
-                </button>
-                <div className={styles.banner_img_slide_content}>
-                  <ScrollableContainer>
-                    <Image
-                      src={`/images/banner_img.jpg`}
-                      width={1000}
-                      height={1000}
-                      alt=""
-                      priority
-                    />
-                    <Image
-                      src={`/images/banner_img.jpg`}
-                      width={1000}
-                      height={1000}
-                      alt=""
-                      priority
-                    />
-                    <Image
-                      src={`/images/banner_img.jpg`}
-                      width={1000}
-                      height={1000}
-                      alt=""
-                      priority
-                    />
-                  </ScrollableContainer>
-                </div>
-              </div>
+          <SliderBanner />
+          <div className={styles.banner_content}>
+            <span>This is The Banner the company</span>
+            <div className={styles.content_title}>
+              <h2>This Website Show The Content of Real Estate</h2>
+            </div>
+            <p>
+              Real estate is a form of real property, meaning that it is
+              something you own that is attached to a piece of land. It can be
+              used for residential, commercial or industrial purposes, and
+              typically includes any resources on the land such as water or
+              minerals.
+            </p>
+            <div className={styles.banner_btn}>
+              <button
+                onClick={(e) => {
+                  searchRef.current.scrollIntoView({ behavior: "smooth" });
+                }}
+              >
+                Search
+              </button>
             </div>
           </div>
         </div>
@@ -249,7 +172,7 @@ const Home = () => {
               <p>These are some sample of design.</p>
             </div>
           </div>
-          <div>{renderHtml()}</div>
+          <div>{interior_Design()}</div>
         </div>
       </div>
 
@@ -257,8 +180,10 @@ const Home = () => {
         <div className="reveal fade-bottom">
           <div className={`${styles.interior_title}`}>
             <div className={styles.interior_title_content}>
-              <h2>Designer & Architects</h2>
-              <button>Button</button>
+              <h2>Team Producers</h2>
+              <button onClick={() => router.push("/our-team")}>
+                See Our Team
+              </button>
             </div>
             <div>
               <p>Fint Interior designers and Architects for your project!</p>
@@ -331,12 +256,12 @@ const renderBlogCard = (url, location, title, price, sqrft) => {
           />
           <span>{location}</span>
         </div>
-        <div className={styles._home_card_btn}>
+        <Link className={styles._home_card_btn} href={"/blog/sth"}>
           <FontAwesomeIcon
             icon={faArrowRight}
             className={styles._home_card_arrow_icon}
           />
-        </div>
+        </Link>
       </div>
       <div className={styles._home_card_details}>
         <div className={styles._home_card__title}>
@@ -348,3 +273,41 @@ const renderBlogCard = (url, location, title, price, sqrft) => {
     </div>
   );
 };
+
+{
+  /* <div className={`myAnim ${styles.banner}`}>
+  <div className={styles.banner_img}>
+    <div className={styles.banner_slide}>
+      <SliderBanner />
+    </div>
+    <Image
+              src={`/images/home_banner.jpg`}
+              alt=""
+              width={1000}
+              height={1000}
+              priority
+            />
+    <div className={styles.banner_content}>
+      <span>This is The Banner the company</span>
+      <div className={styles.content_title}>
+        <h2>This Website Show The Content of Real Estate</h2>
+      </div>
+      <p>
+        Real estate is a form of real property, meaning that it is something you
+        own that is attached to a piece of land. It can be used for residential,
+        commercial or industrial purposes, and typically includes any resources
+        on the land such as water or minerals.
+      </p>
+      <div className={styles.banner_btn}>
+        <button
+          onClick={(e) => {
+            searchRef.current.scrollIntoView({ behavior: "smooth" });
+          }}
+        >
+          Search
+        </button>
+      </div>
+    </div>
+  </div>
+</div>; */
+}

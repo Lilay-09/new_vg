@@ -21,7 +21,7 @@ import Link from "next/link";
 const Footer = () => {
   const [menuDropDown, setMenuDropDown] = useState(false);
   return (
-    <div className={styles.__foot_container}>
+    <div className={`${styles.__foot_container} reveal`}>
       <div className={styles.footer}>
         <div className={styles.footer_content}>
           <div className={styles.title}>

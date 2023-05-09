@@ -8,7 +8,10 @@ const Accomplished = (props) => {
     <div className={styles._designer_architect_container}>
       <div className={styles._designer__details_content_g1}>
         <div className={styles._img__circle_avatar}>
-          <Link href={`designer&architect/${props.profile_details}`}>
+          <Link
+            href={`agent/${props.profile_details}`}
+            className="nav-link d-flex flex-column align-items-center"
+          >
             <Image
               src={`/${props.profile}`}
               width={300}
@@ -16,6 +19,7 @@ const Accomplished = (props) => {
               alt={props.profile}
               priority
             />
+            View Page
           </Link>
         </div>
         <div className={styles._person_details}>
