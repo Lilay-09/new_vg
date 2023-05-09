@@ -170,13 +170,13 @@ const OurProperty = () => {
         <div className={styles.banner_title}>
           <span>Properties</span>
         </div>
-        {/* <div className={styles.filter_search} ref={filterRef}>
+        <div className={styles.filter_search} ref={filterRef}>
           <div className={styles.filter_button}>
             <FontAwesomeIcon icon={faSlidersH} width={18} />
             Filter
           </div>
-          <div>Sdlf;hjsdfoighlasokfdg</div>
-        </div> */}
+          <div className={styles._filter__search}>Under Construction</div>
+        </div>
         <div className={styles.search_container}>
           <div className={styles.tab_pag}>
             <div className={styles.tap_pag_box}>Buy Properties</div>

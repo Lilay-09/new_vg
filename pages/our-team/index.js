@@ -5,6 +5,7 @@ import Image from "next/image";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { data } from "../../utils/data";
 import { faArrowUp } from "@fortawesome/free-solid-svg-icons";
+import Link from "next/link";
 const OurTeam = () => {
   return (
     <Layout width={100}>
@@ -183,12 +184,12 @@ const OurTeam = () => {
             <h2>Team Member</h2>
           </div>
           <div className={styles._team_member_card_container}>
-            {data.slice(0, 6).map((item, i) => {
+            {data.slice(0, 5).map((item, i) => {
               return (
                 <div className={styles._team_member_card} key={i}>
                   <div className={styles._team_member_card_img}>
                     <Image
-                      src={"/images/p3.png"}
+                      src={`/${item.profile}`}
                       width={500}
                       height={500}
                       alt="p1"
@@ -235,17 +236,13 @@ const OurTeam = () => {
                       </div>
                     </div>
                     <div className={styles._team__pos}>
-                      <h4>Name</h4>
+                      <h4>{item.name}</h4>
                       <div>
-                        <p>Designer</p>
+                        <p>Phone: {item.phone}</p>
                       </div>
+                      <Link href={`/agent/${item.id}`}>View Page</Link>
                     </div>
                   </div>
-
-                  {/* <FontAwesomeIcon
-                    icon={faArrowUp}
-                    className={styles._team_member_arrow}
-                  /> */}
                 </div>
               );
             })}

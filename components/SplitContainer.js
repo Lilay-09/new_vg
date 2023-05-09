@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "../styles/SplitContainer.modul.css";
+import styles from "../styles/SplitContainer.module.css";
 const SplitContainer = ({ left, right }) => {
   return (
     <div className={styles.service__split_container}>

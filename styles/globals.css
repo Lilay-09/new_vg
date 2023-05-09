@@ -57,7 +57,6 @@ a {
     width: 90%;
   }
 }
-@import "./swiper.css";
 @import "./Header/header.css";
 @import "./ProduceDetail/ProductDetails.css"; /* 
 @media (prefers-color-scheme: dark) {
@@ -277,5 +276,6 @@ section {
   transition-delay: 1600ms;
 }
 @import url("./input.css");
+@import url("./swiper.css");
 @import url("./Contact/Contact.css");
 @import url("./paginaiton_style.css");
