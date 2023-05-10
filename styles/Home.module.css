@@ -83,7 +83,8 @@
   min-width: 200px;
   border: none;
   padding: 0.5vw 0;
-  background-color: #e6b269;
+  /* background-color: #e6b269; */
+  border: 1px solid #1e136d;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -321,6 +322,11 @@
   flex-flow: column;
   gap: 1vw;
   align-items: center;
+}
+
+.last__project_container {
+  margin: 0 auto;
+  width: 90%;
 }
 @keyframes banner_img_slide_content {
   0% {

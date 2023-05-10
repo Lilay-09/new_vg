@@ -13,6 +13,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowRight, faLocationDot } from "@fortawesome/free-solid-svg-icons";
 import { useRouter } from "next/router";
 import SliderBanner from "../components/SliderBanner";
+import LastProjects from "../components/Home/LastProjects";
 
 const interior_Design = () => {
   return (
@@ -115,7 +116,7 @@ const Home = () => {
         </div>
       </section>
       <div className={styles.search_section} ref={searchRef}>
-        <h5>Find Your Dream</h5>
+        <h5>Find Your Dream Property</h5>
         <div className={styles.find_dream}>
           <div className={styles.selection_opt}>
             <select
@@ -151,6 +152,16 @@ const Home = () => {
                 );
               })}
             </select>
+            <select
+              value={type}
+              onChange={(e) => {
+                setType(e.target.value);
+              }}
+            >
+              <option value="shop-house">Price</option>
+              <option value="condo">100000</option>
+              <option value="villa">200000</option>
+            </select>
           </div>
           {/* <div>
           get status ={status} type = {type} location = {location}
@@ -159,6 +170,10 @@ const Home = () => {
             Submit
           </div>
         </div>
+      </div>
+
+      <div className={styles.last__project_container}>
+        <LastProjects />
       </div>
 
       <div className={styles.interior_section}>
