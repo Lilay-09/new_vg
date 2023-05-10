@@ -7,6 +7,8 @@
 ._image_box {
   width: 35vw;
   height: 30vw;
+  min-height: 380px;
+  min-width: 360px;
 }
 ._image_box img {
   width: 100%;
@@ -22,6 +24,8 @@
   background-color: #e6b269;
   width: 6vw;
   height: 6vw;
+  min-width: 60px;
+  min-height: 60px;
 }
 .active {
   padding: 0.5vw;
@@ -74,6 +78,13 @@
   gap: 0.8vw;
   margin: 2vw 0;
 }
+.selection_container button {
+  border: none;
+  background-color: #e6b269;
+  border-radius: 10px;
+  font-weight: 700;
+  padding: 0.3rem;
+}
 
 @media screen and (max-width: 1440px) {
   .select_title {
@@ -88,7 +99,19 @@
     align-items: center;
     justify-content: center;
   }
+  ._image_box {
+    width: 90vw;
+    height: 50vw;
+    min-height: 250px;
+  }
   .selection_container select {
     width: 30%;
+  }
+  .selection_container button {
+    border-radius: 5px;
+    padding: 0 0.8rem;
+  }
+  .__card_container {
+    align-items: center;
   }
 }
