@@ -5,6 +5,7 @@ import Image from "next/image";
 import ScrollableContainer from "../../components/ScrollableContainer";
 import Title from "../../components/Title";
 import { Services } from "../../utils/data";
+import TiltleTile from "../../components/TiltleTile";
 const OurServices = () => {
   return (
     <Layout width={100}>
@@ -36,7 +37,9 @@ const OurServices = () => {
       </div>
 
       <div className={`${styles._categories_section} _hidden_item`}>
-        <Title title="Categories" />
+        <div style={{ width: "90%", margin: "0 auto 2rem auto" }}>
+          <TiltleTile title="Services" noMore />
+        </div>
         <ScrollableContainer>
           <div
             className={`${styles._service_categories} our___item _hidden_item `}
@@ -106,7 +109,9 @@ const OurServices = () => {
       </div>
       {/* <div className="reveal"></div> */}
       <div className={`${styles._services_section} reveal`}>
-        <Title title="Services" />
+        <div style={{ width: "90%", margin: "0 auto 2rem auto" }}>
+          <TiltleTile title="Services" noMore />
+        </div>
         <div className={`${styles._services_card_container} `}>
           {Services.map((item, i) => {
             return (

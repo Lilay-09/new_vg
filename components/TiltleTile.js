@@ -1,7 +1,7 @@
 import Link from "next/link";
 import React from "react";
 
-const TiltleTile = ({ title, href }) => {
+const TiltleTile = ({ title, href, noMore }) => {
   const tileContainer = {
     width: "100%",
     display: "flex",
@@ -19,9 +19,11 @@ const TiltleTile = ({ title, href }) => {
       <div>
         <span style={tileTitle}>{title}</span>
       </div>
-      <Link href={`${href}`} className="nav-link">
-        <span>View All</span>
-      </Link>
+      {!noMore && (
+        <Link href={`${href}`} className="nav-link">
+          <span>View All</span>
+        </Link>
+      )}
     </div>
   );
 };
