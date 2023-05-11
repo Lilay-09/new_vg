@@ -2,6 +2,9 @@ import React from "react";
 import TiltleTile from "../TiltleTile";
 import styles from "../../styles/LastProject.module.css";
 import Image from "next/image";
+import Link from "next/link";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
 const LastProjects = () => {
   let items = [
     "/images/tp1.jpg",
@@ -13,7 +16,7 @@ const LastProjects = () => {
   ];
   return (
     <div>
-      <TiltleTile title={"Last Project"} href={"/project/all"} />
+      <TiltleTile title={"Last Projects"} href={"/project/all"} />
       <div className={styles.card__container}>
         {items.map((item, index) => {
           return (
@@ -27,6 +30,9 @@ const LastProjects = () => {
                   priority
                 />
                 <div className={styles.card_sts}>For Sales</div>
+                <Link href={`/project/details/1`} className={styles.view__item}>
+                  <FontAwesomeIcon icon={faArrowRight} width={20} />
+                </Link>
               </div>
               <div className={styles.card__content_text}>
                 <h5>Project name</h5>

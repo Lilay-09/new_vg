@@ -177,6 +177,10 @@
 ._team__pos {
   margin-top: 2rem;
 }
+._team__pos a {
+  color: #e6b269;
+  text-decoration: none;
+}
 ._team_member_arrow {
   position: absolute;
   width: 25px;

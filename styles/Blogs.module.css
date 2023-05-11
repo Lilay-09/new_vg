@@ -171,6 +171,8 @@
   flex-direction: column;
   background-color: #ffffff;
 }
+._banner_dot {
+}
 @media screen and (max-width: 1024px) {
   .new_inner_text,
   .new_container_bottom_inner_text,

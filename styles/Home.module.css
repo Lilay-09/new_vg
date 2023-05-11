@@ -432,3 +432,8 @@
     margin: 3rem;
   }
 }
+@media screen and (max-width: 425px) {
+  .banner_content p {
+    display: none;
+  }
+}

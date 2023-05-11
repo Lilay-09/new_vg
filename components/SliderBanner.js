@@ -1,7 +1,17 @@
 import Image from "next/image";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 const SliderBanner = ({ slides }) => {
+  const [timerId, setTimerId] = useState(null);
+  const nextBtnRef = useRef();
+
+  const autoClick = () => {
+    if (nextBtnRef.current) {
+      nextBtnRef.current.click();
+      setTimeout(autoClick, 5000); // Adjust the delay (in milliseconds) as per your requirement
+    }
+  };
+
   useEffect(() => {
     const buttons = document.querySelectorAll("[data-carousel-button]");
 
@@ -21,6 +31,10 @@ const SliderBanner = ({ slides }) => {
         delete activeSlide.dataset.active;
       });
     });
+
+    setTimeout(autoClick, 3000);
+
+    return () => clearTimeout(autoClick);
   });
 
   return (
@@ -28,7 +42,11 @@ const SliderBanner = ({ slides }) => {
       <button className="carousel-button prev" data-carousel-button="prev">
         &#8656;
       </button>
-      <button className="carousel-button next" data-carousel-button="next">
+      <button
+        className="carousel-button next"
+        data-carousel-button="next"
+        // ref={nextBtnRef}
+      >
         &#8658;
       </button>
       <ul data-slides>

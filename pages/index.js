@@ -80,7 +80,7 @@ const Home = () => {
   const [status, setStatus] = useState("buy");
   const [type, setType] = useState("shop-house");
   const [location, setLocation] = useState("phnom-penh");
-  //
+
   const searchRef = useRef();
   const handleSearchOption = () => {
     router.push(`/search?=/${status}&${type}&${location}`);
