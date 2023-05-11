@@ -285,6 +285,41 @@ section {
     font-size: 2rem;
   }
 }
+
+@media screen and (max-width: 768px) {
+  .reveal {
+    opacity: 1;
+  }
+  ._hidden_item {
+    transform: none;
+    opacity: 1;
+    filter: blur(0);
+  }
+  .active.fade-bottom {
+    animation: none;
+  }
+  .active.fade-left {
+    animation: none;
+  }
+  .active.iterior {
+    animation: none;
+  }
+  ._show_item {
+    animation: none;
+  }
+  ._show_item.lef {
+    animation: none;
+  }
+  .active.fade-right {
+    animation: none;
+  }
+  .active.fade-top {
+    animation: none;
+  }
+  .myAnim {
+    animation: none;
+  }
+}
 @import url("./input.css");
 @import url("./swiper.css");
 @import url("./Contact/Contact.css");
