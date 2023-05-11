@@ -275,6 +275,16 @@ section {
 .our___item:nth-child(9) {
   transition-delay: 1600ms;
 }
+
+.title_comp {
+  font-size: 2.5vw;
+}
+
+@media screen and (max-width: 1024px) {
+  .title_comp {
+    font-size: 2rem;
+  }
+}
 @import url("./input.css");
 @import url("./swiper.css");
 @import url("./Contact/Contact.css");

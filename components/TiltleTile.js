@@ -14,14 +14,13 @@ const TiltleTile = ({ title, href }) => {
     fontWeight: "bold",
     fontSize: "20px",
   };
-  const viewStyles = {};
   return (
     <div style={tileContainer}>
       <div>
         <span style={tileTitle}>{title}</span>
       </div>
       <Link href={`${href}`} className="nav-link">
-        <span style={viewStyles}>View All</span>
+        <span>View All</span>
       </Link>
     </div>
   );

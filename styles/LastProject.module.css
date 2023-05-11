@@ -15,6 +15,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  overflow: hidden;
 }
 .card__content_text {
   padding: 0.8vw;
@@ -31,10 +32,131 @@
 }
 .card_sts {
   position: absolute;
+  top: 0;
+  left: 0;
+  margin: 1rem;
+  background-color: #5347a7;
+  color: #ffffff;
+  padding: 0.3rem 0.5rem;
+}
+.view__item {
+  position: absolute;
+  color: white;
+  height: 2vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  width: 2vw;
+  min-height: 25px;
+  min-width: 25px;
+  background-color: #5347a7;
+  padding: 0.3rem;
+  right: 0;
+  transform: translateX(200%);
+  bottom: 0;
+  margin: 1rem;
+  transition: all 0.5s;
+}
+
+.card__content:hover .view__item {
+  transform: translateX(0%);
+}
+.view__item:hover {
+  width: 4vw;
+  border-radius: 10px;
+  color: cadetblue;
+}
+.project__spec_details {
+  display: flex;
+  flex-direction: column;
+  width: 90%;
+  margin: 0 auto;
+}
+.__spec_lst {
+  display: flex;
+  align-items: center;
+  gap: 1.5vw;
+}
+.prp_name {
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.project__banner {
+  width: 100%;
+}
+.banner_img_box {
+  width: 100%;
+  height: 40vw;
+}
+.banner_img_box img {
+  width: 100%;
+  height: 100%;
+}
+._banner_dot {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+  margin: 1vw 3vw;
+}
+.banner_img_dot {
+  width: 50px;
+  height: 50px;
+}
+.banner_img_dot img {
+  width: 100%;
+  height: 100%;
+}
+._prp__view {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+._prp__view_cnt {
+  width: 48%;
+  min-width: 450px;
+  /* background-color: #5347a7; */
+}
+._prp__view_cnt {
+  color: black;
+}
+._prp__view_cnt img {
+  width: 100%;
+  height: 30vw;
+  min-height: 280px;
+}
+.project__more__details_content {
+  margin: 3vw 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2vw;
+  width: 100%;
+}
+@media screen and (max-width: 1024px) {
+  .view__item {
+    transform: none;
+  }
+}
+@media screen and (max-width: 999px) {
+  ._prp__view {
+    align-items: center;
+    justify-content: center;
+  }
+  ._prp__view_cnt {
+    width: 90%;
+  }
+  /* .active {
+    display: flex;
+    flex-flow: column-reverse;
+  } */
 }
 @media screen and (max-width: 960px) {
   .card__container {
     grid-template-columns: repeat(2, 1fr);
+  }
+  ._prp__view_cnt {
+    min-width: 300px;
   }
 }
 @media screen and (max-width: 640px) {
