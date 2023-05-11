@@ -206,4 +206,7 @@
   ._team_details_card h2 {
     font-size: 10px;
   }
+  ._our_team__container {
+    animation: none;
+  }
 }
