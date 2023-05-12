@@ -158,10 +158,10 @@
   ._prp__view_cnt {
     width: 90%;
   }
-  /* .active {
+  .reverse {
     display: flex;
     flex-flow: column-reverse;
-  } */
+  }
 }
 @media screen and (max-width: 960px) {
   .card__container {

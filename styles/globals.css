@@ -57,6 +57,8 @@ a {
     width: 90%;
   }
 }
+
+@import "./image_slider.css";
 @import "./Header/header.css";
 @import "./ProduceDetail/ProductDetails.css"; /* 
 @media (prefers-color-scheme: dark) {
