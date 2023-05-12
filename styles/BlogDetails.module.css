@@ -52,8 +52,13 @@
 }
 .__spec_lst {
   display: flex;
-  align-items: center;
+  /* align-items: center; */
   justify-content: space-between;
+  /* background-color: #e6b269; */
+}
+.__spec_lst span {
+  position: relative;
+  top: 0.2rem;
 }
 
 .prp__description {

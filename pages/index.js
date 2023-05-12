@@ -90,7 +90,7 @@ const Home = () => {
     <Layout width={100}>
       <section className={`${styles._home_banner}`}>
         <div className={`myAnim ${styles.banner}`}>
-          <SliderBanner />
+          <SliderBanner auto={true} />
           <div className={styles.banner_content}>
             <span>This is The Banner the company</span>
             <div className={styles.content_title}>
@@ -180,11 +180,11 @@ const Home = () => {
         <div className="reveal fade-bottom">
           <div className={styles.interior_title}>
             <div className={styles.interior_title_content}>
-              <h2>Interior Design Ideas</h2>
+              <h2>Real Estate Sample</h2>
               <button>More</button>
             </div>
             <div>
-              <p>These are some sample of design.</p>
+              <p>These are some of design samples.</p>
             </div>
           </div>
           <div>{interior_Design()}</div>

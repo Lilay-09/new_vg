@@ -114,7 +114,24 @@ const AboutUs = () => {
           </div>
         </div>
       </div>
-      <div className={`${styles.accomplished} reveal`} ref={accRef}></div>
+      <div className={`${styles.accomplished}`} ref={accRef}>
+        <div className={styles.company__things}>
+          <span>1000</span>
+          <h5>Buy Properties</h5>
+        </div>
+        <div className={styles.company__things}>
+          <span>2000</span>
+          <h5>Sell Properties</h5>
+        </div>
+        <div className={styles.company__things}>
+          <span>1040</span>
+          <h5>Rent Properties</h5>
+        </div>
+        <div className={styles.company__things}>
+          <span>1080</span>
+          <h5>Agents</h5>
+        </div>
+      </div>
     </Layout>
   );
 };

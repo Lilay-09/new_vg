@@ -150,7 +150,7 @@ const OurProperty = () => {
       }
     };
     let filterNav = filterRef.current;
-    console.log(filterNav);
+    // console.log(filterNav);
 
     document.addEventListener("mousedown", handleOpenDD, true);
     return () => {
@@ -165,6 +165,7 @@ const OurProperty = () => {
           src={"/images/proper.png"}
           width={3000}
           height={200}
+          priority
           alt="proper"
         />
         <div className={styles.banner_title}>
@@ -293,7 +294,13 @@ const OurProperty = () => {
               key={i}
             >
               <div className={styles.properties__card_img}>
-                <Image src={item.url} width={3000} height={200} alt="proper" />
+                <Image
+                  src={item.url}
+                  width={3000}
+                  height={200}
+                  alt="proper"
+                  priority
+                />
               </div>
               <div className={styles.properties__card_details}>
                 <div className={styles.properties__card_details_title}>
@@ -311,6 +318,7 @@ const OurProperty = () => {
                         width={100}
                         height={100}
                         alt="home_size"
+                        priority
                       />
                       <div>6M x 14M</div>
                     </div>
@@ -320,6 +328,7 @@ const OurProperty = () => {
                         width={100}
                         height={100}
                         alt="home_size"
+                        priority
                       />
                       <div>3</div>
                     </div>
@@ -329,6 +338,7 @@ const OurProperty = () => {
                         width={100}
                         height={100}
                         alt="home_size"
+                        priority
                       />
                       <div>4</div>
                     </div>

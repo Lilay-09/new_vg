@@ -19,8 +19,8 @@ const Accomplished = (props) => {
               alt={props.profile}
               priority
             />
-            View Page
           </Link>
+          <div>View Page</div>
         </div>
         <div className={styles._person_details}>
           <h5>{props.name}</h5>
