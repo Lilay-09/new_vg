@@ -20,7 +20,6 @@ const Accomplished = (props) => {
               priority
             />
           </Link>
-          <div>View Page</div>
         </div>
         <div className={styles._person_details}>
           <h5>{props.name}</h5>
@@ -34,7 +33,10 @@ const Accomplished = (props) => {
           {props.accomplished.map((item, i) => {
             return (
               <React.Fragment key={i}>
-                <div className={styles._accomplished__project}>
+                <Link
+                  className={styles._accomplished__project}
+                  href={`/project/details/${item.id}`}
+                >
                   <Image
                     src={`/${item.url}`}
                     width={300}
@@ -42,7 +44,8 @@ const Accomplished = (props) => {
                     alt={item.url}
                     priority
                   />
-                </div>
+                  <div className={styles.member__pro_status}>Sale</div>
+                </Link>
               </React.Fragment>
             );
           })}

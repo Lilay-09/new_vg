@@ -144,7 +144,11 @@ const ProjectDetails = () => {
               </div>
             ) : (
               <div
-                className={styles["_prp__view"] + " " + styles["active"]}
+                className={
+                  i % 2 !== 0
+                    ? styles["_prp__view"] + " " + styles["reverse"]
+                    : styles["_prp__view"]
+                }
                 key={i}
               >
                 <div className={styles._prp__view_cnt}>

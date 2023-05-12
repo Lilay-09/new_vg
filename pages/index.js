@@ -12,8 +12,9 @@ import ScrollableContainer from "../components/ScrollableContainer";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowRight, faLocationDot } from "@fortawesome/free-solid-svg-icons";
 import { useRouter } from "next/router";
-import SliderBanner from "../components/SliderBanner";
+// import SliderBanner from "../components/SliderBanner";
 import LastProjects from "../components/Home/LastProjects";
+import ImageSliderComp from "../components/ImageSliderComp";
 
 const interior_Design = () => {
   return (
@@ -26,6 +27,10 @@ const interior_Design = () => {
           alt=""
           priority
         />
+        <p className={styles.popular_place}>
+          <FontAwesomeIcon icon={faLocationDot} width={20} />
+          Phnom Penh
+        </p>
       </div>
       <div className={`${styles.interior__design_card} `}>
         <Image
@@ -35,6 +40,10 @@ const interior_Design = () => {
           alt=""
           priority
         />
+        <p className={styles.popular_place}>
+          <FontAwesomeIcon icon={faLocationDot} width={20} />
+          Siem Reap
+        </p>
       </div>
       <div className={`${styles.interior__design_card} `}>
         <Image
@@ -44,6 +53,10 @@ const interior_Design = () => {
           alt=""
           priority
         />
+        <p className={styles.popular_place}>
+          <FontAwesomeIcon icon={faLocationDot} width={20} />
+          Koh Kong
+        </p>
       </div>
       <div className={`${styles.interior__design_card} `}>
         <Image
@@ -53,6 +66,11 @@ const interior_Design = () => {
           alt=""
           priority
         />
+        <p className={styles.popular_place}>
+          {" "}
+          <FontAwesomeIcon icon={faLocationDot} width={20} />
+          Battambang
+        </p>
       </div>
       <div className={`${styles.interior__design_card} `}>
         <Image
@@ -62,6 +80,10 @@ const interior_Design = () => {
           alt=""
           priority
         />
+        <p className={styles.popular_place}>
+          <FontAwesomeIcon icon={faLocationDot} width={20} />
+          Kandal
+        </p>
       </div>
       <div className={`${styles.interior__design_card} `}>
         <Image
@@ -71,6 +93,10 @@ const interior_Design = () => {
           alt=""
           priority
         />
+        <p className={styles.popular_place}>
+          <FontAwesomeIcon icon={faLocationDot} width={20} />
+          Takeo
+        </p>
       </div>
     </div>
   );
@@ -90,7 +116,17 @@ const Home = () => {
     <Layout width={100}>
       <section className={`${styles._home_banner}`}>
         <div className={`myAnim ${styles.banner}`}>
-          <SliderBanner auto={true} />
+          {/* <SliderBanner auto={true} /> */}
+          <div
+            style={{
+              width: "100%",
+              height: "100%",
+              position: "absolute",
+              background: "grey",
+            }}
+          >
+            <ImageSliderComp />
+          </div>
           <div className={styles.banner_content}>
             <span>This is The Banner the company</span>
             <div className={styles.content_title}>
@@ -180,22 +216,43 @@ const Home = () => {
         <div className="reveal fade-bottom">
           <div className={styles.interior_title}>
             <div className={styles.interior_title_content}>
-              <h2>Real Estate Sample</h2>
-              <button>More</button>
-            </div>
-            <div>
-              <p>These are some of design samples.</p>
+              <h2>Popular Locations</h2>
             </div>
           </div>
           <div>{interior_Design()}</div>
         </div>
       </div>
 
+      <section className={styles._home__blog}>
+        <div className="reveal fade-bottom">
+          <div className={`${styles.interior_title}`}>
+            <div className={styles.interior_title_content}>
+              <h2>Lastest Properties</h2>
+              <button>More Blog</button>
+            </div>
+          </div>
+          <div className={styles._home_blog__container}>
+            {blog.map((item, index) => {
+              return (
+                <React.Fragment key={index}>
+                  {renderBlogCard(
+                    item.url,
+                    item.location,
+                    item.title,
+                    item.price,
+                    item.sqrft
+                  )}
+                </React.Fragment>
+              );
+            })}
+          </div>
+        </div>
+      </section>
       <section className={styles.accomplistment}>
         <div className="reveal fade-bottom">
           <div className={`${styles.interior_title}`}>
             <div className={styles.interior_title_content}>
-              <h2>Team Producers</h2>
+              <h2>Professional Properties Consultants</h2>
               <button onClick={() => router.push("/our-team")}>
                 See Our Team
               </button>
@@ -220,39 +277,6 @@ const Home = () => {
           </div>
         </div>
       </section>
-      <section className={styles._home__blog}>
-        <div className="reveal fade-bottom">
-          <div className={`${styles.interior_title}`}>
-            <div className={styles.interior_title_content}>
-              <h2>Blog</h2>
-              <button>More Blog</button>
-            </div>
-            <div>
-              <p>Fint Interior designers and Architects for your project!</p>
-            </div>
-          </div>
-          <div className={styles._home_blog__container}>
-            {blog.map((item, index) => {
-              return (
-                <React.Fragment key={index}>
-                  {renderBlogCard(
-                    item.url,
-                    item.location,
-                    item.title,
-                    item.price,
-                    item.sqrft
-                  )}
-                </React.Fragment>
-              );
-            })}
-          </div>
-        </div>
-      </section>
-      <section>
-        <div className="reveal fade-bottom">
-          <div className={styles}></div>
-        </div>
-      </section>
     </Layout>
   );
 };
@@ -271,7 +295,10 @@ const renderBlogCard = (url, location, title, price, sqrft) => {
           />
           <span>{location}</span>
         </div>
-        <Link className={styles._home_card_btn} href={"/blog/sth"}>
+        <Link
+          className={styles._home_card_btn}
+          href={"/lastest-properties/sth"}
+        >
           <FontAwesomeIcon
             icon={faArrowRight}
             className={styles._home_card_arrow_icon}
@@ -288,41 +315,3 @@ const renderBlogCard = (url, location, title, price, sqrft) => {
     </div>
   );
 };
-
-{
-  /* <div className={`myAnim ${styles.banner}`}>
-  <div className={styles.banner_img}>
-    <div className={styles.banner_slide}>
-      <SliderBanner />
-    </div>
-    <Image
-              src={`/images/home_banner.jpg`}
-              alt=""
-              width={1000}
-              height={1000}
-              priority
-            />
-    <div className={styles.banner_content}>
-      <span>This is The Banner the company</span>
-      <div className={styles.content_title}>
-        <h2>This Website Show The Content of Real Estate</h2>
-      </div>
-      <p>
-        Real estate is a form of real property, meaning that it is something you
-        own that is attached to a piece of land. It can be used for residential,
-        commercial or industrial purposes, and typically includes any resources
-        on the land such as water or minerals.
-      </p>
-      <div className={styles.banner_btn}>
-        <button
-          onClick={(e) => {
-            searchRef.current.scrollIntoView({ behavior: "smooth" });
-          }}
-        >
-          Search
-        </button>
-      </div>
-    </div>
-  </div>
-</div>; */
-}
