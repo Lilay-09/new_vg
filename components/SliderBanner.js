@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 
-const SliderBanner = ({ slides }) => {
+const SliderBanner = ({ slides, auto }) => {
   const [timerId, setTimerId] = useState(null);
   const nextBtnRef = useRef();
 
@@ -45,7 +45,7 @@ const SliderBanner = ({ slides }) => {
       <button
         className="carousel-button next"
         data-carousel-button="next"
-        // ref={nextBtnRef}
+        ref={auto ? nextBtnRef : null}
       >
         &#8658;
       </button>

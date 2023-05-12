@@ -89,10 +89,21 @@
 .banner_img_box {
   width: 100%;
   height: 40vw;
+  min-height: 200px;
+  position: relative;
 }
 .banner_img_box img {
   width: 100%;
   height: 100%;
+}
+.btn_next_prev {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  color: white;
+  display: flex;
+  gap: 2rem;
+  margin: 2rem;
 }
 ._banner_dot {
   display: flex;
@@ -133,6 +144,7 @@
   gap: 2vw;
   width: 100%;
 }
+
 @media screen and (max-width: 1024px) {
   .view__item {
     transform: none;

@@ -284,9 +284,6 @@ section {
   .title_comp {
     font-size: 2rem;
   }
-}
-
-@media screen and (max-width: 768px) {
   .reveal {
     opacity: 1;
   }
@@ -320,6 +317,7 @@ section {
     animation: none;
   }
 }
+
 @import url("./input.css");
 @import url("./swiper.css");
 @import url("./Contact/Contact.css");

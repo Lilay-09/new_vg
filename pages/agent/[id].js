@@ -6,7 +6,7 @@ import Image from "next/image";
 
 const Person = (props) => {
   const { fetctData } = props;
-  console.log(fetctData);
+  // console.log(fetctData);
   return (
     <Layout width={100}>
       {fetctData.map((item, i) => {
@@ -40,7 +40,6 @@ const Person = (props) => {
                     height={20}
                     alt="l1"
                   />
-
                   <span>Phone: {item.phone}</span>
                 </div>
                 <span className={styles.about_agent}>About me</span>

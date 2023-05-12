@@ -1,9 +1,11 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Layout from "../../../sections/Layout";
 import styles from "../../../styles/LastProject.module.css";
 import Title from "../../../components/Title";
 import SliderBanner from "../../../components/SliderBanner";
 import Image from "next/image";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faArrowLeft, faArrowRight } from "@fortawesome/free-solid-svg-icons";
 const ProjectDetails = () => {
   const img = [
     { img: "/images/tp1.jpg" },
@@ -11,7 +13,28 @@ const ProjectDetails = () => {
     { img: "/images/tp3.jpg" },
     { img: "/images/tp4.jpg" },
   ];
+  const [count, setCount] = useState(0);
   const [showBanner, setShowBanner] = useState(img[0].img);
+
+  const handleNext = () => {
+    if (count === img.length - 1) {
+      setCount(1);
+      setShowBanner(img[0].img);
+    } else {
+      setCount(count + 1);
+      setShowBanner(img[count + 1].img);
+    }
+  };
+
+  const handlePrev = () => {
+    if (count === 0) {
+      setCount(img.length - 1);
+      setShowBanner(img[img.length - 1].img);
+    } else {
+      setCount(count - 1);
+      setShowBanner(img[count - 1].img);
+    }
+  };
 
   return (
     <Layout width={100}>
@@ -22,9 +45,18 @@ const ProjectDetails = () => {
             width={1000}
             height={1000}
             alt="img"
-            className=""
+            priority
           />
+          <div className={styles.btn_next_prev}>
+            <div onClick={handlePrev}>
+              <FontAwesomeIcon icon={faArrowLeft} width={20} />
+            </div>
+            <div onClick={handleNext}>
+              <FontAwesomeIcon icon={faArrowRight} width={20} />
+            </div>
+          </div>
         </div>
+
         <div className={`${styles._banner_dot}`}>
           {img.map((item, i) => {
             return (
@@ -32,15 +64,23 @@ const ProjectDetails = () => {
                 key={item.img}
                 onClick={() => {
                   setShowBanner(item.img);
+                  setCount(i);
                 }}
                 className={styles.banner_img_dot}
               >
-                <Image src={item.img} width={1000} height={1000} alt="img" />
+                <Image
+                  src={item.img}
+                  width={1000}
+                  height={1000}
+                  alt="img"
+                  priority
+                />
               </div>
             );
           })}
         </div>
       </div>
+
       <div className={styles.project__spec_details}>
         <Title title={"ProjectName"} />
         <div className={styles.__spec_lst}>

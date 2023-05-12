@@ -98,15 +98,35 @@
   text-transform: uppercase;
 }
 .accomplished {
-  width: 90%;
+  width: 80%;
   margin: 0 auto;
-  height: 20vw;
   background-color: #281a92;
+  display: flex;
+  color: whitesmoke;
+  gap: 1vw;
+  justify-content: space-between;
+  height: 160px;
+  overflow-x: scroll;
+}
+.company__things {
+  width: 15vw;
+  /* background-color: #e6b269; */
+  min-width: 180px;
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
 }
 @media screen and (max-width: 1380px) {
   .__banner_content {
     height: 100%;
     /* width: 70%; */
+  }
+}
+@media screen and (max-width: 1024px) {
+  .accomplished {
+    width: 90%;
   }
 }
 @media screen and (max-width: 768px) {
