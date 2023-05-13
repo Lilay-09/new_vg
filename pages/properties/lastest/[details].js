@@ -1,9 +1,10 @@
 import React, { useState } from "react";
-import Layout from "../../sections/Layout";
-import SplitContainer from "../../components/SplitContainer";
-import styles from "../../styles/BlogDetails.module.css";
+
+import styles from "../../../styles/BlogDetails.module.css";
 import Image from "next/image";
-import { locationData } from "../../utils/data";
+import { locationData } from "../../../utils/data";
+import SplitContainer from "../../../components/SplitContainer";
+import Layout from "../../../sections/Layout";
 
 const BlogDetails = () => {
   const img = [

@@ -292,7 +292,7 @@ const lastestProperties = (url, location, title, price, sqrft) => {
         <div className={styles._home_card_location}>
           <span>Rent</span>
         </div>
-        <Link className={styles._home_card_btn} href={"/properties/lastest"}>
+        <Link className={styles._home_card_btn} href={"/properties/lastest/1"}>
           <FontAwesomeIcon
             icon={faArrowRight}
             className={styles._home_card_arrow_icon}
