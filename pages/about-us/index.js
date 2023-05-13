@@ -116,10 +116,6 @@ const AboutUs = () => {
       </div>
       <div className={`${styles.accomplished}`} ref={accRef}>
         <div className={styles.company__things}>
-          <span>1000</span>
-          <h5>Buy Properties</h5>
-        </div>
-        <div className={styles.company__things}>
           <span>2000</span>
           <h5>Sell Properties</h5>
         </div>

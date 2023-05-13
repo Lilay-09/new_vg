@@ -40,72 +40,58 @@ const OurServices = () => {
         <div style={{ width: "90%", margin: "0 auto 2rem auto" }}>
           <TiltleTile title="Services" noMore />
         </div>
-        <ScrollableContainer>
-          <div
-            className={`${styles._service_categories} our___item _hidden_item `}
-          >
-            <div className={styles._service_categories_img}>
-              <Image
-                src={"/images/buying.png"}
-                width={1000}
-                height={1000}
-                alt="sell"
-                priority
-              />
-              <div className={styles._service_categories_status_text}>
-                <span>Buying</span>
+        <div className={styles._categories_section_container}>
+          <ScrollableContainer>
+            <div
+              className={`${styles._service_categories} our___item _hidden_item`}
+            >
+              <div className={styles._service_categories_img}>
+                <Image
+                  src={"/images/sale.png"}
+                  width={1000}
+                  height={1000}
+                  alt="sell"
+                  priority
+                />
+                <div className={styles._service_categories_status_text}>
+                  <span>Selling</span>
+                </div>
               </div>
             </div>
-          </div>
-          <div
-            className={`${styles._service_categories} our___item _hidden_item`}
-          >
-            <div className={styles._service_categories_img}>
-              <Image
-                src={"/images/sale.png"}
-                width={1000}
-                height={1000}
-                alt="sell"
-                priority
-              />
-              <div className={styles._service_categories_status_text}>
-                <span>Selling</span>
+            <div
+              className={`${styles._service_categories} our___item _hidden_item`}
+            >
+              <div className={styles._service_categories_img}>
+                <Image
+                  src={"/images/rent.png"}
+                  width={1000}
+                  height={1000}
+                  alt="sell"
+                  priority
+                />
+                <div className={styles._service_categories_status_text}>
+                  <span>Rent</span>
+                </div>
               </div>
             </div>
-          </div>
-          <div
-            className={`${styles._service_categories} our___item _hidden_item`}
-          >
-            <div className={styles._service_categories_img}>
-              <Image
-                src={"/images/rent.png"}
-                width={1000}
-                height={1000}
-                alt="sell"
-                priority
-              />
-              <div className={styles._service_categories_status_text}>
-                <span>Rent</span>
+            <div
+              className={`${styles._service_categories} our___item _hidden_item`}
+            >
+              <div className={styles._service_categories_img}>
+                <Image
+                  src={"/images/consultations.png"}
+                  width={1000}
+                  height={1000}
+                  alt="sell"
+                  priority
+                />
+                <div className={styles._service_categories_status_text}>
+                  <span>Consultations</span>
+                </div>
               </div>
             </div>
-          </div>
-          <div
-            className={`${styles._service_categories} our___item _hidden_item`}
-          >
-            <div className={styles._service_categories_img}>
-              <Image
-                src={"/images/consultations.png"}
-                width={1000}
-                height={1000}
-                alt="sell"
-                priority
-              />
-              <div className={styles._service_categories_status_text}>
-                <span>Consultations</span>
-              </div>
-            </div>
-          </div>
-        </ScrollableContainer>
+          </ScrollableContainer>
+        </div>
       </div>
       {/* <div className="reveal"></div> */}
       <div className={`${styles._services_section} reveal`}>
