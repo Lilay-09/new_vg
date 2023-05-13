@@ -1,15 +1,18 @@
 import React from "react";
-import { data } from "../../utils/data";
-import Layout from "../../sections/Layout";
-import styles from "../../styles/Agent.module.css";
 import Image from "next/image";
+import styles from "../../../styles/Agent.module.css";
+import Layout from "../../../sections/Layout";
+import { data } from "../../../utils/data";
+import { useRouter } from "next/router";
 
 const Person = (props) => {
+  const router = useRouter();
+  const currntPerson = router.query.agentId;
   const { fetctData } = props;
-  // console.log(fetctData);
+  const dd = fetctData.filter((item) => item.id === Number(currntPerson));
   return (
     <Layout width={100}>
-      {fetctData.map((item, i) => {
+      {dd.map((item, i) => {
         return (
           <div className={`${styles.agent}`} key={i}>
             <div className={styles.agent_card}>
@@ -48,8 +51,8 @@ const Person = (props) => {
             {item.accomplished.map((item, i) => {
               return (
                 <div className={styles.agent__project} key={i}>
-                  <div className={styles.project_status}>For Sale</div>
                   <div className={styles.agent__project_img}>
+                    <div className={styles.project_status}>For Sale</div>
                     <Image
                       src={`/${item.url}`}
                       width={1000}
@@ -75,9 +78,9 @@ const Person = (props) => {
 
 export default Person;
 export const getServerSideProps = async (context) => {
-  const { params } = context;
-  const { id } = params;
-  const filterObj = data.filter((item) => item.id == id);
+  // const { params } = context;
+  // const { id } = params;
+  const filterObj = data;
   const fetctData = filterObj;
   return {
     props: {

@@ -293,7 +293,12 @@ const OurProperty = () => {
               className={`${styles.properties_card} our___item _hidden_item`}
               key={i}
             >
-              <div className={styles.properties__card_img}>
+              <div
+                className={styles.properties__card_img}
+                onClick={() => {
+                  router.push(`/properties/sth`);
+                }}
+              >
                 <Image
                   src={item.url}
                   width={3000}

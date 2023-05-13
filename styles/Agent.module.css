@@ -12,6 +12,9 @@
   background-color: #ffffff;
   display: flex;
   padding: 1vw;
+  flex-wrap: wrap;
+  justify-content: center;
+  /* align-items: center; */
   gap: 2rem;
   box-shadow: 0px 5px 10px 1px rgba(0, 0, 0, 0.22);
 }
@@ -19,6 +22,8 @@
   height: 18vw;
   width: 40%;
   display: flex;
+  min-width: 160px;
+  min-height: 180px;
   align-items: center;
   justify-content: center;
 }
@@ -38,7 +43,9 @@
 .agent__project_img {
   width: 50%;
   height: 18vw;
+  min-width: 250px;
   min-height: 260px;
+  position: relative;
 }
 .agent__project_img img {
   width: 100%;
@@ -65,4 +72,44 @@
 }
 .agent_project__details {
   width: 50%;
+}
+.agent__project_active {
+  border: 3px solid #e6b269;
+}
+@media screen and (max-width: 1024px) {
+  .agent__project {
+    justify-content: center;
+    flex-wrap: wrap;
+    /* width: 90vw; */
+  }
+
+  /* .agent_card {
+    width: 90vw;
+  } */
+}
+@media screen and (max-width: 768px) {
+  .agent_card {
+    width: 95vw;
+  }
+  .agent__project {
+    width: 95vw;
+  }
+  .agent {
+    width: 100%;
+  }
+}
+@media screen and (max-width: 425px) {
+  .agent_card {
+    width: 95vw;
+  }
+  .agent__project {
+    width: 95vw;
+  }
+  .agent__project_img {
+    width: 100%;
+  }
+  .agent_project__details {
+    width: 100%;
+    padding: 1rem;
+  }
 }

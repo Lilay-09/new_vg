@@ -23,8 +23,8 @@
 }
 
 .banner_img_dot {
-  width: 2vw;
-  height: 2vw;
+  width: 1.1vw;
+  height: 1.1vw;
   min-width: 15px;
   min-height: 15px;
   border-radius: 50%;
@@ -32,4 +32,24 @@
 }
 .active_slide {
   border: 2px solid #e6b269;
+}
+.btn_next_prev {
+  z-index: 10;
+  top: 50%;
+  position: absolute;
+  width: 20px;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 95%;
+  margin: 0 auto;
+  /* background-color: #9f7b4b; */
+}
+.btn_next_prev .prev {
+  position: absolute;
+  left: 0;
+}
+.btn_next_prev .next {
+  position: absolute;
+  right: 0;
 }
