@@ -180,7 +180,7 @@ const OurProperty = () => {
         </div>
         <div className={styles.search_container}>
           <div className={styles.tab_pag}>
-            <div className={styles.tap_pag_box}>Buy Properties</div>
+            <div className={styles.tap_pag_box}>Sale Properties</div>
             <div className={styles.tap_pag_box}>Rent Properties</div>
           </div>
           <div className={styles.search_filter}>

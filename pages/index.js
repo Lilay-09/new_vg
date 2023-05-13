@@ -15,92 +15,8 @@ import { useRouter } from "next/router";
 // import SliderBanner from "../components/SliderBanner";
 import LastProjects from "../components/Home/LastProjects";
 import ImageSliderComp from "../components/ImageSliderComp";
+import PopularLocation from "../components/Home/PopularLocation";
 
-const popularLocation = () => {
-  return (
-    <div className={styles.interior_design_sample_container}>
-      <div className={`${styles.interior__design_card}`}>
-        <Image
-          src={`/images/b2.jpg`}
-          width={1000}
-          height={1000}
-          alt=""
-          priority
-        />
-        <p className={styles.popular_place}>
-          <FontAwesomeIcon icon={faLocationDot} width={20} />
-          Phnom Penh
-        </p>
-      </div>
-      <div className={`${styles.interior__design_card} `}>
-        <Image
-          src={`/images/b4.jpg`}
-          width={1000}
-          height={1000}
-          alt=""
-          priority
-        />
-        <p className={styles.popular_place}>
-          <FontAwesomeIcon icon={faLocationDot} width={20} />
-          Siem Reap
-        </p>
-      </div>
-      <div className={`${styles.interior__design_card} `}>
-        <Image
-          src={`/images/tp2.jpg`}
-          width={1000}
-          height={1000}
-          alt=""
-          priority
-        />
-        <p className={styles.popular_place}>
-          <FontAwesomeIcon icon={faLocationDot} width={20} />
-          Koh Kong
-        </p>
-      </div>
-      <div className={`${styles.interior__design_card} `}>
-        <Image
-          src={`/images/bed.jpg`}
-          width={1000}
-          height={1000}
-          alt=""
-          priority
-        />
-        <p className={styles.popular_place}>
-          {" "}
-          <FontAwesomeIcon icon={faLocationDot} width={20} />
-          Battambang
-        </p>
-      </div>
-      <div className={`${styles.interior__design_card} `}>
-        <Image
-          src={`/images/b5.jpg`}
-          width={1000}
-          height={1000}
-          alt=""
-          priority
-        />
-        <p className={styles.popular_place}>
-          <FontAwesomeIcon icon={faLocationDot} width={20} />
-          Kandal
-        </p>
-      </div>
-      <div className={`${styles.interior__design_card} `}>
-        <Image
-          src={`/images/pool.jpg`}
-          width={1000}
-          height={1000}
-          alt=""
-          priority
-        />
-        <p className={styles.popular_place}>
-          <FontAwesomeIcon icon={faLocationDot} width={20} />
-          Takeo
-        </p>
-      </div>
-    </div>
-  );
-};
 const Home = () => {
   const router = useRouter();
   const [status, setStatus] = useState("buy");
@@ -219,7 +135,9 @@ const Home = () => {
               <h2>Popular Locations</h2>
             </div>
           </div>
-          <div>{popularLocation()}</div>
+          <div>
+            <PopularLocation />
+          </div>
         </div>
       </div>
 
