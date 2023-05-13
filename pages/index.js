@@ -16,7 +16,7 @@ import { useRouter } from "next/router";
 import LastProjects from "../components/Home/LastProjects";
 import ImageSliderComp from "../components/ImageSliderComp";
 
-const interior_Design = () => {
+const popularLocation = () => {
   return (
     <div className={styles.interior_design_sample_container}>
       <div className={`${styles.interior__design_card}`}>
@@ -219,7 +219,7 @@ const Home = () => {
               <h2>Popular Locations</h2>
             </div>
           </div>
-          <div>{interior_Design()}</div>
+          <div>{popularLocation()}</div>
         </div>
       </div>
 
@@ -235,7 +235,7 @@ const Home = () => {
             {blog.map((item, index) => {
               return (
                 <React.Fragment key={index}>
-                  {renderBlogCard(
+                  {lastestProperties(
                     item.url,
                     item.location,
                     item.title,
@@ -266,6 +266,7 @@ const Home = () => {
               return (
                 <Accomplished
                   key={index}
+                  id={item.id}
                   url={item.url}
                   name={item.name}
                   profile={item.profile}
@@ -283,22 +284,15 @@ const Home = () => {
 
 export default Home;
 
-const renderBlogCard = (url, location, title, price, sqrft) => {
+const lastestProperties = (url, location, title, price, sqrft) => {
   return (
     <div className={styles._home_blog__card}>
       <div className={styles._home_card_image}>
         <Image src={url} width={1000} height={1000} alt="b1" priority />
         <div className={styles._home_card_location}>
-          <FontAwesomeIcon
-            icon={faLocationDot}
-            className={styles._home_location_dot}
-          />
-          <span>{location}</span>
+          <span>Rent</span>
         </div>
-        <Link
-          className={styles._home_card_btn}
-          href={"/lastest-properties/sth"}
-        >
+        <Link className={styles._home_card_btn} href={"/properties/lastest"}>
           <FontAwesomeIcon
             icon={faArrowRight}
             className={styles._home_card_arrow_icon}
@@ -309,6 +303,10 @@ const renderBlogCard = (url, location, title, price, sqrft) => {
         <div className={styles._home_card__title}>
           <h6>{title}</h6>
           <p>${price}</p>
+        </div>
+        <div className="d-flex gap-1">
+          <p>Address:</p>
+          <span>{location}</span>
         </div>
         <div className={styles._home_card_sqrft}>sqrft:{sqrft}</div>
       </div>

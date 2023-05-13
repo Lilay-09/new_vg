@@ -1,4 +1,9 @@
-import { faArrowLeft, faArrowRight } from "@fortawesome/free-solid-svg-icons";
+import {
+  faArrowLeft,
+  faArrowRight,
+  faCaretLeft,
+  faCaretRight,
+} from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Image from "next/image";
 import React, { useEffect, useRef, useState } from "react";
@@ -48,11 +53,11 @@ const ImageSliderComp = () => {
     <div className="image_slider_container">
       <Image src={showBanner} width={1000} height={1000} alt="img" priority />
       <div className="btn_next_prev">
-        <div onClick={handlePrev}>
-          <FontAwesomeIcon icon={faArrowLeft} width={20} />
+        <div onClick={handlePrev} className="prev">
+          <FontAwesomeIcon icon={faCaretLeft} width={20} />
         </div>
-        <div onClick={handleNext}>
-          <FontAwesomeIcon icon={faArrowRight} width={20} />
+        <div onClick={handleNext} className="next">
+          <FontAwesomeIcon icon={faCaretRight} width={20} />
         </div>
       </div>
       <div className={`_banner_dot`}>

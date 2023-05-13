@@ -35,7 +35,7 @@ const Accomplished = (props) => {
               <React.Fragment key={i}>
                 <Link
                   className={styles._accomplished__project}
-                  href={`/project/details/${item.id}`}
+                  href={`/agent/member-project/${props.id}&${item.id}`}
                 >
                   <Image
                     src={`/${item.url}`}

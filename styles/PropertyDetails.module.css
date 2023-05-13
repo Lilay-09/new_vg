@@ -1,0 +1,10 @@
+._prp__details_img {
+  width: 90%;
+  height: 35vw;
+  min-height: 260px;
+  margin: 0 auto;
+}
+._prp__details_img img {
+  width: 100%;
+  height: 100%;
+}
