@@ -60,7 +60,9 @@ a {
 
 @import "./image_slider.css";
 @import "./Header/header.css";
-@import "./ProduceDetail/ProductDetails.css"; /* 
+@import "./ProduceDetail/ProductDetails.css";
+@import "./properties.css";
+/* 
 @media (prefers-color-scheme: dark) {
   html {
     color-scheme: dark;

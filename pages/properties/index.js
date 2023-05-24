@@ -157,6 +157,16 @@ const OurProperty = () => {
       document.removeEventListener("mousedown", handleOpenDD, true);
     };
   }, []);
+  useEffect(() => {
+    dropDownFrilter
+      ? (document.body.style.overflow = "hidden")
+      : (document.body.style.overflow = "auto");
+  });
+
+  const [dropDownFrilter, setDropDownFilter] = useState(false);
+  const handleDropFilterSearch = () => {
+    setDropDownFilter(!dropDownFrilter);
+  };
 
   return (
     <Layout width={100}>
@@ -171,7 +181,11 @@ const OurProperty = () => {
         <div className={styles.banner_title}>
           <span>Properties</span>
         </div>
-        <div className={styles.filter_search} ref={filterRef}>
+        <div
+          className={styles.filter_search}
+          ref={filterRef}
+          onClick={handleDropFilterSearch}
+        >
           <div className={styles.filter_button}>
             <FontAwesomeIcon icon={faSlidersH} width={18} />
             Filter
@@ -286,6 +300,17 @@ const OurProperty = () => {
           </div>
         </div>
       </div>
+      {/* for filter drop drop when responsive */}
+      <div className={`filter__drp ${dropDownFrilter && "active"}`}>
+        <div
+          className="btn_close__search_bar"
+          onClick={() => setDropDownFilter(false)}
+        >
+          X
+        </div>
+        {/* <TiltleTile title={"Find Your Properties"} noMore /> */}
+      </div>
+      {/*  */}
       <div className={`${styles.properties_container} _hidden_item`}>
         {currentItems.map((item, i) => {
           return (
