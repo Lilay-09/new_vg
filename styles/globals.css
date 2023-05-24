@@ -58,9 +58,6 @@ a {
   }
 }
 
-@import "./image_slider.css";
-@import "./Header/header.css";
-@import "./ProduceDetail/ProductDetails.css"; /* 
 @media (prefers-color-scheme: dark) {
   html {
     color-scheme: dark;
@@ -69,8 +66,8 @@ a {
     color: white;
     background: black;
   }
-} */
-.scrollable {
+}
+*/ .scrollable {
   margin-left: 1.6vw;
   scroll-behavior: smooth;
   overflow-x: auto;
@@ -324,3 +321,8 @@ section {
 @import url("./swiper.css");
 @import url("./Contact/Contact.css");
 @import url("./paginaiton_style.css");
+
+@import "./image_slider.css";
+@import "./Header/header.css";
+@import "./ProduceDetail/ProductDetails.css";
+@import "./properties.css";

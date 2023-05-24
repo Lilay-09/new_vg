@@ -10,13 +10,25 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Head from "next/head";
 import Image from "next/image";
 import { useRouter } from "next/router";
-import React, { useEffect, useMemo, useRef, useState } from "react";
+import React, { useContext, useEffect, useMemo, useRef, useState } from "react";
 import ActiveLink from "../components/ActiveLink";
 import BtnComp from "../components/BtnComp";
 import styles from "../styles/Header/Header.module.css";
+import { DataContext } from "../store/GlobalState";
+import translateKh from "../utils/Translations/kh.json";
+import translateCh from "../utils/Translations/ch.json";
+import translateEn from "../utils/Translations/en.json";
 
 const Header = ({ title }) => {
   const router = useRouter();
+  let langs = [
+    { img: "uk1.png", lang: "English", type: "en" },
+    { img: "khmer.png", lang: "Khmer", type: "kh" },
+    { img: "china.png", lang: "Chinese", type: "ch" },
+  ];
+  const { state, dispatch } = useContext(DataContext);
+  const swLang = state.lang;
+  const [currentLang, setCurrentLang] = useState(swLang.flag);
   const [isOpenMenu, setOpenMenu] = useState(false);
   const menuRef = useRef();
   const xREf = useRef();
@@ -61,6 +73,30 @@ const Header = ({ title }) => {
     setOpenProject(!openProject);
   };
   const href = "/projects";
+
+  // language selection
+  const [langDrop, setLangDrop] = useState(false);
+
+  const handleLangDropDown = () => {
+    setLangDrop(!langDrop);
+  };
+  const handleChangeLangs = (item, type) => {
+    setCurrentLang(item);
+    console.log(type);
+    dispatch({ type: "LANG", payload: { d_lang: type, flag: item } });
+    localStorage.setItem("__lang_", type);
+    localStorage.setItem("__lang_flag_", item);
+  };
+
+  // translation from json
+  let translations;
+  if (swLang.d_lang === "kh") {
+    translations = translateKh;
+  } else if (swLang.d_lang === "en") {
+    translations = translateEn;
+  } else if (swLang.d_lang === "ch") {
+    translations = translateCh;
+  }
   return (
     <div>
       <Head>
@@ -88,16 +124,61 @@ const Header = ({ title }) => {
           </div>
           <div className={styles.navbar_link}>
             <ActiveLink href="/" id="home">
-              Home
+              {translations.Home}
             </ActiveLink>
-            <ActiveLink href="/our-team">Our Team</ActiveLink>
-            <ActiveLink href="/our-services">Our Services</ActiveLink>
-            <ActiveLink href="/properties">Our Properties</ActiveLink>
-            <ActiveLink href="/about-us">About Us</ActiveLink>
-            <ActiveLink href="/careers">Careers</ActiveLink>
-            <ActiveLink href="/contact-us">Contact Us</ActiveLink>
+            <ActiveLink href="/our-team">{translations["Our Team"]}</ActiveLink>
+            <ActiveLink href="/our-services">
+              {translations["Our Services"]}
+            </ActiveLink>
+            <ActiveLink href="/properties">
+              {translations["Our Properties"]}
+            </ActiveLink>
+            <ActiveLink href="/about-us">{translations["About Us"]}</ActiveLink>
+            <ActiveLink href="/careers">{translations.Careers}</ActiveLink>
+            <ActiveLink href="/contact-us">
+              {translations["Contact Us"]}
+            </ActiveLink>
           </div>
           <div style={{ flexGrow: "1" }}></div>
+          <div className={styles["lang"]}>
+            <div
+              className={styles["selected_lang"]}
+              onClick={handleLangDropDown}
+            >
+              <Image
+                width={100}
+                height={100}
+                alt="selected_lang"
+                src={`/images/${swLang.flag}`}
+              />
+            </div>
+            {langDrop && (
+              <div
+                className={styles["selection_lang"]}
+                onClick={handleLangDropDown}
+              >
+                {langs.map((item, i) => {
+                  return (
+                    <div className={styles["lang_details"]} key={i}>
+                      <div
+                        className={styles["select_lang"]}
+                        onClick={() => handleChangeLangs(item.img, item.type)}
+                      >
+                        <Image
+                          width={100}
+                          height={100}
+                          alt="selected_lang"
+                          src={`/images/${item.img}`}
+                        />
+                      </div>
+
+                      <span>{item.lang}</span>
+                    </div>
+                  );
+                })}
+              </div>
+            )}
+          </div>
           <div className={styles.get_intouch}>
             <FontAwesomeIcon
               icon={!isOpenMenu ? faBars : faXmark}
@@ -116,25 +197,25 @@ const Header = ({ title }) => {
         <div className={`menu_list ${isOpenMenu && "active"}`} ref={menuRef}>
           <div className="menu__list_frame">
             <ActiveLink href="/" black>
-              Home
+              {translations.Home}
             </ActiveLink>
             <ActiveLink href="/our-team" black>
-              Our Team
+              {translations["Our Team"]}
             </ActiveLink>
             <ActiveLink href="/our-services" black>
-              Our Services
+              {translations["Our Services"]}
             </ActiveLink>
             <ActiveLink href="/properties" black>
-              Our Properties
+              {translations["Our Properties"]}
             </ActiveLink>
             <ActiveLink href="/about-us" black>
-              About Us
+              {translations["About Us"]}
             </ActiveLink>
             <ActiveLink href="/careers" black>
-              Careers
+              {translations.Careers}
             </ActiveLink>
             <ActiveLink href="/contact-us" black>
-              Contact Us
+              {translations["Contact Us"]}
             </ActiveLink>
           </div>
         </div>

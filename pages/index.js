@@ -118,7 +118,10 @@ const Home = () => {
           {/* <div>
           get status ={status} type = {type} location = {location}
         </div> */}
-          <div className="btn btn-info" onClick={handleSearchOption}>
+          <div
+            className={`btn ${styles["btn_search"]}`}
+            onClick={handleSearchOption}
+          >
             Submit
           </div>
         </div>
@@ -146,7 +149,7 @@ const Home = () => {
           <div className={`${styles.interior_title}`}>
             <div className={styles.interior_title_content}>
               <h2>Lastest Properties</h2>
-              <button>More Blog</button>
+              <button>see more</button>
             </div>
           </div>
           <div className={styles._home_blog__container}>

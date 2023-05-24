@@ -14,6 +14,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { useRouter } from "next/router";
 import PaginationBtn from "../../components/PaginationBtn";
+import TiltleTile from "../../components/TiltleTile";
 const OurProperty = () => {
   const forDD = [
     { type: "Shop House" },
@@ -158,6 +159,19 @@ const OurProperty = () => {
     };
   }, []);
 
+  useEffect(() => {
+    dropDownFrilter
+      ? (document.body.style.overflow = "hidden")
+      : (document.body.style.overflow = "auto");
+  });
+
+  const [dropDownFrilter, setDropDownFilter] = useState(false);
+  const handleDropFilterSearch = () => {
+    setDropDownFilter(!dropDownFrilter);
+  };
+
+  const [status, setStatus] = useState("buy");
+
   return (
     <Layout width={100}>
       <div className={`${styles.banner}`}>
@@ -171,13 +185,18 @@ const OurProperty = () => {
         <div className={styles.banner_title}>
           <span>Properties</span>
         </div>
-        <div className={styles.filter_search} ref={filterRef}>
+        <div
+          className={styles.filter_search}
+          ref={filterRef}
+          onClick={handleDropFilterSearch}
+        >
           <div className={styles.filter_button}>
             <FontAwesomeIcon icon={faSlidersH} width={18} />
             Filter
           </div>
           <div className={styles._filter__search}>Under Construction</div>
         </div>
+
         <div className={styles.search_container}>
           <div className={styles.tab_pag}>
             <div className={styles.tap_pag_box}>Sale Properties</div>
@@ -286,6 +305,17 @@ const OurProperty = () => {
           </div>
         </div>
       </div>
+      {/* for filter drop drop when responsive */}
+      <div className={`filter__drp ${dropDownFrilter && "active"}`}>
+        <div
+          className="btn_close__search_bar"
+          onClick={() => setDropDownFilter(false)}
+        >
+          X
+        </div>
+        <TiltleTile title={"Find Your Properties"} noMore />
+      </div>
+      {/*  */}
       <div className={`${styles.properties_container} _hidden_item`}>
         {currentItems.map((item, i) => {
           return (
@@ -373,3 +403,46 @@ const OurProperty = () => {
 };
 
 export default OurProperty;
+{
+  /* <div
+          className={
+            dropDownFrilter
+              ? styles["filter_frm"] + " " + styles.filter_frm_active
+              : styles["filter_frm"]
+          }
+        >
+          <div className={styles["prop_status"]}>
+            <span>Buy</span>
+            <span>Sell</span>
+          </div>
+          <div className={styles.property_type_filter}>
+            <h5>Property Type:</h5>
+            <div className={styles.__display_prptype}>
+              <div className={styles.find_type}>
+                <div className={styles.typeof_prop}>
+                  <Image
+                    src={"/images/all-prps.png"}
+                    width={200}
+                    height={200}
+                    alt="all-prps"
+                    priority
+                  />
+                </div>
+                <div>All</div>
+              </div>
+              <div className={styles.find_type}>
+                <div className={styles.typeof_prop}>
+                  <Image
+                    src={"/images/all-prps.png"}
+                    width={200}
+                    height={200}
+                    alt="all-prps"
+                    priority
+                  />
+                </div>
+                <div>All</div>
+              </div>
+            </div>
+          </div>
+        </div> */
+}

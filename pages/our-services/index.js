@@ -38,7 +38,7 @@ const OurServices = () => {
 
       <div className={`${styles._categories_section} _hidden_item`}>
         <div style={{ width: "90%", margin: "0 auto 2rem auto" }}>
-          <TiltleTile title="Services" noMore />
+          <TiltleTile title="Categories" noMore />
         </div>
         <div className={styles._categories_section_container}>
           <ScrollableContainer>

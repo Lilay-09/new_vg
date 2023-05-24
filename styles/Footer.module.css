@@ -21,7 +21,8 @@
   justify-content: center;
 }
 .title img {
-  width: 80%;
+  width: 40%;
+  min-width: 120px;
   height: 100%;
 }
 .footer_content {

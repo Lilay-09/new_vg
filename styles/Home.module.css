@@ -298,6 +298,10 @@
   padding: 0.4rem 1.2rem;
   box-shadow: 1px 1px 10px 0px rgba(0, 0, 0, 0.59);
 }
+.btn_search {
+  background-color: #1e136d;
+  color: white;
+}
 ._home_card_location span {
   font-size: 16px;
 }

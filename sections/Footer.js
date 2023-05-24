@@ -14,12 +14,26 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Image from "next/image";
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import styles from "../styles/Footer.module.css";
 import Link from "next/link";
 
+import translateKh from "../utils/Translations/kh.json";
+import translateCh from "../utils/Translations/ch.json";
+import translateEn from "../utils/Translations/en.json";
+import { DataContext } from "../store/GlobalState";
 const Footer = () => {
+  const { state, dispatch } = useContext(DataContext);
+  const lang = state.lang.d_lang;
   const [menuDropDown, setMenuDropDown] = useState(false);
+  let translations;
+  if (lang === "kh") {
+    translations = translateKh;
+  } else if (lang === "en") {
+    translations = translateEn;
+  } else if (lang === "ch") {
+    translations = translateCh;
+  }
   return (
     <div className={`${styles.__foot_container} reveal`}>
       <div className={styles.footer}>
@@ -85,31 +99,31 @@ const Footer = () => {
           <div className={styles.link_}>
             <Link className="nav-link" href="/">
               <FontAwesomeIcon icon={faHome} width={18} />
-              Home
+              {translations.Home}
             </Link>
             <Link className="nav-link" href="/our-team">
               <FontAwesomeIcon icon={faUserGroup} width={18} />
-              Our Team
+              {translations["Our Team"]}
             </Link>
             <Link className="nav-link" href="/our-services">
               <FontAwesomeIcon icon={faBookmark} width={18} />
-              Our Services
+              {translations["Our Services"]}
             </Link>
             <Link className="nav-link" href="/properties">
               <FontAwesomeIcon icon={faBuilding} width={18} />
-              Our Properties
+              {translations["Our Properties"]}
             </Link>
             <Link className="nav-link" href="/about-us">
               <FontAwesomeIcon icon={faUsers} width={18} />
-              About Us
+              {translations["About Us"]}
             </Link>
             <Link className="nav-link" href="/careers">
               <FontAwesomeIcon icon={faChalkboard} width={18} />
-              Careers
+              {translations["Careers"]}
             </Link>
             <Link className="nav-link" href="/contact-us">
               <FontAwesomeIcon icon={faAddressCard} width={18} />
-              Contact Us
+              {translations["Contact Us"]}
             </Link>
           </div>
         </div>

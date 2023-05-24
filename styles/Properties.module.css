@@ -206,10 +206,12 @@
   /* background-color: #1e136d; */
   align-self: flex-end;
 }
+
 @media screen and (max-width: 1100px) {
   .search_container {
     display: none;
   }
+
   .banner_title {
     left: 0;
     right: 0;
@@ -226,6 +228,7 @@
     display: flex;
     justify-content: space-between;
     flex-direction: row-reverse;
+    align-items: center;
     left: 0;
     right: 0;
     margin: 0.6vw;
@@ -245,5 +248,12 @@
   }
   .properties_card {
     width: 300px;
+  }
+}
+@media screen and (max-width: 375px) {
+  .filter_search {
+    height: 50px;
+    display: flex;
+    align-items: center;
   }
 }
