@@ -25,7 +25,6 @@ const ContactUs = () => {
   const handleChangeInput = (e) => {
     const { name, value } = e.target;
     setMail({ ...getMail, [name]: value });
-    console.log(getMail);
   };
   const handleMoveToSection = (ref) => {
     ref.current.scrollIntoView({ behavior: "smooth" });

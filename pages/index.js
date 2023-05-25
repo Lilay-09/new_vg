@@ -1,6 +1,8 @@
 import Image from "next/image";
 import Link from "next/link";
-import React, { use, useEffect, useRef, useState } from "react";
+import path from "path";
+import fs from "fs/promises";
+import React, { use, useContext, useEffect, useRef, useState } from "react";
 
 import Layout from "../sections/Layout";
 import styles from "../styles/Home.module.css";
@@ -16,23 +18,45 @@ import { useRouter } from "next/router";
 import LastProjects from "../components/Home/LastProjects";
 import ImageSliderComp from "../components/ImageSliderComp";
 import PopularLocation from "../components/Home/PopularLocation";
-
-const Home = () => {
+import ImageComp from "../components/ImageComp";
+import { DataContext } from "../store/GlobalState";
+import tranEn from "../utils/Translations/en.json";
+import tranCh from "../utils/Translations/ch.json";
+import tranKh from "../utils/Translations/kh.json";
+const Home = (props) => {
   const router = useRouter();
+  const { state, dispatch } = useContext(DataContext);
+  const lang = state.lang.d_lang;
   const [status, setStatus] = useState("buy");
   const [type, setType] = useState("shop-house");
   const [location, setLocation] = useState("phnom-penh");
-
-  const searchRef = useRef();
+  const { home } = props;
+  const banner = home.banner;
+  const last_projects = home.last_projects;
+  const popular_locations = home.popular_locations;
+  const lastest_properties = home.lastest_properties;
+  const teams = home.consultants;
+  const searchRef = useRef(null);
   const handleSearchOption = () => {
     router.push(`/search?=/${status}&${type}&${location}`);
   };
+  const handleMoveToSection = (ref) => {
+    ref.current.scrollIntoView({ behavior: "smooth" });
+  };
+
+  let translations;
+  if (lang === "en") {
+    translations = tranEn;
+  } else if (lang === "kh") {
+    translations = tranKh;
+  } else if (lang === "ch") {
+    translations = tranCh;
+  }
 
   return (
     <Layout width={100}>
       <section className={`${styles._home_banner}`}>
         <div className={`myAnim ${styles.banner}`}>
-          {/* <SliderBanner auto={true} /> */}
           <div
             style={{
               width: "100%",
@@ -41,34 +65,23 @@ const Home = () => {
               background: "grey",
             }}
           >
-            <ImageSliderComp />
+            <ImageSliderComp data_img={banner.images} />
           </div>
           <div className={styles.banner_content}>
-            <span>This is The Banner the company</span>
             <div className={styles.content_title}>
-              <h2>This Website Show The Content of Real Estate</h2>
+              <h2>{banner.title}</h2>
             </div>
-            <p>
-              Real estate is a form of real property, meaning that it is
-              something you own that is attached to a piece of land. It can be
-              used for residential, commercial or industrial purposes, and
-              typically includes any resources on the land such as water or
-              minerals.
-            </p>
+            <p>{banner.description}</p>
             <div className={styles.banner_btn}>
-              <button
-                onClick={(e) => {
-                  searchRef.current.scrollIntoView({ behavior: "smooth" });
-                }}
-              >
-                Search
+              <button onClick={() => handleMoveToSection(searchRef)}>
+                {translations.Search}
               </button>
             </div>
           </div>
         </div>
       </section>
       <div className={styles.search_section} ref={searchRef}>
-        <h5>Find Your Dream Property</h5>
+        <h5>{translations.Search}</h5>
         <div className={styles.find_dream}>
           <div className={styles.selection_opt}>
             <select
@@ -119,24 +132,24 @@ const Home = () => {
           get status ={status} type = {type} location = {location}
         </div> */}
           <div className="btn btn-info" onClick={handleSearchOption}>
-            Submit
+            {translations.Search}
           </div>
         </div>
       </div>
 
       <div className={styles.last__project_container}>
-        <LastProjects />
+        <LastProjects data={last_projects} />
       </div>
 
       <div className={styles.interior_section}>
         <div className="reveal fade-bottom">
           <div className={styles.interior_title}>
             <div className={styles.interior_title_content}>
-              <h2>Popular Locations</h2>
+              <h2>{translations["Popular Location"]}</h2>
             </div>
           </div>
           <div>
-            <PopularLocation />
+            <PopularLocation data={popular_locations} />
           </div>
         </div>
       </div>
@@ -145,20 +158,21 @@ const Home = () => {
         <div className="reveal fade-bottom">
           <div className={`${styles.interior_title}`}>
             <div className={styles.interior_title_content}>
-              <h2>Lastest Properties</h2>
-              <button>More Blog</button>
+              <h2>{translations.latest_properties}</h2>
+              <button>see more</button>
             </div>
           </div>
           <div className={styles._home_blog__container}>
-            {blog.map((item, index) => {
+            {lastest_properties.map((item, index) => {
               return (
                 <React.Fragment key={index}>
-                  {lastestProperties(
-                    item.url,
-                    item.location,
-                    item.title,
+                  {LastestProperties(
+                    item.images[0].image_url,
+                    item.address,
+                    item.name,
                     item.price,
-                    item.sqrft
+                    item.sqrtft,
+                    item.status
                   )}
                 </React.Fragment>
               );
@@ -170,25 +184,23 @@ const Home = () => {
         <div className="reveal fade-bottom">
           <div className={`${styles.interior_title}`}>
             <div className={styles.interior_title_content}>
-              <h2>Professional Properties Consultants</h2>
+              <h2>{translations.pro_prop_consult}</h2>
               <button onClick={() => router.push("/our-team")}>
                 See Our Team
               </button>
             </div>
-            <div>
-              <p>Fint Interior designers and Architects for your project!</p>
-            </div>
           </div>
           <div className={styles.designers_and__architects}>
-            {data.slice(0, 4).map((item, index) => {
+            {teams.map((item, index) => {
               return (
                 <Accomplished
                   key={index}
                   id={item.id}
-                  url={item.url}
+                  url={item.image_url}
                   name={item.name}
                   profile={item.profile}
-                  accomplished={item.accomplished}
+                  projects={item.projects}
+                  position={item.position}
                   profile_details={item.id}
                 />
               );
@@ -202,13 +214,35 @@ const Home = () => {
 
 export default Home;
 
-const lastestProperties = (url, location, title, price, sqrft) => {
+export const getServerSideProps = async () => {
+  // const res = await fetch("/data.json");
+  const filePath = path.join(process.cwd(), "/public/home_page.json");
+  const jsonData = await fs.readFile(filePath, "utf8");
+  const data = JSON.parse(jsonData);
+  return {
+    props: {
+      home: data,
+    },
+  };
+};
+
+const LastestProperties = (url, location, title, price, sqrft, status) => {
+  let translations;
+  const { state, dispatch } = useContext(DataContext);
+  const lang = state.lang.d_lang;
+  if (lang === "en") {
+    translations = tranEn;
+  } else if (lang === "kh") {
+    translations = tranKh;
+  } else if (lang === "ch") {
+    translations = tranCh;
+  }
   return (
     <div className={styles._home_blog__card}>
       <div className={styles._home_card_image}>
-        <Image src={url} width={1000} height={1000} alt="b1" priority />
+        <ImageComp imageUrl={url} />
         <div className={styles._home_card_location}>
-          <span>Rent</span>
+          <span>{status}</span>
         </div>
         <Link className={styles._home_card_btn} href={"/properties/lastest/1"}>
           <FontAwesomeIcon
@@ -223,8 +257,12 @@ const lastestProperties = (url, location, title, price, sqrft) => {
           <p>${price}</p>
         </div>
         <div className="d-flex gap-1">
-          <p>Address:</p>
-          <span>{location}</span>
+          <p>{translations.Address}:</p>
+          <span>
+            {location.length > 20
+              ? location.substring(0, 20) + "....."
+              : location}
+          </span>
         </div>
         <div className={styles._home_card_sqrft}>sqrft:{sqrft}</div>
       </div>

@@ -1,0 +1,528 @@
+{
+  "banner": {
+    "title": "Sample JSON Object",
+    "description": "This is a sample JSON object with title, description, and multiple images.",
+    "images": [
+      {
+        "id": 1,
+        "image_url": "/images/tp1.jpg",
+        "caption": "Image 1"
+      },
+      {
+        "id": 2,
+        "image_url": "/images/tp2.jpg",
+        "caption": "Image 2"
+      },
+      { "id": 3, "image_url": "/images/tp3.jpg", "caption": "Image 3" }
+    ]
+  },
+  "last_projects": [
+    {
+      "id": 1,
+      "name": "Cozy Condo",
+      "type": "condo",
+      "address": "123 Main Street asdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdf",
+      "status": "For Sales",
+      "description": "A comfortable and modern condo in the heart of the city.",
+      "images": [
+        {
+          "id": 1,
+          "name": "Living Room",
+          "image_url": "/images/tb2.jpg",
+          "description": "Spacious living room with plenty of natural light."
+        },
+        {
+          "id": 2,
+          "name": "Bedroom",
+          "image_url": "/images/tp1.jpg",
+          "description": "Master bedroom with a queen-size bed."
+        },
+        {
+          "id": 3,
+          "name": "Kitchen",
+          "image_url": "/images/tp3.jpg",
+          "description": "Fully equipped kitchen with stainless steel appliances."
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "Modern House",
+      "type": "house",
+      "status": "For Rent",
+      "address": "456 Elm Street",
+      "description": "A stylish and contemporary house with a spacious backyard.",
+      "images": [
+        {
+          "id": 1,
+          "name": "Exterior",
+          "image_url": "/images/b1.jpg",
+          "description": "Beautifully designed exterior with a landscaped garden."
+        },
+        {
+          "id": 2,
+          "name": "Living Room",
+          "image_url": "/images/b2.jpg",
+          "description": "Open-concept living room with high ceilings."
+        },
+        {
+          "id": 3,
+          "name": "Backyard",
+          "image_url": "/images/tp3.jpg",
+          "description": "Large backyard with a patio and outdoor seating area."
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "name": "Spacious Apartment",
+      "type": "apartment",
+      "status": "For Rent",
+      "address": "789 Oak Avenue",
+      "description": "A roomy apartment with stunning views of the city skyline.",
+      "images": [
+        {
+          "id": 1,
+          "name": "Living Room",
+          "image_url": "/images/b4.jpg",
+          "description": "Generous living space with floor-to-ceiling windows."
+        },
+        {
+          "id": 2,
+          "name": "Bedroom",
+          "image_url": "/images/tp2.jpg",
+          "description": "Cozy bedroom with a walk-in closet."
+        },
+        {
+          "id": 3,
+          "name": "Balcony",
+          "image_url": "/images/tp3.jpg",
+          "description": "Private balcony overlooking the city."
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "name": "Luxury Condo",
+      "type": "condo",
+      "status": "For Sales",
+      "address": "321 Pine Street",
+      "description": "An upscale condo with top-of-the-line amenities and services.",
+      "images": [
+        {
+          "id": 1,
+          "name": "Living Room",
+          "image_url": "/images/tp2.jpg",
+          "description": "Elegant living room with designer furniture."
+        },
+        {
+          "id": 2,
+          "name": "Kitchen",
+          "image_url": "/images/tp3.jpg",
+          "description": "Gourmet kitchen with high-end appliances and marble countertops."
+        },
+        {
+          "id": 3,
+          "name": "Swimming Pool",
+          "image_url": "/images/tp1.jpg",
+          "description": "Resort-style swimming pool with a sun deck."
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "name": "Charming House",
+      "type": "house",
+      "status": "For Sales",
+      "address": "987 Maple Avenue",
+      "description": "A delightful house with a cozy atmosphere and a garden.",
+      "images": [
+        {
+          "id": 1,
+          "name": "Exterior",
+          "image_url": "/images/b5.jpg",
+          "description": "Quaint exterior with a white picket fence."
+        },
+        {
+          "id": 2,
+          "name": "Living Room",
+          "image_url": "/images/tp2.jpg",
+          "description": "Warm and inviting living room with a fireplace."
+        },
+        {
+          "id": 3,
+          "name": "Garden",
+          "image_url": "/images/tp2.jpg",
+          "description": "Beautifully landscaped garden with colorful flowers."
+        }
+      ]
+    }
+  ],
+  "popular_locations": [
+    {
+      "id": 1,
+      "location": "New York",
+      "image_url": "/images/b1.jpg"
+    },
+    {
+      "id": 2,
+      "location": "London",
+      "image_url": "/images/b2.jpg"
+    },
+    {
+      "id": 3,
+      "location": "Paris",
+      "image_url": "/images/b3.jpg"
+    },
+    {
+      "id": 4,
+      "location": "Tokyo",
+      "image_url": "/images/b4.jpg"
+    },
+    {
+      "id": 5,
+      "location": "Sydney",
+      "image_url": "/images/b5.jpg"
+    },
+    {
+      "id": 6,
+      "location": "Rome",
+      "image_url": "/images/b6.jpg"
+    }
+  ],
+  "lastest_properties": [
+    {
+      "id": 1,
+      "name": "Luxury Condo",
+      "price": 500000,
+      "sqrtft": 1500,
+      "status": "For Rent",
+      "property_type": "condo",
+      "listing_type": "For Sale",
+      "address": "123 Main Street",
+      "tenure": "Freehold",
+      "completed_year": 2020,
+      "units": 50,
+      "floor_size": 5,
+      "bedrooms": 3,
+      "description": "Spacious luxury condo with modern amenities.",
+      "images": [
+        {
+          "id": 1,
+          "name": "Living Room",
+          "description": "The spacious living room area.",
+          "image_url": "/images/b1.jpg"
+        },
+        {
+          "id": 2,
+          "name": "Bedroom",
+          "description": "Master bedroom with en-suite bathroom.",
+          "image_url": "/images/b6.jpg"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "Cozy Apartment",
+      "price": 2000,
+      "sqrtft": 800,
+      "status": "For Sales",
+      "property_type": "apartment",
+      "listing_type": "For Rent",
+      "address": "456 Elm StreetStreetStreetStreet",
+      "tenure": "Leasehold",
+      "completed_year": 2015,
+      "units": 20,
+      "floor_size": 3,
+      "bedrooms": 1,
+      "description": "Charming apartment in a quiet neighborhood.",
+      "images": [
+        {
+          "id": 1,
+          "name": "Kitchen",
+          "description": "Fully equipped kitchen with modern appliances.",
+          "image_url": "/images/b2.jpg"
+        },
+        {
+          "id": 2,
+          "name": "Living Room",
+          "description": "Cozy living room with natural light.",
+          "image_url": "https://example.com/images/4.jpg"
+        },
+        {
+          "id": 3,
+          "name": "Bedroom",
+          "description": "Comfortable bedroom with ample storage space.",
+          "image_url": "https://example.com/images/5.jpg"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "name": "Spacious House",
+      "price": 800000,
+      "sqrtft": 2500,
+      "property_type": "house",
+      "status": "For Rent",
+      "listing_type": "For Sale",
+      "address": "789 Oak Avenue",
+      "tenure": "Freehold",
+      "completed_year": 2005,
+      "units": 1,
+      "floor_size": 2,
+      "bedrooms": 4,
+      "description": "Beautiful house with a large backyard.",
+      "images": [
+        {
+          "id": 1,
+          "name": "Front View",
+          "description": "Exterior view of the house from the front.",
+          "image_url": "/images/b6.jpg"
+        },
+        {
+          "id": 2,
+          "name": "Living Room",
+          "description": "Spacious living room with fireplace.",
+          "image_url": "/images/b4.jpg"
+        },
+        {
+          "id": 3,
+          "name": "Kitchen",
+          "description": "Modern kitchen with granite countertops.",
+          "image_url": "/images/b6.jpg"
+        },
+        {
+          "id": 4,
+          "name": "Backyard",
+          "description": "Large backyard with a patio and garden.",
+          "image_url": "/images/b6.jpg"
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "name": "Modern Condo",
+      "price": 350000,
+      "sqrtft": 1200,
+      "status": "For Sales",
+      "property_type": "condo",
+      "listing_type": "For Sale",
+      "address": "10 Maple Lane",
+      "tenure": "Leasehold",
+      "completed_year": 2010,
+      "units": 30,
+      "floor_size": 6,
+      "bedrooms": 2,
+      "description": "Contemporary condo with stunning views.",
+      "images": [
+        {
+          "id": 1,
+          "name": "Living Room",
+          "description": "Open concept living room with large windows.",
+          "image_url": "/images/b3.jpg"
+        },
+        {
+          "id": 2,
+          "name": "Bedroom",
+          "description": "Comfortable bedroom with ample natural light.",
+          "image_url": "/images/b6.jpg"
+        },
+        {
+          "id": 3,
+          "name": "Balcony",
+          "description": "Private balcony overlooking the city skyline.",
+          "image_url": "/images/b6.jpg"
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "name": "Renovated Apartment",
+      "price": 1800,
+      "sqrtft": 900,
+      "status": "For Rent",
+      "property_type": "apartment",
+      "listing_type": "For Rent",
+      "address": "20 Pine Street",
+      "tenure": "Leasehold",
+      "completed_year": 2008,
+      "units": 10,
+      "floor_size": 4,
+      "bedrooms": 2,
+      "description": "Recently renovated apartment with modern finishes.",
+      "images": [
+        {
+          "id": 1,
+          "name": "Kitchen",
+          "description": "Stylish kitchen with stainless steel appliances.",
+          "image_url": "/images/b4.jpg"
+        },
+        {
+          "id": 2,
+          "name": "Living Room",
+          "description": "Spacious living room with hardwood floors.",
+          "image_url": "/images/b6.jpg"
+        }
+      ]
+    }
+  ],
+  "consultants": [
+    {
+      "id": "1001",
+      "name": "Alice Smith",
+      "position": "Marketing Manager",
+      "address": "1234 Elm Street, City A, Country X",
+      "phone_number": "+1 555-1234",
+      "email": "alice@example.com",
+      "profile": "/images/p1.png",
+      "projects": [
+        {
+          "image_id": "1",
+          "image_url": "/images/b6.jpg"
+        },
+        {
+          "image_id": "2",
+          "image_url": "/images/b6.jpg"
+        },
+        {
+          "image_id": "3",
+          "image_url": "/images/b6.jpg"
+        },
+        {
+          "image_id": "4",
+          "image_url": "/images/b6.jpg"
+        },
+        {
+          "image_id": "5",
+          "image_url": "/images/b6.jpg"
+        }
+      ]
+    },
+
+    {
+      "id": "1002",
+      "name": "Bob Johnson",
+      "position": "Sales Representative",
+      "address": "5678 Oak Street, City B, Country Y",
+      "phone_number": "+1 555-5678",
+      "email": "bob@example.com",
+      "profile": "/images/p2.png",
+      "projects": [
+        {
+          "image_id": "1",
+          "image_url": "/images/b6.jpg"
+        },
+        {
+          "image_id": "2",
+          "image_url": "/images/b6.jpg"
+        },
+        {
+          "image_id": "3",
+          "image_url": "/images/b6.jpg"
+        },
+        {
+          "image_id": "4",
+          "image_url": "/images/b6.jpg"
+        },
+        {
+          "image_id": "5",
+          "image_url": "/images/b6.jpg"
+        }
+      ]
+    },
+
+    {
+      "id": "1003",
+      "name": "Eva Chen",
+      "position": "Product Manager",
+      "address": "9876 Pine Street, City C, Country Z",
+      "phone_number": "+1 555-9876",
+      "email": "eva@example.com",
+      "profile": "/images/p3.png",
+      "projects": [
+        {
+          "image_id": "1",
+          "image_url": "/images/b6.jpg"
+        },
+        {
+          "image_id": "2",
+          "image_url": "/images/b6.jpg"
+        },
+        {
+          "image_id": "3",
+          "image_url": "/images/b6.jpg"
+        },
+        {
+          "image_id": "4",
+          "image_url": "/images/b6.jpg"
+        },
+        {
+          "image_id": "5",
+          "image_url": "/images/b6.jpg"
+        }
+      ]
+    },
+    {
+      "id": "1004",
+      "name": "David Lee",
+      "position": "Software Developer",
+      "address": "4321 Maple Street, City D, Country W",
+      "phone_number": "+1 555-4321",
+      "email": "david@example.com",
+      "profile": "/images/p4.png",
+      "projects": [
+        {
+          "image_id": "1",
+          "image_url": "/images/b6.jpg"
+        },
+        {
+          "image_id": "2",
+          "image_url": "/images/b6.jpg"
+        },
+        {
+          "image_id": "3",
+          "image_url": "/images/b6.jpg"
+        },
+        {
+          "image_id": "4",
+          "image_url": "/images/b6.jpg"
+        },
+        {
+          "image_id": "5",
+          "image_url": "/images/b6.jpg"
+        }
+      ]
+    },
+    {
+      "id": "1005",
+      "name": "Sarah Miller",
+      "position": "Graphic Designer",
+      "address": "7890 Walnut Street, City E, Country V",
+      "phone_number": "+1 555-7890",
+      "email": "sarah@example.com",
+      "profile": "/images/p5.png",
+      "projects": [
+        {
+          "image_id": "1",
+          "image_url": "/images/b6.jpg"
+        },
+        {
+          "image_id": "2",
+          "image_url": "/images/b6.jpg"
+        },
+        {
+          "image_id": "3",
+          "image_url": "/images/b6.jpg"
+        },
+        {
+          "image_id": "4",
+          "image_url": "/images/b6.jpg"
+        },
+        {
+          "image_id": "5",
+          "image_url": "/images/b6.jpg"
+        }
+      ]
+    }
+  ]
+}

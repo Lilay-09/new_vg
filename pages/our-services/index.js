@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import Layout from "../../sections/Layout";
 import styles from "../../styles/OurServices.module.css";
 import Image from "next/image";
@@ -6,7 +6,21 @@ import ScrollableContainer from "../../components/ScrollableContainer";
 import Title from "../../components/Title";
 import { Services } from "../../utils/data";
 import TiltleTile from "../../components/TiltleTile";
+import { DataContext } from "../../store/GlobalState";
+import tranEn from "../../utils/Translations/en.json";
+import tranKh from "../../utils/Translations/kh.json";
+import tranCh from "../../utils/Translations/ch.json";
 const OurServices = () => {
+  const { state, dispatch } = useContext(DataContext);
+  const lang = state.lang.d_lang;
+  let translations;
+  if (lang === "kh") {
+    translations = tranKh;
+  } else if (lang === "en") {
+    translations = tranEn;
+  } else if (lang === "ch") {
+    translations = tranCh;
+  }
   return (
     <Layout width={100}>
       <div className={`${styles._our_service_banner} _hidden_item`}>
@@ -38,7 +52,7 @@ const OurServices = () => {
 
       <div className={`${styles._categories_section} _hidden_item`}>
         <div style={{ width: "90%", margin: "0 auto 2rem auto" }}>
-          <TiltleTile title="Services" noMore />
+          <TiltleTile title={translations.category} noMore />
         </div>
         <div className={styles._categories_section_container}>
           <ScrollableContainer>
@@ -96,7 +110,7 @@ const OurServices = () => {
       {/* <div className="reveal"></div> */}
       <div className={`${styles._services_section} reveal`}>
         <div style={{ width: "90%", margin: "0 auto 2rem auto" }}>
-          <TiltleTile title="Services" noMore />
+          <TiltleTile title={translations["Our Services"]} noMore />
         </div>
         <div className={`${styles._services_card_container} `}>
           {Services.map((item, i) => {
@@ -119,11 +133,11 @@ const OurServices = () => {
                     <span>{item.name}</span>
                   </div>
                   <div>
-                    <p>Type:</p>
+                    <p>{translations.Type}:</p>
                     <p>{item.type}</p>
                   </div>
                   <div>
-                    <p>Location: </p>
+                    <p>{translations.Address}: </p>
                     <p>{item.location}</p>
                   </div>
                 </div>

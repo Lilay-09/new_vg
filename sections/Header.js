@@ -82,18 +82,20 @@ const Header = ({ title }) => {
   };
   const handleChangeLangs = (item, type) => {
     setCurrentLang(item);
-    console.log(type);
     dispatch({ type: "LANG", payload: { d_lang: type, flag: item } });
     localStorage.setItem("__lang_", type);
     localStorage.setItem("__lang_flag_", item);
+    setLangDrop(false);
   };
+  let getLang = swLang.d_lang;
+  let flag = swLang.flag;
 
   let translations;
-  if (swLang.d_lang === "kh") {
+  if (getLang === "kh") {
     translations = tranKh;
-  } else if (swLang.d_lang === "en") {
+  } else if (getLang === "en") {
     translations = tranEn;
-  } else if (swLang.d_lang === "ch") {
+  } else if (getLang === "ch") {
     translations = tranCh;
   }
   return (
@@ -148,23 +150,34 @@ const Header = ({ title }) => {
                 width={100}
                 height={100}
                 alt="selected_lang"
-                src={`/images/${currentLang}`}
+                src={`/images/${
+                  getLang == "kh"
+                    ? "khmer.png"
+                    : getLang == "en"
+                    ? "uk1.png"
+                    : getLang == "ch"
+                    ? "china.png"
+                    : "uk1.png"
+                }`}
+                priority
               />
             </div>
             {langDrop && (
               <div className={styles["selection_lang"]}>
                 {langs.map((item, i) => {
                   return (
-                    <div className={styles["lang_details"]} key={i}>
-                      <div
-                        className={styles["select_lang"]}
-                        onClick={() => handleChangeLangs(item.img, item.type)}
-                      >
+                    <div
+                      className={styles["lang_details"]}
+                      key={i}
+                      onClick={() => handleChangeLangs(item.img, item.type)}
+                    >
+                      <div className={styles["select_lang"]}>
                         <Image
                           width={100}
                           height={100}
                           alt="selected_lang"
                           src={`/images/${item.img}`}
+                          priority
                         />
                       </div>
 

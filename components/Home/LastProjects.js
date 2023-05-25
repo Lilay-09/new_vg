@@ -1,48 +1,63 @@
-import React from "react";
+import React, { useContext } from "react";
 import TiltleTile from "../TiltleTile";
 import styles from "../../styles/LastProject.module.css";
 import Image from "next/image";
 import Link from "next/link";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
-const LastProjects = () => {
-  let items = [
-    "/images/tp1.jpg",
-    "/images/tp2.jpg",
-    "/images/tb1.jpg",
-    "/images/pool.jpg",
-    "/images/house_pool.jpg",
-    "/images/kitchen.png",
-  ];
+import { DataContext } from "../../store/GlobalState";
+import tranEn from "../../utils/Translations/en.json";
+import tranCh from "../../utils/Translations/ch.json";
+import tranKh from "../../utils/Translations/kh.json";
+const LastProjects = ({ data }) => {
+  const { state, dispatch } = useContext(DataContext);
+  const lang = state.lang.d_lang;
+  let translations;
+  if (lang === "en") {
+    translations = tranEn;
+  } else if (lang === "kh") {
+    translations = tranKh;
+  } else if (lang === "ch") {
+    translations = tranCh;
+  }
+
   return (
     <div>
-      <TiltleTile title={"Last Projects"} href={"/project/all"} />
+      <TiltleTile title={translations.latest_project} href={"/project/all"} />
       <div className={styles.card__container}>
-        {items.map((item, index) => {
+        {data.map((item, index) => {
           return (
             <div className={styles.card__content} key={index}>
               <div className={styles.card__content_img}>
                 <Image
-                  src={item}
+                  src={item.images[0].image_url}
                   width={1000}
                   height={1000}
                   alt="building"
                   priority
                 />
-                <div className={styles.card_sts}>For Sales</div>
+                <div className={styles.card_sts}>{item.status}</div>
                 <Link href={`/project/details/1`} className={styles.view__item}>
                   <FontAwesomeIcon icon={faArrowRight} width={20} />
                 </Link>
               </div>
               <div className={styles.card__content_text}>
                 <h5>Project name</h5>
-                <div>
-                  <span className={styles.card_prop_name}>Type:</span>
-                  <span>Condo</span>
+                <div className="d-flex align-items-center gap-1">
+                  <span className={styles.card_prop_name}>
+                    {translations.Type}:
+                  </span>
+                  <span>{item.type}</span>
                 </div>
-                <div>
-                  <span className={styles.card_prop_name}> Address:</span>
-                  <span>8502 Preston Rd. Inglewood, Maine...</span>
+                <div className="d-flex gap-1">
+                  <span className={styles.card_prop_name}>
+                    {translations.Address}:
+                  </span>
+                  <span>
+                    {item.address.length > 25
+                      ? item.address.substring(0, 20) + "..."
+                      : item.address}
+                  </span>
                 </div>
               </div>
             </div>

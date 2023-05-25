@@ -7,12 +7,12 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Image from "next/image";
 import React, { useEffect, useRef, useState } from "react";
-const ImageSliderComp = () => {
+const ImageSliderComp = ({ data_img }) => {
   const nextBtnRef = useRef();
   const autoClick = () => {
     if (nextBtnRef.current) {
       nextBtnRef.current.click();
-      setTimeout(autoClick, 5000); // Adjust the delay (in milliseconds) as per your requirement
+      setTimeout(autoClick, 5000);
     }
   };
   const img = [
@@ -22,25 +22,26 @@ const ImageSliderComp = () => {
     { img: "/images/tp4.jpg" },
   ];
   const [count, setCount] = useState(0);
-  const [showBanner, setShowBanner] = useState(img[0].img);
+  const [showBanner, setShowBanner] = useState(data_img[0].image_url);
 
   const handleNext = () => {
-    if (count === img.length - 1) {
-      setCount(1);
-      setShowBanner(img[0].img);
+    setCount(count + 1);
+    if (count === data_img.length - 1) {
+      setCount(0);
+      setShowBanner(data_img[0].image_url);
     } else {
       setCount(count + 1);
-      setShowBanner(img[count + 1].img);
+      setShowBanner(data_img[count + 1].image_url);
     }
   };
 
   const handlePrev = () => {
     if (count === 0) {
-      setCount(img.length - 1);
-      setShowBanner(img[img.length - 1].img);
+      setCount(data_img.length - 1);
+      setShowBanner(data_img[data_img.length - 1].image_url);
     } else {
       setCount(count - 1);
-      setShowBanner(img[count - 1].img);
+      setShowBanner(data_img[count - 1].image_url);
     }
   };
 
@@ -61,16 +62,16 @@ const ImageSliderComp = () => {
         </div>
       </div>
       <div className={`_banner_dot`}>
-        {img.map((item, i) => {
+        {data_img.map((item, i) => {
           return (
             <div
-              key={item.img}
+              key={item.id}
               onClick={() => {
-                setShowBanner(item.img);
+                setShowBanner(item.image_url);
                 setCount(i);
               }}
               className={`banner_img_dot ${
-                showBanner === item.img && "active_slide"
+                showBanner === item.image_url && "active_slide"
               }`}
             ></div>
           );

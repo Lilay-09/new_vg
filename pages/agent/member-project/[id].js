@@ -6,8 +6,6 @@ import { data } from "../../../utils/data";
 
 const PersonProject = (props) => {
   const { fetctData, numbID, childID } = props;
-  console.log(childID);
-  console.log(numbID);
   return (
     <Layout width={100}>
       {fetctData.map((item, i) => {

@@ -5,5 +5,27 @@
   "Our Properties": "还没有翻译",
   "About Us": "还没有翻译",
   "Careers": "还没有翻译",
-  "Contact Us": "还没有翻译"
+  "Contact Us": "还没有翻译",
+
+  "Address": "Address",
+  "Type": "Type",
+  "Position": "Position",
+  "Email": "Email",
+  "Search": "Search",
+  "Popular Location": "ទីតាំងពេញនិយម",
+  "Name": "Name",
+  "team_manager": "Team Manager",
+  "team_memebers": "Team Members",
+  "phone": "Phone",
+  "category": "ប្រភេទ",
+  "latest_project": "Latest Projects",
+  "latest_properties": "Lastest Properties",
+  "pro_prop_consult": "Professional Properties Consultants",
+
+  "term": "Term",
+  "Quilfication": "Quilfication",
+  "Language": "Language",
+  "sex": "Sex",
+  "year_exp": "Year of Experience",
+  "salary": "Salary"
 }

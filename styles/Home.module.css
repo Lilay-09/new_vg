@@ -16,7 +16,7 @@
   gap: 2vw;
   flex-flow: column;
   width: 80%;
-  z-index: 1;
+  /* z-index: 1; */
   height: 100%;
   margin: 0 auto;
   left: 0;
@@ -45,6 +45,7 @@
 .banner_btn button {
   border: none;
   padding: 0.6rem 2rem;
+  z-index: 100;
   font-weight: 600;
 }
 .banner_btn {

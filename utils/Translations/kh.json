@@ -5,5 +5,27 @@
   "Our Properties": "អចលនទ្រព្យ",
   "About Us": "អំពី",
   "Careers": "ការងារ",
-  "Contact Us": "ទំនាក់ទំនង"
+  "Contact Us": "ទំនាក់ទំនង",
+
+  "Address": "អាស័យដ្ឋាន",
+  "Type": "ប្រភេទ",
+  "Position": "ផ្នែក",
+  "Email": "អ៊ីម៊ែល",
+  "Search": "ស្វែងរក",
+  "Popular Location": "ទីតាំងពេញនិយម",
+  "Name": "ឈ្មោះ",
+  "team_manager": "ប្រធាន",
+  "team_members": "សមាជិក",
+  "phone": "ទូរស័ព្ទ",
+  "category": "ប្រភេទ",
+  "latest_project": "គម្រោងថ្មី",
+  "latest_properties": "អចលនទ្រព្យថ្មី",
+  "pro_prop_consult": "អ្នកប្រឹក្សា",
+
+  "term": "ម៉ោង",
+  "Quilfication": "កម្រិត",
+  "Language": "ភាសា",
+  "sex": "ភេទ",
+  "year_exp": "បទពិសោធន៏",
+  "salary": "ប្រាក់​បៀរវត្តន៏"
 }

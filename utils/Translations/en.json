@@ -5,5 +5,27 @@
   "Our Properties": "Our Prperties",
   "About Us": "About Us",
   "Careers": "Careers",
-  "Contact Us": "Contact Us"
+  "Contact Us": "Contact Us",
+
+  "Address": "Address",
+  "Type": "Type",
+  "Position": "Position",
+  "Email": "Email",
+  "Search": "Search",
+  "Popular Location": "Popular Location",
+  "Name": "Name",
+  "team_manager": "Team Manager",
+  "team_memebers": "Team Members",
+  "phone": "Phone",
+  "category": "Categories",
+  "latest_project": "Latest Projects",
+  "latest_properties": "Lastest Properties",
+  "pro_prop_consult": "Professional Properties Consultants",
+
+  "term": "Term",
+  "Quilfication": "Quilfication",
+  "Language": "Language",
+  "sex": "Sex",
+  "year_exp": "Year of Experience",
+  "salary": "Salary"
 }

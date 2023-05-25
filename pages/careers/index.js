@@ -5,12 +5,26 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Image from "next/image";
-import React from "react";
+import React, { useContext } from "react";
 import BannerImg from "../../components/BannerImg";
 import GoogleMapComp from "../../components/GoogleMapComp";
 import Layout from "../../sections/Layout";
 import styles from "../../styles/Careers.module.css";
+import tranCh from "../../utils/Translations/ch.json";
+import tranEn from "../../utils/Translations/en.json";
+import tranKh from "../../utils/Translations/kh.json";
+import { DataContext } from "../../store/GlobalState";
 const Careers = () => {
+  const { state, dispatch } = useContext(DataContext);
+  const lang = state.lang.d_lang;
+  let translations;
+  if (lang === "en") {
+    translations = tranEn;
+  } else if (lang === "kh") {
+    translations = tranKh;
+  } else if (lang === "ch") {
+    translations = tranCh;
+  }
   return (
     <Layout noFind noSlide>
       <div
@@ -21,13 +35,13 @@ const Careers = () => {
         <div className="p-4 d-flex flex-column gap-3">
           <h4>Job Announcements</h4>
           <span className="text-muted">February 22, 2023</span>
-          <span>Position: Seller</span>
-          <span>Term: Full-Time</span>
-          <span>Qualification: Bachelor Degree</span>
-          <span>Language: English and Khmer-Good</span>
-          <span>Sex: Male/Female</span>
-          <span>Year of Experience: None</span>
-          <span>Salary: Negotiate </span>
+          <span>{translations.Position}: Seller</span>
+          <span>{translations.term}: Full-Time</span>
+          <span>{translations.Quilfication}: Bachelor Degree</span>
+          <span>{translations.Language}: English and Khmer-Good</span>
+          <span>{translations.sex}: Male/Female</span>
+          <span>{translations.year_exp}: None</span>
+          <span>{translations.salary}: Negotiate </span>
           <div className={styles.job_lst}>
             <span>Job Description</span>
             <ul>
@@ -40,7 +54,7 @@ const Careers = () => {
             </ul>
           </div>
           <div className={styles.job_lst}>
-            <span>Job Description</span>
+            <span>JOB REQUIREMENTS</span>
             <ul>
               <li>No experience is acceptable</li>
               <li>At least 2nd year university student</li>
