@@ -1,15 +1,24 @@
 import Image from "next/image";
-import React, { useRef } from "react";
-import BannerImg from "../../components/BannerImg";
-import Layout from "../../sections/Layout";
-import styles from "../../styles/AboutUs.module.css";
+import React, { useEffect, useRef, useState } from "react";
+import BannerImg from "../../../components/BannerImg";
+import Layout from "../../../sections/Layout";
+import styles from "../../../styles/AboutUs.module.css";
+import { useRouter } from "next/router";
 
 const AboutUs = () => {
   const aboutRef = useRef();
+  const router = useRouter();
   const accRef = useRef();
+  const [mainUrl, setMainUrl] = useState("");
   const handleMoveToSection = (ref) => {
     ref.current.scrollIntoView({ behavior: "smooth" });
   };
+
+  useEffect(() => {
+    const url = window.location.origin;
+    setMainUrl(url);
+  }, []);
+
   return (
     <Layout width={100}>
       <div className={`${styles.__banner} _hidden_item`}>

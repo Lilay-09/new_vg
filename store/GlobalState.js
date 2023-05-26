@@ -1,5 +1,6 @@
 import React, { createContext, useEffect, useReducer } from "react";
 import { reducers } from "./reducers";
+import { useRouter } from "next/router";
 
 export const DataContext = createContext();
 const GlobalState = ({ children }) => {
@@ -7,15 +8,31 @@ const GlobalState = ({ children }) => {
     lang: { d_lang: "en", flag: "uk1.png" },
   };
   const [state, dispatch] = useReducer(reducers, initialState);
-
+  const router = useRouter();
   useEffect(() => {
     const __get_languague__ = localStorage.getItem("__lang_");
-    const __get_lang_flag_ = localStorage.getItem("__lang_flag_");
+    const url = window.location.origin;
+    var currentURL = window.location.href;
+    const asPath = router.asPath.slice(1, 3);
+    console.log("url", currentURL, "path", asPath);
     dispatch({
       type: "LANG",
-      payload: { d_lang: __get_languague__, flag: __get_lang_flag_ },
+      payload: {
+        d_lang:
+          typeof __get_languague__ === "undefined"
+            ? __get_languague__
+            : `${
+                asPath.length <= 0
+                  ? "en"
+                  : asPath === "kh"
+                  ? "kh"
+                  : asPath === "ch"
+                  ? "ch"
+                  : "en"
+              }`,
+      },
     });
-  }, []);
+  }, [router]);
   return (
     <DataContext.Provider value={{ state, dispatch }}>
       {children}

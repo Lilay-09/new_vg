@@ -1,9 +1,9 @@
 import React, { useEffect, useRef, useState } from "react";
-import Layout from "../../sections/Layout";
-import styles from "../../styles/Properties.module.css";
+import Layout from "../../../sections/Layout";
+import styles from "../../../styles/Properties.module.css";
 import Image from "next/image";
-import InputComp from "../../components/InputComp";
-import { Services, city_provinces } from "../../utils/data";
+import InputComp from "../../../components/InputComp";
+import { Services, city_provinces } from "../../../utils/data";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faCaretDown,
@@ -13,7 +13,7 @@ import {
   faSlidersH,
 } from "@fortawesome/free-solid-svg-icons";
 import { useRouter } from "next/router";
-import PaginationBtn from "../../components/PaginationBtn";
+import PaginationBtn from "../../../components/PaginationBtn";
 const OurProperty = () => {
   const forDD = [
     { type: "Shop House" },

@@ -97,7 +97,7 @@ const Footer = () => {
             <h4>More About Us</h4>
           </div>
           <div className={styles.link_}>
-            <Link className="nav-link" href="/">
+            {/* <Link className="nav-link" href="/">
               <FontAwesomeIcon icon={faHome} width={18} />
               {translations.Home}
             </Link>
@@ -124,7 +124,7 @@ const Footer = () => {
             <Link className="nav-link" href="/contact-us">
               <FontAwesomeIcon icon={faAddressCard} width={18} />
               {translations["Contact Us"]}
-            </Link>
+            </Link> */}
           </div>
         </div>
         <div className={styles.footer_content}>

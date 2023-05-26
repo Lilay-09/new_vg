@@ -1,23 +1,24 @@
 import React, { useContext } from "react";
-import Layout from "../../sections/Layout";
-import styles from "../../styles/OurServices.module.css";
+import Layout from "../../../sections/Layout";
+import styles from "../../../styles/OurServices.module.css";
 import Image from "next/image";
-import ScrollableContainer from "../../components/ScrollableContainer";
-import Title from "../../components/Title";
-import { Services } from "../../utils/data";
-import TiltleTile from "../../components/TiltleTile";
-import { DataContext } from "../../store/GlobalState";
-import tranEn from "../../utils/Translations/en.json";
-import tranKh from "../../utils/Translations/kh.json";
-import tranCh from "../../utils/Translations/ch.json";
+import ScrollableContainer from "../../../components/ScrollableContainer";
+import Title from "../../../components/Title";
+import { Services } from "../../../utils/data";
+import TiltleTile from "../../../components/TiltleTile";
+import { DataContext } from "../../../store/GlobalState";
+import tranEn from "../../../utils/Translations/en.json";
+import tranKh from "../../../utils/Translations/kh.json";
+import tranCh from "../../../utils/Translations/ch.json";
 const OurServices = () => {
   const { state, dispatch } = useContext(DataContext);
   const lang = state.lang.d_lang;
+  const asPath = state.lang.asPath;
   let translations;
-  if (lang === "kh") {
-    translations = tranKh;
-  } else if (lang === "en") {
+  if (lang === "en") {
     translations = tranEn;
+  } else if (lang === "kh") {
+    translations = tranKh;
   } else if (lang === "ch") {
     translations = tranCh;
   }

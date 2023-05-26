@@ -1,11 +1,15 @@
-import React, { useEffect, useRef, useState } from "react";
-import Layout from "../../sections/Layout";
-import styles from "../../styles/Contact/ContacUs.module.css";
+import React, { useContext, useEffect, useRef, useState } from "react";
+import Layout from "../../../sections/Layout";
+import styles from "../../../styles/Contact/ContacUs.module.css";
 import Image from "next/image";
-import InputComp from "../../components/InputComp";
-import BtnComp from "../../components/BtnComp";
-import GoogleMapComp from "../../components/GoogleMapComp";
-import ScrollableContainer from "../../components/ScrollableContainer";
+import InputComp from "../../../components/InputComp";
+import BtnComp from "../../../components/BtnComp";
+import GoogleMapComp from "../../../components/GoogleMapComp";
+import ScrollableContainer from "../../../components/ScrollableContainer";
+import tranEn from "../../../utils/Translations/en.json";
+import tranKh from "../../../utils/Translations/kh.json";
+import tranCh from "../../../utils/Translations/ch.json";
+import { DataContext } from "../../../store/GlobalState";
 const ContactUs = () => {
   const emailRef = useRef();
   const mapRef = useRef();
@@ -48,6 +52,17 @@ const ContactUs = () => {
       document.removeEventListener("mousedown", handleOpenMenu, true);
     };
   });
+  const { state, dispatch } = useContext(DataContext);
+  const lang = state.lang.d_lang;
+  const asPath = state.lang.asPath;
+  let translations;
+  if (lang === "en") {
+    translations = tranEn;
+  } else if (lang === "kh") {
+    translations = tranKh;
+  } else if (lang === "ch") {
+    translations = tranCh;
+  }
   return (
     <Layout width={90}>
       <div className={`${styles.contact_banner} _hidden_item`}>

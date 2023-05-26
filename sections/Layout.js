@@ -5,7 +5,7 @@ import styles from "../styles/Layout.module.css";
 import Header from "./Header";
 import UsewindowSize from "../utils/windowSize";
 
-const Layout = ({ title, children, noSlide, noFind, map, width }) => {
+const Layout = ({ title, children, noSlide, noFind, map, width, path }) => {
   const size = UsewindowSize();
   useEffect(() => {
     function reveal() {
@@ -84,7 +84,7 @@ const Layout = ({ title, children, noSlide, noFind, map, width }) => {
   };
   return (
     <div className="body">
-      <Header title={title ? `${title} ~ Vanguard` : "Vanguard"} />
+      <Header title={title ? `${title} ~ Vanguard` : "Vanguard"} path={path} />
 
       <main style={main}>{children}</main>
 

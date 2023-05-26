@@ -6,14 +6,14 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Image from "next/image";
 import React, { useContext } from "react";
-import BannerImg from "../../components/BannerImg";
-import GoogleMapComp from "../../components/GoogleMapComp";
-import Layout from "../../sections/Layout";
-import styles from "../../styles/Careers.module.css";
-import tranCh from "../../utils/Translations/ch.json";
-import tranEn from "../../utils/Translations/en.json";
-import tranKh from "../../utils/Translations/kh.json";
-import { DataContext } from "../../store/GlobalState";
+import BannerImg from "../../../components/BannerImg";
+import GoogleMapComp from "../../../components/GoogleMapComp";
+import Layout from "../../../sections/Layout";
+import styles from "../../../styles/Careers.module.css";
+import tranCh from "../../../utils/Translations/ch.json";
+import tranEn from "../../../utils/Translations/en.json";
+import tranKh from "../../../utils/Translations/kh.json";
+import { DataContext } from "../../../store/GlobalState";
 const Careers = () => {
   const { state, dispatch } = useContext(DataContext);
   const lang = state.lang.d_lang;

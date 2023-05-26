@@ -5,11 +5,13 @@
   top: 0;
   width: 100%;
   /* display: flex; */
+  /* color: white !important; */
 }
 .navbar_container_relative {
   width: 100%;
-  background-color: white;
+  background-color: transparent;
 }
+
 .navbar {
   width: 85%;
   margin: 0 auto;

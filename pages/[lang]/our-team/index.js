@@ -1,22 +1,22 @@
 import React, { useContext, useEffect } from "react";
-import Layout from "../../sections/Layout";
-import styles from "../../styles/OurTeam.module.css";
+import Layout from "../../../sections/Layout";
+import styles from "../../../styles/OurTeam.module.css";
 import Image from "next/image";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { data } from "../../utils/data";
 import { faArrowUp } from "@fortawesome/free-solid-svg-icons";
 import Link from "next/link";
 import path from "path";
 import fs from "fs/promises";
-import tranEn from "../../utils/Translations/en.json";
-import tranKh from "../../utils/Translations/kh.json";
-import tranCh from "../../utils/Translations/ch.json";
-import { DataContext } from "../../store/GlobalState";
+import tranEn from "../../../utils/Translations/en.json";
+import tranKh from "../../../utils/Translations/kh.json";
+import tranCh from "../../../utils/Translations/ch.json";
+import { DataContext } from "../../../store/GlobalState";
 
 const OurTeam = (props) => {
   const { teams } = props;
   const { state, dispatch } = useContext(DataContext);
   const lang = state.lang.d_lang;
+  const asPath = state.lang.asPath;
   let translations;
   if (lang === "en") {
     translations = tranEn;
@@ -267,68 +267,6 @@ const OurTeam = (props) => {
                 </div>
               );
             })}
-            {/* {data.slice(0, 5).map((item, i) => {
-              return (
-                <div className={styles._team_member_card} key={i}>
-                  <div className={styles._team_member_card_img}>
-                    <Image
-                      src={`/${item.profile}`}
-                      width={500}
-                      height={500}
-                      alt="p1"
-                      priority
-                    />
-                  </div>
-                  <div className={styles._team_details_card}>
-                    <div className={styles._team_member_media}>
-                      <div className={styles.media_avatar1}>
-                        <Image
-                          src={"/images/send.png"}
-                          width={200}
-                          height={200}
-                          alt="tele"
-                          priority
-                        />
-                      </div>
-                      <div className={styles.media_avatar1}>
-                        <Image
-                          src={"/images/facebook.png"}
-                          width={200}
-                          height={200}
-                          alt="tele"
-                          priority
-                        />
-                      </div>
-                      <div className={styles.media_avatar1}>
-                        <Image
-                          src={"/images/twit.png"}
-                          width={200}
-                          height={200}
-                          alt="tele"
-                          priority
-                        />
-                      </div>
-                      <div className={styles.media_avatar1}>
-                        <Image
-                          src={"/images/yt.png"}
-                          width={200}
-                          height={200}
-                          alt="tele"
-                          priority
-                        />
-                      </div>
-                    </div>
-                    <div className={styles._team__pos}>
-                      <h4>{item.name}</h4>
-                      <div>
-                        <p>Phone: {item.phone}</p>
-                      </div>
-                      <Link href={`/agent/${item.id}`}>View Page</Link>
-                    </div>
-                  </div>
-                </div>
-              );
-            })} */}
           </div>
         </div>
       </div>

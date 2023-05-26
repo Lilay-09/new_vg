@@ -56,7 +56,7 @@ const Accomplished = (props) => {
                     src={`${item.image_url}`}
                     width={300}
                     height={300}
-                    alt={item.url}
+                    alt={item.image_url}
                     priority
                   />
                   <div className={styles.member__pro_status}>Sale</div>

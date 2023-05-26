@@ -37,12 +37,19 @@ const Home = (props) => {
   const lastest_properties = home.lastest_properties;
   const teams = home.consultants;
   const searchRef = useRef(null);
+
   const handleSearchOption = () => {
     router.push(`/search?=/${status}&${type}&${location}`);
   };
   const handleMoveToSection = (ref) => {
     ref.current.scrollIntoView({ behavior: "smooth" });
   };
+
+  const [mainUrl, setMainUrl] = useState("");
+  useEffect(() => {
+    const url = window.location.origin;
+    setMainUrl(url);
+  }, []);
 
   let translations;
   if (lang === "en") {
@@ -53,8 +60,18 @@ const Home = (props) => {
     translations = tranCh;
   }
 
+  // const handleAddString = () => {
+  //   const newString = "/additional-path"; // Replace with the desired string
+
+  //   const currentURL = router.asPath;
+  //   const newURL = currentURL + newString;
+
+  //   router.push(newURL, undefined, { shallow: true });
+  // };
+  // console.log(router.asPath);
+
   return (
-    <Layout width={100}>
+    <Layout width={100} path={"/"}>
       <section className={`${styles._home_banner}`}>
         <div className={`myAnim ${styles.banner}`}>
           <div

@@ -16,13 +16,13 @@ const PopularLocation = ({ data }) => {
             key={item.id}
             className={`${styles.interior__design_card}`}
             onClick={() => {
-              router.push(`categories/buy/`);
+              router.push(`categories/buy/${item.location}`);
             }}
           >
             <ImageComp imageUrl={item.image_url} />
             <p className={styles.popular_place}>
               <FontAwesomeIcon icon={faLocationDot} width={20} />
-              Phnom Penh
+              {item.location}
             </p>
           </div>
         );
