@@ -5,7 +5,7 @@ import { useRouter } from "next/router";
 export const DataContext = createContext();
 const GlobalState = ({ children }) => {
   const initialState = {
-    lang: { d_lang: "en", flag: "uk1.png" },
+    lang: { d_lang: "en" },
   };
   const [state, dispatch] = useReducer(reducers, initialState);
   const router = useRouter();
