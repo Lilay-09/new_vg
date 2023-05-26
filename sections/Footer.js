@@ -22,18 +22,9 @@ import tranCh from "../utils/Translations/ch.json";
 import tranEn from "../utils/Translations/en.json";
 import tranKh from "../utils/Translations/kh.json";
 const Footer = () => {
-  const [menuDropDown, setMenuDropDown] = useState(false);
   const { state, dispatch } = useContext(DataContext);
   const lang = state.lang.d_lang;
-
-  let translations;
-  if (lang === "kh") {
-    translations = tranKh;
-  } else if (lang === "ch") {
-    translations = tranCh;
-  } else if (lang === "en") {
-    translations = tranEn;
-  }
+  const [menuDropDown, setMenuDropDown] = useState(false);
   return (
     <div className={`${styles.__foot_container} reveal`}>
       <div className={styles.footer}>
@@ -97,7 +88,7 @@ const Footer = () => {
             <h4>More About Us</h4>
           </div>
           <div className={styles.link_}>
-            {/* <Link className="nav-link" href="/">
+            <Link className="nav-link" href="/">
               <FontAwesomeIcon icon={faHome} width={18} />
               {translations.Home}
             </Link>
@@ -119,12 +110,12 @@ const Footer = () => {
             </Link>
             <Link className="nav-link" href="/careers">
               <FontAwesomeIcon icon={faChalkboard} width={18} />
-              {translations.Careers}
+              Careers
             </Link>
             <Link className="nav-link" href="/contact-us">
               <FontAwesomeIcon icon={faAddressCard} width={18} />
-              {translations["Contact Us"]}
-            </Link> */}
+              Contact Us
+            </Link>
           </div>
         </div>
         <div className={styles.footer_content}>

@@ -71,7 +71,8 @@ a {
     color: white;
     background: black;
   }
-} */
+}
+*/
 .scrollable {
   margin-left: 1.6vw;
   scroll-behavior: smooth;
@@ -326,3 +327,8 @@ section {
 @import url("./swiper.css");
 @import url("./Contact/Contact.css");
 @import url("./paginaiton_style.css");
+
+@import "./image_slider.css";
+@import "./Header/header.css";
+@import "./ProduceDetail/ProductDetails.css";
+@import "./properties.css";

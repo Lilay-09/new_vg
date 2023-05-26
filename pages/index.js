@@ -148,7 +148,10 @@ const Home = (props) => {
           {/* <div>
           get status ={status} type = {type} location = {location}
         </div> */}
-          <div className="btn btn-info" onClick={handleSearchOption}>
+          <div
+            className={`btn ${styles["btn_search"]}`}
+            onClick={handleSearchOption}
+          >
             {translations.Search}
           </div>
         </div>

@@ -11,6 +11,7 @@ import Head from "next/head";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import React, { useContext, useEffect, useMemo, useRef, useState } from "react";
+
 import ActiveLink from "../components/ActiveLink";
 import BtnComp from "../components/BtnComp";
 import styles from "../styles/Header/Header.module.css";
@@ -26,10 +27,12 @@ const Header = ({ title, path }) => {
     { img: "khmer.png", lang: "Khmer", type: "kh" },
     { img: "china.png", lang: "Chinese", type: "ch" },
   ];
-  const { state, dispatch } = useContext(DataContext);
 
-  const swLang = state.lang;
   const router = useRouter();
+
+  const { state, dispatch } = useContext(DataContext);
+  const swLang = state.lang;
+  const [currentLang, setCurrentLang] = useState(swLang.flag);
   const [isOpenMenu, setOpenMenu] = useState(false);
   const menuRef = useRef();
   const xREf = useRef();
