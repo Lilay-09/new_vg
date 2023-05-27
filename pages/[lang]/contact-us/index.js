@@ -6,9 +6,6 @@ import InputComp from "../../../components/InputComp";
 import BtnComp from "../../../components/BtnComp";
 import GoogleMapComp from "../../../components/GoogleMapComp";
 import ScrollableContainer from "../../../components/ScrollableContainer";
-import tranEn from "../../../utils/Translations/en.json";
-import tranKh from "../../../utils/Translations/kh.json";
-import tranCh from "../../../utils/Translations/ch.json";
 import { DataContext } from "../../../store/GlobalState";
 const ContactUs = () => {
   const emailRef = useRef();
@@ -53,16 +50,8 @@ const ContactUs = () => {
     };
   });
   const { state, dispatch } = useContext(DataContext);
-  const lang = state.lang.d_lang;
-  const asPath = state.lang.asPath;
-  let translations;
-  if (lang === "en") {
-    translations = tranEn;
-  } else if (lang === "kh") {
-    translations = tranKh;
-  } else if (lang === "ch") {
-    translations = tranCh;
-  }
+  let translations = state.trans;
+
   return (
     <Layout width={90}>
       <div className={`${styles.contact_banner} _hidden_item`}>
@@ -87,7 +76,7 @@ const ContactUs = () => {
                 priority
               />
               <div className="">
-                <h5>Contact Us Via:</h5>
+                <h5>{translations.contact_us_via}:</h5>
               </div>
             </div>
             <div className={styles._contact_media}>
@@ -102,7 +91,7 @@ const ContactUs = () => {
                   alt="communicate"
                   priority
                 />
-                Email
+                {translations.email}
               </div>
               <div className={styles._contact_media_avatar}>
                 <div
@@ -184,7 +173,7 @@ const ContactUs = () => {
                   alt="communicate"
                   priority
                 />
-                Visit Us
+                {translations.visit_us}
               </div>
             </div>
           </div>

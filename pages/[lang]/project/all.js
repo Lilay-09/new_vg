@@ -1,6 +1,6 @@
 import React from "react";
-import Layout from "../../sections/Layout";
-import FilterSearch from "../../components/FilterSearch";
+import Layout from "../../../sections/Layout";
+import FilterSearch from "../../../components/FilterSearch";
 
 const AllProject = () => {
   return (

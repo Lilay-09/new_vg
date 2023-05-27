@@ -21,9 +21,13 @@ import { DataContext } from "../store/GlobalState";
 import tranCh from "../utils/Translations/ch.json";
 import tranEn from "../utils/Translations/en.json";
 import tranKh from "../utils/Translations/kh.json";
+import { useRouter } from "next/router";
 const Footer = () => {
+  const router = useRouter();
   const { state, dispatch } = useContext(DataContext);
-  const lang = state.lang.d_lang;
+  const changeLng = state.lang.d_lang;
+  const translations = state.trans;
+  const locAspath = router.asPath;
   const [menuDropDown, setMenuDropDown] = useState(false);
   return (
     <div className={`${styles.__foot_container} reveal`}>
@@ -88,34 +92,37 @@ const Footer = () => {
             <h4>More About Us</h4>
           </div>
           <div className={styles.link_}>
-            {/* <Link className="nav-link" href="/">
+            <Link
+              className="nav-link"
+              href={locAspath.length <= 1 ? "/" : `/${changeLng}`}
+            >
               <FontAwesomeIcon icon={faHome} width={18} />
-              {translations.Home}
+              {translations.home}
             </Link>
-            <Link className="nav-link" href="/our-team">
+            <Link className="nav-link" href={`/${changeLng}/our-team`}>
               <FontAwesomeIcon icon={faUserGroup} width={18} />
-              {translations["Our Team"]}
+              {translations.our_team}
             </Link>
-            <Link className="nav-link" href="/our-services">
+            <Link className="nav-link" href={`/${changeLng}/our-services`}>
               <FontAwesomeIcon icon={faBookmark} width={18} />
-              {translations["Our Services"]}
+              {translations.our_services}
             </Link>
-            <Link className="nav-link" href="/properties">
+            <Link className="nav-link" href={`/${changeLng}/properties`}>
               <FontAwesomeIcon icon={faBuilding} width={18} />
-              {translations["Our Properties"]}
+              {translations.our_properties}
             </Link>
-            <Link className="nav-link" href="/about-us">
+            <Link className="nav-link" href={`/${changeLng}/about-us`}>
               <FontAwesomeIcon icon={faUsers} width={18} />
-              {translations["About Us"]}
+              {translations.about_us}
             </Link>
-            <Link className="nav-link" href="/careers">
+            <Link className="nav-link" href={`/${changeLng}/careers`}>
               <FontAwesomeIcon icon={faChalkboard} width={18} />
-              Careers
+              {translations.careers}
             </Link>
-            <Link className="nav-link" href="/contact-us">
+            <Link className="nav-link" href={`/${changeLng}/contact-us`}>
               <FontAwesomeIcon icon={faAddressCard} width={18} />
-              Contact Us
-            </Link> */}
+              {translations.contact_us}
+            </Link>
           </div>
         </div>
         <div className={styles.footer_content}>

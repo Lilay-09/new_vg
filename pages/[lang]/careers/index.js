@@ -35,10 +35,10 @@ const Careers = () => {
         <div className="p-4 d-flex flex-column gap-3">
           <h4>Job Announcements</h4>
           <span className="text-muted">February 22, 2023</span>
-          <span>{translations.Position}: Seller</span>
+          <span>{translations.position}: Seller</span>
           <span>{translations.term}: Full-Time</span>
-          <span>{translations.Quilfication}: Bachelor Degree</span>
-          <span>{translations.Language}: English and Khmer-Good</span>
+          <span>{translations.quilfication}: Bachelor Degree</span>
+          <span>{translations.language}: English and Khmer-Good</span>
           <span>{translations.sex}: Male/Female</span>
           <span>{translations.year_exp}: None</span>
           <span>{translations.salary}: Negotiate </span>

@@ -10,24 +10,34 @@
       "profile": "/images/p1.png",
       "projects": [
         {
-          "image_id": "1",
-          "image_url": "https://example.com/images/alice/1.jpg"
+          "id": "1",
+          "image_url": "/images/b1.jpg",
+          "type": "apartment",
+          "location": "Rome"
         },
         {
-          "image_id": "2",
-          "image_url": "https://example.com/images/alice/2.jpg"
+          "id": "2",
+          "image_url": "/images/b4.jpg",
+          "type": "house",
+          "location": "New York"
         },
         {
-          "image_id": "3",
-          "image_url": "https://example.com/images/alice/3.jpg"
+          "id": "3",
+          "image_url": "/images/b6.jpg",
+          "type": "condo",
+          "location": "London"
         },
         {
-          "image_id": "4",
-          "image_url": "https://example.com/images/alice/4.jpg"
+          "id": "4",
+          "image_url": "/images/b2.jpg",
+          "type": "apartment",
+          "location": "Paris"
         },
         {
-          "image_id": "5",
-          "image_url": "https://example.com/images/alice/5.jpg"
+          "id": "5",
+          "image_url": "/images/b2.jpg",
+          "type": "house",
+          "location": "Sydney"
         }
       ]
     },
@@ -42,24 +52,34 @@
       "profile": "/images/p2.png",
       "projects": [
         {
-          "image_id": "1",
-          "image_url": "https://example.com/images/bob/1.jpg"
+          "id": "1",
+          "image_url": "/images/b1.jpg",
+          "type": "apartment",
+          "location": "Rome"
         },
         {
-          "image_id": "2",
-          "image_url": "https://example.com/images/bob/2.jpg"
+          "id": "2",
+          "image_url": "/images/b4.jpg",
+          "type": "house",
+          "location": "New York"
         },
         {
-          "image_id": "3",
-          "image_url": "https://example.com/images/bob/3.jpg"
+          "id": "3",
+          "image_url": "/images/b6.jpg",
+          "type": "condo",
+          "location": "London"
         },
         {
-          "image_id": "4",
-          "image_url": "https://example.com/images/bob/4.jpg"
+          "id": "4",
+          "image_url": "/images/b2.jpg",
+          "type": "apartment",
+          "location": "Paris"
         },
         {
-          "image_id": "5",
-          "image_url": "https://example.com/images/bob/5.jpg"
+          "id": "5",
+          "image_url": "/images/b2.jpg",
+          "type": "house",
+          "location": "Sydney"
         }
       ]
     },
@@ -74,24 +94,34 @@
       "profile": "/images/p3.png",
       "projects": [
         {
-          "image_id": "1",
-          "image_url": "https://example.com/images/eva/1.jpg"
+          "id": "1",
+          "image_url": "/images/b1.jpg",
+          "type": "apartment",
+          "location": "Rome"
         },
         {
-          "image_id": "2",
-          "image_url": "https://example.com/images/eva/2.jpg"
+          "id": "2",
+          "image_url": "/images/b4.jpg",
+          "type": "house",
+          "location": "New York"
         },
         {
-          "image_id": "3",
-          "image_url": "https://example.com/images/eva/3.jpg"
+          "id": "3",
+          "image_url": "/images/b6.jpg",
+          "type": "condo",
+          "location": "London"
         },
         {
-          "image_id": "4",
-          "image_url": "https://example.com/images/eva/4.jpg"
+          "id": "4",
+          "image_url": "/images/b2.jpg",
+          "type": "apartment",
+          "location": "Paris"
         },
         {
-          "image_id": "5",
-          "image_url": "https://example.com/images/eva/5.jpg"
+          "id": "5",
+          "image_url": "/images/b2.jpg",
+          "type": "house",
+          "location": "Sydney"
         }
       ]
     },
@@ -105,24 +135,34 @@
       "profile": "/images/p4.png",
       "projects": [
         {
-          "image_id": "1",
-          "image_url": "https://example.com/images/david/1.jpg"
+          "id": "1",
+          "image_url": "/images/b1.jpg",
+          "type": "apartment",
+          "location": "Rome"
         },
         {
-          "image_id": "2",
-          "image_url": "https://example.com/images/david/2.jpg"
+          "id": "2",
+          "image_url": "/images/b4.jpg",
+          "type": "house",
+          "location": "New York"
         },
         {
-          "image_id": "3",
-          "image_url": "https://example.com/images/david/3.jpg"
+          "id": "3",
+          "image_url": "/images/b6.jpg",
+          "type": "condo",
+          "location": "London"
         },
         {
-          "image_id": "4",
-          "image_url": "https://example.com/images/david/4.jpg"
+          "id": "4",
+          "image_url": "/images/b2.jpg",
+          "type": "apartment",
+          "location": "Paris"
         },
         {
-          "image_id": "5",
-          "image_url": "https://example.com/images/david/5.jpg"
+          "id": "5",
+          "image_url": "/images/b2.jpg",
+          "type": "house",
+          "location": "Sydney"
         }
       ]
     },
@@ -136,24 +176,34 @@
       "profile": "/images/p5.png",
       "projects": [
         {
-          "image_id": "1",
-          "image_url": "https://example.com/images/sarah/1.jpg"
+          "id": "1",
+          "image_url": "/images/b1.jpg",
+          "type": "apartment",
+          "location": "Rome"
         },
         {
-          "image_id": "2",
-          "image_url": "https://example.com/images/sarah/2.jpg"
+          "id": "2",
+          "image_url": "/images/b4.jpg",
+          "type": "house",
+          "location": "New York"
         },
         {
-          "image_id": "3",
-          "image_url": "https://example.com/images/sarah/3.jpg"
+          "id": "3",
+          "image_url": "/images/b6.jpg",
+          "type": "condo",
+          "location": "London"
         },
         {
-          "image_id": "4",
-          "image_url": "https://example.com/images/sarah/4.jpg"
+          "id": "4",
+          "image_url": "/images/b2.jpg",
+          "type": "apartment",
+          "location": "Paris"
         },
         {
-          "image_id": "5",
-          "image_url": "https://example.com/images/sarah/5.jpg"
+          "id": "5",
+          "image_url": "/images/b2.jpg",
+          "type": "house",
+          "location": "Sydney"
         }
       ]
     }

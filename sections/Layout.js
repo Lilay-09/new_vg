@@ -1,9 +1,13 @@
-import React, { useEffect } from "react";
+import React, { useContext, useEffect } from "react";
 import BtnComp from "../components/BtnComp";
 import Footer from "./Footer";
 import styles from "../styles/Layout.module.css";
 import Header from "./Header";
 import UsewindowSize from "../utils/windowSize";
+import tranEn from "../utils/Translations/en.json";
+import tranCh from "../utils/Translations/ch.json";
+import tranKh from "../utils/Translations/kh.json";
+import { DataContext } from "../store/GlobalState";
 
 const Layout = ({ title, children, noSlide, noFind, map, width, path }) => {
   const size = UsewindowSize();
@@ -61,6 +65,20 @@ const Layout = ({ title, children, noSlide, noFind, map, width, path }) => {
       );
     };
   }, [size]);
+  let translations;
+  const { state, dispatch } = useContext(DataContext);
+  let lang = state.lang.d_lang;
+  if (lang === "en") {
+    translations = tranEn;
+  } else if (lang === "kh") {
+    translations = tranKh;
+  } else if (lang === "ch") {
+    translations = tranCh;
+  }
+  useEffect(() => {
+    dispatch({ type: "TRANSLATE_LANG", payload: translations });
+    return () => {};
+  }, [dispatch, translations]);
 
   const findDream = {
     display: "flex",
@@ -82,6 +100,7 @@ const Layout = ({ title, children, noSlide, noFind, map, width, path }) => {
     flexFlow: "column",
     minWidth: "320px",
   };
+
   return (
     <div className="body">
       <Header title={title ? `${title} ~ Vanguard` : "Vanguard"} path={path} />

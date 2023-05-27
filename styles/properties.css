@@ -1,3 +1,6 @@
+.filter__drp {
+  display: none;
+}
 @media screen and (max-width: 1100px) {
   .filter__drp {
     width: 99%;
@@ -9,7 +12,6 @@
     bottom: 0;
     right: 0;
     z-index: 1000;
-    display: none;
   }
   .filter__drp.active {
     display: block;
@@ -30,5 +32,20 @@
     display: flex;
     align-items: center;
     justify-content: center;
+  }
+  .btn_close__search_bar:hover {
+    cursor: pointer;
+  }
+  .status_choose {
+    display: flex;
+    margin: 0 auto;
+    width: 60%;
+    align-items: center;
+    justify-content: center;
+    gap: 0.8rem;
+  }
+  .btn_status {
+    background-color: aquamarine;
+    padding: 0.5rem 2rem;
   }
 }

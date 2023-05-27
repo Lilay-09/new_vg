@@ -1,8 +1,8 @@
 import Image from "next/image";
 import React from "react";
-import styles from "../../../styles/Agent.module.css";
-import Layout from "../../../sections/Layout";
-import { data } from "../../../utils/data";
+import styles from "../../../../styles/Agent.module.css";
+import Layout from "../../../../sections/Layout";
+import { data } from "../../../../utils/data";
 
 const PersonProject = (props) => {
   const { fetctData, numbID, childID } = props;

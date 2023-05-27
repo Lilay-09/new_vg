@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 import Layout from "../../../sections/Layout";
 import styles from "../../../styles/Properties.module.css";
 import Image from "next/image";
@@ -14,6 +14,8 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { useRouter } from "next/router";
 import PaginationBtn from "../../../components/PaginationBtn";
+import TiltleTile from "../../../components/TiltleTile";
+import { DataContext } from "../../../store/GlobalState";
 const OurProperty = () => {
   const forDD = [
     { type: "Shop House" },
@@ -37,6 +39,8 @@ const OurProperty = () => {
   const router = useRouter();
   let page = "properties";
   const { query, pathname } = router;
+  const { state, dispatch } = useContext(DataContext);
+  let lang = state.lang.d_lang;
   let q = query.page;
   const [data_item, setData] = useState(Services);
   const [currentPage, setCurrentPage] = useState(Number(q) ? Number(q) : 1);
@@ -47,7 +51,7 @@ const OurProperty = () => {
 
   const handleClick = (event) => {
     setCurrentPage(Number(event.target.id));
-    router.replace(`/${page}/?page=${event.target.id}`);
+    router.replace(`/${lang}/${page}/?page=${event.target.id}`);
   };
   const handlePrevbtn = () => {
     setCurrentPage(currentPage - 1);
@@ -55,7 +59,7 @@ const OurProperty = () => {
       setmaxPageNumberLimit(maxPageNumberLimit - pageNumberLimit);
       setminPageNumberLimit(minPageNumberLimit - pageNumberLimit);
     }
-    router.replace(`/${page}/?page=${currentPage - 1}`);
+    router.replace(`/${lang}/${page}/?page=${currentPage - 1}`);
   };
 
   const handleNextbtn = () => {
@@ -65,7 +69,7 @@ const OurProperty = () => {
       setmaxPageNumberLimit(maxPageNumberLimit + pageNumberLimit);
       setminPageNumberLimit(minPageNumberLimit + pageNumberLimit);
     }
-    router.replace(`/${page}/?page=${currentPage + 1}`);
+    router.replace(`/${lang}/${page}/?page=${currentPage + 1}`);
   };
   const pages = [];
   for (let i = 1; i <= Math.ceil(data_item.length / itemsPerPgae); i++) {
@@ -168,6 +172,8 @@ const OurProperty = () => {
     setDropDownFilter(!dropDownFrilter);
   };
 
+  let translations = state.trans;
+
   return (
     <Layout width={100}>
       <div className={`${styles.banner}`}>
@@ -179,7 +185,7 @@ const OurProperty = () => {
           alt="proper"
         />
         <div className={styles.banner_title}>
-          <span>Properties</span>
+          <span>{translations.our_properties}</span>
         </div>
         <div
           className={styles.filter_search}
@@ -188,7 +194,7 @@ const OurProperty = () => {
         >
           <div className={styles.filter_button}>
             <FontAwesomeIcon icon={faSlidersH} width={18} />
-            Filter
+            {translations.filter}
           </div>
           <div className={styles._filter__search}>Under Construction</div>
         </div>
@@ -198,12 +204,12 @@ const OurProperty = () => {
             <div className={styles.tap_pag_box}>Rent Properties</div>
           </div>
           <div className={styles.search_filter}>
-            <div className={styles.search_box}>
+            {/* <div className={styles.search_box}>
               <span>Keyword Search</span>
               <div>Seacrch Container</div>
-            </div>
+            </div> */}
             <div className={styles.search_box}>
-              <span>Property Type</span>
+              <span>{translations.property_type}</span>
               <div className={styles.prpty__dropdown}>
                 <p onClick={handlePrpTypeDD}>
                   <FontAwesomeIcon icon={faCaretDown} width={18} />
@@ -308,7 +314,11 @@ const OurProperty = () => {
         >
           X
         </div>
-        {/* <TiltleTile title={"Find Your Properties"} noMore /> */}
+        <TiltleTile title={"Find Your Properties"} noMore />
+        <div className="status_choose">
+          <div className="btn_status">Buy</div>
+          <div className="btn_status">Rent</div>
+        </div>
       </div>
       {/*  */}
       <div className={`${styles.properties_container} _hidden_item`}>
@@ -321,7 +331,7 @@ const OurProperty = () => {
               <div
                 className={styles.properties__card_img}
                 onClick={() => {
-                  router.push(`/properties/sth`);
+                  router.push(`/${lang}/properties/sth`);
                 }}
               >
                 <Image

@@ -12,16 +12,10 @@ import tranKh from "../../../utils/Translations/kh.json";
 import tranCh from "../../../utils/Translations/ch.json";
 const OurServices = () => {
   const { state, dispatch } = useContext(DataContext);
-  const lang = state.lang.d_lang;
-  const asPath = state.lang.asPath;
-  let translations;
-  if (lang === "en") {
-    translations = tranEn;
-  } else if (lang === "kh") {
-    translations = tranKh;
-  } else if (lang === "ch") {
-    translations = tranCh;
-  }
+  let translations = state.trans;
+  // const lang = state.lang.d_lang;
+  // const asPath = state.lang.asPath;
+
   return (
     <Layout width={100}>
       <div className={`${styles._our_service_banner} _hidden_item`}>
@@ -111,7 +105,7 @@ const OurServices = () => {
       {/* <div className="reveal"></div> */}
       <div className={`${styles._services_section} reveal`}>
         <div style={{ width: "90%", margin: "0 auto 2rem auto" }}>
-          <TiltleTile title={translations["Our Services"]} noMore />
+          <TiltleTile title={translations.our_services} noMore />
         </div>
         <div className={`${styles._services_card_container} `}>
           {Services.map((item, i) => {
@@ -134,11 +128,11 @@ const OurServices = () => {
                     <span>{item.name}</span>
                   </div>
                   <div>
-                    <p>{translations.Type}:</p>
+                    <p>{translations.type}:</p>
                     <p>{item.type}</p>
                   </div>
                   <div>
-                    <p>{translations.Address}: </p>
+                    <p>{translations.address}: </p>
                     <p>{item.location}</p>
                   </div>
                 </div>

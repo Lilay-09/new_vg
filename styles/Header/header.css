@@ -5,6 +5,9 @@
 .black {
   color: black;
 }
+.inactive {
+  color: white;
+}
 /* .menu_list {
   display: none;
 }

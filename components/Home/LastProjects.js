@@ -12,14 +12,7 @@ import tranKh from "../../utils/Translations/kh.json";
 const LastProjects = ({ data }) => {
   const { state, dispatch } = useContext(DataContext);
   const lang = state.lang.d_lang;
-  let translations;
-  if (lang === "en") {
-    translations = tranEn;
-  } else if (lang === "kh") {
-    translations = tranKh;
-  } else if (lang === "ch") {
-    translations = tranCh;
-  }
+  let translations = state.trans;
 
   return (
     <div>
@@ -37,7 +30,10 @@ const LastProjects = ({ data }) => {
                   priority
                 />
                 <div className={styles.card_sts}>{item.status}</div>
-                <Link href={`/project/details/1`} className={styles.view__item}>
+                <Link
+                  href={`/${lang}/project/details/${item.id}`}
+                  className={styles.view__item}
+                >
                   <FontAwesomeIcon icon={faArrowRight} width={20} />
                 </Link>
               </div>
@@ -45,13 +41,13 @@ const LastProjects = ({ data }) => {
                 <h5>Project name</h5>
                 <div className="d-flex align-items-center gap-1">
                   <span className={styles.card_prop_name}>
-                    {translations.Type}:
+                    {translations.type}:
                   </span>
                   <span>{item.type}</span>
                 </div>
                 <div className="d-flex gap-1">
                   <span className={styles.card_prop_name}>
-                    {translations.Address}:
+                    {translations.address}:
                   </span>
                   <span>
                     {item.address.length > 25

@@ -62,6 +62,7 @@ a {
 @import "./Header/header.css";
 @import "./ProduceDetail/ProductDetails.css";
 @import "./properties.css";
+@import "./selection_option.css";
 /* 
 @media (prefers-color-scheme: dark) {
   html {

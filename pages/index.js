@@ -23,6 +23,7 @@ import { DataContext } from "../store/GlobalState";
 import tranEn from "../utils/Translations/en.json";
 import tranCh from "../utils/Translations/ch.json";
 import tranKh from "../utils/Translations/kh.json";
+
 const Home = (props) => {
   const router = useRouter();
   const { state, dispatch } = useContext(DataContext);
@@ -35,6 +36,7 @@ const Home = (props) => {
   const last_projects = home.last_projects;
   const popular_locations = home.popular_locations;
   const lastest_properties = home.lastest_properties;
+  const categories = home.categories;
   const teams = home.consultants;
   const searchRef = useRef(null);
 
@@ -50,25 +52,7 @@ const Home = (props) => {
     const url = window.location.origin;
     setMainUrl(url);
   }, []);
-
-  let translations;
-  if (lang === "en") {
-    translations = tranEn;
-  } else if (lang === "kh") {
-    translations = tranKh;
-  } else if (lang === "ch") {
-    translations = tranCh;
-  }
-
-  // const handleAddString = () => {
-  //   const newString = "/additional-path"; // Replace with the desired string
-
-  //   const currentURL = router.asPath;
-  //   const newURL = currentURL + newString;
-
-  //   router.push(newURL, undefined, { shallow: true });
-  // };
-  // console.log(router.asPath);
+  let translations = state.trans;
 
   return (
     <Layout width={100} path={"/"}>
@@ -91,14 +75,14 @@ const Home = (props) => {
             <p>{banner.description}</p>
             <div className={styles.banner_btn}>
               <button onClick={() => handleMoveToSection(searchRef)}>
-                {translations.Search}
+                {translations.search}
               </button>
             </div>
           </div>
         </div>
       </section>
       <div className={styles.search_section} ref={searchRef}>
-        <h5>{translations.Search}</h5>
+        <h5>{translations.search}</h5>
         <div className={styles.find_dream}>
           <div className={styles.selection_opt}>
             <select
@@ -152,7 +136,7 @@ const Home = (props) => {
             className={`btn ${styles["btn_search"]}`}
             onClick={handleSearchOption}
           >
-            {translations.Search}
+            {translations.search}
           </div>
         </div>
       </div>
@@ -161,18 +145,11 @@ const Home = (props) => {
         <LastProjects data={last_projects} />
       </div>
 
-      <div className={styles.interior_section}>
-        <div className="reveal fade-bottom">
-          <div className={styles.interior_title}>
-            <div className={styles.interior_title_content}>
-              <h2>{translations["Popular Location"]}</h2>
-            </div>
-          </div>
-          <div>
-            <PopularLocation data={popular_locations} />
-          </div>
-        </div>
-      </div>
+      <PopularLocation
+        data={popular_locations}
+        translations={translations}
+        categories={categories}
+      />
 
       <section className={styles._home__blog}>
         <div className="reveal fade-bottom">
@@ -192,7 +169,8 @@ const Home = (props) => {
                     item.name,
                     item.price,
                     item.sqrtft,
-                    item.status
+                    item.status,
+                    item.id
                   )}
                 </React.Fragment>
               );
@@ -205,7 +183,7 @@ const Home = (props) => {
           <div className={`${styles.interior_title}`}>
             <div className={styles.interior_title_content}>
               <h2>{translations.pro_prop_consult}</h2>
-              <button onClick={() => router.push("/our-team")}>
+              <button onClick={() => router.push(`/${lang}/our-team`)}>
                 See Our Team
               </button>
             </div>
@@ -246,17 +224,10 @@ export const getServerSideProps = async () => {
   };
 };
 
-const LastestProperties = (url, location, title, price, sqrft, status) => {
-  let translations;
+const LastestProperties = (url, location, title, price, sqrft, status, id) => {
   const { state, dispatch } = useContext(DataContext);
-  const lang = state.lang.d_lang;
-  if (lang === "en") {
-    translations = tranEn;
-  } else if (lang === "kh") {
-    translations = tranKh;
-  } else if (lang === "ch") {
-    translations = tranCh;
-  }
+  let translations = state.trans;
+  let lang = state.lang.d_lang;
   return (
     <div className={styles._home_blog__card}>
       <div className={styles._home_card_image}>
@@ -264,7 +235,10 @@ const LastestProperties = (url, location, title, price, sqrft, status) => {
         <div className={styles._home_card_location}>
           <span>{status}</span>
         </div>
-        <Link className={styles._home_card_btn} href={"/properties/lastest/1"}>
+        <Link
+          className={styles._home_card_btn}
+          href={`/${lang}/properties/lastest/${id}`}
+        >
           <FontAwesomeIcon
             icon={faArrowRight}
             className={styles._home_card_arrow_icon}
@@ -277,7 +251,7 @@ const LastestProperties = (url, location, title, price, sqrft, status) => {
           <p>${price}</p>
         </div>
         <div className="d-flex gap-1">
-          <p>{translations.Address}:</p>
+          <p>{translations.address}:</p>
           <span>
             {location.length > 20
               ? location.substring(0, 20) + "....."

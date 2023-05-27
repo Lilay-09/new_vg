@@ -17,14 +17,8 @@ const OurTeam = (props) => {
   const { state, dispatch } = useContext(DataContext);
   const lang = state.lang.d_lang;
   const asPath = state.lang.asPath;
-  let translations;
-  if (lang === "en") {
-    translations = tranEn;
-  } else if (lang === "kh") {
-    translations = tranKh;
-  } else if (lang === "ch") {
-    translations = tranCh;
-  }
+  let translations = state.trans;
+
   return (
     <Layout width={100}>
       <div className={styles._our_team__container}>
@@ -43,8 +37,8 @@ const OurTeam = (props) => {
                   priority
                 />
               </div>
-              <h5>{translations.Name}: Taylor Swift</h5>
-              <p>{translations.Position}: Designer</p>
+              <h5>{translations.name}: Taylor Swift</h5>
+              <p>{translations.position}: Designer</p>
               <div className={styles._team_contact_social_media}>
                 <div className={styles.media_avatar}>
                   <Image
@@ -211,7 +205,7 @@ const OurTeam = (props) => {
                       width={500}
                       height={500}
                       alt="p1"
-                      // priority
+                      priority
                     />
                   </div>
                   <div className={styles._team_details_card}>

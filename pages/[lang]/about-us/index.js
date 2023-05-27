@@ -1,11 +1,13 @@
 import Image from "next/image";
-import React, { useEffect, useRef, useState } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 import BannerImg from "../../../components/BannerImg";
 import Layout from "../../../sections/Layout";
 import styles from "../../../styles/AboutUs.module.css";
 import { useRouter } from "next/router";
+import { DataContext } from "../../../store/GlobalState";
 
 const AboutUs = () => {
+  const { state, dispatch } = useContext(DataContext);
   const aboutRef = useRef();
   const router = useRouter();
   const accRef = useRef();
@@ -19,6 +21,7 @@ const AboutUs = () => {
     setMainUrl(url);
   }, []);
 
+  let translations = state.trans;
   return (
     <Layout width={100}>
       <div className={`${styles.__banner} _hidden_item`}>
@@ -27,7 +30,7 @@ const AboutUs = () => {
           <div className={styles.__banner_content_text}>
             <p>Lorem ipsum dolor sit amet consectetur.</p>
             <button onClick={() => handleMoveToSection(aboutRef)}>
-              Read More
+              {translations.read_more}
             </button>
           </div>
         </div>

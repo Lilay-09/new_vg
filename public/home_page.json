@@ -196,7 +196,6 @@
       "name": "Luxury Condo",
       "price": 500000,
       "sqrtft": 1500,
-      "status": "For Rent",
       "property_type": "condo",
       "listing_type": "For Sale",
       "address": "123 Main Street",
@@ -226,7 +225,6 @@
       "name": "Cozy Apartment",
       "price": 2000,
       "sqrtft": 800,
-      "status": "For Sales",
       "property_type": "apartment",
       "listing_type": "For Rent",
       "address": "456 Elm StreetStreetStreetStreet",
@@ -247,13 +245,13 @@
           "id": 2,
           "name": "Living Room",
           "description": "Cozy living room with natural light.",
-          "image_url": "https://example.com/images/4.jpg"
+          "image_url": "/images/b6.jpg"
         },
         {
           "id": 3,
           "name": "Bedroom",
           "description": "Comfortable bedroom with ample storage space.",
-          "image_url": "https://example.com/images/5.jpg"
+          "image_url": "/images/b3.jpg"
         }
       ]
     },
@@ -263,7 +261,6 @@
       "price": 800000,
       "sqrtft": 2500,
       "property_type": "house",
-      "status": "For Rent",
       "listing_type": "For Sale",
       "address": "789 Oak Avenue",
       "tenure": "Freehold",
@@ -304,7 +301,6 @@
       "name": "Modern Condo",
       "price": 350000,
       "sqrtft": 1200,
-      "status": "For Sales",
       "property_type": "condo",
       "listing_type": "For Sale",
       "address": "10 Maple Lane",
@@ -340,7 +336,6 @@
       "name": "Renovated Apartment",
       "price": 1800,
       "sqrtft": 900,
-      "status": "For Rent",
       "property_type": "apartment",
       "listing_type": "For Rent",
       "address": "20 Pine Street",
@@ -377,24 +372,34 @@
       "profile": "/images/p1.png",
       "projects": [
         {
-          "image_id": "1",
-          "image_url": "/images/b6.jpg"
+          "id": "1",
+          "image_url": "/images/b1.jpg",
+          "type": "apartment",
+          "location": "Rome"
         },
         {
-          "image_id": "2",
-          "image_url": "/images/b6.jpg"
+          "id": "2",
+          "image_url": "/images/b4.jpg",
+          "type": "house",
+          "location": "New York"
         },
         {
-          "image_id": "3",
-          "image_url": "/images/b6.jpg"
+          "id": "3",
+          "image_url": "/images/b6.jpg",
+          "type": "condo",
+          "location": "London"
         },
         {
-          "image_id": "4",
-          "image_url": "/images/b6.jpg"
+          "id": "4",
+          "image_url": "/images/b2.jpg",
+          "type": "apartment",
+          "location": "Paris"
         },
         {
-          "image_id": "5",
-          "image_url": "/images/b6.jpg"
+          "id": "5",
+          "image_url": "/images/b2.jpg",
+          "type": "house",
+          "location": "Sydney"
         }
       ]
     },
@@ -409,24 +414,34 @@
       "profile": "/images/p2.png",
       "projects": [
         {
-          "image_id": "1",
-          "image_url": "/images/b6.jpg"
+          "id": "1",
+          "image_url": "/images/b1.jpg",
+          "type": "apartment",
+          "location": "Rome"
         },
         {
-          "image_id": "2",
-          "image_url": "/images/b6.jpg"
+          "id": "2",
+          "image_url": "/images/b4.jpg",
+          "type": "house",
+          "location": "New York"
         },
         {
-          "image_id": "3",
-          "image_url": "/images/b6.jpg"
+          "id": "3",
+          "image_url": "/images/b6.jpg",
+          "type": "condo",
+          "location": "London"
         },
         {
-          "image_id": "4",
-          "image_url": "/images/b6.jpg"
+          "id": "4",
+          "image_url": "/images/b2.jpg",
+          "type": "apartment",
+          "location": "Paris"
         },
         {
-          "image_id": "5",
-          "image_url": "/images/b6.jpg"
+          "id": "5",
+          "image_url": "/images/b2.jpg",
+          "type": "house",
+          "location": "Sydney"
         }
       ]
     },
@@ -441,24 +456,34 @@
       "profile": "/images/p3.png",
       "projects": [
         {
-          "image_id": "1",
-          "image_url": "/images/b6.jpg"
+          "id": "1",
+          "image_url": "/images/b1.jpg",
+          "type": "apartment",
+          "location": "Rome"
         },
         {
-          "image_id": "2",
-          "image_url": "/images/b6.jpg"
+          "id": "2",
+          "image_url": "/images/b4.jpg",
+          "type": "house",
+          "location": "New York"
         },
         {
-          "image_id": "3",
-          "image_url": "/images/b6.jpg"
+          "id": "3",
+          "image_url": "/images/b6.jpg",
+          "type": "condo",
+          "location": "London"
         },
         {
-          "image_id": "4",
-          "image_url": "/images/b6.jpg"
+          "id": "4",
+          "image_url": "/images/b2.jpg",
+          "type": "apartment",
+          "location": "Paris"
         },
         {
-          "image_id": "5",
-          "image_url": "/images/b6.jpg"
+          "id": "5",
+          "image_url": "/images/b2.jpg",
+          "type": "house",
+          "location": "Sydney"
         }
       ]
     },
@@ -472,24 +497,34 @@
       "profile": "/images/p4.png",
       "projects": [
         {
-          "image_id": "1",
-          "image_url": "/images/b6.jpg"
+          "id": "1",
+          "image_url": "/images/b1.jpg",
+          "type": "apartment",
+          "location": "Rome"
         },
         {
-          "image_id": "2",
-          "image_url": "/images/b6.jpg"
+          "id": "2",
+          "image_url": "/images/b4.jpg",
+          "type": "house",
+          "location": "New York"
         },
         {
-          "image_id": "3",
-          "image_url": "/images/b6.jpg"
+          "id": "3",
+          "image_url": "/images/b6.jpg",
+          "type": "condo",
+          "location": "London"
         },
         {
-          "image_id": "4",
-          "image_url": "/images/b6.jpg"
+          "id": "4",
+          "image_url": "/images/b2.jpg",
+          "type": "apartment",
+          "location": "Paris"
         },
         {
-          "image_id": "5",
-          "image_url": "/images/b6.jpg"
+          "id": "5",
+          "image_url": "/images/b2.jpg",
+          "type": "house",
+          "location": "Sydney"
         }
       ]
     },
@@ -503,26 +538,37 @@
       "profile": "/images/p5.png",
       "projects": [
         {
-          "image_id": "1",
-          "image_url": "/images/b6.jpg"
+          "id": "1",
+          "image_url": "/images/b1.jpg",
+          "type": "apartment",
+          "location": "Rome"
         },
         {
-          "image_id": "2",
-          "image_url": "/images/b6.jpg"
+          "id": "2",
+          "image_url": "/images/b4.jpg",
+          "type": "house",
+          "location": "New York"
         },
         {
-          "image_id": "3",
-          "image_url": "/images/b6.jpg"
+          "id": "3",
+          "image_url": "/images/b6.jpg",
+          "type": "condo",
+          "location": "London"
         },
         {
-          "image_id": "4",
-          "image_url": "/images/b6.jpg"
+          "id": "4",
+          "image_url": "/images/b2.jpg",
+          "type": "apartment",
+          "location": "Paris"
         },
         {
-          "image_id": "5",
-          "image_url": "/images/b6.jpg"
+          "id": "5",
+          "image_url": "/images/b2.jpg",
+          "type": "house",
+          "location": "Sydney"
         }
       ]
     }
-  ]
+  ],
+  "categories": [{ "cate": "buy" }, { "cate": "rent" }]
 }

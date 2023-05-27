@@ -37,6 +37,9 @@
 ._item_details_content {
   margin: 0 2rem;
 }
+._item_details_content h3 {
+  text-transform: uppercase;
+}
 ._spec__details {
   display: flex;
   flex-wrap: wrap;
@@ -66,6 +69,9 @@
   flex-flow: column;
   gap: 0.8vw;
   margin: 0 2vw;
+}
+.prp__description h3 {
+  text-transform: uppercase;
 }
 .select_title {
   border: 1px solid #191345;
