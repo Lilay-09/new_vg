@@ -9,6 +9,7 @@ import { DataContext } from "../../store/GlobalState";
 import tranEn from "../../utils/Translations/en.json";
 import tranCh from "../../utils/Translations/ch.json";
 import tranKh from "../../utils/Translations/kh.json";
+import ImageComp from "../ImageComp";
 const LastProjects = ({ data }) => {
   const { state, dispatch } = useContext(DataContext);
   const lang = state.lang.d_lang;
@@ -22,13 +23,7 @@ const LastProjects = ({ data }) => {
           return (
             <div className={styles.card__content} key={index}>
               <div className={styles.card__content_img}>
-                <Image
-                  src={item.images[0].image_url}
-                  width={1000}
-                  height={1000}
-                  alt="building"
-                  priority
-                />
+                {/* <ImageComp imageUrl={item.images[0].image_url} /> */}
                 <div className={styles.card_sts}>{item.status}</div>
                 <Link
                   href={`/${lang}/project/details/${item.id}`}
@@ -38,7 +33,7 @@ const LastProjects = ({ data }) => {
                 </Link>
               </div>
               <div className={styles.card__content_text}>
-                <h5>Project name</h5>
+                <h5>{item.name}</h5>
                 <div className="d-flex align-items-center gap-1">
                   <span className={styles.card_prop_name}>
                     {translations.type}:

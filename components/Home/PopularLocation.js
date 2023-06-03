@@ -8,9 +8,9 @@ import { useContext, useState } from "react";
 import { DataContext } from "../../store/GlobalState";
 import SelectOption from "../SelectOption";
 
-const PopularLocation = ({ data, translations, categories }) => {
+const PopularLocation = ({ data, translations, types }) => {
   const router = useRouter();
-  const [categ, setCateg] = useState(categories[0].cate);
+  const [getTypes, setTypes] = useState(types[0].listing_type);
   const { state, dispatch } = useContext(DataContext);
   let lang = state.lang.d_lang;
   return (
@@ -20,15 +20,15 @@ const PopularLocation = ({ data, translations, categories }) => {
           <div className={styles.interior_title_content1}>
             <h2>{translations.popular_location}</h2>
             <select
-              value={categ}
+              value={getTypes}
               onChange={(e) => {
-                setCateg(e.target.value);
+                setTypes(e.target.value);
               }}
             >
-              {categories.map((item, i) => {
+              {types.map((item, i) => {
                 return (
-                  <option value={item.cate} key={i}>
-                    {item.cate}
+                  <option value={item.id} key={i}>
+                    {item.listing_type}
                   </option>
                 );
               })}
@@ -43,10 +43,10 @@ const PopularLocation = ({ data, translations, categories }) => {
                   key={item.id}
                   className={`${styles.interior__design_card}`}
                   onClick={() => {
-                    router.push(`${lang}/category/${categ}/${item.location}`);
+                    router.push(`${lang}/category/${item.id}/${item.id}`);
                   }}
                 >
-                  <ImageComp imageUrl={item.image_url} />
+                  <ImageComp imageUrl={`${item.image_url}`} />
                   <p className={styles.popular_place}>
                     <FontAwesomeIcon icon={faLocationDot} width={20} />
                     {item.location}

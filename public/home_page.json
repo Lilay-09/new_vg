@@ -16,7 +16,7 @@
       { "id": 3, "image_url": "/images/tp3.jpg", "caption": "Image 3" }
     ]
   },
-  "last_projects": [
+  "lastest_projects": [
     {
       "id": 1,
       "name": "Cozy Condo",
@@ -30,18 +30,6 @@
           "name": "Living Room",
           "image_url": "/images/tb2.jpg",
           "description": "Spacious living room with plenty of natural light."
-        },
-        {
-          "id": 2,
-          "name": "Bedroom",
-          "image_url": "/images/tp1.jpg",
-          "description": "Master bedroom with a queen-size bed."
-        },
-        {
-          "id": 3,
-          "name": "Kitchen",
-          "image_url": "/images/tp3.jpg",
-          "description": "Fully equipped kitchen with stainless steel appliances."
         }
       ]
     },
@@ -58,18 +46,6 @@
           "name": "Exterior",
           "image_url": "/images/b1.jpg",
           "description": "Beautifully designed exterior with a landscaped garden."
-        },
-        {
-          "id": 2,
-          "name": "Living Room",
-          "image_url": "/images/b2.jpg",
-          "description": "Open-concept living room with high ceilings."
-        },
-        {
-          "id": 3,
-          "name": "Backyard",
-          "image_url": "/images/tp3.jpg",
-          "description": "Large backyard with a patio and outdoor seating area."
         }
       ]
     },
@@ -86,18 +62,6 @@
           "name": "Living Room",
           "image_url": "/images/b4.jpg",
           "description": "Generous living space with floor-to-ceiling windows."
-        },
-        {
-          "id": 2,
-          "name": "Bedroom",
-          "image_url": "/images/tp2.jpg",
-          "description": "Cozy bedroom with a walk-in closet."
-        },
-        {
-          "id": 3,
-          "name": "Balcony",
-          "image_url": "/images/tp3.jpg",
-          "description": "Private balcony overlooking the city."
         }
       ]
     },
@@ -114,18 +78,6 @@
           "name": "Living Room",
           "image_url": "/images/tp2.jpg",
           "description": "Elegant living room with designer furniture."
-        },
-        {
-          "id": 2,
-          "name": "Kitchen",
-          "image_url": "/images/tp3.jpg",
-          "description": "Gourmet kitchen with high-end appliances and marble countertops."
-        },
-        {
-          "id": 3,
-          "name": "Swimming Pool",
-          "image_url": "/images/tp1.jpg",
-          "description": "Resort-style swimming pool with a sun deck."
         }
       ]
     },
@@ -142,51 +94,76 @@
           "name": "Exterior",
           "image_url": "/images/b5.jpg",
           "description": "Quaint exterior with a white picket fence."
-        },
-        {
-          "id": 2,
-          "name": "Living Room",
-          "image_url": "/images/tp2.jpg",
-          "description": "Warm and inviting living room with a fireplace."
-        },
-        {
-          "id": 3,
-          "name": "Garden",
-          "image_url": "/images/tp2.jpg",
-          "description": "Beautifully landscaped garden with colorful flowers."
         }
       ]
+    }
+  ],
+  "locations": [
+    {
+      "id": 1,
+      "location": "Phnom Penh",
+      "image_url": "/images/b1.jpg",
+      "districts": [
+        { "district": "ChamKar Mon" },
+        { "district": "Mean Chey" },
+        { "district": "Doung Kao" }
+      ]
+    },
+    {
+      "id": 2,
+      "location": "Siem Reap",
+      "image_url": "/images/b2.jpg"
+    },
+    {
+      "id": 3,
+      "location": "Kampot",
+      "image_url": "/images/b3.jpg"
+    },
+    {
+      "id": 4,
+      "location": "Koh Kong",
+      "image_url": "/images/b4.jpg"
+    },
+    {
+      "id": 5,
+      "location": "Battambang",
+      "image_url": "/images/b5.jpg"
+    },
+    {
+      "id": 6,
+      "location": "Takeo",
+      "image_url": "/images/b6.jpg"
     }
   ],
   "popular_locations": [
     {
       "id": 1,
-      "location": "New York",
+      "location": "Phnom Penh",
       "image_url": "/images/b1.jpg"
     },
     {
       "id": 2,
-      "location": "London",
+      "location": "Siem Reap",
       "image_url": "/images/b2.jpg"
     },
     {
       "id": 3,
-      "location": "Paris",
+      "location": "Kampot",
       "image_url": "/images/b3.jpg"
     },
     {
       "id": 4,
-      "location": "Tokyo",
+      "location": "Koh Kong",
       "image_url": "/images/b4.jpg"
     },
     {
       "id": 5,
-      "location": "Sydney",
+      "location": "Battambang",
       "image_url": "/images/b5.jpg"
     },
     {
       "id": 6,
-      "location": "Rome",
+      "location": "Takeo",
       "image_url": "/images/b6.jpg"
     }
   ],
@@ -211,12 +188,6 @@
           "name": "Living Room",
           "description": "The spacious living room area.",
           "image_url": "/images/b1.jpg"
-        },
-        {
-          "id": 2,
-          "name": "Bedroom",
-          "description": "Master bedroom with en-suite bathroom.",
-          "image_url": "/images/b6.jpg"
         }
       ]
     },
@@ -240,18 +211,6 @@
           "name": "Kitchen",
           "description": "Fully equipped kitchen with modern appliances.",
           "image_url": "/images/b2.jpg"
-        },
-        {
-          "id": 2,
-          "name": "Living Room",
-          "description": "Cozy living room with natural light.",
-          "image_url": "/images/b6.jpg"
-        },
-        {
-          "id": 3,
-          "name": "Bedroom",
-          "description": "Comfortable bedroom with ample storage space.",
-          "image_url": "/images/b3.jpg"
         }
       ]
     },
@@ -274,24 +233,6 @@
           "id": 1,
           "name": "Front View",
           "description": "Exterior view of the house from the front.",
-          "image_url": "/images/b6.jpg"
-        },
-        {
-          "id": 2,
-          "name": "Living Room",
-          "description": "Spacious living room with fireplace.",
-          "image_url": "/images/b4.jpg"
-        },
-        {
-          "id": 3,
-          "name": "Kitchen",
-          "description": "Modern kitchen with granite countertops.",
-          "image_url": "/images/b6.jpg"
-        },
-        {
-          "id": 4,
-          "name": "Backyard",
-          "description": "Large backyard with a patio and garden.",
           "image_url": "/images/b6.jpg"
         }
       ]
@@ -316,18 +257,6 @@
           "name": "Living Room",
           "description": "Open concept living room with large windows.",
           "image_url": "/images/b3.jpg"
-        },
-        {
-          "id": 2,
-          "name": "Bedroom",
-          "description": "Comfortable bedroom with ample natural light.",
-          "image_url": "/images/b6.jpg"
-        },
-        {
-          "id": 3,
-          "name": "Balcony",
-          "description": "Private balcony overlooking the city skyline.",
-          "image_url": "/images/b6.jpg"
         }
       ]
     },
@@ -351,12 +280,6 @@
           "name": "Kitchen",
           "description": "Stylish kitchen with stainless steel appliances.",
           "image_url": "/images/b4.jpg"
-        },
-        {
-          "id": 2,
-          "name": "Living Room",
-          "description": "Spacious living room with hardwood floors.",
-          "image_url": "/images/b6.jpg"
         }
       ]
     }
@@ -570,5 +493,11 @@
       ]
     }
   ],
-  "categories": [{ "cate": "buy" }, { "cate": "rent" }]
+  "types": [{ "type": "house" }, { "type": "apartment" }, { "type": "condo" }],
+  "categories": [{ "cate": "buy" }, { "cate": "rent" }],
+  "prices": [
+    { "price": "100000-120000" },
+    { "price": "120000-150000" },
+    { "price": "150000-180000" }
+  ]
 }

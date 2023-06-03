@@ -1,0 +1,144 @@
+{
+  "last_projects": [
+    {
+      "id": 1,
+      "name": "Cozy Condo",
+      "type": "condo",
+      "address": "123 Main Street asdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdf",
+      "status": "For Sales",
+      "description": "A comfortable and modern condo in the heart of the city.",
+      "images": [
+        {
+          "id": 1,
+          "name": "Living Room",
+          "image_url": "/images/tb.jpg",
+          "description": "Spacious living room with plenty of natural light."
+        },
+        {
+          "id": 2,
+          "name": "Bedroom",
+          "image_url": "/images/tp.jpg",
+          "description": "Master bedroom with a queen-size bed."
+        },
+        {
+          "id": 3,
+          "name": "Kitchen",
+          "image_url": "/images/tp.jpg",
+          "description": "Fully equipped kitchen with stainless steel appliances."
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "Modern House",
+      "type": "house",
+      "status": "For Rent",
+      "address": "456 Elm Street",
+      "description": "A stylish and contemporary house with a spacious backyard.",
+      "images": [
+        {
+          "id": 1,
+          "name": "Exterior",
+          "image_url": "/images/b1.jpg",
+          "description": "Beautifully designed exterior with a landscaped garden."
+        },
+        {
+          "id": 2,
+          "name": "Living Room",
+          "image_url": "/images/b2.jpg",
+          "description": "Open-concept living room with high ceilings."
+        },
+        {
+          "id": 3,
+          "name": "Backyard",
+          "image_url": "/images/tp3.jpg",
+          "description": "Large backyard with a patio and outdoor seating area."
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "name": "Spacious Apartment",
+      "type": "apartment",
+      "status": "For Rent",
+      "address": "789 Oak Avenue",
+      "description": "A roomy apartment with stunning views of the city skyline.",
+      "images": [
+        {
+          "id": 1,
+          "name": "Living Room",
+          "image_url": "/images/b4.jpg",
+          "description": "Generous living space with floor-to-ceiling windows."
+        },
+        {
+          "id": 2,
+          "name": "Bedroom",
+          "image_url": "/images/tp2.jpg",
+          "description": "Cozy bedroom with a walk-in closet."
+        },
+        {
+          "id": 3,
+          "name": "Balcony",
+          "image_url": "/images/tp3.jpg",
+          "description": "Private balcony overlooking the city."
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "name": "Luxury Condo",
+      "type": "condo",
+      "status": "For Sales",
+      "address": "321 Pine Street",
+      "description": "An upscale condo with top-of-the-line amenities and services.",
+      "images": [
+        {
+          "id": 1,
+          "name": "Living Room",
+          "image_url": "/images/tp2.jpg",
+          "description": "Elegant living room with designer furniture."
+        },
+        {
+          "id": 2,
+          "name": "Kitchen",
+          "image_url": "/images/tp3.jpg",
+          "description": "Gourmet kitchen with high-end appliances and marble countertops."
+        },
+        {
+          "id": 3,
+          "name": "Swimming Pool",
+          "image_url": "/images/tp1.jpg",
+          "description": "Resort-style swimming pool with a sun deck."
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "name": "Charming House",
+      "type": "house",
+      "status": "For Sales",
+      "address": "987 Maple Avenue",
+      "description": "A delightful house with a cozy atmosphere and a garden.",
+      "images": [
+        {
+          "id": 1,
+          "name": "Exterior",
+          "image_url": "/images/b5.jpg",
+          "description": "Quaint exterior with a white picket fence."
+        },
+        {
+          "id": 2,
+          "name": "Living Room",
+          "image_url": "/images/tp2.jpg",
+          "description": "Warm and inviting living room with a fireplace."
+        },
+        {
+          "id": 3,
+          "name": "Garden",
+          "image_url": "/images/tp2.jpg",
+          "description": "Beautifully landscaped garden with colorful flowers."
+        }
+      ]
+    }
+  ]
+}

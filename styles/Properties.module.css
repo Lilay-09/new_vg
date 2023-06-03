@@ -39,12 +39,15 @@
   display: flex;
 }
 .tap_pag_box {
-  background-color: #1e136d;
+  background-color: #9f7b4b;
   padding: 1rem;
   display: flex;
   align-items: center;
   justify-content: center;
   color: #ffffff;
+}
+.tap_pag_box_active {
+  background-color: #e6b269;
 }
 .search_filter {
   display: flex;
@@ -79,6 +82,7 @@
   color: #bdbdbd;
   position: relative;
   width: 100%;
+  cursor: pointer;
 }
 .prpty__dropdown p {
   display: flex;
@@ -89,6 +93,12 @@
   /* background-color: red; */
 
   justify-content: center;
+}
+.select__district {
+  margin: 0.5rem 2rem;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
 }
 .dropdown_clicked {
   position: absolute;
@@ -115,12 +125,15 @@
   min-height: 220px;
   opacity: 0;
   z-index: -1;
+  text-align: start;
   overflow-y: scroll;
+  padding: 1rem;
 }
 .dropdown_val_selected {
   background-color: #e6b269;
   color: #1e136d;
   margin: 0.3rem;
+  padding: 0.5rem;
 }
 .active {
   opacity: 1;
@@ -245,6 +258,8 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    width: 100%;
+    /* background-color: #e6b269; */
   }
   .properties_card {
     width: 300px;

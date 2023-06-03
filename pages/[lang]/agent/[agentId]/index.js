@@ -14,7 +14,6 @@ const Person = (props) => {
   const router = useRouter();
   let translations = state.trans;
   const { lang, agent } = props;
-  console.log(agent);
 
   return (
     <Layout width={100}>

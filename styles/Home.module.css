@@ -92,6 +92,50 @@
   width: 90%;
   margin: 2rem auto;
 }
+.select_location {
+  width: 20vw;
+  min-width: 200px;
+  border: none;
+  padding: 0.5vw 0;
+  background-color: #ffffff;
+  border: 1px solid #1e136d;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+.select_location_drpd {
+  position: absolute;
+  top: 2.8rem;
+  width: 100%;
+  background-color: #ffffff;
+  padding: 0.5rem;
+  z-index: 1;
+  max-height: 400px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+.select_location_drpd span:hover {
+  cursor: pointer;
+}
+.select_location_drpd::-webkit-scrollbar {
+  display: none;
+}
+.__select_location__district {
+  display: flex;
+  flex-direction: column;
+  margin-left: 2rem;
+}
+.select_location_drpd_input {
+  width: 100%;
+  position: sticky;
+  top: -0.5rem;
+  background-color: #ffffff;
+}
+.select_location_drpd_input input {
+  width: 100%;
+  /* background-color: red !important; */
+}
 .selection_opt select {
   width: 20vw;
   min-width: 200px;
@@ -108,8 +152,8 @@
 }
 .selection_opt select option {
   border-radius: 50%;
-  background-color: #1e136d;
-  color: white;
+  /* background-color: #1e136d; */
+  color: black;
   display: flex;
   justify-content: center;
 }
@@ -404,6 +448,9 @@
   ._home_blog__container {
     grid-template-columns: repeat(3, 1fr);
   }
+  .select_location_drpd {
+    top: 2.5rem;
+  }
 }
 @media screen and (max-width: 1075px) {
   .interior_design_sample_container {
@@ -423,6 +470,9 @@
 @media screen and (max-width: 1075px) {
   .content_title {
     width: 80%;
+  }
+  .select_location_drpd {
+    top: 2.2rem;
   }
 }
 @media screen and (max-width: 768px) {
@@ -473,6 +523,9 @@
 }
 @media screen and (max-width: 768px) {
   .selection_opt select {
+    width: 100%;
+  }
+  .select_location {
     width: 100%;
   }
 }

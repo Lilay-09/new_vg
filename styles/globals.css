@@ -105,6 +105,20 @@ section {
 .active.iterior {
   animation: iterior 1s ease 0.2s 1 normal forwards;
 }
+
+.drpdown_location_check {
+  margin: 0.2rem;
+  width: 20px;
+  height: 20px;
+  background-color: #281a92;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.drpdown_location_check svg {
+  color: #ffffff;
+}
 @keyframes iterior {
   0% {
     transform: scaleY(0.4);

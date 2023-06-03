@@ -18,7 +18,6 @@ const BlogDetails = (props) => {
   const [type, setType] = useState("shop-house");
   const [location, setLocation] = useState("phnom-penh");
   let translations = state.trans;
-  console.log(lastest_properties);
   return (
     <Layout width={100}>
       <SplitContainer

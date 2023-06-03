@@ -2,7 +2,6 @@ import { faGreaterThan, faLessThan } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Image from "next/image";
 import React, { useEffect, useMemo, useState } from "react";
-import { data } from "../utils/data";
 
 const renderData = (datafetch) => {
   return (

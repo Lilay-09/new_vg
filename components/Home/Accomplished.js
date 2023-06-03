@@ -4,6 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import Scrollable from "../Scrollable";
 import { DataContext } from "../../store/GlobalState";
+import ImageComp from "../ImageComp";
 const Accomplished = (props) => {
   const { state, dispatch } = useContext(DataContext);
   const lang = state.lang.d_lang;
@@ -16,13 +17,14 @@ const Accomplished = (props) => {
           href={`/${lang}/agent/${props.profile_details}`}
           className={styles._img__circle_avatar}
         >
-          <Image
+          <ImageComp imageUrl={props.profile} />
+          {/* <Image
             src={`${props.profile}`}
             width={300}
             height={300}
             alt={props.profile}
             priority
-          />
+          /> */}
         </Link>
 
         <div className={styles._person_details}>

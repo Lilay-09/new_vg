@@ -7,6 +7,7 @@ import { Services, city_provinces } from "../../../utils/data";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faCaretDown,
+  faCheck,
   faFilter,
   faFilterCircleXmark,
   faLocationDot,
@@ -16,7 +17,10 @@ import { useRouter } from "next/router";
 import PaginationBtn from "../../../components/PaginationBtn";
 import TiltleTile from "../../../components/TiltleTile";
 import { DataContext } from "../../../store/GlobalState";
-const OurProperty = () => {
+import ImageComp from "../../../components/ImageComp";
+import { postData } from "../../../utils/fetchData";
+const OurProperty = (props) => {
+  const { filter } = props;
   const forDD = [
     { type: "Shop House" },
     { type: "Twin Villa" },
@@ -24,16 +28,16 @@ const OurProperty = () => {
   ];
   const priceLst = [
     {
-      price: "120000",
+      price: "15000 to 25000",
     },
     {
-      price: "200000",
+      price: "28000 to 32000",
     },
     {
-      price: "300000",
+      price: "50000 to 100000",
     },
     {
-      price: "350000",
+      price: "100000 to 280000",
     },
   ];
   const router = useRouter();
@@ -107,39 +111,42 @@ const OurProperty = () => {
     setminPageNumberLimit(minPageNumberLimit - pageNumberLimit);
   }
   const [prpDD, setPrpDD] = useState(false);
-  const [propsVal, setPropVal] = useState("Shop House");
+  const [propsVal, setPropVal] = useState(filter.categories[0].category);
+  const [propsTypeID, setPropsTypeID] = useState(filter.categories[0].id);
   const prpRef = useRef();
   const locRef = useRef();
   const priceRef = useRef();
   const filterRef = useRef();
-  const handleGetDragVal = (e) => {
-    const getVal = e.target.innerHTML;
-    setPropVal(getVal);
-    setPrpDD(false);
+  const handlePropertyClick = (category, id) => {
+    setPropVal(category);
+    setPropsTypeID(id);
+    // setPrpDD(false);
   };
   const handlePrpTypeDD = () => {
     setPrpDD(!prpDD);
   };
 
-  const [locationVal, setLocationVal] = useState("Phnom Penh");
+  const [locationVal, setLocationVal] = useState(filter.cities[0].city);
+  const [locationID, setLocationID] = useState(filter.cities[0].id);
+  const [getDistrictID, setDistrictID] = useState();
+  // filter.cities[0].districts[0].id
   const [locationDD, setLocationDD] = useState(false);
   const handlelocationDD = () => {
     setLocationDD(!locationDD);
   };
-  const handleGetLocaitonVal = (e) => {
-    const getVal = e.target.innerHTML;
-    setLocationVal(getVal);
+  const handleGetLocaitonVal = (location, id) => {
+    setLocationID(id);
+    setLocationVal(location);
   };
 
-  const [priceVal, setPriceVal] = useState("120000");
+  const [priceVal, setPriceVal] = useState("From");
   const [priceDD, setPriceDD] = useState(false);
 
   const handlePriceDD = () => {
     setPriceDD(!priceDD);
   };
-  const handleGetPriceVal = (e) => {
-    const getVal = e.target.innerHTML;
-    setPriceVal(getVal);
+  const handleGetPriceVal = (price) => {
+    setPriceVal(price);
   };
   useEffect(() => {
     let handleOpenDD = (e) => {
@@ -154,7 +161,6 @@ const OurProperty = () => {
       }
     };
     let filterNav = filterRef.current;
-    // console.log(filterNav);
 
     document.addEventListener("mousedown", handleOpenDD, true);
     return () => {
@@ -170,6 +176,18 @@ const OurProperty = () => {
   const [dropDownFrilter, setDropDownFilter] = useState(false);
   const handleDropFilterSearch = () => {
     setDropDownFilter(!dropDownFrilter);
+  };
+
+  const [getType, setType] = useState(filter.listing_types[0].id);
+
+  console.log(getType, propsTypeID, locationID, getDistrictID, priceVal);
+
+  const handleSearchButton = () => {
+    router.push(
+      `/${lang}/search=&${getType}&${propsTypeID}&${locationID}&${
+        getDistrictID ? getDistrictID : null
+      }&${priceVal === "From" ? "15000 to 20000" : priceVal}`
+    );
   };
 
   let translations = state.trans;
@@ -200,17 +218,28 @@ const OurProperty = () => {
         </div>
         <div className={styles.search_container}>
           <div className={styles.tab_pag}>
-            <div className={styles.tap_pag_box}>Sale Properties</div>
-            <div className={styles.tap_pag_box}>Rent Properties</div>
+            {filter.listing_types.map((item, i) => {
+              return (
+                <div
+                  className={
+                    getType === item.id
+                      ? styles["tap_pag_box"] +
+                        " " +
+                        styles["tap_pag_box_active"]
+                      : styles["tap_pag_box"]
+                  }
+                  key={i}
+                  onClick={() => setType(item.id)}
+                >
+                  {item.listing_type}
+                </div>
+              );
+            })}
           </div>
           <div className={styles.search_filter}>
-            {/* <div className={styles.search_box}>
-              <span>Keyword Search</span>
-              <div>Seacrch Container</div>
-            </div> */}
             <div className={styles.search_box}>
               <span>{translations.property_type}</span>
-              <div className={styles.prpty__dropdown}>
+              <div className={styles.prpty__dropdown} ref={prpRef}>
                 <p onClick={handlePrpTypeDD}>
                   <FontAwesomeIcon icon={faCaretDown} width={18} />
                   {propsVal}
@@ -222,16 +251,22 @@ const OurProperty = () => {
                       : styles["dropdown_clicked"]
                   }
                 >
-                  {forDD.map((item, i) => {
+                  {filter.categories.map((item, i) => {
                     return (
-                      <li key={i} onClick={handleGetDragVal} ref={prpRef}>
-                        {item.type == propsVal ? (
-                          <div className={styles["dropdown_val_selected"]}>
-                            {item.type}
-                          </div>
-                        ) : (
-                          item.type
-                        )}
+                      <li
+                        key={i}
+                        onClick={() =>
+                          handlePropertyClick(item.category, item.id)
+                        }
+                      >
+                        <div
+                          className={
+                            propsTypeID === item.id &&
+                            styles["dropdown_val_selected"]
+                          }
+                        >
+                          {item.category}
+                        </div>
                       </li>
                     );
                   })}
@@ -240,7 +275,7 @@ const OurProperty = () => {
             </div>
             <div className={styles.search_box}>
               <span>Location</span>
-              <div className={styles.prpty__dropdown}>
+              <div className={styles.prpty__dropdown} ref={locRef}>
                 <p onClick={handlelocationDD}>
                   <FontAwesomeIcon icon={faLocationDot} width={13} />
                   {locationVal}
@@ -254,17 +289,48 @@ const OurProperty = () => {
                       : styles["dropdown_clicked_location"]
                   }
                 >
-                  {city_provinces.map((item, i) => {
+                  {filter.cities.map((item, i) => {
                     return (
-                      <li key={i} onClick={handleGetLocaitonVal} ref={locRef}>
-                        {item.city == locationVal ? (
-                          <div className={styles["dropdown_val_selected"]}>
+                      <React.Fragment key={i}>
+                        <li
+                          key={i}
+                          onClick={() =>
+                            handleGetLocaitonVal(item.city, item.id)
+                          }
+                        >
+                          <div
+                            className={
+                              locationID === item.id &&
+                              styles["dropdown_val_selected"]
+                            }
+                          >
                             {item.city}
                           </div>
-                        ) : (
-                          item.city
-                        )}
-                      </li>
+                        </li>
+                        {item.districts.map((dis, i) => {
+                          return (
+                            <div
+                              className={styles["select__district"]}
+                              key={i}
+                              onClick={() => setDistrictID(dis.id)}
+                              style={{
+                                color: getDistrictID === dis.id && "#1e136d",
+                              }}
+                            >
+                              {getDistrictID === dis.id && (
+                                <div
+                                  style={{
+                                    width: "20px",
+                                  }}
+                                >
+                                  <FontAwesomeIcon icon={faCheck} />
+                                </div>
+                              )}
+                              {dis.district}
+                            </div>
+                          );
+                        })}
+                      </React.Fragment>
                     );
                   })}
                 </div>
@@ -272,7 +338,7 @@ const OurProperty = () => {
             </div>
             <div className={styles.search_box}>
               <span>Price Limit</span>
-              <div className={styles.prpty__dropdown}>
+              <div className={styles.prpty__dropdown} ref={priceRef}>
                 <p onClick={handlePriceDD}>
                   <FontAwesomeIcon icon={faLocationDot} width={13} />
                   {priceVal}
@@ -286,21 +352,22 @@ const OurProperty = () => {
                 >
                   {priceLst.map((item, i) => {
                     return (
-                      <li key={i} onClick={handleGetPriceVal} ref={priceRef}>
-                        {item.price == priceVal ? (
-                          <div className={styles["dropdown_val_selected"]}>
-                            {item.price}
-                          </div>
-                        ) : (
-                          item.price
-                        )}
+                      <li key={i} onClick={() => handleGetPriceVal(item.price)}>
+                        <div
+                          className={
+                            item.price == priceVal &&
+                            styles["dropdown_val_selected"]
+                          }
+                        >
+                          {item.price}
+                        </div>
                       </li>
                     );
                   })}
                 </div>
               </div>
             </div>
-            <div className={styles.search_box}>
+            <div className={styles.search_box} onClick={handleSearchButton}>
               <span>Search</span>
             </div>
           </div>
@@ -315,12 +382,48 @@ const OurProperty = () => {
           X
         </div>
         <TiltleTile title={"Find Your Properties"} noMore />
-        <div className="status_choose">
-          <div className="btn_status">Buy</div>
-          <div className="btn_status">Rent</div>
+        <div className="seach_box_container">
+          <div className="status_choose">
+            {filter.listing_types.map((item, i) => {
+              return (
+                <div
+                  className={`btn_status ${
+                    getType === item.id && "btn_status_active"
+                  }`}
+                  key={i}
+                  onClick={() => setType(item.id)}
+                >
+                  {item.listing_type}
+                </div>
+              );
+            })}
+          </div>
+          <div className="propt__type">
+            <h5>Property Types:</h5>
+            <div className="propt__type_items">
+              {filter.categories.map((item, i) => {
+                return (
+                  <div
+                    className={`propt__type_item_ ${
+                      propsTypeID === item.id && "active"
+                    }`}
+                    onClick={() => handlePropertyClick(item.category, item.id)}
+                    key={i}
+                  >
+                    <div className="propt__type_icon">
+                      <ImageComp imageUrl={"/images/house.png"} />
+                    </div>
+                    <span>{item.category}</span>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+          <div>
+            <h5>Location:</h5>
+          </div>
         </div>
       </div>
-      {/*  */}
       <div className={`${styles.properties_container} _hidden_item`}>
         {currentItems.map((item, i) => {
           return (
@@ -331,7 +434,7 @@ const OurProperty = () => {
               <div
                 className={styles.properties__card_img}
                 onClick={() => {
-                  router.push(`/${lang}/properties/sth`);
+                  router.push(`/${lang}/properties/${item.id}`);
                 }}
               >
                 <Image
@@ -408,3 +511,16 @@ const OurProperty = () => {
 };
 
 export default OurProperty;
+export const getServerSideProps = async (context) => {
+  const { lang } = context.query;
+  let filterBody = {
+    lang: `${lang ? lang : "en"}`,
+  };
+  const filter = await postData("property/filters", filterBody);
+  const getFilter = await filter;
+  return {
+    props: {
+      filter: getFilter.data,
+    },
+  };
+};

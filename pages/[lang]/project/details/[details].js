@@ -12,11 +12,8 @@ import { DataContext } from "../../../../store/GlobalState";
 const ProjectDetails = (props) => {
   const { last_projects } = props;
   const images = last_projects.images;
-  console.log(images);
   const [count, setCount] = useState(0);
-  const [showBanner, setShowBanner] = useState(
-    last_projects.images[0].image_url
-  );
+  const [showBanner, setShowBanner] = useState(images[0].image_url);
 
   const { state, dispatch } = useContext(DataContext);
   let translations = state.trans;

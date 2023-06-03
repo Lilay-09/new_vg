@@ -191,7 +191,7 @@ const OurTeam = (props) => {
             </p>
           </div>
         </div>
-        <div className={`${styles.our__team_member} reveal our__team_hidden`}>
+        <div className={`${styles.our__team_member} our__team_hidden`}>
           <div>
             <h2>{translations.team_members}</h2>
           </div>

@@ -1,0 +1,173 @@
+{
+  "lastest_properties": [
+    {
+      "id": 1,
+      "name": "Luxury Condo",
+      "price": 500000,
+      "sqrtft": 1500,
+      "property_type": "condo",
+      "listing_type": "For Sale",
+      "address": "123 Main Street",
+      "tenure": "Freehold",
+      "completed_year": 2020,
+      "units": 50,
+      "floor_size": 5,
+      "bedrooms": 3,
+      "description": "Spacious luxury condo with modern amenities.",
+      "images": [
+        {
+          "id": 1,
+          "name": "Living Room",
+          "description": "The spacious living room area.",
+          "image_url": "/images/b1.jpg"
+        },
+        {
+          "id": 2,
+          "name": "Bedroom",
+          "description": "Master bedroom with en-suite bathroom.",
+          "image_url": "/images/b6.jpg"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "Cozy Apartment",
+      "price": 2000,
+      "sqrtft": 800,
+      "property_type": "apartment",
+      "listing_type": "For Rent",
+      "address": "456 Elm StreetStreetStreetStreet",
+      "tenure": "Leasehold",
+      "completed_year": 2015,
+      "units": 20,
+      "floor_size": 3,
+      "bedrooms": 1,
+      "description": "Charming apartment in a quiet neighborhood.",
+      "images": [
+        {
+          "id": 1,
+          "name": "Kitchen",
+          "description": "Fully equipped kitchen with modern appliances.",
+          "image_url": "/images/b2.jpg"
+        },
+        {
+          "id": 2,
+          "name": "Living Room",
+          "description": "Cozy living room with natural light.",
+          "image_url": "/images/b6.jpg"
+        },
+        {
+          "id": 3,
+          "name": "Bedroom",
+          "description": "Comfortable bedroom with ample storage space.",
+          "image_url": "/images/b3.jpg"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "name": "Spacious House",
+      "price": 800000,
+      "sqrtft": 2500,
+      "property_type": "house",
+      "listing_type": "For Sale",
+      "address": "789 Oak Avenue",
+      "tenure": "Freehold",
+      "completed_year": 2005,
+      "units": 1,
+      "floor_size": 2,
+      "bedrooms": 4,
+      "description": "Beautiful house with a large backyard.",
+      "images": [
+        {
+          "id": 1,
+          "name": "Front View",
+          "description": "Exterior view of the house from the front.",
+          "image_url": "/images/b6.jpg"
+        },
+        {
+          "id": 2,
+          "name": "Living Room",
+          "description": "Spacious living room with fireplace.",
+          "image_url": "/images/b4.jpg"
+        },
+        {
+          "id": 3,
+          "name": "Kitchen",
+          "description": "Modern kitchen with granite countertops.",
+          "image_url": "/images/b6.jpg"
+        },
+        {
+          "id": 4,
+          "name": "Backyard",
+          "description": "Large backyard with a patio and garden.",
+          "image_url": "/images/b6.jpg"
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "name": "Modern Condo",
+      "price": 350000,
+      "sqrtft": 1200,
+      "property_type": "condo",
+      "listing_type": "For Sale",
+      "address": "10 Maple Lane",
+      "tenure": "Leasehold",
+      "completed_year": 2010,
+      "units": 30,
+      "floor_size": 6,
+      "bedrooms": 2,
+      "description": "Contemporary condo with stunning views.",
+      "images": [
+        {
+          "id": 1,
+          "name": "Living Room",
+          "description": "Open concept living room with large windows.",
+          "image_url": "/images/b3.jpg"
+        },
+        {
+          "id": 2,
+          "name": "Bedroom",
+          "description": "Comfortable bedroom with ample natural light.",
+          "image_url": "/images/b6.jpg"
+        },
+        {
+          "id": 3,
+          "name": "Balcony",
+          "description": "Private balcony overlooking the city skyline.",
+          "image_url": "/images/b6.jpg"
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "name": "Renovated Apartment",
+      "price": 1800,
+      "sqrtft": 900,
+      "property_type": "apartment",
+      "listing_type": "For Rent",
+      "address": "20 Pine Street",
+      "tenure": "Leasehold",
+      "completed_year": 2008,
+      "units": 10,
+      "floor_size": 4,
+      "bedrooms": 2,
+      "description": "Recently renovated apartment with modern finishes.",
+      "images": [
+        {
+          "id": 1,
+          "name": "Kitchen",
+          "description": "Stylish kitchen with stainless steel appliances.",
+          "image_url": "/images/b4.jpg"
+        },
+        {
+          "id": 2,
+          "name": "Living Room",
+          "description": "Spacious living room with hardwood floors.",
+          "image_url": "/images/b6.jpg"
+        }
+      ]
+    }
+  ]
+}

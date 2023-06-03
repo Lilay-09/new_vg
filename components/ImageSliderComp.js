@@ -7,6 +7,7 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Image from "next/image";
 import React, { useEffect, useRef, useState } from "react";
+import ImageComp from "./ImageComp";
 const ImageSliderComp = ({ data_img }) => {
   const nextBtnRef = useRef();
   const autoClick = () => {
@@ -52,7 +53,7 @@ const ImageSliderComp = ({ data_img }) => {
   });
   return (
     <div className="image_slider_container">
-      <Image src={showBanner} width={1000} height={1000} alt="img" priority />
+      <ImageComp imageUrl={showBanner} />
       <div className="btn_next_prev">
         <div onClick={handlePrev} className="prev">
           <FontAwesomeIcon icon={faCaretLeft} width={20} />

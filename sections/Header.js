@@ -29,6 +29,8 @@ const Header = ({ title, path }) => {
   ];
 
   const router = useRouter();
+  // let { lang } = router.query;
+  const currentUrl = typeof window !== "undefined" ? window.location.href : "";
 
   const { state, dispatch } = useContext(DataContext);
   const swLang = state.lang;
@@ -85,14 +87,31 @@ const Header = ({ title, path }) => {
     setLangDrop(!langDrop);
   };
   const handleChangeLangs = (item, type) => {
-    dispatch({ type: "LANG", payload: { d_lang: type, flag: item } });
+    dispatch({ type: "LANG", payload: { d_lang: type } });
     localStorage.setItem("__lang_", type);
     setLangDrop(false);
   };
   let changeLng = swLang.d_lang;
   let translations = state.trans;
-
+  let home = state.view.home;
+  let c = home;
   const locAspath = router.asPath;
+  const currPath = router.asPath.substring(router.basePath.length);
+  const handleClick = () => {
+    let start = home ? home : 0;
+    if (locAspath == `/${changeLng}`) {
+      localStorage.setItem("views", JSON.stringify({ home: start + 1 }));
+      dispatch({ type: "VIEW", payload: { home: start + 1 } });
+    }
+    if (currPath === `/${changeLng}/our-team`) {
+      localStorage.setItem("views", JSON.stringify({ home: start + 1 }));
+      dispatch({ type: "VIEW", payload: { home: start + 1 } });
+    }
+  };
+
+  // useEffect(() => {
+  //   handleClick();
+  // });
   return (
     <div>
       <Head>
@@ -121,7 +140,11 @@ const Header = ({ title, path }) => {
               priority
             />
           </div>
+
           <div className={styles.navbar_link}>
+            {/* {home}
+            {currPath} */}
+            {/* <button onClick={handleClick}>Click</button> */}
             <ActiveLink href={locAspath.length <= 1 ? "/" : `/${changeLng}`}>
               {translations.home}
             </ActiveLink>
@@ -172,7 +195,15 @@ const Header = ({ title, path }) => {
                       className={styles["lang_details"]}
                       key={i}
                       onClick={() => handleChangeLangs(item.img, item.type)}
-                      href={`/${item.type === "en" ? "" : item.type}`}
+                      // href={`/${item.type === "en" ? "" : item.type}`}
+                      href={
+                        router.asPath.length > 3
+                          ? currentUrl.replace(
+                              `/${changeLng}/`,
+                              `/${item.type}/`
+                            )
+                          : `/${item.type === "en" ? "" : item.type}`
+                      }
                     >
                       <div className={styles["select_lang"]}>
                         <Image
