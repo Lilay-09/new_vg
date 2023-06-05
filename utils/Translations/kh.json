@@ -41,5 +41,7 @@
   "completed_year": "រយះពេលសាងសង់",
   "floor_size": "ទំហំ",
   "bedroom": "បន្ទប់",
-  "prp_description": "សង្ខេប"
+  "bathroom": "បន្ទប់ទឹក",
+  "prp_description": "សង្ខេប",
+  "price": "តម្លៃ"
 }

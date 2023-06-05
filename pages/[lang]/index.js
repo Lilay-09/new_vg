@@ -24,6 +24,7 @@ import ImageComp from "../../components/ImageComp";
 import { DataContext } from "../../store/GlobalState";
 import { postData } from "../../utils/fetchData";
 import { getViews, incrementViews } from "../../utils/countView";
+import LatestProjects from "../../components/Home/LastProjects";
 
 const Home = (props) => {
   const router = useRouter();
@@ -34,10 +35,10 @@ const Home = (props) => {
   const { home_api, filter } = props;
 
   const banner = home_api.banner;
-  const last_projects = home_api.latest_projects;
+  const latest_projects = home_api.latest_projects;
   const locations = home_api.locations;
   const popular_locations = home_api.popular_locations;
-  const lastest_properties = home_api.latest_properties;
+  // const latest_properties = home_api.latest_properties;
   const categories = home_api.categories;
   const types = home_api.types;
   const prices = home_api.prices;
@@ -51,12 +52,27 @@ const Home = (props) => {
   const [district, setDistrict] = useState();
   const [districtID, setDistrictID] = useState();
   const [filterLocationDRP, setFilterLocationDRP] = useState(false);
+  const locationRef = useRef();
+  const [qSearch, setQsearch] = useState(filter.cities);
+
+  useEffect(() => {
+    const handleLocationDD = (e) => {
+      if (!locationRef.current.contains(e.target)) {
+        setFilterLocationDRP(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleLocationDD, true);
+    return () => {
+      document.removeEventListener("mousedown", handleLocationDD, true);
+    };
+  });
 
   const handleSearchOption = () => {
     router.push(
       `${lang}/search=&${getType}&${getCategories}&${cityID}&${
         districtID ? districtID : null
-      }&${getPrices === "From" ? "15000 to 20000" : getPrices}`
+      }&${getPrices === "From" ? null : getPrices}`
     );
     localStorage.setItem(
       "search",
@@ -89,8 +105,13 @@ const Home = (props) => {
   const handleGetDistrictID = (id) => {
     setDistrictID(id);
   };
-  let translations = state.trans;
 
+  const handleSearchFilter = (e) => {
+    const getSearch = e.target.value;
+    const regax = new RegExp(getSearch, "i");
+    setQsearch(filter.cities.filter((find) => regax.test(find.city)));
+  };
+  let translations = state.trans;
   return (
     <Layout width={100}>
       <section className={`${styles._home_banner}`}>
@@ -136,6 +157,7 @@ const Home = (props) => {
                 );
               })}
             </select>
+
             <select
               value={getCategories}
               onChange={(e) => {
@@ -151,7 +173,7 @@ const Home = (props) => {
               })}
             </select>
 
-            <div className={styles.select_location}>
+            <div className={styles.select_location} ref={locationRef}>
               <div
                 style={{
                   width: "100%",
@@ -160,7 +182,7 @@ const Home = (props) => {
                   alignItems: "center",
                   justifyContent: "center",
                 }}
-                onClick={() => {
+                onClick={(e) => {
                   setFilterLocationDRP(!filterLocationDRP);
                 }}
               >
@@ -169,9 +191,9 @@ const Home = (props) => {
               {filterLocationDRP && (
                 <div className={styles.select_location_drpd}>
                   <div className={styles.select_location_drpd_input}>
-                    <input />
+                    <input onChange={handleSearchFilter} />
                   </div>
-                  {filter.cities.map((item, i) => {
+                  {qSearch.map((item, i) => {
                     return (
                       <React.Fragment key={item.id}>
                         <div className="d-flex">
@@ -256,7 +278,7 @@ const Home = (props) => {
       </div>
 
       <div className={styles.last__project_container}>
-        <LastProjects data={last_projects} />
+        <LatestProjects data={latest_projects} />
       </div>
 
       <PopularLocation
@@ -273,11 +295,11 @@ const Home = (props) => {
               <button>see more</button>
             </div>
           </div>
-          <div className={styles._home_blog__container}>
-            {lastest_properties.map((item, index) => {
+          {/* <div className={styles._home_blog__container}>
+            {latest_properties.map((item, index) => {
               return (
                 <React.Fragment key={index}>
-                  {LastestProperties(
+                  {LatestProperties(
                     item.images[0].image_url,
                     item.address,
                     item.name,
@@ -289,7 +311,7 @@ const Home = (props) => {
                 </React.Fragment>
               );
             })}
-          </div>
+          </div> */}
         </div>
       </section>
       <section className={styles.accomplistment}>
@@ -302,7 +324,7 @@ const Home = (props) => {
               </button>
             </div>
           </div>
-          <div className={styles.designers_and__architects}>
+          {/* <div className={styles.designers_and__architects}>
             {teams.map((item, index) => {
               return (
                 <Accomplished
@@ -317,7 +339,7 @@ const Home = (props) => {
                 />
               );
             })}
-          </div>
+          </div> */}
         </div>
       </section>
     </Layout>
@@ -328,7 +350,6 @@ export default Home;
 
 export const getServerSideProps = async (ctx) => {
   const { lang } = ctx.query;
-  // const res = await fetch("/data.json");
   const bodyReq = {
     id: "209",
     lang: `${lang ? lang : "en"}`,
@@ -341,9 +362,6 @@ export const getServerSideProps = async (ctx) => {
   };
   const filter = await postData("property/filters", filterBody);
   const getFilter = await filter;
-  // const filePath = path.join(process.cwd(), "/public/home_page.json");
-  // const jsonData = await fs.readFile(filePath, "utf8");
-  // const data = JSON.parse(jsonData);
   return {
     props: {
       filter: getFilter.data,
@@ -352,7 +370,7 @@ export const getServerSideProps = async (ctx) => {
   };
 };
 
-const LastestProperties = (url, location, title, price, sqrft, status, id) => {
+const LatestProperties = (url, location, title, price, sqrft, status, id) => {
   const { state, dispatch } = useContext(DataContext);
   let translations = state.trans;
   let lang = state.lang.d_lang;
@@ -385,6 +403,38 @@ const LastestProperties = (url, location, title, price, sqrft, status, id) => {
               ? location.substring(0, 20) + "..."
               : location}
           </span>
+        </div>
+        <div className={styles.prop_spec}>
+          <div className="d-flex align-items-center gap-1">
+            <Image
+              src="/images/home_size.png"
+              width={100}
+              height={100}
+              alt="home_size"
+              priority
+            />
+            <div>6M x 14M</div>
+          </div>
+          <div className="d-flex align-items-center gap-1">
+            <Image
+              src="/images/bed.png"
+              width={100}
+              height={100}
+              alt="home_size"
+              priority
+            />
+            <div>3</div>
+          </div>
+          <div className="d-flex align-items-center gap-1">
+            <Image
+              src="/images/bathtub.png"
+              width={100}
+              height={100}
+              alt="home_size"
+              priority
+            />
+            <div>4</div>
+          </div>
         </div>
         <div className={styles._home_card_sqrft}>sqrft:{sqrft}</div>
       </div>

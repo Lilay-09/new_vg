@@ -41,5 +41,7 @@
   "completed_year": "Completed Year",
   "floor_size": "Floor Size",
   "bedroom": "Bedroom",
-  "prp_description": "Property Description"
+  "bathroom": "bathroom",
+  "prp_description": "Property Description",
+  "price": "price"
 }

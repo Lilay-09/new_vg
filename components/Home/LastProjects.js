@@ -10,7 +10,7 @@ import tranEn from "../../utils/Translations/en.json";
 import tranCh from "../../utils/Translations/ch.json";
 import tranKh from "../../utils/Translations/kh.json";
 import ImageComp from "../ImageComp";
-const LastProjects = ({ data }) => {
+const LatestProjects = ({ data }) => {
   const { state, dispatch } = useContext(DataContext);
   const lang = state.lang.d_lang;
   let translations = state.trans;
@@ -59,4 +59,4 @@ const LastProjects = ({ data }) => {
   );
 };
 
-export default LastProjects;
+export default LatestProjects;

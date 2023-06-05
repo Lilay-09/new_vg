@@ -14,7 +14,6 @@ import ImageComp from "../../../components/ImageComp";
 const SearchInfo = (props) => {
   const { state, dispatch } = useContext(DataContext);
   const { data } = props;
-  console.log(data.length);
 
   let translations = state.trans;
   const forDD = [
@@ -156,7 +155,6 @@ export async function getServerSideProps(context) {
   const values = search
     .split("&")
     .filter((item) => item !== "" && !item.startsWith("search="));
-  console.log();
   const bodyReq = {
     listing_type_id: values[0],
     category_id: `${values[1]}`,

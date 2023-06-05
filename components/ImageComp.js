@@ -4,17 +4,15 @@ import { useState } from "react";
 
 const ImageComp = ({ imageUrl, defaultImg, onClick }) => {
   const [imageError, setImageError] = useState(false);
-  let img = "/images/banner2.png";
   const handleImageError = (e) => {
     setImageError(true);
     e.target.onerror = null;
-    e.target.src = img;
   };
   return (
     <React.Fragment>
       {!imageError ? (
         <Image
-          src={imageUrl ? imageUrl : "/images/white.jpg"}
+          src={imageUrl}
           onError={handleImageError}
           alt="Image"
           width={3000}

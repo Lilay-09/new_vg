@@ -38,6 +38,7 @@ const Header = ({ title, path }) => {
   const [isOpenMenu, setOpenMenu] = useState(false);
   const menuRef = useRef();
   const xREf = useRef();
+  const langRef = useRef();
 
   const [scrolled, setScrolled] = useState(false);
 
@@ -109,9 +110,17 @@ const Header = ({ title, path }) => {
     }
   };
 
-  // useEffect(() => {
-  //   handleClick();
-  // });
+  useEffect(() => {
+    const handleCloselangRef = (e) => {
+      if (!langRef.current.contains(e.target)) {
+        setLangDrop(false);
+      }
+    };
+    document.addEventListener("mousedown", handleCloselangRef, true);
+    return () => {
+      document.removeEventListener("mousedown", handleCloselangRef, true);
+    };
+  });
   return (
     <div>
       <Head>
@@ -168,7 +177,7 @@ const Header = ({ title, path }) => {
             </ActiveLink>
           </div>
           <div style={{ flexGrow: "1" }}></div>
-          <div className={styles["lang"]}>
+          <div className={styles["lang"]} ref={langRef}>
             <div
               className={styles["selected_lang"]}
               onClick={handleLangDropDown}

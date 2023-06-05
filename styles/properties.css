@@ -90,9 +90,115 @@
     background-color: #281a92;
     padding: 0.5rem 2rem;
     color: white;
+    min-width: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
   .btn_status_active {
     border: 3px solid #e6b269;
     border-radius: 10px;
+  }
+}
+.location__drpD {
+  width: 100%;
+  border: 1px solid #e6b269;
+  padding: 0.3rem 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+}
+.icon__drpD {
+  width: 25px;
+  height: 25px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s;
+}
+.icon__drpD {
+  transform: rotate(-90deg);
+  color: #281a92;
+}
+
+.icon__drpD.show {
+  transform: rotate(0deg);
+}
+
+.drop_down__loc_n_district {
+  position: absolute;
+  top: 2.3rem;
+  background-color: #ffffff;
+  width: 100%;
+  left: 0;
+  right: 0;
+  padding: 0.3rem 1rem;
+  box-shadow: 0px 5px 10px 1px rgba(0, 0, 0, 0.205);
+  transition: 0.4s;
+  display: none;
+  max-height: 350px;
+  overflow-y: scroll;
+}
+.drop_down__loc_n_district::-webkit-scrollbar {
+  display: none;
+}
+.drop_down__loc_n_district li {
+  list-style-type: none;
+}
+.drop_down__loc_n_district.active {
+  display: block;
+}
+.show__seleted {
+  /* background-color: red; */
+  width: 100%;
+}
+
+.btn__search {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  margin: 1.6rem;
+  background-color: #281a92;
+  padding: 0.3rem 0.6rem;
+  color: white;
+}
+.selection_budget {
+  display: none;
+  flex-direction: column;
+  gap: 0.5rem;
+  background-color: #ffffff;
+  box-shadow: 0px 5px 10px 1px rgba(0, 0, 0, 0.205);
+  padding: 0.5rem;
+}
+.selection_budget.show {
+  display: flex;
+}
+.selection_budget li {
+  list-style-type: none;
+}
+.__select_from__icon {
+  position: absolute;
+  right: 0.5rem;
+}
+.price__from__ {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.show_selected_price {
+  border: 1px solid #e6b269;
+  width: 200px;
+  display: flex;
+  align-items: center;
+  height: 40px;
+  justify-content: space-between;
+  padding: 0.5rem;
+  position: relative;
+}
+@media screen and (max-width: 768px) {
+  .drop_down__loc_n_district {
+    max-height: 180px;
   }
 }
