@@ -16,12 +16,6 @@ const ImageSliderComp = ({ data_img }) => {
       setTimeout(autoClick, 5000);
     }
   };
-  const img = [
-    { img: "/images/tp1.jpg" },
-    { img: "/images/tp2.jpg" },
-    { img: "/images/tp3.jpg" },
-    { img: "/images/tp4.jpg" },
-  ];
   const [count, setCount] = useState(0);
   const [showBanner, setShowBanner] = useState(data_img[0].image_url);
 

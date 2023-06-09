@@ -1,18 +1,26 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import Layout from "../../../sections/Layout";
 import styles from "../../../styles/OurServices.module.css";
 import Image from "next/image";
 import ScrollableContainer from "../../../components/ScrollableContainer";
 import Title from "../../../components/Title";
-import { Services } from "../../../utils/data";
 import TiltleTile from "../../../components/TiltleTile";
 import { DataContext } from "../../../store/GlobalState";
 import tranEn from "../../../utils/Translations/en.json";
 import tranKh from "../../../utils/Translations/kh.json";
 import tranCh from "../../../utils/Translations/ch.json";
-const OurServices = () => {
+import { postData } from "../../../utils/fetchData";
+import ImageComp from "../../../components/ImageComp";
+import { useRouter } from "next/router";
+const OurServices = (props) => {
   const { state, dispatch } = useContext(DataContext);
   let translations = state.trans;
+  let lang = state.lang.d_lang;
+  const { services_api, service_lists_api } = props;
+  const [bannerImg, setBannerImg] = useState(
+    services_api.banner.images[0].image_url
+  );
+  const router = useRouter();
   // const lang = state.lang.d_lang;
   // const asPath = state.lang.asPath;
 
@@ -20,25 +28,24 @@ const OurServices = () => {
     <Layout width={100}>
       <div className={`${styles._our_service_banner} _hidden_item`}>
         <div className={styles._our_service_banner_img}>
-          <Image src={`/images/b1.jpg`} width={1000} height={1000} alt="tb1" />
+          <ImageComp imageUrl={bannerImg} defaultImg={"/images/b1.jpg"} />
+          {/* <Image src={`/images/b1.jpg`} width={1000} height={1000} alt="tb1" /> */}
         </div>
         <div className={styles.banner_square}>
-          <div className={styles.banner_img_frame}>
-            <Image
-              src={`/images/b2.jpg`}
-              width={1000}
-              height={1000}
-              alt="tb1"
-            />
-          </div>
-          <div className={styles.banner_img_frame}>
-            <Image
-              src={`/images/b3.jpg`}
-              width={1000}
-              height={1000}
-              alt="tb1"
-            />
-          </div>
+          {services_api.banner.images.slice(0, 2).map((item, i) => {
+            return (
+              <div
+                className={styles.banner_img_frame}
+                key={i}
+                onClick={() => setBannerImg(item.image_url)}
+              >
+                <ImageComp
+                  imageUrl={item.image_url}
+                  defaultImg={`/images/b${i + 2}.jpg`}
+                />
+              </div>
+            );
+          })}
         </div>
         <div className={styles._our_service_banner_text}>
           <h4>Many Properties and categories</h4>
@@ -102,26 +109,23 @@ const OurServices = () => {
           </ScrollableContainer>
         </div>
       </div>
-      {/* <div className="reveal"></div> */}
       <div className={`${styles._services_section} reveal`}>
         <div style={{ width: "90%", margin: "0 auto 2rem auto" }}>
           <TiltleTile title={translations.our_services} noMore />
         </div>
         <div className={`${styles._services_card_container} `}>
-          {Services.map((item, i) => {
+          {service_lists_api.map((item, i) => {
             return (
-              <div className={styles._service_card} key={i}>
+              <div
+                className={styles._service_card}
+                key={i}
+                onClick={() => router.push(`/${lang}/our-services/${item.id}`)}
+              >
                 <div className={styles._service_categories_status_text}>
-                  <span>Buying</span>
+                  <span>{item.status}</span>
                 </div>
                 <div className={styles._service_card_img}>
-                  <Image
-                    src={`${item.url}`}
-                    width={1000}
-                    height={1000}
-                    alt="sell"
-                    priority
-                  />
+                  <ImageComp imageUrl={`${item.image.image_url}`} />
                 </div>
                 <div className={styles._service_card_details}>
                   <div>
@@ -129,11 +133,11 @@ const OurServices = () => {
                   </div>
                   <div>
                     <p>{translations.type}:</p>
-                    <p>{item.type}</p>
+                    <p>{item.project_type}</p>
                   </div>
                   <div>
                     <p>{translations.address}: </p>
-                    <p>{item.location}</p>
+                    <p>{item.address}</p>
                   </div>
                 </div>
               </div>
@@ -146,3 +150,27 @@ const OurServices = () => {
 };
 
 export default OurServices;
+export const getServerSideProps = async (ctx) => {
+  let { lang } = ctx.query;
+  let pageBody = {
+    id: "213",
+    lang: `${lang}`,
+  };
+
+  // begin fetch
+  const pageRes = await postData(`page/contents`, pageBody);
+  const servicesRes = await postData(`project/list`);
+  //end fetch
+
+  //begin assign
+  const getServices = await pageRes;
+  const getServiceLists = await servicesRes;
+  //end assign
+
+  return {
+    props: {
+      services_api: getServices.data,
+      service_lists_api: getServiceLists.data,
+    },
+  };
+};

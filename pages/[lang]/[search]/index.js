@@ -156,12 +156,11 @@ export async function getServerSideProps(context) {
     .split("&")
     .filter((item) => item !== "" && !item.startsWith("search="));
   const bodyReq = {
-    listing_type_id: values[0],
+    listing_type_id: `${values[0]}`,
     category_id: `${values[1]}`,
     city_id: `${values[2]}`,
     district_id: "",
-    price_range: `${values[4]}`,
-    lang: `${lang ? lang : "en"}`,
+    price_range: lang ? `${lang}` : "en",
   };
   const res = await postData(`property/list`, bodyReq);
   const getData = await res;

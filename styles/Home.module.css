@@ -422,6 +422,54 @@
   margin: 0 auto;
   width: 90%;
 }
+.dropdown__listing_type {
+  width: 100%;
+  background-color: #ffffff;
+  border: 1px solid #1e136d;
+  padding: 0.5vw;
+}
+.dropdown_listing {
+  width: 100%;
+  background-color: #ffffff;
+  position: absolute;
+  top: 2.2rem;
+  max-height: 0;
+  overflow-y: hidden;
+  overflow-x: hidden;
+  transition: max-height 0.2s ease-in-out;
+  display: flex;
+  flex-flow: column;
+  z-index: 10;
+}
+
+.dropdown_listing::-webkit-scrollbar {
+  display: none;
+}
+.dropdown_listing.active {
+  max-height: 220px;
+  overflow-y: scroll;
+}
+.dropdown_listing_item {
+  padding: 0.5rem;
+  font-weight: 500;
+  margin: 0.2rem 0;
+}
+.dropdown_listing_item.active {
+  background-color: #e6b269;
+  font-weight: 800;
+}
+/* .select_item {
+  width: 100%;
+} */
+.prop_spec {
+  display: flex;
+  align-items: center;
+  gap: 1vw;
+}
+.prop_spec img {
+  width: 20px;
+  height: 20px;
+}
 @keyframes banner_img_slide_content {
   0% {
     opacity: 0;

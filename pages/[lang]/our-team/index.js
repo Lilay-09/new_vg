@@ -5,18 +5,17 @@ import Image from "next/image";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowUp } from "@fortawesome/free-solid-svg-icons";
 import Link from "next/link";
-import path from "path";
-import fs from "fs/promises";
 import tranEn from "../../../utils/Translations/en.json";
 import tranKh from "../../../utils/Translations/kh.json";
 import tranCh from "../../../utils/Translations/ch.json";
 import { DataContext } from "../../../store/GlobalState";
+import { postData } from "../../../utils/fetchData";
+import ImageComp from "../../../components/ImageComp";
 
 const OurTeam = (props) => {
-  const { teams } = props;
+  const { page_api, consultant_api, leader_api } = props;
   const { state, dispatch } = useContext(DataContext);
   const lang = state.lang.d_lang;
-  const asPath = state.lang.asPath;
   let translations = state.trans;
 
   return (
@@ -27,172 +26,53 @@ const OurTeam = (props) => {
             <h2>{translations.team_manager}</h2>
           </div>
           <div className={styles._our_team__manager_container}>
-            <div className={`${styles._manager__card} our__team_item`}>
-              <div className={styles._team_avatar}>
-                <Image
-                  src="/images/p1.png"
-                  width={500}
-                  height={500}
-                  alt="p1"
-                  priority
-                />
-              </div>
-              <h5>{translations.name}: Taylor Swift</h5>
-              <p>{translations.position}: Designer</p>
-              <div className={styles._team_contact_social_media}>
-                <div className={styles.media_avatar}>
-                  <Image
-                    src={"/images/send.png"}
-                    width={200}
-                    height={200}
-                    alt="tele"
-                    priority
-                  />
+            {leader_api.map((leader, i) => {
+              return (
+                <div
+                  className={`${styles._manager__card} our__team_item`}
+                  key={i}
+                >
+                  <div className={styles._team_avatar}>
+                    <ImageComp imageUrl={leader.image_url} />
+                  </div>
+                  <h5>
+                    {translations.name}: {leader.name}
+                  </h5>
+                  <p>
+                    {translations.position}: {leader.position_title}
+                  </p>
                 </div>
-                <div className={styles.media_avatar}>
-                  <Image
-                    src={"/images/facebook.png"}
-                    width={200}
-                    height={200}
-                    alt="tele"
-                    priority
-                  />
-                </div>
-                <div className={styles.media_avatar}>
-                  <Image
-                    src={"/images/twit.png"}
-                    width={200}
-                    height={200}
-                    alt="tele"
-                    priority
-                  />
-                </div>
-                <div className={styles.media_avatar}>
-                  <Image
-                    src={"/images/yt.png"}
-                    width={200}
-                    height={200}
-                    alt="tele"
-                    priority
-                  />
-                </div>
-              </div>
-            </div>
-            <div className={`${styles._manager__card}  our__team_item `}>
-              <div className={styles._team_avatar}>
-                <Image
-                  src="/images/p2.png"
-                  width={500}
-                  height={500}
-                  alt="p1"
-                  priority
-                />
-              </div>
-              <h5>Name: Taylor Swift</h5>
-              <p>Position: Designer</p>
-              <div className={styles._team_contact_social_media}>
-                <div className={styles.media_avatar}>
-                  <Image
-                    src={"/images/send.png"}
-                    width={200}
-                    height={200}
-                    alt="tele"
-                    priority
-                  />
-                </div>
-                <div className={styles.media_avatar}>
-                  <Image
-                    src={"/images/facebook.png"}
-                    width={200}
-                    height={200}
-                    alt="tele"
-                    priority
-                  />
-                </div>
-                <div className={styles.media_avatar}>
-                  <Image
-                    src={"/images/twit.png"}
-                    width={200}
-                    height={200}
-                    alt="tele"
-                    priority
-                  />
-                </div>
-                <div className={styles.media_avatar}>
-                  <Image
-                    src={"/images/yt.png"}
-                    width={200}
-                    height={200}
-                    alt="tele"
-                    priority
-                  />
-                </div>
-              </div>
-            </div>
-            <div className={`${styles._manager__card} our__team_item`}>
-              <div className={styles._team_avatar}>
-                <Image
-                  src="/images/p3.png"
-                  width={500}
-                  height={500}
-                  alt="p1"
-                  priority
-                />
-              </div>
-              <h5>Name: Taylor Swift</h5>
-              <p>Position: Designer</p>
-              <div className={styles._team_contact_social_media}>
-                <div className={styles.media_avatar}>
-                  <Image
-                    src={"/images/send.png"}
-                    width={200}
-                    height={200}
-                    alt="tele"
-                    priority
-                  />
-                </div>
-                <div className={styles.media_avatar}>
-                  <Image
-                    src={"/images/facebook.png"}
-                    width={200}
-                    height={200}
-                    alt="tele"
-                    priority
-                  />
-                </div>
-                <div className={styles.media_avatar}>
-                  <Image
-                    src={"/images/twit.png"}
-                    width={200}
-                    height={200}
-                    alt="tele"
-                    priority
-                  />
-                </div>
-                <div className={styles.media_avatar}>
-                  <Image
-                    src={"/images/yt.png"}
-                    width={200}
-                    height={200}
-                    alt="tele"
-                    priority
-                  />
-                </div>
-              </div>
-            </div>
+              );
+            })}
           </div>
+
           <div className={styles._manager__description}>
-            <p>
-              a manager of design and architecture plays a critical role in the
-              successful execution of architectural projects. They bring
-              together the various stakeholders involved in a project, oversee
-              the planning and design phases, and ensure that the project is
-              completed on time, within budget, and to the required standards.
-            </p>
+            <p>{page_api.description}</p>
           </div>
         </div>
-        <div className={`${styles.our__team_member} our__team_hidden`}>
+        <div className={`${styles.our__team_member}`}>
           <div>
+            <h2>{translations.team_members}</h2>
+          </div>
+          <div className={styles._team_member_card_container}>
+            {consultant_api.map((item, i) => {
+              return (
+                <div className={styles._team_member_card} key={i}>
+                  <div className={styles._team_member_card_img}>
+                    <Image
+                      src={item.image}
+                      width={500}
+                      height={500}
+                      alt="p1"
+                      priority
+                    />
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+
+          {/* <div>
             <h2>{translations.team_members}</h2>
           </div>
           <div className={styles._team_member_card_container}>
@@ -261,7 +141,7 @@ const OurTeam = (props) => {
                 </div>
               );
             })}
-          </div>
+          </div> */}
         </div>
       </div>
     </Layout>
@@ -269,14 +149,33 @@ const OurTeam = (props) => {
 };
 
 export default OurTeam;
-export const getServerSideProps = async () => {
-  // const res = await fetch("/data.json");
-  const filePath = path.join(process.cwd(), "/public/consultants.json");
-  const jsonData = await fs.readFile(filePath, "utf8");
-  const data = JSON.parse(jsonData);
+export const getServerSideProps = async (context) => {
+  const { lang } = context.query;
+  let pageBody = {
+    id: "212",
+    lang: lang ? `${lang}` : "en",
+  };
+  //begin fetch
+  const pageRes = await postData(`page/contents`, pageBody);
+
+  const consultantsRes = await postData(`member/list`, {
+    level_id: 2,
+  });
+  const leaderRes = await postData(`member/list`, {
+    level_id: 1,
+  });
+  //end fetch
+
+  //begin assign
+  const getPage = await pageRes;
+  const getConsultants = await consultantsRes;
+  const getLeader = await leaderRes;
+  //end assign
   return {
     props: {
-      teams: data,
+      page_api: getPage.data,
+      consultant_api: getConsultants.data,
+      leader_api: getLeader.data,
     },
   };
 };

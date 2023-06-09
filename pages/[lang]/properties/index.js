@@ -3,7 +3,6 @@ import Layout from "../../../sections/Layout";
 import styles from "../../../styles/Properties.module.css";
 import Image from "next/image";
 import InputComp from "../../../components/InputComp";
-import { Services, city_provinces } from "../../../utils/data";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faCaretDown,
@@ -21,25 +20,10 @@ import ImageComp from "../../../components/ImageComp";
 import { postData } from "../../../utils/fetchData";
 const OurProperty = (props) => {
   const { filter, properties } = props;
-  console.log(properties);
   const forDD = [
     { type: "Shop House" },
     { type: "Twin Villa" },
     { type: "condo" },
-  ];
-  const priceLst = [
-    {
-      price: "15000 to 25000",
-    },
-    {
-      price: "28000 to 32000",
-    },
-    {
-      price: "50000 to 100000",
-    },
-    {
-      price: "100000 to 280000",
-    },
   ];
   const router = useRouter();
   let page = "properties";
@@ -141,10 +125,12 @@ const OurProperty = (props) => {
   const handleGetLocaitonVal = (location, id) => {
     setLocationID(id);
     setLocationVal(location);
+    // setLocationDD(true);
   };
 
   const [priceVal, setPriceVal] = useState("From");
   const [priceDD, setPriceDD] = useState(false);
+  const [priceData, setPriceData] = useState([]);
 
   const handlePriceDD = () => {
     setPriceDD(!priceDD);
@@ -183,12 +169,13 @@ const OurProperty = (props) => {
       : (document.body.style.overflow = "auto");
   });
 
+  console.log(priceData);
   const [dropDownFrilter, setDropDownFilter] = useState(false);
   const handleDropFilterSearch = () => {
     setDropDownFilter(!dropDownFrilter);
   };
 
-  const [getType, setType] = useState(filter.listing_types[0].id);
+  const [getTypeID, setTypeID] = useState(filter.listing_types[0].id);
 
   const handleSearchButton = () => {
     router.push(
@@ -197,6 +184,33 @@ const OurProperty = (props) => {
       }&${priceVal === "From" ? null : priceVal}`
     );
   };
+  console.log(getTypeID);
+
+  useEffect(() => {
+    const handleFetch = async () => {
+      try {
+        const response = await fetch(
+          "https://admin.vanguardinvestconsult.com/backend/price-range/options",
+          {
+            method: "POST",
+            body: JSON.stringify({
+              listing_type_id: `${getTypeID}`,
+              lang: lang ? `${lang}` : "en",
+            }),
+            headers: {
+              "Content-Type": "application/json",
+            },
+          }
+        );
+        const jsonData = await response.json();
+        setPriceData(jsonData.data);
+      } catch (error) {
+        console.error("Error:", error);
+      }
+    };
+    handleFetch();
+    return () => {};
+  }, [getTypeID, lang]);
 
   let translations = state.trans;
 
@@ -230,14 +244,14 @@ const OurProperty = (props) => {
               return (
                 <div
                   className={
-                    getType === item.id
+                    getTypeID === item.id
                       ? styles["tap_pag_box"] +
                         " " +
                         styles["tap_pag_box_active"]
                       : styles["tap_pag_box"]
                   }
                   key={i}
-                  onClick={() => setType(item.id)}
+                  onClick={() => setTypeID(item.id)}
                 >
                   {item.listing_type}
                 </div>
@@ -284,7 +298,7 @@ const OurProperty = (props) => {
             </div>
             <div className={styles.search_box}>
               <span>Location</span>
-              <div className={styles.prpty__dropdown} ref={locRef}>
+              <div className={styles.prpty__dropdown}>
                 <p onClick={handlelocationDD}>
                   <FontAwesomeIcon icon={faLocationDot} width={13} />
                   {locationVal}
@@ -297,6 +311,7 @@ const OurProperty = (props) => {
                         styles.active
                       : styles["dropdown_clicked_location"]
                   }
+                  ref={locRef}
                 >
                   {filter.cities.map((item, i) => {
                     return (
@@ -363,17 +378,20 @@ const OurProperty = (props) => {
                       : styles["dropdown_clicked"]
                   }
                 >
-                  {priceLst.map((item, i) => {
+                  {priceData.map((item, i) => {
                     return (
-                      <li key={i} onClick={() => handleGetPriceVal(item.price)}>
+                      <li
+                        key={i}
+                        onClick={() => handleGetPriceVal(item.price_range)}
+                      >
                         <div
                           className={
-                            item.price == priceVal
+                            item.price_range == priceVal
                               ? styles["dropdown_val_selected"]
                               : ""
                           }
                         >
-                          {item.price}
+                          {item.price_range}
                         </div>
                       </li>
                     );
@@ -402,10 +420,10 @@ const OurProperty = (props) => {
               return (
                 <div
                   className={`btn_status ${
-                    getType === item.id ? "btn_status_active" : ""
+                    getTypeID === item.id ? "btn_status_active" : ""
                   }`}
                   key={i}
-                  onClick={() => setType(item.id)}
+                  onClick={() => setTypeID(item.id)}
                 >
                   {item.listing_type}
                 </div>
@@ -457,17 +475,20 @@ const OurProperty = (props) => {
               className={`selection_budget ${selectedPricDD ? "show" : ""}`}
               ref={selectBudgetRef}
             >
-              {priceLst.map((item, i) => {
+              {priceData.map((item, i) => {
                 return (
-                  <li key={i} onClick={() => handleGetPriceVal(item.price)}>
+                  <li
+                    key={i}
+                    onClick={() => handleGetPriceVal(item.price_range)}
+                  >
                     <div
                       className={
-                        item.price == priceVal
+                        item.price_range == priceVal
                           ? styles["dropdown_val_selected"]
                           : ""
                       }
                     >
-                      {item.price}
+                      {item.price_range}
                     </div>
                   </li>
                 );
@@ -583,7 +604,7 @@ const OurProperty = (props) => {
                         alt="home_size"
                         priority
                       />
-                      <div>6M x 14M</div>
+                      <div>{item.size}</div>
                     </div>
                     <div className="d-flex align-items-center gap-1">
                       <Image
@@ -593,7 +614,7 @@ const OurProperty = (props) => {
                         alt="home_size"
                         priority
                       />
-                      <div>3</div>
+                      <div>{item.bedrooms}</div>
                     </div>
                     <div className="d-flex align-items-center gap-1">
                       <Image
@@ -603,7 +624,7 @@ const OurProperty = (props) => {
                         alt="home_size"
                         priority
                       />
-                      <div>4</div>
+                      <div>{item.bathrooms}</div>
                     </div>
                   </div>
                   <div className={styles.prop_price}>${item.price}</div>

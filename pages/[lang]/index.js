@@ -17,48 +17,99 @@ import {
   faLocationDot,
 } from "@fortawesome/free-solid-svg-icons";
 import { useRouter } from "next/router";
-import LastProjects from "../../components/Home/LastProjects";
+import LastProjects from "../../components/Home/LatestProjects";
 import ImageSliderComp from "../../components/ImageSliderComp";
 import PopularLocation from "../../components/Home/PopularLocation";
 import ImageComp from "../../components/ImageComp";
 import { DataContext } from "../../store/GlobalState";
 import { postData } from "../../utils/fetchData";
 import { getViews, incrementViews } from "../../utils/countView";
-import LatestProjects from "../../components/Home/LastProjects";
+import LatestProjects from "../../components/Home/LatestProjects";
+import LatestProperty from "../../components/Home/LatestProperty";
 
 const Home = (props) => {
   const router = useRouter();
   const { state, dispatch } = useContext(DataContext);
   const lang = state.lang.d_lang;
-  // const { views } = router.query;
 
-  const { home_api, filter } = props;
+  const {
+    home_api,
+    filter,
+    latest_properties_api,
+    latest_projects_api,
+    priceRange,
+    consultants_api,
+  } = props;
 
   const banner = home_api.banner;
-  const latest_projects = home_api.latest_projects;
   const locations = home_api.locations;
   const popular_locations = home_api.popular_locations;
-  // const latest_properties = home_api.latest_properties;
   const categories = home_api.categories;
   const types = home_api.types;
-  const prices = home_api.prices;
   const teams = home_api.consultants;
   const searchRef = useRef(null);
-  const [getType, setType] = useState(filter.listing_types[0].id);
-  const [getCategories, setCategories] = useState(filter.categories[0].id);
+  const [getType, setType] = useState(filter.listing_types[0].listing_type);
+  const [getTypeID, setTypeID] = useState(filter.listing_types[0].id);
+  const [listingTypeDD, setListingTypeDD] = useState(false);
+  const [getCategoryVal, setCategoryVal] = useState(
+    filter.categories[0].category
+  );
+  const [getCategoryID, setCategoryID] = useState(filter.categories[0].id);
+  const [categoryDD, setCategoryDD] = useState(false);
   const [getPrices, setPrices] = useState("From");
+  // const [pricesID, setPricesID] = useState(priceRange[0].id);
+  const [pricesDD, setPricesDD] = useState(false);
   const [city, setCity] = useState(filter.cities[0].city);
   const [cityID, setCityID] = useState(filter.cities[0].id);
   const [district, setDistrict] = useState();
   const [districtID, setDistrictID] = useState();
   const [filterLocationDRP, setFilterLocationDRP] = useState(false);
   const locationRef = useRef();
+  const listingTypeRef = useRef();
+  const categoryListsRef = useRef();
+  const pricesRef = useRef();
   const [qSearch, setQsearch] = useState(filter.cities);
+  const [priceData, setPriceData] = useState([]);
+
+  useEffect(() => {
+    const handleFetch = async () => {
+      try {
+        const response = await fetch(
+          `https://admin.vanguardinvestconsult.com/backend/price-range/options`,
+          {
+            method: "POST",
+            body: JSON.stringify({
+              listing_type_id: getTypeID,
+              lang: lang ? `${lang}` : "en",
+            }),
+            headers: {
+              "Content-Type": "application/json",
+            },
+          }
+        );
+        const jsonData = await response.json();
+        setPriceData(jsonData.data);
+      } catch (error) {
+        console.error("Error:", error);
+      }
+    };
+    handleFetch();
+    return () => {};
+  }, [getTypeID, lang]);
 
   useEffect(() => {
     const handleLocationDD = (e) => {
       if (!locationRef.current.contains(e.target)) {
         setFilterLocationDRP(false);
+      }
+      if (!listingTypeRef.current.contains(e.target)) {
+        setListingTypeDD(false);
+      }
+      if (!categoryListsRef.current.contains(e.target)) {
+        setCategoryDD(false);
+      }
+      if (!pricesRef.current.contains(e.target)) {
+        setPricesDD(false);
       }
     };
 
@@ -70,7 +121,7 @@ const Home = (props) => {
 
   const handleSearchOption = () => {
     router.push(
-      `${lang}/search=&${getType}&${getCategories}&${cityID}&${
+      `${lang}/search=&${getTypeID}&${getCategoryID}&${cityID}&${
         districtID ? districtID : null
       }&${getPrices === "From" ? null : getPrices}`
     );
@@ -78,7 +129,7 @@ const Home = (props) => {
       "search",
       JSON.stringify({
         type: getType,
-        categories: getCategories,
+        categories: getCategoryVal,
         city: cityID,
         districtID: null,
       })
@@ -140,38 +191,102 @@ const Home = (props) => {
         </div>
       </section>
       <div className={styles.search_section} ref={searchRef}>
-        <h5>{translations.search}</h5>
+        <h5>{translations.find_properties}</h5>
         <div className={styles.find_dream}>
           <div className={styles.selection_opt}>
-            <select
-              value={getType}
-              onChange={(e) => {
-                setType(e.target.value);
-              }}
-            >
-              {filter.listing_types.map((item, i) => {
-                return (
-                  <option value={item.id} key={i}>
-                    {item.listing_type}
-                  </option>
-                );
-              })}
-            </select>
+            <div className={styles["select_location"]} ref={listingTypeRef}>
+              <div
+                style={{
+                  width: "100%",
+                  height: "100%",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                }}
+                onClick={(e) => {
+                  setListingTypeDD(!listingTypeDD);
+                }}
+              >
+                {getType}
+              </div>
+              <div
+                className={
+                  listingTypeDD
+                    ? styles["dropdown_listing"] + " " + styles["active"]
+                    : styles["dropdown_listing"]
+                }
+              >
+                {filter.listing_types.map((item, i) => {
+                  return (
+                    <div
+                      key={i}
+                      className={
+                        getTypeID === item.id
+                          ? styles["dropdown_listing_item"] +
+                            " " +
+                            styles["active"]
+                          : styles["dropdown_listing_item"]
+                      }
+                      onClick={() => {
+                        setTypeID(item.id);
+                        setType(item.listing_type);
+                      }}
+                    >
+                      <div className={styles["select_item"]}>
+                        {item.listing_type}
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
 
-            <select
-              value={getCategories}
-              onChange={(e) => {
-                setCategories(e.target.value);
-              }}
-            >
-              {filter.categories.map((item, i) => {
-                return (
-                  <option value={item.id} key={i}>
-                    {item.category}
-                  </option>
-                );
-              })}
-            </select>
+            <div className={styles["select_location"]} ref={categoryListsRef}>
+              <div
+                style={{
+                  width: "100%",
+                  height: "100%",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                }}
+                onClick={(e) => {
+                  setCategoryDD(!categoryDD);
+                }}
+              >
+                {getCategoryVal}
+              </div>
+              <div
+                className={
+                  categoryDD
+                    ? styles["dropdown_listing"] + " " + styles["active"]
+                    : styles["dropdown_listing"]
+                }
+              >
+                {filter.categories.map((item, i) => {
+                  return (
+                    <div
+                      key={i}
+                      className={
+                        getCategoryID === item.id
+                          ? styles["dropdown_listing_item"] +
+                            " " +
+                            styles["active"]
+                          : styles["dropdown_listing_item"]
+                      }
+                      onClick={() => {
+                        setCategoryID(item.id);
+                        setCategoryVal(item.category);
+                      }}
+                    >
+                      <div className={styles["select_item"]}>
+                        {item.category}
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
 
             <div className={styles.select_location} ref={locationRef}>
               <div
@@ -247,26 +362,51 @@ const Home = (props) => {
                 </div>
               )}
             </div>
-
-            <select
-              value={getPrices}
-              onChange={(e) => {
-                setPrices(e.target.value);
-              }}
-            >
-              <option defaultValue={getPrices}>{getPrices}</option>
-              <option value={"15000 to 25000"}>15000 to 25000</option>
-              <option value={"28000 to 32000"}>28000 to 32000</option>
-              <option value={"50000 to 100000"}>50000 to 100000</option>
-              <option value={"100000 to 280000"}>100000 to 280000</option>
-              {/* {prices.map((item, i) => {
-                return (
-                  <option value={item.price} key={i}>
-                    {item.price}
-                  </option>
-                );
-              })} */}
-            </select>
+            <div className={styles["select_location"]} ref={pricesRef}>
+              <div
+                style={{
+                  width: "100%",
+                  height: "100%",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                }}
+                onClick={(e) => {
+                  setPricesDD(!pricesDD);
+                }}
+              >
+                {getPrices}
+              </div>
+              <div
+                className={
+                  pricesDD
+                    ? styles["dropdown_listing"] + " " + styles["active"]
+                    : styles["dropdown_listing"]
+                }
+              >
+                {priceData.map((item, i) => {
+                  return (
+                    <div
+                      key={i}
+                      className={
+                        getCategoryID === item.id
+                          ? styles["dropdown_listing_item"] +
+                            " " +
+                            styles["active"]
+                          : styles["dropdown_listing_item"]
+                      }
+                      onClick={() => {
+                        setPrices(item.price_range);
+                      }}
+                    >
+                      <div className={styles["select_item"]}>
+                        {item.price_range}
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
           </div>
           <div
             className={`btn ${styles["btn_search"]}`}
@@ -278,7 +418,7 @@ const Home = (props) => {
       </div>
 
       <div className={styles.last__project_container}>
-        <LatestProjects data={latest_projects} />
+        <LatestProjects data={latest_projects_api} />
       </div>
 
       <PopularLocation
@@ -292,26 +432,14 @@ const Home = (props) => {
           <div className={`${styles.interior_title}`}>
             <div className={styles.interior_title_content}>
               <h2>{translations.latest_properties}</h2>
-              <button>see more</button>
+              <button onClick={() => router.push(`${lang}/properties`)}>
+                see more
+              </button>
             </div>
           </div>
-          {/* <div className={styles._home_blog__container}>
-            {latest_properties.map((item, index) => {
-              return (
-                <React.Fragment key={index}>
-                  {LatestProperties(
-                    item.images[0].image_url,
-                    item.address,
-                    item.name,
-                    item.price,
-                    item.sqrtft,
-                    item.listing_type,
-                    item.id
-                  )}
-                </React.Fragment>
-              );
-            })}
-          </div> */}
+          <div className={styles._home_blog__container}>
+            <LatestProperty data={latest_properties_api} />
+          </div>
         </div>
       </section>
       <section className={styles.accomplistment}>
@@ -324,8 +452,8 @@ const Home = (props) => {
               </button>
             </div>
           </div>
-          {/* <div className={styles.designers_and__architects}>
-            {teams.map((item, index) => {
+          <div className={styles.designers_and__architects}>
+            {consultants_api.map((item, index) => {
               return (
                 <Accomplished
                   key={index}
@@ -334,12 +462,12 @@ const Home = (props) => {
                   name={item.name}
                   profile={item.profile}
                   projects={item.projects}
-                  position={item.position}
+                  position={item.position_title}
                   profile_details={item.id}
                 />
               );
             })}
-          </div> */}
+          </div>
         </div>
       </section>
     </Layout>
@@ -349,95 +477,49 @@ const Home = (props) => {
 export default Home;
 
 export const getServerSideProps = async (ctx) => {
-  const { lang } = ctx.query;
-  const bodyReq = {
+  const { lang, id } = ctx.query;
+
+  // begin fetch body request
+  let bodyReq = {
     id: "209",
     lang: `${lang ? lang : "en"}`,
   };
-  const res = await postData(`page/contents`, bodyReq);
-
-  const getData = await res;
+  let latestBody = {
+    tag_name: "is_latest",
+    tag_value: "1",
+  };
   let filterBody = {
     lang: `${lang ? lang : "en"}`,
   };
-  const filter = await postData("property/filters", filterBody);
-  const getFilter = await filter;
+
+  // end fetch body request
+
+  //begin fetch
+  const res = await postData(`page/contents`, bodyReq);
+  const latestPropertyRes = await postData(`property/list-by-tag`, latestBody);
+  const filterRes = await postData("property/filters", filterBody);
+  const latestProjectRes = await postData("project/list-by-tag", latestBody);
+  const consultantsRes = await postData(`member/list`, {
+    level_id: 2,
+  });
+
+  //end fetch
+
+  // begin assign data to var
+  const getFilter = await filterRes;
+  const getData = await res;
+  const getLatestProperty = await latestPropertyRes;
+  const getLatestProject = await latestProjectRes;
+  const getConsultants = await consultantsRes;
+  // end assign data to var
+
   return {
     props: {
       filter: getFilter.data,
       home_api: getData.data,
+      latest_properties_api: getLatestProperty.data,
+      latest_projects_api: getLatestProject.data,
+      consultants_api: getConsultants.data,
     },
   };
-};
-
-const LatestProperties = (url, location, title, price, sqrft, status, id) => {
-  const { state, dispatch } = useContext(DataContext);
-  let translations = state.trans;
-  let lang = state.lang.d_lang;
-  return (
-    <div className={styles._home_blog__card}>
-      <div className={styles._home_card_image}>
-        <ImageComp imageUrl={url} />
-        <div className={styles._home_card_location}>
-          <span>{status}</span>
-        </div>
-        <Link
-          className={styles._home_card_btn}
-          href={`/${lang}/properties/lastest/${id}`}
-        >
-          <FontAwesomeIcon
-            icon={faArrowRight}
-            className={styles._home_card_arrow_icon}
-          />
-        </Link>
-      </div>
-      <div className={styles._home_card_details}>
-        <div className={styles._home_card__title}>
-          <h6>{title}</h6>
-          <p>${price}</p>
-        </div>
-        <div className="d-flex gap-1">
-          <p>{translations.address}:</p>
-          <span>
-            {location.length > 20
-              ? location.substring(0, 20) + "..."
-              : location}
-          </span>
-        </div>
-        <div className={styles.prop_spec}>
-          <div className="d-flex align-items-center gap-1">
-            <Image
-              src="/images/home_size.png"
-              width={100}
-              height={100}
-              alt="home_size"
-              priority
-            />
-            <div>6M x 14M</div>
-          </div>
-          <div className="d-flex align-items-center gap-1">
-            <Image
-              src="/images/bed.png"
-              width={100}
-              height={100}
-              alt="home_size"
-              priority
-            />
-            <div>3</div>
-          </div>
-          <div className="d-flex align-items-center gap-1">
-            <Image
-              src="/images/bathtub.png"
-              width={100}
-              height={100}
-              alt="home_size"
-              priority
-            />
-            <div>4</div>
-          </div>
-        </div>
-        <div className={styles._home_card_sqrft}>sqrft:{sqrft}</div>
-      </div>
-    </div>
-  );
 };

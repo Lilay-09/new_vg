@@ -18,13 +18,6 @@ const Accomplished = (props) => {
           className={styles._img__circle_avatar}
         >
           <ImageComp imageUrl={props.profile} />
-          {/* <Image
-            src={`${props.profile}`}
-            width={300}
-            height={300}
-            alt={props.profile}
-            priority
-          /> */}
         </Link>
 
         <div className={styles._person_details}>
@@ -38,7 +31,7 @@ const Accomplished = (props) => {
 
       <div className={styles._designer__details_content_g2}>
         <Scrollable>
-          {props.projects.map((item, i) => {
+          {/* {props.projects.map((item, i) => {
             return (
               <React.Fragment key={i}>
                 <Link
@@ -56,7 +49,7 @@ const Accomplished = (props) => {
                 </Link>
               </React.Fragment>
             );
-          })}
+          })} */}
         </Scrollable>
       </div>
     </div>

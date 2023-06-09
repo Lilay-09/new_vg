@@ -33,6 +33,7 @@
   min-width: 110px;
   min-height: 110px;
   border-radius: 50%;
+  border: 1px solid #191345;
 }
 ._team_avatar img {
   width: 100%;

@@ -2,9 +2,8 @@ import Image from "next/image";
 import React from "react";
 import styles from "../../../../styles/Agent.module.css";
 import Layout from "../../../../sections/Layout";
-import { data } from "../../../../utils/data";
 
-const PersonProject = (props) => {
+const MemberProject = (props) => {
   const { fetctData, numbID, childID } = props;
   return (
     <Layout width={100}>
@@ -81,7 +80,7 @@ const PersonProject = (props) => {
   );
 };
 
-export default PersonProject;
+export default MemberProject;
 export const getServerSideProps = async (context) => {
   const { params } = context;
   const { id } = params;

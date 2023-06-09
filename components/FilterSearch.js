@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import styles from "../styles/Home.module.css";
-import { locationData } from "../utils/data";
 import { useRouter } from "next/router";
 const FilterSearch = () => {
   const [status, setStatus] = useState("buy");
@@ -15,7 +14,7 @@ const FilterSearch = () => {
     <div className={styles.search_section}>
       <h5>Find Your Dream Property</h5>
       <div className={styles.find_dream}>
-        <div className={styles.selection_opt}>
+        {/* <div className={styles.selection_opt}>
           <select
             value={status}
             onChange={(e) => {
@@ -59,7 +58,7 @@ const FilterSearch = () => {
             <option value="condo">100000</option>
             <option value="villa">200000</option>
           </select>
-        </div>
+        </div> */}
         {/* <div>
       get status ={status} type = {type} location = {location}
     </div> */}

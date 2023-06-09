@@ -3,14 +3,12 @@ import Layout from "../../../sections/Layout";
 import SplitContainer from "../../../components/SplitContainer";
 import styles from "../../../styles/BlogDetails.module.css";
 import Image from "next/image";
-import { locationData } from "../../../utils/data";
 import { postData } from "../../../utils/fetchData";
 import ImageComp from "../../../components/ImageComp";
 import { DataContext } from "../../../store/GlobalState";
 
 const BlogDetails = (props) => {
   const { property_api } = props;
-  console.log(property_api);
   const [swapImg, setSwapImg] = useState(property_api.images[0].image_url);
   const [status, setStatus] = useState("buy");
   const [type, setType] = useState("shop-house");
@@ -122,7 +120,7 @@ const BlogDetails = (props) => {
         }
         right={
           <div className={styles.right_main_container}>
-            <div className={styles.selection_year}>
+            {/* <div className={styles.selection_year}>
               <div className={styles.select_title}>
                 <span>More properites</span>
               </div>
@@ -162,7 +160,7 @@ const BlogDetails = (props) => {
                 </select>
                 <button>Find</button>
               </div>
-            </div>
+            </div> */}
           </div>
         }
       />

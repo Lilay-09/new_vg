@@ -2,10 +2,7 @@ import React, { useContext } from "react";
 import Image from "next/image";
 import styles from "../../../../styles/Agent.module.css";
 import Layout from "../../../../sections/Layout";
-import { data } from "../../../../utils/data";
 import { useRouter } from "next/router";
-import fs from "fs/promises";
-import path from "path";
 import ImageComp from "../../../../components/ImageComp";
 import { DataContext } from "../../../../store/GlobalState";
 import { type } from "os";
@@ -78,13 +75,10 @@ const Person = (props) => {
 export default Person;
 export const getServerSideProps = async (context) => {
   const { lang, details, agentId } = context.params;
-  const filePath = path.join(process.cwd(), "/public/consultants.json");
-  const jsonData = await fs.readFile(filePath, "utf8");
-  const data = JSON.parse(jsonData);
-  const dd = data.consultants.filter(
-    (item) => item.id === agentId || item.id === Number(agentId)
-  );
-  const locData = Object.assign({}, ...dd);
+  const res = await (``,
+  {
+    id: `${agentId}`,
+  });
   return {
     props: {
       agent: locData,

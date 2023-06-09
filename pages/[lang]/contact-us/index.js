@@ -218,7 +218,7 @@ const ContactUs = () => {
       </div>
 
       <div className="reveal" ref={mapRef} id="contact">
-        <GoogleMapComp width={100} />
+        {/* <GoogleMapComp width={100} /> */}
       </div>
     </Layout>
   );

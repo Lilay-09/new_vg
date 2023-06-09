@@ -10,7 +10,6 @@ import { DataContext } from "../../../../store/GlobalState";
 import Image from "next/image";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faLocationDot } from "@fortawesome/free-solid-svg-icons";
-import { Services } from "../../../../utils/data";
 
 const FindeLocaiton = (props) => {
   const { lang, type, details, filterObj, data } = props;
@@ -26,7 +25,7 @@ const FindeLocaiton = (props) => {
           noMore
         />
         <div className={`${propStylse.properties_container} _hidden_item`}>
-          {Services.map((item, i) => {
+          {/* {Services.map((item, i) => {
             return (
               <div
                 className={`${propStylse.properties_card} our___item _hidden_item`}
@@ -92,7 +91,7 @@ const FindeLocaiton = (props) => {
                 </div>
               </div>
             );
-          })}
+          })} */}
         </div>
       </div>
     </Layout>

@@ -2,16 +2,16 @@ import React, { useContext, useEffect, useState } from "react";
 import Layout from "../../../../sections/Layout";
 import styles from "../../../../styles/LastProject.module.css";
 import Title from "../../../../components/Title";
-import path from "path";
-import fs from "fs/promises";
 import SliderBanner from "../../../../components/SliderBanner";
 import Image from "next/image";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowLeft, faArrowRight } from "@fortawesome/free-solid-svg-icons";
 import { DataContext } from "../../../../store/GlobalState";
+import { postData } from "../../../../utils/fetchData";
 const ProjectDetails = (props) => {
-  const { last_projects } = props;
-  const images = last_projects.images;
+  const { latest_project_details } = props;
+
+  const images = latest_project_details.images;
   const [count, setCount] = useState(0);
   const [showBanner, setShowBanner] = useState(images[0].image_url);
 
@@ -84,16 +84,16 @@ const ProjectDetails = (props) => {
       </div>
 
       <div className={styles.project__spec_details}>
-        <Title title={last_projects.name} />
+        <Title title={latest_project_details.name} />
         <div className={styles.__spec_lst}>
           <span className={styles.prp_name}>{translations.property_type}:</span>
-          <span>{last_projects.type}</span>
+          <span>{latest_project_details.type}</span>
         </div>
         <div className={styles.__spec_lst}>
           <span className={styles.prp_name}>{translations.address}:</span>
-          <span>{last_projects.address}</span>
+          <span>{latest_project_details.address}</span>
         </div>
-        <p>{last_projects.description}</p>
+        <p>{latest_project_details.description}</p>
 
         <div className={styles.project__more__details_content}>
           {images.map((item, i) =>
@@ -147,19 +147,15 @@ const ProjectDetails = (props) => {
 export default ProjectDetails;
 export const getServerSideProps = async (ctx) => {
   const { lang, details } = ctx.params;
-  const filePath = path.join(process.cwd(), "/public/home_page.json");
-  const jsonData = await fs.readFile(filePath, "utf8");
-  const data = JSON.parse(jsonData);
-
-  const dd = Object.assign(
-    {},
-    ...data.last_projects.filter(
-      (item) => item.id === details || item.id === Number(details)
-    )
-  );
+  let proDetailsBody = {
+    id: `${details}`,
+    lang: lang ? `${lang}` : "en",
+  };
+  const project_detailsRes = await postData(`project/details`, proDetailsBody);
+  const getProjectDetails = await project_detailsRes;
   return {
     props: {
-      last_projects: dd,
+      latest_project_details: getProjectDetails.data,
     },
   };
 };
