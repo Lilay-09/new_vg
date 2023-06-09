@@ -87,7 +87,7 @@ const ProjectDetails = (props) => {
         <Title title={latest_project_details.name} />
         <div className={styles.__spec_lst}>
           <span className={styles.prp_name}>{translations.property_type}:</span>
-          <span>{latest_project_details.type}</span>
+          <span>{latest_project_details.project_type}</span>
         </div>
         <div className={styles.__spec_lst}>
           <span className={styles.prp_name}>{translations.address}:</span>
@@ -109,7 +109,7 @@ const ProjectDetails = (props) => {
                   />
                 </div>
                 <div className={` ${styles._prp__view_cnt}`}>
-                  <h4>{item.name}</h4>
+                  <h4>{item.title}</h4>
                   <p>{item.description}</p>
                 </div>
               </div>
@@ -123,7 +123,7 @@ const ProjectDetails = (props) => {
                 key={i}
               >
                 <div className={styles._prp__view_cnt}>
-                  <h4>{item.name}</h4>
+                  <h4>{item.title}</h4>
                   <p>{item.description}</p>
                 </div>
                 <div className={styles._prp__view_cnt}>

@@ -175,7 +175,9 @@ const Home = (props) => {
               background: "grey",
             }}
           >
-            <ImageSliderComp data_img={banner.images} />
+            {banner.images ? (
+              <ImageSliderComp data_img={banner.images} />
+            ) : null}
           </div>
           <div className={styles.banner_content}>
             <div className={styles.content_title}>
@@ -421,11 +423,11 @@ const Home = (props) => {
         <LatestProjects data={latest_projects_api} />
       </div>
 
-      <PopularLocation
+      {/* <PopularLocation
         data={popular_locations}
         translations={translations}
         types={filter.listing_types}
-      />
+      /> */}
 
       <section className={styles._home__blog}>
         <div className="reveal fade-bottom">

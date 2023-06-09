@@ -4,7 +4,6 @@ const GoogleMapComp = ({ width, url }) => {
   const regex = /\/place\/([^\/]+)\/@/;
   const match = url.match(regex);
   const placeName = match ? match[1].replace(/\+/g, " ") : "";
-  console.log(placeName);
   return (
     <div
       style={{

@@ -17,7 +17,7 @@ const Accomplished = (props) => {
           href={`/${lang}/agent/${props.profile_details}`}
           className={styles._img__circle_avatar}
         >
-          <ImageComp imageUrl={props.profile} />
+          {props.profile ? <ImageComp imageUrl={props.profile} /> : null}
         </Link>
 
         <div className={styles._person_details}>
@@ -28,28 +28,23 @@ const Accomplished = (props) => {
           <p>Phnom Penh (Cambodia)</p>
         </div>
       </div>
-
       <div className={styles._designer__details_content_g2}>
         <Scrollable>
-          {/* {props.projects.map((item, i) => {
+          {props.projects.map((item, i) => {
             return (
               <React.Fragment key={i}>
                 <Link
                   className={styles._accomplished__project}
-                  href={`/${lang}/agent/member-project/${props.id}&${item.id}`}
+                  href={`/${lang}/agent/member-project/${props.id}&${item.project_id}`}
                 >
-                  <Image
-                    src={`${item.image_url}`}
-                    width={300}
-                    height={300}
-                    alt={item.image_url}
-                    priority
-                  />
-                  <div className={styles.member__pro_status}>Sale</div>
+                  {item.image ? (
+                    <ImageComp imageUrl={item.image.image_url} />
+                  ) : null}
+                  <div className={styles.member__pro_status}>{item.status}</div>
                 </Link>
               </React.Fragment>
             );
-          })} */}
+          })}
         </Scrollable>
       </div>
     </div>

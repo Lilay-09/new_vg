@@ -10,7 +10,7 @@ import { postData } from "../../../../utils/fetchData";
 const BlogDetails = (props) => {
   const { state, dispatch } = useContext(DataContext);
   const { latest_proptery_details } = props;
-  console.log(latest_proptery_details);
+
   let images = latest_proptery_details.images;
   const [swapImg, setSwapImg] = useState(images[0].image_url);
   const [status, setStatus] = useState("buy");
@@ -167,7 +167,6 @@ export const getServerSideProps = async (ctx) => {
     id: `${details}`,
     lang: lang ? lang : "en",
   };
-  console.log(details);
 
   const res = await postData(`property/details`, resBody);
 

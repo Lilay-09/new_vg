@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import GlobalState from "../store/GlobalState";
 import "../styles/globals.css";
 import "bootstrap/dist/css/bootstrap.css";
@@ -6,6 +6,7 @@ import { Router } from "next/router";
 
 function MyApp({ Component, pageProps }) {
   const [isLoading, setIsLoading] = useState(false);
+
   useEffect(() => {
     Router.events.on("routeChangeStart", (url) => {
       setIsLoading(true);
@@ -18,15 +19,14 @@ function MyApp({ Component, pageProps }) {
     Router.events.on("routeChangeError", (url) => {
       setIsLoading(false);
     });
-  }, []);
+
+    isLoading
+      ? (document.body.style.overflow = "hidden")
+      : (document.body.style.overflow = "auto");
+  }, [isLoading]);
   return (
     <GlobalState>
-      {isLoading && (
-        <div className="loader__container">
-          <div>Loading</div>
-          <div class="loader"></div>
-        </div>
-      )}
+      {isLoading && <div class="loader"></div>}
       <Component {...pageProps} />
     </GlobalState>
   );

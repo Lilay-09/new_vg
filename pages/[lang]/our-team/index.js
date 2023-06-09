@@ -33,7 +33,9 @@ const OurTeam = (props) => {
                   key={i}
                 >
                   <div className={styles._team_avatar}>
-                    <ImageComp imageUrl={leader.image_url} />
+                    {leader.image_url ? (
+                      <ImageComp imageUrl={leader.image_url} />
+                    ) : null}
                   </div>
                   <h5>
                     {translations.name}: {leader.name}
@@ -41,6 +43,29 @@ const OurTeam = (props) => {
                   <p>
                     {translations.position}: {leader.position_title}
                   </p>
+                  <div className={styles.social_media_icon}>
+                    {leader.social_media.map((media, i) => {
+                      return (
+                        <Link
+                          className={styles.media_avatar1}
+                          key={i}
+                          target="_blank"
+                          href={media.url}
+                        >
+                          {media.icon ? (
+                            <ImageComp imageUrl={media.icon} />
+                          ) : null}
+                          {/* <Image
+                            src={media.icon}
+                            width={200}
+                            height={200}
+                            alt={media.media_name}
+                            priority
+                          /> */}
+                        </Link>
+                      );
+                    })}
+                  </div>
                 </div>
               );
             })}
@@ -59,13 +84,38 @@ const OurTeam = (props) => {
               return (
                 <div className={styles._team_member_card} key={i}>
                   <div className={styles._team_member_card_img}>
-                    <Image
-                      src={item.image}
-                      width={500}
-                      height={500}
-                      alt="p1"
-                      priority
-                    />
+                    {item.image_url ? (
+                      <ImageComp imageUrl={item.image_url} />
+                    ) : null}
+                  </div>
+                  <div className={styles._team_details_card}>
+                    <div className={styles._team_member_media}>
+                      {item.social_media.map((media, i) => {
+                        return (
+                          <Link
+                            className={styles.media_avatar1}
+                            key={i}
+                            target="_blank"
+                            href={media.url}
+                          >
+                            {media.icon ? (
+                              <ImageComp imageUrl={media.icon} />
+                            ) : null}
+                          </Link>
+                        );
+                      })}
+                    </div>
+
+                    <div className={styles._team__pos}>
+                      <h4>{item.name}</h4>
+                      <div>
+                        <p>
+                          {translations.phone}: {item.phone_number}
+                        </p>
+                      </div>
+
+                      <Link href={`/agent/${item.id}`}>View Page</Link>
+                    </div>
                   </div>
                 </div>
               );

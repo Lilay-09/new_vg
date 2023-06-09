@@ -125,7 +125,9 @@ const OurServices = (props) => {
                   <span>{item.status}</span>
                 </div>
                 <div className={styles._service_card_img}>
-                  <ImageComp imageUrl={`${item.image.image_url}`} />
+                  {item.image ? (
+                    <ImageComp imageUrl={`${item.image.image_url}`} />
+                  ) : null}
                 </div>
                 <div className={styles._service_card_details}>
                   <div>

@@ -53,11 +53,20 @@
   flex-flow: column;
   align-items: center;
   padding: 0.8rem;
+  position: relative;
 }
 ._team_contact_social_media {
   display: flex;
   align-items: center;
   gap: 0.5rem;
+}
+.social_media_icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  position: absolute;
+  bottom: -1rem;
 }
 .media_avatar {
   background-color: black;
@@ -133,12 +142,14 @@
   width: 100%;
   justify-content: center;
   position: relative;
+  border: #191345 solid 1px;
+  min-height: 280px;
+  max-height: 300px;
+  min-width: 90px;
 }
 ._team_member_card_img img {
   height: 100%;
   width: 100%;
-  min-height: 90px;
-  min-width: 90px;
 }
 ._team_member_media {
   display: flex;

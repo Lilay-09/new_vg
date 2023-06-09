@@ -39,6 +39,7 @@ const Home = (props) => {
     latest_properties_api,
     latest_projects_api,
     priceRange,
+    consultants_api,
   } = props;
 
   const banner = home_api.banner;
@@ -75,7 +76,7 @@ const Home = (props) => {
     const handleFetch = async () => {
       try {
         const response = await fetch(
-          "https://admin.vanguardinvestconsult.com/backend/price-range/options",
+          `https://admin.vanguardinvestconsult.com/backend/price-range/options`,
           {
             method: "POST",
             body: JSON.stringify({
@@ -175,7 +176,7 @@ const Home = (props) => {
               background: "grey",
             }}
           >
-            <ImageSliderComp data_img={banner.images} />
+            {banner.image ? <ImageSliderComp data_img={banner.images} /> : null}
           </div>
           <div className={styles.banner_content}>
             <div className={styles.content_title}>
@@ -407,19 +408,6 @@ const Home = (props) => {
                 })}
               </div>
             </div>
-
-            {/* <select
-              value={getPrices}
-              onChange={(e) => {
-                setPrices(e.target.value);
-              }}
-            >
-              <option defaultValue={getPrices}>{getPrices}</option>
-              <option value={"15000 to 25000"}>15000 to 25000</option>
-              <option value={"28000 to 32000"}>28000 to 32000</option>
-              <option value={"50000 to 100000"}>50000 to 100000</option>
-              <option value={"100000 to 280000"}>100000 to 280000</option>
-            </select> */}
           </div>
           <div
             className={`btn ${styles["btn_search"]}`}
@@ -434,11 +422,11 @@ const Home = (props) => {
         <LatestProjects data={latest_projects_api} />
       </div>
 
-      <PopularLocation
+      {/* <PopularLocation
         data={popular_locations}
         translations={translations}
         types={filter.listing_types}
-      />
+      /> */}
 
       <section className={styles._home__blog}>
         <div className="reveal fade-bottom">
@@ -466,7 +454,7 @@ const Home = (props) => {
             </div>
           </div>
           <div className={styles.designers_and__architects}>
-            {teams.map((item, index) => {
+            {consultants_api.map((item, index) => {
               return (
                 <Accomplished
                   key={index}
@@ -475,7 +463,7 @@ const Home = (props) => {
                   name={item.name}
                   profile={item.profile}
                   projects={item.projects}
-                  position={item.position}
+                  position={item.position_title}
                   profile_details={item.id}
                 />
               );
@@ -512,6 +500,9 @@ export const getServerSideProps = async (ctx) => {
   const latestPropertyRes = await postData(`property/list-by-tag`, latestBody);
   const filterRes = await postData("property/filters", filterBody);
   const latestProjectRes = await postData("project/list-by-tag", latestBody);
+  const consultantsRes = await postData(`member/list`, {
+    level_id: 2,
+  });
 
   //end fetch
 
@@ -520,6 +511,7 @@ export const getServerSideProps = async (ctx) => {
   const getData = await res;
   const getLatestProperty = await latestPropertyRes;
   const getLatestProject = await latestProjectRes;
+  const getConsultants = await consultantsRes;
   // end assign data to var
 
   return {
@@ -528,6 +520,7 @@ export const getServerSideProps = async (ctx) => {
       home_api: getData.data,
       latest_properties_api: getLatestProperty.data,
       latest_projects_api: getLatestProject.data,
+      consultants_api: getConsultants.data,
     },
   };
 };

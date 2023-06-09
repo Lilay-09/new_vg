@@ -28,7 +28,9 @@ const LatestProjects = ({ data }) => {
               return (
                 <div className={styles.card__content} key={index}>
                   <div className={styles.card__content_img}>
-                    {/* <ImageComp imageUrl={item.images[0].image_url} /> */}
+                    {item.image ? (
+                      <ImageComp imageUrl={item.image.image_url} />
+                    ) : null}
                     <div className={styles.card_sts}>{item.status}</div>
                     <Link
                       href={`/${lang}/project/details/${item.id}`}

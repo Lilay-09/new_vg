@@ -9,13 +9,6 @@ import Image from "next/image";
 import React, { useEffect, useRef, useState } from "react";
 import ImageComp from "./ImageComp";
 const ImageSliderComp = ({ data_img }) => {
-  const nextBtnRef = useRef();
-  const autoClick = () => {
-    if (nextBtnRef.current) {
-      nextBtnRef.current.click();
-      setTimeout(autoClick, 5000);
-    }
-  };
   const [count, setCount] = useState(0);
   const [showBanner, setShowBanner] = useState(data_img[0].image_url);
 
@@ -41,9 +34,10 @@ const ImageSliderComp = ({ data_img }) => {
   };
 
   useEffect(() => {
-    setTimeout(autoClick, 3000);
-
-    return () => clearTimeout(autoClick);
+    const interval = setInterval(handleNext, 3000);
+    return () => {
+      clearInterval(interval);
+    };
   });
   return (
     <div className="image_slider_container">

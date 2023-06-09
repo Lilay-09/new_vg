@@ -46,7 +46,9 @@ const PopularLocation = ({ data, translations, types }) => {
                     router.push(`${lang}/category/${item.id}/${item.id}`);
                   }}
                 >
-                  <ImageComp imageUrl={`${item.image_url}`} />
+                  {item.image_url ? (
+                    <ImageComp imageUrl={`${item.image_url}`} />
+                  ) : null}
                   <p className={styles.popular_place}>
                     <FontAwesomeIcon icon={faLocationDot} width={20} />
                     {item.location}

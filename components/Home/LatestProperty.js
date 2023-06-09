@@ -17,9 +17,9 @@ const LatestProperty = ({ data }) => {
         return (
           <div className={styles._home_blog__card} key={i}>
             <div className={styles._home_card_image}>
-              <ImageComp
-                imageUrl={item.image === null ? "" : item.image_url.image_url}
-              />
+              {item.image_url ? (
+                <ImageComp imageUrl={item.image_url.image_url} />
+              ) : null}
               <div className={styles._home_card_location}>
                 <span>{item.listing_type}</span>
               </div>

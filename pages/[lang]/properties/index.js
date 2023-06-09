@@ -169,7 +169,6 @@ const OurProperty = (props) => {
       : (document.body.style.overflow = "auto");
   });
 
-  console.log(priceData);
   const [dropDownFrilter, setDropDownFilter] = useState(false);
   const handleDropFilterSearch = () => {
     setDropDownFilter(!dropDownFrilter);
@@ -184,7 +183,6 @@ const OurProperty = (props) => {
       }&${priceVal === "From" ? null : priceVal}`
     );
   };
-  console.log(getTypeID);
 
   useEffect(() => {
     const handleFetch = async () => {

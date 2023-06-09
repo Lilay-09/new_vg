@@ -17,7 +17,6 @@ import { DataContext } from "../../../store/GlobalState";
 import { postData } from "../../../utils/fetchData";
 const Careers = (props) => {
   const { page_api } = props;
-  console.log(page_api);
   const { state, dispatch } = useContext(DataContext);
   const lang = state.lang.d_lang;
   let translations = state.trans;

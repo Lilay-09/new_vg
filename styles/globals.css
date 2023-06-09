@@ -46,22 +46,18 @@ a {
 .loader {
   display: block;
   --height-of-loader: 4px;
-  --loader-color: #0071e2;
-  width: 230px;
+  --loader-color: #1e136d;
+  width: 90%;
+  margin: 0 auto;
+  left: 0;
+  right: 0;
   height: var(--height-of-loader);
   border-radius: 30px;
   background-color: rgba(0, 0, 0, 0.2);
-  position: relative;
+  position: absolute;
+  top: 0;
 }
-.loader__container {
-  width: 100%;
-  height: 100vh;
-  background-color: #281a9249;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-}
+
 .loader::before {
   content: "";
   position: absolute;
@@ -71,7 +67,7 @@ a {
   width: 0%;
   height: 100%;
   border-radius: 30px;
-  animation: moving 1s ease-in-out infinite;
+  animation: moving 0.5s ease-in-out infinite;
 }
 
 @keyframes moving {
@@ -125,8 +121,8 @@ a {
 .scrollable::-webkit-scrollbar {
   display: none;
 }
-section {
-}
+/* section {
+} */
 
 .reveal {
   position: relative;
