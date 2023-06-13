@@ -125,4 +125,8 @@
   .__card_container {
     align-items: center;
   }
+  .right_main_container {
+    /* background-color: red; */
+    width: 100%;
+  }
 }

@@ -1,7 +1,15 @@
 import Link from "next/link";
 import React from "react";
 
-const BtnComp = ({ children, isRed, onclick, href, bdr, className }) => {
+const BtnComp = ({
+  children,
+  isRed,
+  onclick,
+  href,
+  bdr,
+  className,
+  onSubmit,
+}) => {
   const styles = {
     backgroundColor: isRed ? " #FF5656" : "#1A1347",
     color: "#ffffff",
@@ -16,11 +24,12 @@ const BtnComp = ({ children, isRed, onclick, href, bdr, className }) => {
       onClick={onclick}
       href={`${href}`}
       className={className}
+      onSubmit={onSubmit}
     >
       {children}
     </Link>
   ) : (
-    <button style={styles} className={className}>
+    <button style={styles} className={className} onClick={onclick}>
       {children}
     </button>
   );

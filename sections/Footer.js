@@ -33,17 +33,17 @@ const Footer = () => {
 
   useEffect(() => {
     const handleFetch = async () => {
-      const token = `eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpaXMiOm51bGwsImF1ZCI6bnVsbCwiaWF0IjoxNjg2NTgwODI1LCJuYmYiOjE2ODY1ODA4MjUsImV4cCI6MTY4NjU5MTYyNSwibGFuZyI6ImVuIiwiaWQiOiIxIiwidXNlcl9jbGFzcyI6ImFkbWluIiwib2ZmaWNpYWxfaWQiOm51bGwsIm9mZmljaWFsX2NvZGUiOiIwMDAxIiwibG9naW5fbmFtZSI6ImFkbWluQGdtYWlsLmNvbSIsImJyYW5jaF9pZCI6IjEiLCJmdWxsX25hbWUiOiJTYW1zZXRoeSIsInN0YXR1cyI6ImFjdGl2ZSIsImlzX2xvY2tlZCI6IjAiLCJlbWFpbCI6bnVsbCwicGhvbmVfbnVtYmVyIjoiMDEyNTc4OTAiLCJvdHBfY29kZSI6bnVsbH0.4JXzLW2uvw6zznhmsXEdt1wYGA175PqsU5iswlNuMEM`;
+      // const token = `eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpaXMiOm51bGwsImF1ZCI6bnVsbCwiaWF0IjoxNjg2NTgwODI1LCJuYmYiOjE2ODY1ODA4MjUsImV4cCI6MTY4NjU5MTYyNSwibGFuZyI6ImVuIiwiaWQiOiIxIiwidXNlcl9jbGFzcyI6ImFkbWluIiwib2ZmaWNpYWxfaWQiOm51bGwsIm9mZmljaWFsX2NvZGUiOiIwMDAxIiwibG9naW5fbmFtZSI6ImFkbWluQGdtYWlsLmNvbSIsImJyYW5jaF9pZCI6IjEiLCJmdWxsX25hbWUiOiJTYW1zZXRoeSIsInN0YXR1cyI6ImFjdGl2ZSIsImlzX2xvY2tlZCI6IjAiLCJlbWFpbCI6bnVsbCwicGhvbmVfbnVtYmVyIjoiMDEyNTc4OTAiLCJvdHBfY29kZSI6bnVsbH0.4JXzLW2uvw6zznhmsXEdt1wYGA175PqsU5iswlNuMEM`;
       const response = await fetch(
         `
           https://admin.vanguardinvestconsult.com/backend/company-info`,
         {
           method: "POST",
           headers: {
-            Authorization: `Bearer ${token}`,
+            // Authorization: `Bearer ${token}`,
             "Content-Type": "application/json",
           },
-          body: JSON.stringify({ chain: "home_page.banner" }),
+          // body: JSON.stringify({ chain: "home_page.banner" }),
         }
       );
       const json = await response.json();

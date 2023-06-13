@@ -100,12 +100,7 @@ const Careers = (props) => {
         </div>
         <div>
           <h4 className="p-4">Map</h4>
-          <GoogleMapComp
-            width="100%"
-            url={
-              "https://www.google.com/maps/place/%E1%9E%9F%E1%9E%B6%E1%9E%9B%E1%9E%B6%E2%80%8B%E1%9E%9A%E1%9F%80%E1%9E%93%E2%80%8B+%E1%9E%9C%E1%9F%89%E1%9F%81%E1%9E%9F%E1%9F%92%E1%9E%91%E1%9E%A1%E1%9E%B6%E1%9E%89%E1%9E%93%E1%9F%8D+%E1%9E%9F%E1%9E%B6%E1%9E%81%E1%9E%B6%E1%9E%91%E1%9E%BD%E1%9E%9B%E1%9E%9F%E1%9F%92%E1%9E%9C%E1%9E%B6%E1%9E%99%E1%9E%96%E1%9F%92%E1%9E%9A%E1%9F%83/@11.5540955,104.8969145,15z/data=!3m1!4b1!4m6!3m5!1s0x3109511af71a344f:0xdf13899748a5b27b!8m2!3d11.5540747!4d104.9072142!16s%2Fg%2F1hd_7hcwf?entry=ttu"
-            }
-          />
+          <GoogleMapComp width="100%" url={page_api.map} />
         </div>
       </div>
     </Layout>

@@ -125,15 +125,6 @@ const Home = (props) => {
         districtID ? districtID : null
       }&${getPrices === "From" ? null : getPrices}`
     );
-    localStorage.setItem(
-      "search",
-      JSON.stringify({
-        type: getType,
-        categories: getCategoryVal,
-        city: cityID,
-        districtID: null,
-      })
-    );
   };
   const handleMoveToSection = (ref) => {
     ref.current.scrollIntoView({ behavior: "smooth" });

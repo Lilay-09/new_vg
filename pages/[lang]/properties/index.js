@@ -7,6 +7,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faCaretDown,
   faCheck,
+  faDollar,
   faFilter,
   faFilterCircleXmark,
   faLocationDot,
@@ -179,7 +180,7 @@ const OurProperty = (props) => {
   const handleSearchButton = () => {
     router.push(
       `/${lang}/search=&${getTypeID}&${propsTypeID}&${locationID}&${
-        getDistrictID ? getDistrictID : null
+        getDistrictID ? getDistrictID : 0
       }&${priceVal === "From" ? null : priceVal}`
     );
   };
@@ -366,7 +367,7 @@ const OurProperty = (props) => {
               <span>Price Limit</span>
               <div className={styles.prpty__dropdown} ref={priceRef}>
                 <p onClick={handlePriceDD}>
-                  <FontAwesomeIcon icon={faLocationDot} width={13} />
+                  <FontAwesomeIcon icon={faDollar} width={8} />
                   {priceVal}
                 </p>
                 <div

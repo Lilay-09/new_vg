@@ -7,7 +7,20 @@ import BtnComp from "../../../components/BtnComp";
 import GoogleMapComp from "../../../components/GoogleMapComp";
 import ScrollableContainer from "../../../components/ScrollableContainer";
 import { DataContext } from "../../../store/GlobalState";
-const ContactUs = () => {
+import { postData } from "../../../utils/fetchData";
+import Link from "next/link";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faCaretDown,
+  faEnvelope,
+  faPlane,
+  faTeletype,
+} from "@fortawesome/free-solid-svg-icons";
+import ImageComp from "../../../components/ImageComp";
+const ContactUs = (props) => {
+  let sends = [{ to: "Email" }, { to: "Telegram" }];
+  const { company_info } = props;
+  const [sendTo, setSendTo] = useState("Email");
   const emailRef = useRef();
   const mapRef = useRef();
   const phoneRef = useRef();
@@ -51,6 +64,41 @@ const ContactUs = () => {
   });
   const { state, dispatch } = useContext(DataContext);
   let translations = state.trans;
+
+  const handleSubmitEmail = async () => {
+    const sendData = await fetch(
+      `https://admin.vanguardinvestconsult.com/backend/contact-us/send-email`,
+      {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: name,
+          email: email,
+          subject: subject,
+          message: message,
+        }),
+      }
+    );
+  };
+  const handleSubmitTelegram = async (e) => {
+    e.preventDefault();
+
+    const sendData = await fetch(
+      `https://admin.vanguardinvestconsult.com/backend/contact-us/send-telegram`,
+      {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: name,
+          email: email,
+          subject: subject,
+          message: message,
+        }),
+      }
+    );
+
+    // console.log("To Telegram" + getMail);
+  };
 
   return (
     <Layout width={90}>
@@ -113,51 +161,34 @@ const ContactUs = () => {
                 >
                   <div className={styles.phone_number}>
                     <p>Phone Us</p>
-                    <div>
-                      <li>092 45 75 34</li>
-                      <li>023 45 75 34</li>
-                      <li>010 45 75 34</li>
-                    </div>
+                    <div>{company_info ? company_info.phone_number : null}</div>
                   </div>
                   <ScrollableContainer>
                     <div className={styles.media_commu}>
-                      <div className={styles.media_avatar}>
-                        <Image
-                          src={"/images/send.png"}
-                          width={200}
-                          height={200}
-                          alt="tele"
-                          priority
-                        />
-                      </div>
-
-                      <div className={styles.media_avatar}>
-                        <Image
-                          src={"/images/facebook.png"}
-                          width={200}
-                          height={200}
-                          alt="tele"
-                          priority
-                        />
-                      </div>
-                      <div className={styles.media_avatar}>
-                        <Image
-                          src={"/images/twit.png"}
-                          width={200}
-                          height={200}
-                          alt="tele"
-                          priority
-                        />
-                      </div>
-                      <div className={styles.media_avatar}>
-                        <Image
-                          src={"/images/yt.png"}
-                          width={200}
-                          height={200}
-                          alt="tele"
-                          priority
-                        />
-                      </div>
+                      {company_info
+                        ? company_info.social_media.map((item, i) => {
+                            return (
+                              <Link
+                                className={styles.media_avatar}
+                                href={item.url}
+                                target="_blank"
+                                key={i}
+                              >
+                                <Image
+                                  src={
+                                    company_info
+                                      ? item.icon
+                                      : "/images/send.png"
+                                  }
+                                  width={200}
+                                  height={200}
+                                  alt="tele"
+                                  priority
+                                />
+                              </Link>
+                            );
+                          })
+                        : null}
                     </div>{" "}
                   </ScrollableContainer>
                 </div>
@@ -182,32 +213,97 @@ const ContactUs = () => {
 
       <div className={`${styles.email_section}`} ref={emailRef}>
         <h2>Send us your feedback</h2>
+        <div className="select__send__form">
+          <span>Send to:</span>
+          <div className="dd_box">
+            <div className="dd__send_to">
+              {sends.map((item, i) => {
+                return (
+                  <React.Fragment key={i}>
+                    <span
+                      className={sendTo === item.to ? "active" : null}
+                      onClick={() => {
+                        setSendTo(item.to);
+                      }}
+                    >
+                      {item.to}
+                    </span>
+                  </React.Fragment>
+                );
+              })}
+            </div>
+          </div>
+        </div>
         <div className={`${styles._form__container}  _hidden_item`}>
-          <form className={`${styles._form_submit} our___item _hidden_item`}>
-            <InputComp
-              placeholder={"Name"}
-              color={"#9f7b4b"}
-              onChange={handleChangeInput}
-              name={"name"}
-            />
-            <InputComp
-              placeholder={"Email"}
-              color={"#9f7b4b"}
-              name="email"
-              onChange={handleChangeInput}
-            />
-            <InputComp
-              placeholder="Subject"
-              color={"#9f7b4b"}
-              name={"subject"}
-              onChange={handleChangeInput}
-            />
-            <textarea placeholder="Message" rows={"10"}></textarea>
-            <BtnComp bdr={10}>Submit</BtnComp>
-          </form>
+          <div>
+            <form className={`${styles._form_submit} our___item _hidden_item`}>
+              <InputComp
+                placeholder={"Name"}
+                color={"#9f7b4b"}
+                onChange={handleChangeInput}
+                name="name"
+              />
+              <InputComp
+                placeholder={"Email"}
+                color={"#9f7b4b"}
+                name="email"
+                onChange={handleChangeInput}
+              />
+              <InputComp
+                placeholder="Subject"
+                color={"#9f7b4b"}
+                name="subject"
+                onChange={handleChangeInput}
+              />
+              <textarea
+                placeholder="Message"
+                rows={"10"}
+                name="message"
+                onChange={handleChangeInput}
+              ></textarea>
+            </form>
+            <div
+              style={{
+                margin: "1rem",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+              }}
+            >
+              {sendTo === "Email" ? (
+                <BtnComp bdr={10} onclick={handleSubmitEmail}>
+                  <div
+                    style={{
+                      display: "flex",
+                      alignItems: "center",
+                      gap: "0.3rem",
+                    }}
+                  >
+                    Send
+                    <FontAwesomeIcon icon={faEnvelope} width={12} />
+                  </div>
+                </BtnComp>
+              ) : sendTo === "Telegram" ? (
+                <BtnComp bdr={10} onclick={handleSubmitTelegram}>
+                  <div
+                    style={{
+                      display: "flex",
+                      alignItems: "center",
+                      gap: "0.3rem",
+                    }}
+                  >
+                    Send
+                    <div className="image__icon">
+                      <ImageComp imageUrl={"/images/send2.png"} />
+                    </div>
+                  </div>
+                </BtnComp>
+              ) : null}
+            </div>
+          </div>
           <div className={`${styles._form_img} our___item _hidden_item`}>
             <Image
-              src="/images/email.png"
+              src={`/images/${sendTo === "Email" ? "email" : "telegram"}.png`}
               width={1000}
               height={1000}
               alt="communicate"
@@ -218,10 +314,36 @@ const ContactUs = () => {
       </div>
 
       <div className="reveal" ref={mapRef} id="contact">
-        {/* <GoogleMapComp width={100} /> */}
+        {company_info ? <GoogleMapComp url={company_info.map} /> : null}
       </div>
     </Layout>
   );
 };
 
 export default ContactUs;
+export const getServerSideProps = async () => {
+  try {
+    const response = await postData("company-info");
+    const getData = await response;
+
+    if (response.status === 200) {
+      return {
+        props: {
+          company_info: getData.data,
+        },
+      };
+    }
+  } catch (error) {
+    if (error.response && error.response.status === 404) {
+      return {
+        notFound: true,
+      };
+    }
+
+    console.error(error);
+  }
+
+  return {
+    props: {},
+  };
+};
