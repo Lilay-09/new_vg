@@ -152,7 +152,7 @@ export async function getServerSideProps(context) {
     listing_type_id: `${values[0]}`,
     category_id: `${values[1]}`,
     city_id: `${values[2]}`,
-    district_id: ``,
+    district_id: `${values[3]}`,
     price_range: values[4],
     lang: lang ? `${lang}` : "en",
   };
