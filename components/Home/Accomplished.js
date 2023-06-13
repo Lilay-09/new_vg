@@ -29,23 +29,27 @@ const Accomplished = (props) => {
         </div>
       </div>
       <div className={styles._designer__details_content_g2}>
-        <Scrollable>
-          {props.projects.map((item, i) => {
-            return (
-              <React.Fragment key={i}>
-                <Link
-                  className={styles._accomplished__project}
-                  href={`/${lang}/agent/member-project/${props.id}&${item.project_id}`}
-                >
-                  {item.image ? (
-                    <ImageComp imageUrl={item.image.image_url} />
-                  ) : null}
-                  <div className={styles.member__pro_status}>{item.status}</div>
-                </Link>
-              </React.Fragment>
-            );
-          })}
-        </Scrollable>
+        {props.projects.length > 0 && (
+          <Scrollable>
+            {props.projects.map((item, i) => {
+              return (
+                <React.Fragment key={i}>
+                  <Link
+                    className={styles._accomplished__project}
+                    href={`/${lang}/agent/member-project/${props.id}&${item.project_id}`}
+                  >
+                    {item.image ? (
+                      <ImageComp imageUrl={item.image.image_url} />
+                    ) : null}
+                    <div className={styles.member__pro_status}>
+                      {item.status}
+                    </div>
+                  </Link>
+                </React.Fragment>
+              );
+            })}
+          </Scrollable>
+        )}
       </div>
     </div>
   );

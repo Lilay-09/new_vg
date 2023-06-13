@@ -202,3 +202,66 @@
     max-height: 180px;
   }
 }
+
+/*  */
+
+.details_search__ {
+  width: 100%;
+}
+.dropdwon_search {
+  background-color: #ffffff;
+  position: relative;
+  /* padding: 0.8rem; */
+  margin: 0.5rem 0;
+}
+._dropdown_items {
+  position: absolute;
+  background-color: #ffffff;
+  /* border: 1px solid #281a92; */
+  width: 100%;
+  left: 0;
+  right: 0;
+  top: 3rem;
+  max-height: 0;
+  overflow-y: hidden;
+  overflow-x: hidden;
+  transition: max-height 0.2s ease-in-out;
+  display: flex;
+  flex-direction: column;
+  z-index: 10;
+}
+._dropdown_items::-webkit-scrollbar {
+  display: none;
+}
+._dropdown_items li {
+  list-style-type: none;
+  padding: 0.5rem 1rem;
+}
+._dropdown_items.active {
+  max-height: 300px;
+  overflow-y: scroll;
+}
+.select_holder {
+  border: 1px solid #281a92;
+  padding: 0.3rem 0.8rem;
+}
+.item {
+  background-color: #ffffff;
+}
+.item.active {
+  background-color: #e6b269;
+  font-weight: 800;
+}
+.button_find button {
+  width: 100%;
+  background-color: #e6b269;
+  border: none;
+  padding: 0.5rem;
+  font-size: large;
+  font-weight: 600;
+}
+
+.dd__district {
+  padding: 0.3rem 0.6rem;
+  margin-left: 2rem;
+}

@@ -25,18 +25,18 @@ const SearchInfo = (props) => {
   const router = useRouter();
   const { lang } = router.query;
 
-  let asPath = router.asPath;
-  let d = asPath.substring(asPath.indexOf("?") + 3, asPath.length);
+  // let asPath = router.asPath;
+  // let d = asPath.substring(asPath.indexOf("?") + 3, asPath.length);
 
-  var regex = /[^&]+/g;
-  var matches = d.matchAll(regex);
-  var values = [];
+  // var regex = /[^&]+/g;
+  // var matches = d.matchAll(regex);
+  // var values = [];
 
-  for (const match of matches) {
-    let value = match[0];
-    let decode = decodeURIComponent(value);
-    values.push(decode);
-  }
+  // for (const match of matches) {
+  //   let value = match[0];
+  //   let decode = decodeURIComponent(value);
+  //   values.push(decode);
+  // }
 
   if (data.length <= 0) {
     return (
@@ -75,14 +75,7 @@ const SearchInfo = (props) => {
                   router.push(`/${lang}/properties/${item.id}`);
                 }}
               >
-                <ImageComp imageUrl={item.image_url} />
-                {/* <Image
-                  src={item.url}
-                  width={3000}
-                  height={200}
-                  alt="proper"
-                  priority
-                /> */}
+                <ImageComp imageUrl={item.image.image_url} />
               </div>
               <div className={styles.properties__card_details}>
                 <div className={styles.properties__card_details_title}>
@@ -159,8 +152,9 @@ export async function getServerSideProps(context) {
     listing_type_id: `${values[0]}`,
     category_id: `${values[1]}`,
     city_id: `${values[2]}`,
-    district_id: "",
-    price_range: lang ? `${lang}` : "en",
+    district_id: ``,
+    price_range: values[4],
+    lang: lang ? `${lang}` : "en",
   };
   const res = await postData(`property/list`, bodyReq);
   const getData = await res;

@@ -176,7 +176,9 @@ const Home = (props) => {
               background: "grey",
             }}
           >
-            {banner.image ? <ImageSliderComp data_img={banner.images} /> : null}
+            {banner.images ? (
+              <ImageSliderComp data_img={banner.images} />
+            ) : null}
           </div>
           <div className={styles.banner_content}>
             <div className={styles.content_title}>

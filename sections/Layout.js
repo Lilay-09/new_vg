@@ -99,58 +99,16 @@ const Layout = ({ title, children, noSlide, noFind, map, width, path }) => {
     display: "flex",
     flexFlow: "column",
     minWidth: "320px",
+    // position: "relative",
   };
 
   return (
     <div className="body">
       <Header title={title ? `${title} ~ Vanguard` : "Vanguard"} path={path} />
-
       <main style={main}>{children}</main>
-
       <Footer />
     </div>
   );
 };
 
 export default Layout;
-
-// {map && <GoogleMapComp />}
-//       {!noSlide && (
-//         <div style={{ width: "85%", margin: "0 auto" }}>
-//           <SwiperComp />
-//         </div>
-//       )}
-// {!noFind && (
-//   <div className="find_dream">
-//     <span className="fs-5 fw-bold p-1">Find Your Dream Property</span>
-//     <div className="select_option">
-//       <select className="form-select">
-//         <option defaultValue>Open this select menu</option>
-//         <option value="1">One</option>
-//         <option value="2">Two</option>
-//         <option value="3">Three</option>
-//       </select>
-//       <select className="form-select">
-//         <option defaultValue>Open this select menu</option>
-//         <option value="1">One</option>
-//         <option value="2">Two</option>
-//         <option value="3">Three</option>
-//       </select>
-//       <select className="form-select">
-//         <option defaultValue>Open this select menu</option>
-//         <option value="1">One</option>
-//         <option value="2">Two</option>
-//         <option value="3">Three</option>
-//       </select>
-//       <select className="form-select">
-//         <option defaultValue>Open this select menu</option>
-//         <option value="1">One</option>
-//         <option value="2">Two</option>
-//         <option value="3">Three</option>
-//       </select>
-//     </div>
-//     <div style={{ alignSelf: "flex-end", margin: "1.2vw 0" }}>
-//       <BtnComp>Search</BtnComp>
-//     </div>
-//   </div>
-// )}

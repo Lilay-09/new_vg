@@ -7,3 +7,11 @@
   margin-bottom: 3rem;
   min-width: 320px;
 } */
+.social_media_link_ {
+  background-color: aliceblue;
+  position: absolute;
+  min-width: 40px;
+  max-width: 100px;
+  top: 20%;
+  z-index: 1000;
+}

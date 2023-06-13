@@ -35,6 +35,7 @@
 .media_link {
   display: flex;
   gap: 1vw;
+  flex-wrap: wrap;
 }
 .media_link a {
   background-color: transparent;

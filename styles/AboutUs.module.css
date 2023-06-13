@@ -61,6 +61,7 @@
   height: 25vw;
   min-height: 280px;
   min-width: 300px;
+  border: #191345 solid 2px;
 }
 ._about_container_img img {
   width: 100%;

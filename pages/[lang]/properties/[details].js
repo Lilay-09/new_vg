@@ -6,9 +6,10 @@ import Image from "next/image";
 import { postData } from "../../../utils/fetchData";
 import ImageComp from "../../../components/ImageComp";
 import { DataContext } from "../../../store/GlobalState";
+import SearchField from "../../../components/Properties/SearchField";
 
 const BlogDetails = (props) => {
-  const { property_api } = props;
+  const { property_api, filter } = props;
   const [swapImg, setSwapImg] = useState(property_api.images[0].image_url);
   const [status, setStatus] = useState("buy");
   const [type, setType] = useState("shop-house");
@@ -46,16 +47,6 @@ const BlogDetails = (props) => {
                         imageUrl={item.image_url}
                         onClick={() => setSwapImg(item.image_url)}
                       />
-                      {/* <Image
-                        src={item.image}
-                        width={1000}
-                        height={1000}
-                        alt="sth"
-                        priority
-                        onClick={() => {
-                          setSwapImg(item.image_url);
-                        }}
-                      /> */}
                     </div>
                   );
                 })}
@@ -120,47 +111,12 @@ const BlogDetails = (props) => {
         }
         right={
           <div className={styles.right_main_container}>
-            {/* <div className={styles.selection_year}>
+            <div className={styles.selection_year}>
               <div className={styles.select_title}>
                 <span>More properites</span>
               </div>
-              <div className={styles.selection_container}>
-                <select
-                  value={status}
-                  onChange={(e) => {
-                    setStatus(e.target.value);
-                  }}
-                >
-                  <option value="buy">Buy</option>
-                  <option value="rent">Rent</option>
-                </select>
-                <select
-                  value={type}
-                  onChange={(e) => {
-                    setType(e.target.value);
-                  }}
-                >
-                  <option value="shop-house">Shop House</option>
-                  <option value="condo">Condo</option>
-                  <option value="villa">Villa</option>
-                </select>
-                <select
-                  value={location}
-                  onChange={(e) => {
-                    setLocation(e.target.value);
-                  }}
-                >
-                  {locationData.map((item, i) => {
-                    return (
-                      <option value={item.location} key={i}>
-                        {item.location}
-                      </option>
-                    );
-                  })}
-                </select>
-                <button>Find</button>
-              </div>
-            </div> */}
+              <SearchField filter={filter} />
+            </div>
           </div>
         }
       />
@@ -176,11 +132,18 @@ export const getServerSideProps = async (context) => {
     id: `${details}`,
     lang: `${lang ? lang : "en"}`,
   };
+  let filterBody = {
+    lang: `${lang ? lang : "en"}`,
+  };
+
+  const filter = await postData("property/filters", filterBody);
+  const getFilter = await filter;
   const res = await postData(`property/details`, properyBody);
 
   const getProperty = await res;
   return {
     props: {
+      filter: getFilter.data,
       property_api: getProperty.data,
     },
   };

@@ -7,9 +7,10 @@ import Layout from "../../../../sections/Layout";
 import ImageComp from "../../../../components/ImageComp";
 import { DataContext } from "../../../../store/GlobalState";
 import { postData } from "../../../../utils/fetchData";
+import SearchField from "../../../../components/Properties/SearchField";
 const BlogDetails = (props) => {
   const { state, dispatch } = useContext(DataContext);
-  const { latest_proptery_details } = props;
+  const { latest_proptery_details, filter } = props;
 
   let images = latest_proptery_details.images;
   const [swapImg, setSwapImg] = useState(images[0].image_url);
@@ -111,47 +112,12 @@ const BlogDetails = (props) => {
         }
         right={
           <div className={styles.right_main_container}>
-            {/* <div className={styles.selection_year}>
-            <div className={styles.select_title}>
-              <span>More properites</span>
+            <div className={styles.selection_year}>
+              <div className={styles.select_title}>
+                <span>More properites</span>
+              </div>
+              <SearchField filter={filter} />
             </div>
-            <div className={styles.selection_container}>
-              <select
-                value={status}
-                onChange={(e) => {
-                  setStatus(e.target.value);
-                }}
-              >
-                <option value="buy">Buy</option>
-                <option value="rent">Rent</option>
-              </select>
-              <select
-                value={type}
-                onChange={(e) => {
-                  setType(e.target.value);
-                }}
-              >
-                <option value="shop-house">Shop House</option>
-                <option value="condo">Condo</option>
-                <option value="villa">Villa</option>
-              </select>
-              <select
-                value={location}
-                onChange={(e) => {
-                  setLocation(e.target.value);
-                }}
-              >
-                {locationData.map((item, i) => {
-                  return (
-                    <option value={item.location} key={i}>
-                      {item.location}
-                    </option>
-                  );
-                })}
-              </select>
-              <button>Find</button>
-            </div>
-          </div> */}
           </div>
         }
       />
@@ -167,12 +133,18 @@ export const getServerSideProps = async (ctx) => {
     id: `${details}`,
     lang: lang ? lang : "en",
   };
+  let filterBody = {
+    lang: `${lang ? lang : "en"}`,
+  };
 
+  const filter = await postData("property/filters", filterBody);
+  const getFilter = await filter;
   const res = await postData(`property/details`, resBody);
 
   const getData = await res;
   return {
     props: {
+      filter: getFilter.data,
       latest_proptery_details: getData.data,
     },
   };

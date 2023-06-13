@@ -13,7 +13,7 @@ const MemberProject = (props) => {
   const currentRef = useRef();
   const router = useRouter();
   let lang = state.lang.d_lang;
-  console.log(lang);
+
   useEffect(() => {
     const item = agent_api.projects.find(
       (item) => item.project_id === projectID
@@ -95,9 +95,8 @@ export default MemberProject;
 export const getServerSideProps = async (context) => {
   const { params } = context;
   const { id } = params;
-  console.log(id);
+
   let arr = id.split("&");
-  console.log(arr[0]);
 
   //begin fetch
   const agentRes = postData(`member/details`, {

@@ -5,143 +5,101 @@ import Layout from "../../../sections/Layout";
 import styles from "../../../styles/AboutUs.module.css";
 import { useRouter } from "next/router";
 import { DataContext } from "../../../store/GlobalState";
+import { postData } from "../../../utils/fetchData";
+import ImageComp from "../../../components/ImageComp";
 
-const AboutUs = () => {
+const AboutUs = ({ page_api }) => {
   const { state, dispatch } = useContext(DataContext);
   const aboutRef = useRef();
   const router = useRouter();
   const accRef = useRef();
-  const [mainUrl, setMainUrl] = useState("");
+  // const [mainUrl, setMainUrl] = useState("");
   const handleMoveToSection = (ref) => {
     ref.current.scrollIntoView({ behavior: "smooth" });
   };
 
-  useEffect(() => {
-    const url = window.location.origin;
-    setMainUrl(url);
-  }, []);
+  // useEffect(() => {
+  //   const url = window.location.origin;
+  //   setMainUrl(url);
+  // }, []);
 
   let translations = state.trans;
   return (
     <Layout width={100}>
       <div className={`${styles.__banner} _hidden_item`}>
         <div className={styles.__banner_content}>
-          <h2>About Us</h2>
+          <h2>{page_api.banner.title}</h2>
           <div className={styles.__banner_content_text}>
-            <p>Lorem ipsum dolor sit amet consectetur.</p>
+            <p>{page_api.banner.description}</p>
             <button onClick={() => handleMoveToSection(aboutRef)}>
               {translations.read_more}
             </button>
           </div>
         </div>
         <div className={styles.__banner_img}>
-          <Image
-            src="/images/aboutus.png"
-            width={1000}
-            height={1000}
-            priority
-            alt="team"
-          />
+          {page_api.banner.image_url ? (
+            <ImageComp imageUrl={`${page_api.banner.image_url}`} />
+          ) : null}
         </div>
       </div>
       <div className={`${styles.about_us} _hidden_item`} ref={aboutRef}>
-        <h4>Vanguard A Real Estate Company</h4>
-        <p>
-          Lorem ipsum dolor sit amet consectetur. Turpis habitasse sit ipsum
-          dictum elit. Blandit aenean cras lectus nibh scelerisque. Iaculis
-          habitasse ut interdum quisque risus etiam. Ultrices et risus gravida
-          sagittis. Nisl at aliquam ac arcu. Consequat et viverra quis eu. Vitae
-          pellentesque est morbi in at. Etiam vivamus lacus mauris vitae
-          eleifend habitant. Egestas vulputate dolor non fames ac justo eget
-          sed. Ultrices velit felis ornare non amet libero massa. Sed vel
-          dignissim non adipiscing volutpat sagittis. Eu vel vel donec nulla a.
-          Dui et sapien sit consequat vitae faucibus. Justo mi senectus leo
-          risus.
-        </p>
+        <h4>{page_api.company_description.title}</h4>
+        <p>{page_api.company_description.description}</p>
         <div className={styles._about_container}>
           <div className={styles._about_container_img}>
-            <Image
-              src="/images/kitchen.png"
-              width={1000}
-              height={1000}
-              priority
-              alt="team"
-            />
+            {page_api.company_description.image_url ? (
+              <ImageComp imageUrl={page_api.company_description.image_url} />
+            ) : null}
           </div>
           <div className={styles._about_container_text}>
-            <div className={styles._about_list}>
-              <div className={styles._about_list_logo}>
-                <Image
-                  src="/images/quality.png"
-                  width={200}
-                  height={10}
-                  priority
-                  alt="team"
-                />
-              </div>
-              <div className={styles._about_details}>
-                <h4>Quality Properties</h4>
-                <p>
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Nostrum iste.
-                </p>
-              </div>
-            </div>
-            <div className={styles._about_list}>
-              <div className={styles._about_list_logo}>
-                <Image
-                  src="/images/rating.png"
-                  width={200}
-                  height={10}
-                  priority
-                  alt="team"
-                />
-              </div>
-              <div className={styles._about_details}>
-                <h4>Top Rated Agents</h4>
-                <p>
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Nostrum iste.
-                </p>
-              </div>
-            </div>
-            <div className={styles._about_list}>
-              <div className={styles._about_list_logo}>
-                <Image
-                  src="/images/safe.png"
-                  width={200}
-                  height={10}
-                  priority
-                  alt="team"
-                />
-              </div>
-              <div className={styles._about_details}>
-                <h4>EASY AND SAFE</h4>
-                <p>
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Nostrum iste.
-                </p>
-              </div>
-            </div>
+            {page_api.company_description.services.map((item, i) => {
+              return (
+                <div className={styles._about_list} key={i}>
+                  <div className={styles._about_list_logo}>
+                    <ImageComp imageUrl={item.image_url} />
+                  </div>
+                  <div className={styles._about_details}>
+                    <h4>{item.title}</h4>
+                    <p>{item.description}</p>
+                  </div>
+                </div>
+              );
+            })}
           </div>
         </div>
       </div>
       <div className={`${styles.accomplished}`} ref={accRef}>
-        <div className={styles.company__things}>
-          <span>2000</span>
-          <h5>Sell Properties</h5>
-        </div>
-        <div className={styles.company__things}>
-          <span>1040</span>
-          <h5>Rent Properties</h5>
-        </div>
-        <div className={styles.company__things}>
-          <span>1080</span>
-          <h5>Agents</h5>
-        </div>
+        {page_api.overall.map((item, i) => {
+          return (
+            <div className={styles.company__things} key={i}>
+              <span>{item.count}</span>
+              <h5>{item.title}</h5>
+            </div>
+          );
+        })}
       </div>
     </Layout>
   );
 };
 
 export default AboutUs;
+export const getServerSideProps = async (context) => {
+  const { lang } = context.query;
+
+  let pageBody = {
+    id: "214",
+    lang: lang ? `${lang}` : "en",
+  };
+  //begin fetch
+  const pageRes = await postData(`page/contents`, pageBody);
+  //end fetch
+
+  //begin assign
+  const getPage = await pageRes;
+  //end assign
+  return {
+    props: {
+      page_api: getPage.data,
+    },
+  };
+};

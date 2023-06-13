@@ -114,7 +114,7 @@ const OurTeam = (props) => {
                         </p>
                       </div>
 
-                      <Link href={`/agent/${item.id}`}>View Page</Link>
+                      <Link href={`/${lang}/agent/${item.id}`}>View Page</Link>
                     </div>
                   </div>
                 </div>

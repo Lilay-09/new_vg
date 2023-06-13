@@ -11,7 +11,8 @@ const Person = (props) => {
   const { state, dispatch } = useContext(DataContext);
   const router = useRouter();
   let translations = state.trans;
-  const { lang, agent_api } = props;
+  const { agent_api } = props;
+  let lang = state.lang.d_lang;
 
   return (
     <Layout width={100}>
@@ -47,7 +48,13 @@ const Person = (props) => {
         </div>
         {agent_api.projects.map((item, i) => {
           return (
-            <div className={styles.agent__project} key={i}>
+            <div
+              className={styles.agent__project}
+              key={i}
+              onClick={() =>
+                router.push(`/${lang}/project/details/${item.project_id}`)
+              }
+            >
               <div className={styles.agent__project_img}>
                 <div className={styles.project_status}>{item.status}</div>
                 <Image
@@ -59,7 +66,7 @@ const Person = (props) => {
                 />
               </div>
               <div className={styles.agent_project__details}>
-                <h5>{item.title}</h5>
+                <h5>{item.name}</h5>
                 <p>
                   {translations.type}: {item.project_type}
                 </p>

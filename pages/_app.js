@@ -3,30 +3,33 @@ import GlobalState from "../store/GlobalState";
 import "../styles/globals.css";
 import "bootstrap/dist/css/bootstrap.css";
 import { Router } from "next/router";
+import styles from "../styles/Layout.module.css";
+import LoadingBar from "../components/LoaderBar";
 
 function MyApp({ Component, pageProps }) {
-  const [isLoading, setIsLoading] = useState(false);
+  // const [isLoading, setIsLoading] = useState(false);
 
-  useEffect(() => {
-    Router.events.on("routeChangeStart", (url) => {
-      setIsLoading(true);
-    });
+  // useEffect(() => {
+  //   Router.events.on("routeChangeStart", (url) => {
+  //     setIsLoading(true);
+  //   });
 
-    Router.events.on("routeChangeComplete", (url) => {
-      setIsLoading(false);
-    });
+  //   Router.events.on("routeChangeComplete", (url) => {
+  //     setIsLoading(false);
+  //   });
 
-    Router.events.on("routeChangeError", (url) => {
-      setIsLoading(false);
-    });
+  //   Router.events.on("routeChangeError", (url) => {
+  //     setIsLoading(false);
+  //   });
 
-    isLoading
-      ? (document.body.style.overflow = "hidden")
-      : (document.body.style.overflow = "auto");
-  }, [isLoading]);
+  //   isLoading
+  //     ? (document.body.style.overflow = "hidden")
+  //     : (document.body.style.overflow = "auto");
+  // }, [isLoading]);
   return (
     <GlobalState>
-      {isLoading && <div class="loader"></div>}
+      <LoadingBar />
+      {/* {isLoading && <div class="loader"></div>} */}
       <Component {...pageProps} />
     </GlobalState>
   );

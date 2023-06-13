@@ -385,3 +385,15 @@ a {
 @import "./Header/header.css";
 @import "./ProduceDetail/ProductDetails.css";
 @import "./properties.css";
+
+/* loader bar */
+.loading-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 4px;
+  background-color: blue;
+  z-index: 9999;
+  transition: width 0.3s linear;
+}

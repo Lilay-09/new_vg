@@ -178,7 +178,7 @@ const OurProperty = (props) => {
 
   const handleSearchButton = () => {
     router.push(
-      `/${lang}/search=&${getType}&${propsTypeID}&${locationID}&${
+      `/${lang}/search=&${getTypeID}&${propsTypeID}&${locationID}&${
         getDistrictID ? getDistrictID : null
       }&${priceVal === "From" ? null : priceVal}`
     );
@@ -573,7 +573,7 @@ const OurProperty = (props) => {
                 }}
               >
                 <ImageComp
-                  imageUrl={item.image_url}
+                  imageUrl={item.image.image_url}
                   defaultImg={"/images/b2.jpg"}
                 />
                 {/* <Image

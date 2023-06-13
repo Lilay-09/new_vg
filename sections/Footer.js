@@ -14,7 +14,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Image from "next/image";
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import styles from "../styles/Footer.module.css";
 import Link from "next/link";
 import { DataContext } from "../store/GlobalState";
@@ -25,17 +25,40 @@ import { useRouter } from "next/router";
 const Footer = () => {
   const router = useRouter();
   const { state, dispatch } = useContext(DataContext);
+  const [company_info, setCompanyInfo] = useState();
   const changeLng = state.lang.d_lang;
   const translations = state.trans;
   const locAspath = router.asPath;
   const [menuDropDown, setMenuDropDown] = useState(false);
+
+  useEffect(() => {
+    const handleFetch = async () => {
+      const token = `eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpaXMiOm51bGwsImF1ZCI6bnVsbCwiaWF0IjoxNjg2NTgwODI1LCJuYmYiOjE2ODY1ODA4MjUsImV4cCI6MTY4NjU5MTYyNSwibGFuZyI6ImVuIiwiaWQiOiIxIiwidXNlcl9jbGFzcyI6ImFkbWluIiwib2ZmaWNpYWxfaWQiOm51bGwsIm9mZmljaWFsX2NvZGUiOiIwMDAxIiwibG9naW5fbmFtZSI6ImFkbWluQGdtYWlsLmNvbSIsImJyYW5jaF9pZCI6IjEiLCJmdWxsX25hbWUiOiJTYW1zZXRoeSIsInN0YXR1cyI6ImFjdGl2ZSIsImlzX2xvY2tlZCI6IjAiLCJlbWFpbCI6bnVsbCwicGhvbmVfbnVtYmVyIjoiMDEyNTc4OTAiLCJvdHBfY29kZSI6bnVsbH0.4JXzLW2uvw6zznhmsXEdt1wYGA175PqsU5iswlNuMEM`;
+      const response = await fetch(
+        `
+          https://admin.vanguardinvestconsult.com/backend/company-info`,
+        {
+          method: "POST",
+          headers: {
+            Authorization: `Bearer ${token}`,
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ chain: "home_page.banner" }),
+        }
+      );
+      const json = await response.json();
+      setCompanyInfo(json.data);
+    };
+    handleFetch();
+  }, []);
+
   return (
     <div className={`${styles.__foot_container} reveal`}>
       <div className={styles.footer}>
         <div className={styles.footer_content}>
           <div className={styles.title}>
             <Image
-              src="/images/logo2.png"
+              src={company_info ? company_info.logo : "/images/logo2.png"}
               alt="logo"
               width={3000}
               height={3000}
@@ -44,47 +67,28 @@ const Footer = () => {
           </div>
           <div>
             <p>
-              The Website is diplayed our services and our properties. Contact
-              us to get more information!
+              {company_info
+                ? company_info.description
+                : `The Website is diplayed our services and our properties. Contact
+              us to get more information!`}
             </p>
           </div>
           <div className={styles.media_link}>
-            <a>
-              <Image
-                src={"/images/send2.png"}
-                width={20}
-                height={20}
-                alt="telegram"
-                priority
-              />
-            </a>
-            <a>
-              <Image
-                src="/images/facebook.png"
-                width={20}
-                height={20}
-                alt="telegram"
-                priority
-              />
-            </a>
-            <a>
-              <Image
-                src="/images/twit.png"
-                width={20}
-                height={20}
-                alt="telegram"
-                priority
-              />
-            </a>
-            <Link href={""}>
-              <Image
-                src="/images/yt.png"
-                width={20}
-                height={20}
-                alt="telegram"
-                priority
-              />
-            </Link>
+            {company_info
+              ? company_info.social_media.map((item, i) => {
+                  return (
+                    <Link target="_blank" href={""} key={i}>
+                      <Image
+                        src="/images/send2.png"
+                        width={20}
+                        height={20}
+                        alt="telegram"
+                        priority
+                      />
+                    </Link>
+                  );
+                })
+              : null}
           </div>
         </div>
         <div className={styles.footer_content}>
@@ -135,21 +139,27 @@ const Footer = () => {
               href="/contact-us#contact"
             >
               <FontAwesomeIcon icon={faLocationDot} width={18} />
-              4517 Washington Ave. Manchester, Kentucky 39495
+              {company_info
+                ? company_info.address
+                : `4517 Washington Ave. Manchester, Kentucky 39495`}
             </Link>
             <div className="d-flex align-items-center gap-1">
               <FontAwesomeIcon icon={faPhone} width={18} />
-              +855 0965778133
+              {company_info ? company_info.phone_number : `+855 0965778133`}
             </div>
             <div className="d-flex align-items-center gap-1">
               <FontAwesomeIcon icon={faMailBulk} width={18} />
-              +855 0965778133
+              {company_info ? company_info.email : `email@example`}
             </div>
           </div>
         </div>
       </div>
       <div className={styles.copyright_content}>
-        <span>Copyright 2023 Real Estate. All rights reserved.</span>
+        <span>
+          {company_info
+            ? company_info.copy_right
+            : "Copyright 2023 Vanguard. All rights reserved."}
+        </span>
       </div>
     </div>
   );
