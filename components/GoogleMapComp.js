@@ -3,7 +3,8 @@ import React from "react";
 const GoogleMapComp = ({ width, url }) => {
   const regex = /\/place\/([^\/]+)\/@/;
   const match = url.match(regex);
-  const placeName = match ? match[1].replace(/\+/g, " ") : "";
+  const placeName = match && match[1].replace(/\+/g, " ");
+  console.log(placeName);
   return (
     <div
       style={{
@@ -13,7 +14,7 @@ const GoogleMapComp = ({ width, url }) => {
       }}
     >
       <iframe
-        src={`https://www.google.com/maps/embed/v1/place?key=${process.env.MAP_URL}
+        src={`https://www.google.com/maps/embed/v1/place?key=AIzaSyBZfV2HezW2S-LFeVZDY8f_y9N5ca-vfxg
       &q=${placeName}`}
         style={{
           border: "0",
@@ -22,8 +23,8 @@ const GoogleMapComp = ({ width, url }) => {
           minHeight: "230px",
         }}
         allowFullScreen
-        loading="lazy"
-        referrerPolicy="no-referrer-when-downgrade"
+        // loading="lazy"
+        // referrerPolicy="no-referrer-when-downgrade"
       ></iframe>
     </div>
   );
