@@ -20,7 +20,7 @@ import { DataContext } from "../../../store/GlobalState";
 import ImageComp from "../../../components/ImageComp";
 import { postData } from "../../../utils/fetchData";
 const OurProperty = (props) => {
-  const { filter, properties } = props;
+  const { filter, properties, page_api } = props;
   const forDD = [
     { type: "Shop House" },
     { type: "Twin Villa" },
@@ -180,7 +180,7 @@ const OurProperty = (props) => {
   const handleSearchButton = () => {
     router.push(
       `/${lang}/search=&${getTypeID}&${propsTypeID}&${locationID}&${
-        getDistrictID ? getDistrictID : 0
+        getDistrictID ? getDistrictID : null
       }&${priceVal === "From" ? null : priceVal}`
     );
   };
@@ -216,13 +216,7 @@ const OurProperty = (props) => {
   return (
     <Layout width={100}>
       <div className={`${styles.banner}`}>
-        <Image
-          src={"/images/proper.png"}
-          width={3000}
-          height={200}
-          priority
-          alt="proper"
-        />
+        <ImageComp imageUrl={page_api.banner.image_url} />
         <div className={styles.banner_title}>
           <span>{translations.our_properties}</span>
         </div>
@@ -664,10 +658,16 @@ export const getServerSideProps = async (context) => {
   const getFilter = await filter;
   const property_lists = await postData("property/list", getPropertiesBody);
   const getProperties = await property_lists;
+  const pageRes = await postData(`page/contents`, {
+    id: 211,
+    lang: lang ? `${lang}` : "en",
+  });
+  const getPage = await pageRes;
   return {
     props: {
       filter: getFilter.data,
       properties: getProperties.data,
+      page_api: getPage.data,
     },
   };
 };
