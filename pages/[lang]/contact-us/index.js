@@ -271,7 +271,7 @@ const ContactUs = (props) => {
               }}
             >
               {sendTo === "Email" ? (
-                <BtnComp bdr={10} onclick={handleSubmitEmail}>
+                <BtnComp bdr={10} onSubmit={handleSubmitEmail}>
                   <div
                     style={{
                       display: "flex",
@@ -284,7 +284,7 @@ const ContactUs = (props) => {
                   </div>
                 </BtnComp>
               ) : sendTo === "Telegram" ? (
-                <BtnComp bdr={10} onclick={handleSubmitTelegram}>
+                <BtnComp bdr={10} onSubmit={handleSubmitTelegram}>
                   <div
                     style={{
                       display: "flex",

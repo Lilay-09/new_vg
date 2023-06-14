@@ -126,15 +126,6 @@ const Home = (props) => {
         districtID ? districtID : null
       }&${getPrices === "From" ? null : getPrices}`
     );
-    localStorage.setItem(
-      "search",
-      JSON.stringify({
-        type: getType,
-        categories: getCategoryVal,
-        city: cityID,
-        districtID: null,
-      })
-    );
   };
   const handleMoveToSection = (ref) => {
     ref.current.scrollIntoView({ behavior: "smooth" });
@@ -463,7 +454,7 @@ const Home = (props) => {
                   id={item.id}
                   url={item.image_url}
                   name={item.name}
-                  profile={item.profile}
+                  profile={item.image_url}
                   projects={item.projects}
                   position={item.position_title}
                   profile_details={item.id}
@@ -502,8 +493,8 @@ export const getServerSideProps = async (ctx) => {
   const latestPropertyRes = await postData(`property/list-by-tag`, latestBody);
   const filterRes = await postData("property/filters", filterBody);
   const latestProjectRes = await postData("project/list-by-tag", latestBody);
-  const consultantsRes = await postData(`member/list`, {
-    level_id: 2,
+  const consultantsRes = await postData(`member/list-home`, {
+    lang: `${lang ? lang : "en"}`,
   });
 
   //end fetch

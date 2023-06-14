@@ -21,7 +21,7 @@ const LatestProjects = ({ data }) => {
         <>
           <TiltleTile
             title={translations.latest_project}
-            href={"/project/all"}
+            href={`/${lang}/our-services`}
           />
           <div className={styles.card__container}>
             {data.slice(0, 6).map((item, index) => {
