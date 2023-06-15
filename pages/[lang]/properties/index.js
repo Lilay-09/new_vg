@@ -290,7 +290,7 @@ const OurProperty = (props) => {
               </div>
             </div>
             <div className={styles.search_box}>
-              <span>Location</span>
+              <span>{translations.location}</span>
               <div className={styles.prpty__dropdown}>
                 <p onClick={handlelocationDD}>
                   <FontAwesomeIcon icon={faLocationDot} width={13} />
@@ -358,7 +358,7 @@ const OurProperty = (props) => {
               </div>
             </div>
             <div className={styles.search_box}>
-              <span>Price Limit</span>
+              <span>{translations.price}</span>
               <div className={styles.prpty__dropdown} ref={priceRef}>
                 <p onClick={handlePriceDD}>
                   <FontAwesomeIcon icon={faDollar} width={8} />
@@ -406,7 +406,7 @@ const OurProperty = (props) => {
         >
           X
         </div>
-        <TiltleTile title={"Find Your Properties"} noMore />
+        <TiltleTile title={translations.find_properties} noMore />
         <div className="seach_box_container">
           <div className="status_choose">
             {filter.listing_types.map((item, i) => {
@@ -424,7 +424,7 @@ const OurProperty = (props) => {
             })}
           </div>
           <div className="propt__type">
-            <h5>Property Types:</h5>
+            <h5>{translations.property_type}:</h5>
             <div className="propt__type_items">
               {filter.categories.map((item, i) => {
                 return (
@@ -452,7 +452,7 @@ const OurProperty = (props) => {
 
           <div>
             <div className="price__from__">
-              <h5>From:</h5>
+              <h5>{translations.price}:</h5>
               <div
                 className="show_selected_price"
                 onClick={() => setSelectedPriceDD(!selectedPricDD)}
@@ -489,7 +489,7 @@ const OurProperty = (props) => {
             </div>
           </div>
           <div>
-            <h5>Location:</h5>
+            <h5>{translations.location}:</h5>
             <div className="location__drpD" ref={locRef}>
               <span className={`show__seleted`} onClick={handlelocationDD}>
                 {locationVal}

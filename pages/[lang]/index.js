@@ -426,7 +426,7 @@ const Home = (props) => {
             <div className={styles.interior_title_content}>
               <h2>{translations.latest_properties}</h2>
               <button onClick={() => router.push(`${lang}/properties`)}>
-                see more
+                {translations.see_more}
               </button>
             </div>
           </div>
@@ -441,7 +441,7 @@ const Home = (props) => {
             <div className={styles.interior_title_content}>
               <h2>{translations.pro_prop_consult}</h2>
               <button onClick={() => router.push(`/${lang}/our-team`)}>
-                See Our Team
+                {translations.visit_us}
               </button>
             </div>
           </div>
