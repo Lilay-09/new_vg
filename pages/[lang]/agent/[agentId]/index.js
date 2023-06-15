@@ -19,7 +19,7 @@ const Person = (props) => {
       <div className={`${styles.agent}`}>
         <div className={styles.agent_card}>
           <div className={styles.agent__img}>
-            <ImageComp imageUrl={agent_api.profile} />
+            <ImageComp imageUrl={agent_api.image_url} />
           </div>
           <div className={styles.agent__details}>
             <h5>{agent_api.name}</h5>

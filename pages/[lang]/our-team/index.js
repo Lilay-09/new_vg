@@ -55,13 +55,6 @@ const OurTeam = (props) => {
                           {media.icon ? (
                             <ImageComp imageUrl={media.icon} />
                           ) : null}
-                          {/* <Image
-                            src={media.icon}
-                            width={200}
-                            height={200}
-                            alt={media.media_name}
-                            priority
-                          /> */}
                         </Link>
                       );
                     })}

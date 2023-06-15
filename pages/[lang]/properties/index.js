@@ -627,19 +627,21 @@ const OurProperty = (props) => {
           );
         })}
       </div>
-      <div className={`${styles.pagination_container} reveal`}>
-        <div className="pagination_key">
-          {currentPage !== 1 && (
-            <PaginationBtn title="Prev" onClick={handlePrevbtn} />
-          )}
+      {properties.length > 0 ? (
+        <div className={`${styles.pagination_container} reveal`}>
+          <div className="pagination_key">
+            {currentPage !== 1 && (
+              <PaginationBtn title="Prev" onClick={handlePrevbtn} />
+            )}
 
-          {<div className={`pagination_number`}>{rederPageNumbers}</div>}
+            {<div className={`pagination_number`}>{rederPageNumbers}</div>}
 
-          {currentPage !== pages.length && (
-            <PaginationBtn title="Next" onClick={handleNextbtn} />
-          )}
+            {currentPage !== pages.length && (
+              <PaginationBtn title="Next" onClick={handleNextbtn} />
+            )}
+          </div>
         </div>
-      </div>
+      ) : null}
     </Layout>
   );
 };

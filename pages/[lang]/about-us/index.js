@@ -13,15 +13,10 @@ const AboutUs = ({ page_api }) => {
   const aboutRef = useRef();
   const router = useRouter();
   const accRef = useRef();
-  // const [mainUrl, setMainUrl] = useState("");
+
   const handleMoveToSection = (ref) => {
     ref.current.scrollIntoView({ behavior: "smooth" });
   };
-
-  // useEffect(() => {
-  //   const url = window.location.origin;
-  //   setMainUrl(url);
-  // }, []);
 
   let translations = state.trans;
   return (
