@@ -470,7 +470,7 @@ export default Home;
 
 export const getServerSideProps = async (ctx) => {
   const { lang, id, item } = ctx.query;
-
+  console.log(item);
   // begin fetch body request
   let bodyReq = {
     id: "209",
@@ -495,7 +495,7 @@ export const getServerSideProps = async (ctx) => {
     lang: `${lang ? lang : "en"}`,
   });
   const priceRangeRes = await postData(`price-range/options`, {
-    listing_type_id: item === "undefined" ? 2 : item,
+    listing_type_id: item === undefined ? 2 : item,
   });
   // https://admin.vanguardinvestconsult.com/backend/price-range/options
   //end fetch
