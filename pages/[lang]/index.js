@@ -55,7 +55,6 @@ const Home = (props) => {
   const [getCategoryID, setCategoryID] = useState(filter.categories[0].id);
   const [categoryDD, setCategoryDD] = useState(false);
   const [getPrices, setPrices] = useState("From");
-  // const [pricesID, setPricesID] = useState(priceRange[0].id);
   const [pricesDD, setPricesDD] = useState(false);
   const [city, setCity] = useState(filter.cities[0].city);
   const [cityID, setCityID] = useState(filter.cities[0].id);
@@ -67,33 +66,33 @@ const Home = (props) => {
   const categoryListsRef = useRef();
   const pricesRef = useRef();
   const [qSearch, setQsearch] = useState(filter.cities);
-  const [priceData, setPriceData] = useState(price_range_api);
+  const [priceData, setPriceData] = useState([]);
 
-  // useEffect(() => {
-  //   const handleFetch = async () => {
-  //     try {
-  //       const response = await fetch(
-  //         `https://admin.vanguardinvestconsult.com/backend/price-range/options`,
-  //         {
-  //           method: "POST",
-  //           body: JSON.stringify({
-  //             listing_type_id: getTypeID,
-  //             // lang: lang ? `${lang}` : "en",
-  //           }),
-  //           headers: {
-  //             "Content-Type": "application/json",
-  //           },
-  //         }
-  //       );
-  //       const jsonData = await response.json();
-  //       setPriceData(jsonData.data);
-  //     } catch (error) {
-  //       console.error("Error:", error);
-  //     }
-  //   };
-  //   handleFetch();
-  //   return () => {};
-  // }, [getTypeID, lang]);
+  useEffect(() => {
+    const handleFetch = async () => {
+      try {
+        const response = await fetch(
+          `https://admin.vanguardinvestconsult.com/backend/price-range/options`,
+          {
+            method: "POST",
+            body: JSON.stringify({
+              listing_type_id: getTypeID,
+              lang: lang ? `${lang}` : "en",
+            }),
+            headers: {
+              "Content-Type": "application/json",
+            },
+          }
+        );
+        const jsonData = await response.json();
+        setPriceData(jsonData.data);
+      } catch (error) {
+        console.error("Error:", error);
+      }
+    };
+    handleFetch();
+    return () => {};
+  }, [getTypeID, lang]);
 
   useEffect(() => {
     const handleLocationDD = (e) => {
@@ -221,7 +220,6 @@ const Home = (props) => {
                       onClick={() => {
                         setTypeID(item.id);
                         setType(item.listing_type);
-                        router.push(`${lang}?item=${item.id}`);
                       }}
                     >
                       <div className={styles["select_item"]}>
@@ -376,7 +374,7 @@ const Home = (props) => {
                     : styles["dropdown_listing"]
                 }
               >
-                {price_range_api.map((item, i) => {
+                {priceData.map((item, i) => {
                   return (
                     <div
                       key={i}
@@ -470,7 +468,6 @@ export default Home;
 
 export const getServerSideProps = async (ctx) => {
   const { lang, id, item } = ctx.query;
-  console.log(item);
   // begin fetch body request
   let bodyReq = {
     id: "209",
