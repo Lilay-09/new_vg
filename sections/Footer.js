@@ -136,7 +136,7 @@ const Footer = () => {
           <div className={styles._contact_address}>
             <Link
               className="d-flex align-items-center gap-1 nav-link"
-              href="/contact-us#contact"
+              href={`${changeLng}/contact-us#contact`}
             >
               <FontAwesomeIcon icon={faLocationDot} width={18} />
               {company_info
