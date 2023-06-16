@@ -41,8 +41,8 @@ const ActiveLink = ({
           (isCurrentPath && black) ||
           (router.asPath !== "/" &&
             router.asPath !== `/${lang}` &&
-            router.asPath === `/${lang}?item=1` &&
-            router.asPath === `/${lang}?item=2`)
+            router.asPath !== `/${lang}?item=1` &&
+            router.asPath !== `/${lang}?item=2`)
             ? "black"
             : isCurrentPath
             ? "white"
