@@ -39,7 +39,10 @@ const ActiveLink = ({
         fontWeight: isCurrentPath ? "700" : "200",
         color:
           (isCurrentPath && black) ||
-          (router.asPath !== "/" && router.asPath !== `/${lang}`)
+          (router.asPath !== "/" &&
+            router.asPath !== `/${lang}` &&
+            router.asPath === `/${lang}?item=1` &&
+            router.asPath === `/${lang}?item=2`)
             ? "black"
             : isCurrentPath
             ? "white"

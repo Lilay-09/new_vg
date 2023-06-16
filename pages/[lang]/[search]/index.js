@@ -154,7 +154,7 @@ export async function getServerSideProps(context) {
     category_id: "3",
     city_id: "13",
     district_id: `${values[3] === "null" ? 0 : values[3]}`,
-    price_range: null,
+    price_range: values[4],
   };
   const res = await postData(`property/list`, bodyReq);
   const getData = await res;

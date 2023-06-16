@@ -8,6 +8,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowLeft, faArrowRight } from "@fortawesome/free-solid-svg-icons";
 import { DataContext } from "../../../../store/GlobalState";
 import { postData } from "../../../../utils/fetchData";
+import ImageComp from "../../../../components/ImageComp";
 const ProjectDetails = (props) => {
   const { latest_project_details } = props;
 
@@ -42,13 +43,14 @@ const ProjectDetails = (props) => {
     <Layout width={100}>
       <div className={styles.project__banner}>
         <div className={styles.banner_img_box}>
-          <Image
+          <ImageComp imageUrl={showBanner} />
+          {/* <Image
             src={showBanner}
             width={1000}
             height={1000}
             alt="img"
             priority
-          />
+          /> */}
           <div className={styles.btn_next_prev}>
             <div onClick={handlePrev}>
               <FontAwesomeIcon icon={faArrowLeft} width={20} />
@@ -70,13 +72,14 @@ const ProjectDetails = (props) => {
                 }}
                 className={styles.banner_img_dot}
               >
-                <Image
+                {/* <Image
                   src={item.image_url}
                   width={1000}
                   height={1000}
                   alt="img"
                   priority
-                />
+                /> */}
+                <ImageComp imageUrl={item.image_url} />
               </div>
             );
           })}
@@ -100,13 +103,14 @@ const ProjectDetails = (props) => {
             i % 2 === 0 ? (
               <div className={styles._prp__view} key={i}>
                 <div className={styles._prp__view_cnt}>
-                  <Image
+                  {/* <Image
                     src={item.image_url}
                     width={1000}
                     height={1000}
                     alt="img"
                     className=""
-                  />
+                  /> */}
+                  <ImageComp imageUrl={item.image_url} />
                 </div>
                 <div className={` ${styles._prp__view_cnt}`}>
                   <h4>{item.title}</h4>
@@ -127,13 +131,14 @@ const ProjectDetails = (props) => {
                   <p>{item.description}</p>
                 </div>
                 <div className={styles._prp__view_cnt}>
-                  <Image
+                  <ImageComp imageUrl={item.image_url} />
+                  {/* <Image
                     src={item.image_url}
                     width={1000}
                     height={1000}
                     alt="img"
                     className=""
-                  />
+                  /> */}
                 </div>
               </div>
             )

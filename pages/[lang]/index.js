@@ -1,7 +1,5 @@
 import Image from "next/image";
 import Link from "next/link";
-// import path from "path";
-// import fs from "fs/promises";
 import React, { use, useContext, useEffect, useRef, useState } from "react";
 
 import Layout from "../../sections/Layout";
@@ -37,7 +35,7 @@ const Home = (props) => {
     filter,
     latest_properties_api,
     latest_projects_api,
-    priceRange,
+    price_range_api,
     consultants_api,
   } = props;
 
@@ -69,33 +67,33 @@ const Home = (props) => {
   const categoryListsRef = useRef();
   const pricesRef = useRef();
   const [qSearch, setQsearch] = useState(filter.cities);
-  const [priceData, setPriceData] = useState([]);
+  const [priceData, setPriceData] = useState(price_range_api);
 
-  useEffect(() => {
-    const handleFetch = async () => {
-      try {
-        const response = await fetch(
-          `https://admin.vanguardinvestconsult.com/backend/price-range/options`,
-          {
-            method: "POST",
-            body: JSON.stringify({
-              listing_type_id: getTypeID,
-              lang: lang ? `${lang}` : "en",
-            }),
-            headers: {
-              "Content-Type": "application/json",
-            },
-          }
-        );
-        const jsonData = await response.json();
-        setPriceData(jsonData.data);
-      } catch (error) {
-        console.error("Error:", error);
-      }
-    };
-    handleFetch();
-    return () => {};
-  }, [getTypeID, lang]);
+  // useEffect(() => {
+  //   const handleFetch = async () => {
+  //     try {
+  //       const response = await fetch(
+  //         `https://admin.vanguardinvestconsult.com/backend/price-range/options`,
+  //         {
+  //           method: "POST",
+  //           body: JSON.stringify({
+  //             listing_type_id: getTypeID,
+  //             // lang: lang ? `${lang}` : "en",
+  //           }),
+  //           headers: {
+  //             "Content-Type": "application/json",
+  //           },
+  //         }
+  //       );
+  //       const jsonData = await response.json();
+  //       setPriceData(jsonData.data);
+  //     } catch (error) {
+  //       console.error("Error:", error);
+  //     }
+  //   };
+  //   handleFetch();
+  //   return () => {};
+  // }, [getTypeID, lang]);
 
   useEffect(() => {
     const handleLocationDD = (e) => {
@@ -223,6 +221,7 @@ const Home = (props) => {
                       onClick={() => {
                         setTypeID(item.id);
                         setType(item.listing_type);
+                        router.push(`${lang}?item=${item.id}`);
                       }}
                     >
                       <div className={styles["select_item"]}>
@@ -377,7 +376,7 @@ const Home = (props) => {
                     : styles["dropdown_listing"]
                 }
               >
-                {priceData.map((item, i) => {
+                {price_range_api.map((item, i) => {
                   return (
                     <div
                       key={i}
@@ -470,7 +469,7 @@ const Home = (props) => {
 export default Home;
 
 export const getServerSideProps = async (ctx) => {
-  const { lang, id } = ctx.query;
+  const { lang, id, item } = ctx.query;
 
   // begin fetch body request
   let bodyReq = {
@@ -495,7 +494,10 @@ export const getServerSideProps = async (ctx) => {
   const consultantsRes = await postData(`member/list-home`, {
     lang: `${lang ? lang : "en"}`,
   });
-
+  const priceRangeRes = await postData(`price-range/options`, {
+    listing_type_id: item === "undefined" ? 2 : item,
+  });
+  // https://admin.vanguardinvestconsult.com/backend/price-range/options
   //end fetch
 
   // begin assign data to var
@@ -504,6 +506,7 @@ export const getServerSideProps = async (ctx) => {
   const getLatestProperty = await latestPropertyRes;
   const getLatestProject = await latestProjectRes;
   const getConsultants = await consultantsRes;
+  const getPrices = await priceRangeRes;
   // end assign data to var
 
   return {
@@ -513,6 +516,7 @@ export const getServerSideProps = async (ctx) => {
       latest_properties_api: getLatestProperty.data,
       latest_projects_api: getLatestProject.data,
       consultants_api: getConsultants.data,
+      price_range_api: getPrices.data,
     },
   };
 };

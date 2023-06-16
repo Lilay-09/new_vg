@@ -23,22 +23,28 @@ const AboutUs = ({ page_api }) => {
     <Layout width={100}>
       <div className={`${styles.__banner} _hidden_item`}>
         <div className={styles.__banner_content}>
-          <h2>{page_api.banner.title}</h2>
+          <h2>{page_api.banner ? page_api.banner.title : null}</h2>
           <div className={styles.__banner_content_text}>
-            <p>{page_api.banner.description}</p>
+            <p>{page_api.banner ? page_api.banner.description : null}</p>
             <button onClick={() => handleMoveToSection(aboutRef)}>
               {translations.read_more}
             </button>
           </div>
         </div>
         <div className={styles.__banner_img}>
-          {page_api.banner.image_url ? (
+          {page_api.banner ? (
+            page_api.banner.image_url
+          ) : null ? (
             <ImageComp imageUrl={`${page_api.banner.image_url}`} />
           ) : null}
         </div>
       </div>
       <div className={`${styles.about_us} _hidden_item`} ref={aboutRef}>
-        <h4>{page_api.company_description.title}</h4>
+        <h4>
+          {page_api.company_description
+            ? page_api.company_description.title
+            : null}
+        </h4>
         <p>{page_api.company_description.description}</p>
         <div className={styles._about_container}>
           <div className={styles._about_container_img}>

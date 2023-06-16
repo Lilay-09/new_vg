@@ -69,13 +69,14 @@ const MemberProject = (props) => {
               }
             >
               <div className={styles.agent__project_img}>
-                <Image
+                <ImageComp imageUrl={item.image.image_url} />
+                {/* <Image
                   src={`/${item.url}`}
                   width={1000}
                   height={1000}
                   alt="l1"
                   priority
-                />
+                /> */}
                 <div className={styles.project_status}>{item.status}</div>
               </div>
               <div className={styles.agent_project__details}>
