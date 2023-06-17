@@ -26,7 +26,14 @@ const Careers = (props) => {
         style={{ backgroundColor: "white" }}
         className="d-flex flex-column gap-3"
       >
-        <BannerImg height={35} img={page_api.banner.image_url} />
+        <BannerImg
+          height={35}
+          img={
+            page_api.banner.image_url
+              ? page_api.banner.image_url
+              : page_api.banner.ïmage_url
+          }
+        />
         <div className="p-4 d-flex flex-column gap-3">
           <h4>{page_api.announcements.title}</h4>
           <span className="text-muted">
