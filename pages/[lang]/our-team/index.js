@@ -11,6 +11,7 @@ import tranCh from "../../../utils/Translations/ch.json";
 import { DataContext } from "../../../store/GlobalState";
 import { postData } from "../../../utils/fetchData";
 import ImageComp from "../../../components/ImageComp";
+import { checkSocialMediaURL } from "../../../utils/checkSocialMediaUrl";
 
 const OurTeam = (props) => {
   const { page_api, consultant_api, leader_api } = props;
@@ -50,7 +51,7 @@ const OurTeam = (props) => {
                           className={styles.media_avatar1}
                           key={i}
                           target="_blank"
-                          href={media.url}
+                          href={checkSocialMediaURL(media.url)}
                         >
                           {media.icon ? (
                             <ImageComp imageUrl={media.icon} />
@@ -89,7 +90,7 @@ const OurTeam = (props) => {
                             className={styles.media_avatar1}
                             key={i}
                             target="_blank"
-                            href={media.url}
+                            href={checkSocialMediaURL(media.url)}
                           >
                             {media.icon ? (
                               <ImageComp imageUrl={media.icon} />

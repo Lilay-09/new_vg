@@ -10,7 +10,11 @@ import SearchField from "../../../components/Properties/SearchField";
 
 const BlogDetails = (props) => {
   const { property_api, filter } = props;
-  const [swapImg, setSwapImg] = useState(property_api.images[0].image_url);
+  const [swapImg, setSwapImg] = useState(
+    property_api && property_api.images.length > 0
+      ? property_api.images[0].image_url
+      : ""
+  );
   const [status, setStatus] = useState("buy");
   const [type, setType] = useState("shop-house");
   const [location, setLocation] = useState("phnom-penh");
@@ -33,23 +37,27 @@ const BlogDetails = (props) => {
                 />
               </div>
               <div className={styles._switch__img}>
-                {property_api.images.map((item, i) => {
-                  return (
-                    <div
-                      className={
-                        swapImg === item.image_url
-                          ? styles["_switch__img_box"] + " " + styles["active"]
-                          : styles["_switch__img_box"]
-                      }
-                      key={i}
-                    >
-                      <ImageComp
-                        imageUrl={item.image_url}
-                        onClick={() => setSwapImg(item.image_url)}
-                      />
-                    </div>
-                  );
-                })}
+                {property_api
+                  ? property_api.images.map((item, i) => {
+                      return (
+                        <div
+                          className={
+                            swapImg === item.image_url
+                              ? styles["_switch__img_box"] +
+                                " " +
+                                styles["active"]
+                              : styles["_switch__img_box"]
+                          }
+                          key={i}
+                        >
+                          <ImageComp
+                            imageUrl={item.image_url}
+                            onClick={() => setSwapImg(item.image_url)}
+                          />
+                        </div>
+                      );
+                    })
+                  : null}
               </div>
             </div>
 
@@ -80,7 +88,7 @@ const BlogDetails = (props) => {
                     <span>{property_api.finish_year}</span>
                   </div>
                   <div className={styles.__spec_lst}>
-                    <h5>Units:</h5>
+                    <h5>{translations.units}:</h5>
                     <span>{property_api.unit_number}</span>
                   </div>
                   <div className={styles.__spec_lst}>
@@ -105,7 +113,7 @@ const BlogDetails = (props) => {
             <div className={styles.prp__description}>
               <h4>{translations.prp_description}</h4>
               <h3>{property_api.project_name}</h3>
-              <p>{property_api.description}</p>
+              <p>{property_api.remarks}</p>
             </div>
           </div>
         }

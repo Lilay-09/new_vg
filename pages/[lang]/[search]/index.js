@@ -25,19 +25,6 @@ const SearchInfo = (props) => {
   const router = useRouter();
   const { lang } = router.query;
 
-  // let asPath = router.asPath;
-  // let d = asPath.substring(asPath.indexOf("?") + 3, asPath.length);
-
-  // var regex = /[^&]+/g;
-  // var matches = d.matchAll(regex);
-  // var values = [];
-
-  // for (const match of matches) {
-  //   let value = match[0];
-  //   let decode = decodeURIComponent(value);
-  //   values.push(decode);
-  // }
-
   if (data.length <= 0) {
     return (
       <Layout>
@@ -55,6 +42,7 @@ const SearchInfo = (props) => {
       </Layout>
     );
   }
+  console.log(data);
   return (
     <Layout width={100}>
       <div style={{ width: "90%", margin: "2rem auto" }}>
@@ -83,7 +71,7 @@ const SearchInfo = (props) => {
                 </div>
                 <div className={styles.location}>
                   <FontAwesomeIcon icon={faLocationDot} width={12} />
-                  <span>{item.location}</span>
+                  <span>{item.address}</span>
                 </div>
                 <div className={styles.size_price}>
                   <div className={styles.prop_spec}>
@@ -95,7 +83,7 @@ const SearchInfo = (props) => {
                         alt="home_size"
                         priority
                       />
-                      <div>6M x 14M</div>
+                      <div>{item.size}</div>
                     </div>
                     <div className="d-flex align-items-center gap-1">
                       <Image
@@ -105,7 +93,7 @@ const SearchInfo = (props) => {
                         alt="home_size"
                         priority
                       />
-                      <div>3</div>
+                      <div>{item.bedrooms}</div>
                     </div>
                     <div className="d-flex align-items-center gap-1">
                       <Image
@@ -115,7 +103,7 @@ const SearchInfo = (props) => {
                         alt="home_size"
                         priority
                       />
-                      <div>4</div>
+                      <div>{item.bathrooms}</div>
                     </div>
                   </div>
                   <div className={styles.prop_price}>${item.price}</div>
@@ -149,11 +137,18 @@ export async function getServerSideProps(context) {
     .split("&")
     .filter((item) => item !== "" && !item.startsWith("search="));
 
+  console.log(values[4]);
   const bodyReq = {
-    listing_type_id: "1",
-    category_id: "3",
-    city_id: "13",
-    district_id: `${values[3] === "null" ? 0 : values[3]}`,
+    // listing_type_id: values[0],
+    // category_id: values[1],
+    // city_id: values[2],
+    // district_id: `${values[3] === "null" ? 0 : values[3]}`,
+    // price_range: values[4],
+    listing_type_id: values[0],
+    category_id: values[1],
+    // country_id: "14",
+    city_id: values[2],
+    district_id: values[3],
     price_range: values[4],
   };
   const res = await postData(`property/list`, bodyReq);

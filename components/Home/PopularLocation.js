@@ -19,7 +19,7 @@ const PopularLocation = ({ data, translations, types }) => {
         <div className={styles.interior_title}>
           <div className={styles.interior_title_content1}>
             <h2>{translations.popular_location}</h2>
-            <select
+            {/* <select
               value={getTypes}
               onChange={(e) => {
                 setTypes(e.target.value);
@@ -32,7 +32,7 @@ const PopularLocation = ({ data, translations, types }) => {
                   </option>
                 );
               })}
-            </select>
+            </select> */}
           </div>
         </div>
         <div>
@@ -43,7 +43,7 @@ const PopularLocation = ({ data, translations, types }) => {
                   key={item.id}
                   className={`${styles.interior__design_card}`}
                   onClick={() => {
-                    router.push(`${lang}/category/${item.id}/${item.id}`);
+                    router.push(`${lang}/category/${item.city_id}`);
                   }}
                 >
                   {item.image_url ? (
@@ -51,7 +51,7 @@ const PopularLocation = ({ data, translations, types }) => {
                   ) : null}
                   <p className={styles.popular_place}>
                     <FontAwesomeIcon icon={faLocationDot} width={20} />
-                    {item.location}
+                    {item.city}
                   </p>
                 </div>
               );

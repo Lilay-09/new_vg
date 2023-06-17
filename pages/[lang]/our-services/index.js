@@ -58,54 +58,21 @@ const OurServices = (props) => {
         </div>
         <div className={styles._categories_section_container}>
           <ScrollableContainer>
-            <div
-              className={`${styles._service_categories} our___item _hidden_item`}
-            >
-              <div className={styles._service_categories_img}>
-                <Image
-                  src={"/images/sale.png"}
-                  width={1000}
-                  height={1000}
-                  alt="sell"
-                  priority
-                />
-                <div className={styles._service_categories_status_text}>
-                  <span>Selling</span>
+            {services_api.categories.map((item, i) => {
+              return (
+                <div
+                  key={i}
+                  className={`${styles._service_categories} our___item _hidden_item`}
+                >
+                  <div className={styles._service_categories_img}>
+                    <ImageComp imageUrl={item.image_url} />
+                    <div className={styles._service_categories_status_text}>
+                      <span>{item.listing_type}</span>
+                    </div>
+                  </div>
                 </div>
-              </div>
-            </div>
-            <div
-              className={`${styles._service_categories} our___item _hidden_item`}
-            >
-              <div className={styles._service_categories_img}>
-                <Image
-                  src={"/images/rent.png"}
-                  width={1000}
-                  height={1000}
-                  alt="sell"
-                  priority
-                />
-                <div className={styles._service_categories_status_text}>
-                  <span>Rent</span>
-                </div>
-              </div>
-            </div>
-            <div
-              className={`${styles._service_categories} our___item _hidden_item`}
-            >
-              <div className={styles._service_categories_img}>
-                <Image
-                  src={"/images/consultations.png"}
-                  width={1000}
-                  height={1000}
-                  alt="sell"
-                  priority
-                />
-                <div className={styles._service_categories_status_text}>
-                  <span>Consultations</span>
-                </div>
-              </div>
-            </div>
+              );
+            })}
           </ScrollableContainer>
         </div>
       </div>
