@@ -125,7 +125,8 @@
 ._team_member_card img {
   width: 100%;
   height: 100%;
-  max-height: 270px;
+  max-height: 300px;
+  object-fit: fill;
 }
 ._team_member_card:hover ._team_member_card_img {
   filter: blur(2px);
@@ -143,13 +144,14 @@
   justify-content: center;
   position: relative;
   border: #191345 solid 1px;
-  min-height: 280px;
+  min-height: 300px;
   max-height: 300px;
   min-width: 90px;
 }
 ._team_member_card_img img {
   height: 100%;
   width: 100%;
+  min-height: 300px;
 }
 ._team_member_media {
   display: flex;

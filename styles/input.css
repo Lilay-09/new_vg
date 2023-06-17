@@ -40,7 +40,7 @@ input:valid ~ label {
 }
 .input_field label {
   position: absolute;
-  left: 10px;
+  left: 0px;
   top: 45%;
   transition: ease-out 0.15s;
   font-size: 20px;
