@@ -41,14 +41,18 @@ const OurServices = (props) => {
               >
                 <ImageComp
                   imageUrl={item.image_url}
-                  defaultImg={`/images/b${i + 2}.jpg`}
+                  defaultImg={`/images/b${i + 0}.jpg`}
                 />
               </div>
             );
           })}
         </div>
         <div className={styles._our_service_banner_text}>
-          <h4>Many Properties and categories</h4>
+          <h4>
+            {services_api.banner.title
+              ? services_api.banner.title
+              : "Many Properties and categories"}
+          </h4>
         </div>
       </div>
 

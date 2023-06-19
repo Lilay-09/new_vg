@@ -20,6 +20,7 @@ import tranEn from "../utils/Translations/en.json";
 import tranCh from "../utils/Translations/ch.json";
 import tranKh from "../utils/Translations/kh.json";
 import Link from "next/link";
+import ImageComp from "../components/ImageComp";
 
 const Header = ({ title, path }) => {
   let langs = [
@@ -39,6 +40,7 @@ const Header = ({ title, path }) => {
   const menuRef = useRef();
   const xREf = useRef();
   const langRef = useRef();
+  const [company_info, setCompanyInfo] = useState([]);
 
   const [scrolled, setScrolled] = useState(false);
 
@@ -121,6 +123,31 @@ const Header = ({ title, path }) => {
       document.removeEventListener("mousedown", handleCloselangRef, true);
     };
   });
+
+  useEffect(() => {
+    const handleFetch = async () => {
+      const response = await fetch(
+        `
+          https://admin.vanguardinvestconsult.com/backend/page/contents`,
+        {
+          method: "POST",
+          headers: {
+            // Authorization: `Bearer ${token}`,
+            "Content-Type": "application/json",
+          },
+          // mode: "no-cors",
+          body: JSON.stringify({
+            name: "company_info",
+            lang: changeLng ? `${changeLng}` : "en",
+          }),
+        }
+      );
+      const json = await response.json();
+      setCompanyInfo(json.data);
+    };
+    handleFetch();
+  }, [changeLng]);
+
   return (
     <div>
       <Head>
@@ -144,13 +171,7 @@ const Header = ({ title, path }) => {
             className={styles.navbar_logo}
             onClick={() => router.push(`/${changeLng}`)}
           >
-            <Image
-              alt="logo"
-              src="/images/logo2.png"
-              width={200}
-              height={200}
-              priority
-            />
+            <ImageComp imageUrl={company_info.logo} />
           </div>
 
           <div className={styles.navbar_link}>

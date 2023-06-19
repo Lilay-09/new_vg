@@ -22,10 +22,12 @@ import tranCh from "../utils/Translations/ch.json";
 import tranEn from "../utils/Translations/en.json";
 import tranKh from "../utils/Translations/kh.json";
 import { useRouter } from "next/router";
+import { checkSocialMediaURL } from "../utils/checkSocialMediaUrl";
+import ImageComp from "../components/ImageComp";
 const Footer = () => {
   const router = useRouter();
   const { state, dispatch } = useContext(DataContext);
-  const [company_info, setCompanyInfo] = useState();
+  const [company_info, setCompanyInfo] = useState([]);
   const changeLng = state.lang.d_lang;
   const translations = state.trans;
   const locAspath = router.asPath;
@@ -35,7 +37,7 @@ const Footer = () => {
     const handleFetch = async () => {
       const response = await fetch(
         `
-          https://admin.vanguardinvestconsult.com/backend/company-info`,
+          https://admin.vanguardinvestconsult.com/backend/page/contents`,
         {
           method: "POST",
           headers: {
@@ -43,27 +45,24 @@ const Footer = () => {
             "Content-Type": "application/json",
           },
           // mode: "no-cors",
-          // body: JSON.stringify({ chain: "home_page.banner" }),
+          body: JSON.stringify({
+            name: "company_info",
+            lang: changeLng ? `${changeLng}` : "en",
+          }),
         }
       );
       const json = await response.json();
       setCompanyInfo(json.data);
     };
     handleFetch();
-  }, []);
+  }, [changeLng]);
 
   return (
     <div className={`${styles.__foot_container} reveal`}>
       <div className={styles.footer}>
         <div className={styles.footer_content}>
           <div className={styles.title}>
-            <Image
-              src={company_info ? company_info.logo : "/images/logo2.png"}
-              alt="logo"
-              width={3000}
-              height={3000}
-              priority
-            />
+            <ImageComp imageUrl={company_info.logo} />
           </div>
           <div>
             <p>
@@ -74,12 +73,16 @@ const Footer = () => {
             </p>
           </div>
           <div className={styles.media_link}>
-            {company_info
-              ? company_info.social_media.map((item, i) => {
+            {company_info.social
+              ? company_info.social.map((item, i) => {
                   return (
-                    <Link target="_blank" href={""} key={i}>
+                    <Link
+                      target="_blank"
+                      href={checkSocialMediaURL(item.url)}
+                      key={i}
+                    >
                       <Image
-                        src="/images/send2.png"
+                        src={"/images/send2.png"}
                         width={20}
                         height={20}
                         alt="telegram"
@@ -139,24 +142,28 @@ const Footer = () => {
               href={`${changeLng}/contact-us#contact`}
             >
               <FontAwesomeIcon icon={faLocationDot} width={18} />
-              {company_info
-                ? company_info.address
-                : `4517 Washington Ave. Manchester, Kentucky 39495`}
+              {company_info.address}
             </Link>
-            <div className="d-flex align-items-center gap-1">
-              <FontAwesomeIcon icon={faPhone} width={18} />
-              {company_info ? company_info.phone_number : `+855 0965778133`}
+            <div className="d-flex align-items-center gap-2">
+              <FontAwesomeIcon icon={faPhone} width={20} />
+              <div className={styles.phone__number}>
+                {company_info.phone
+                  ? company_info.phone.map((item, i) => {
+                      return <p key={i}>{item.number}</p>;
+                    })
+                  : null}
+              </div>
             </div>
             <div className="d-flex align-items-center gap-1">
               <FontAwesomeIcon icon={faMailBulk} width={18} />
-              {company_info ? company_info.email : `email@example`}
+              {company_info ? company_info.email : `email1@example`}
             </div>
           </div>
         </div>
       </div>
       <div className={styles.copyright_content}>
         <span>
-          {company_info
+          {company_info.copy_right
             ? company_info.copy_right
             : "Copyright 2023 Vanguard. All rights reserved."}
         </span>
