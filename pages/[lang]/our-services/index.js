@@ -126,7 +126,7 @@ export default OurServices;
 export const getServerSideProps = async (ctx) => {
   let { lang } = ctx.query;
   let pageBody = {
-    id: "213",
+    name: "our_services",
     lang: `${lang}`,
   };
 

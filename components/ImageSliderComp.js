@@ -9,6 +9,7 @@ import Image from "next/image";
 import React, { useEffect, useRef, useState } from "react";
 import ImageComp from "./ImageComp";
 const ImageSliderComp = ({ data_img }) => {
+  let getInitials = [];
   const [count, setCount] = useState(0);
   const [showBanner, setShowBanner] = useState(data_img[0].image_url);
 

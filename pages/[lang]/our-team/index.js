@@ -196,7 +196,8 @@ export default OurTeam;
 export const getServerSideProps = async (context) => {
   const { lang } = context.query;
   let pageBody = {
-    id: "212",
+    // id: "212",
+    name: "our_team",
     lang: lang ? `${lang}` : "en",
   };
   //begin fetch

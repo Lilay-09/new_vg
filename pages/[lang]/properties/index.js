@@ -661,7 +661,8 @@ export const getServerSideProps = async (context) => {
   const property_lists = await postData("property/list", getPropertiesBody);
   const getProperties = await property_lists;
   const pageRes = await postData(`page/contents`, {
-    id: 211,
+    // id: 211,
+    name: "our_properties_page",
     lang: lang ? `${lang}` : "en",
   });
   const getPage = await pageRes;

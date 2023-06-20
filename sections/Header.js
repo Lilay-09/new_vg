@@ -138,7 +138,7 @@ const Header = ({ title, path }) => {
           // mode: "no-cors",
           body: JSON.stringify({
             // name: "company_info",
-            name: "test.page",
+            name: "company_info",
             lang: changeLng ? `${changeLng}` : "en",
           }),
         }

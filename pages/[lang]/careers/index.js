@@ -119,7 +119,8 @@ export const getServerSideProps = async (context) => {
   const { lang } = context.query;
 
   let pageBody = {
-    id: "215",
+    // id: "215",
+    name: "careers_page",
     lang: lang ? `${lang}` : "en",
   };
 

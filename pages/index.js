@@ -40,11 +40,11 @@ const Home = (props) => {
     latest_projects_api,
     price_range_api,
     consultants_api,
+    popular_location_api,
   } = props;
 
   const banner = home_api.banner;
   const locations = home_api.locations;
-  const popular_locations = home_api.popular_locations;
   const categories = home_api.categories;
   const types = home_api.types;
   const teams = home_api.consultants;
@@ -166,21 +166,25 @@ const Home = (props) => {
               background: "grey",
             }}
           >
-            {banner.images ? (
+            {banner ? (
               <ImageSliderComp data_img={banner.images} />
-            ) : null}
+            ) : (
+              <ImageSliderComp data_img={["/images/black.jpg"]} />
+            )}
           </div>
-          <div className={styles.banner_content}>
-            <div className={styles.content_title}>
-              <h2>{banner.title}</h2>
+          {banner ? (
+            <div className={styles.banner_content}>
+              <div className={styles.content_title}>
+                <h2>{banner.title}</h2>
+              </div>
+              <p>{banner.description}</p>
+              <div className={styles.banner_btn}>
+                <button onClick={() => handleMoveToSection(searchRef)}>
+                  {translations.search}
+                </button>
+              </div>
             </div>
-            <p>{banner.description}</p>
-            <div className={styles.banner_btn}>
-              <button onClick={() => handleMoveToSection(searchRef)}>
-                {translations.search}
-              </button>
-            </div>
-          </div>
+          ) : null}
         </div>
       </section>
       <div className={styles.search_section} ref={searchRef}>
@@ -414,27 +418,31 @@ const Home = (props) => {
         <LatestProjects data={latest_projects_api} />
       </div>
 
-      {/* <PopularLocation
-        data={popular_locations}
-        translations={translations}
-        types={filter.listing_types}
-      /> */}
+      {popular_location_api.length > 0 ? (
+        <PopularLocation
+          data={popular_location_api}
+          translations={translations}
+          types={filter.listing_types}
+        />
+      ) : null}
 
-      <section className={styles._home__blog}>
-        <div className="reveal fade-bottom">
-          <div className={`${styles.interior_title}`}>
-            <div className={styles.interior_title_content}>
-              <h2>{translations.latest_properties}</h2>
-              <button onClick={() => router.push(`${lang}/properties`)}>
-                {translations.see_more}
-              </button>
+      {latest_properties_api.length > 0 ? (
+        <section className={styles._home__blog}>
+          <div className="reveal fade-bottom">
+            <div className={`${styles.interior_title}`}>
+              <div className={styles.interior_title_content}>
+                <h2>{translations.latest_properties}</h2>
+                <button onClick={() => router.push(`${lang}/properties`)}>
+                  {translations.see_more}
+                </button>
+              </div>
+            </div>
+            <div className={styles._home_blog__container}>
+              <LatestProperty data={latest_properties_api} />
             </div>
           </div>
-          <div className={styles._home_blog__container}>
-            <LatestProperty data={latest_properties_api} />
-          </div>
-        </div>
-      </section>
+        </section>
+      ) : null}
       <section className={styles.accomplistment}>
         <div className="reveal fade-bottom">
           <div className={`${styles.interior_title}`}>
@@ -471,10 +479,10 @@ export default Home;
 
 export const getServerSideProps = async (ctx) => {
   const { lang, id, item } = ctx.query;
-
   // begin fetch body request
   let bodyReq = {
-    id: "209",
+    // id: "209",
+    name: "home_page",
     lang: `${lang ? lang : "en"}`,
   };
   let latestBody = {
@@ -495,10 +503,7 @@ export const getServerSideProps = async (ctx) => {
   const consultantsRes = await postData(`member/list-home`, {
     lang: `${lang ? lang : "en"}`,
   });
-  const priceRangeRes = await postData(`price-range/options`, {
-    listing_type_id: item === undefined ? 2 : item,
-  });
-  // https://admin.vanguardinvestconsult.com/backend/price-range/options
+  const popularLocationRes = await postData("popular-location/list");
   //end fetch
 
   // begin assign data to var
@@ -507,7 +512,7 @@ export const getServerSideProps = async (ctx) => {
   const getLatestProperty = await latestPropertyRes;
   const getLatestProject = await latestProjectRes;
   const getConsultants = await consultantsRes;
-  const getPrices = await priceRangeRes;
+  const getPopLocation = await popularLocationRes;
   // end assign data to var
 
   return {
@@ -517,7 +522,7 @@ export const getServerSideProps = async (ctx) => {
       latest_properties_api: getLatestProperty.data,
       latest_projects_api: getLatestProject.data,
       consultants_api: getConsultants.data,
-      price_range_api: getPrices.data,
+      popular_location_api: getPopLocation.data,
     },
   };
 };

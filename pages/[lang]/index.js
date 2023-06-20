@@ -163,21 +163,25 @@ const Home = (props) => {
               background: "grey",
             }}
           >
-            {banner.images ? (
+            {banner ? (
               <ImageSliderComp data_img={banner.images} />
-            ) : null}
+            ) : (
+              <ImageSliderComp data_img={["/images/black.jpg"]} />
+            )}
           </div>
-          <div className={styles.banner_content}>
-            <div className={styles.content_title}>
-              <h2>{banner.title}</h2>
+          {banner ? (
+            <div className={styles.banner_content}>
+              <div className={styles.content_title}>
+                <h2>{banner.title}</h2>
+              </div>
+              <p>{banner.description}</p>
+              <div className={styles.banner_btn}>
+                <button onClick={() => handleMoveToSection(searchRef)}>
+                  {translations.search}
+                </button>
+              </div>
             </div>
-            <p>{banner.description}</p>
-            <div className={styles.banner_btn}>
-              <button onClick={() => handleMoveToSection(searchRef)}>
-                {translations.search}
-              </button>
-            </div>
-          </div>
+          ) : null}
         </div>
       </section>
       <div className={styles.search_section} ref={searchRef}>
@@ -474,7 +478,8 @@ export const getServerSideProps = async (ctx) => {
   const { lang, id, item } = ctx.query;
   // begin fetch body request
   let bodyReq = {
-    id: "209",
+    // id: "209",
+    name: "home_page",
     lang: `${lang ? lang : "en"}`,
   };
   let latestBody = {

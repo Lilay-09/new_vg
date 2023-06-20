@@ -48,7 +48,7 @@ const Footer = () => {
           // mode: "no-cors",
           body: JSON.stringify({
             // name: "company_info",
-            name: "testpage",
+            name: "company_info",
             lang: changeLng ? `${changeLng}` : "en",
           }),
         }
