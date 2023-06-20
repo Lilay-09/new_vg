@@ -1,13 +1,7 @@
 export function checkSocialMediaURL(url) {
-  if (url.includes("https://www.")) {
+  if (url === null) {
+    return "";
+  } else {
     return url;
-  }
-  // else if (url.includes("www.")) {
-  //   let combine = `https://${url}`;
-  //   return combine;
-  // }
-  else {
-    let combine = `${url}`;
-    return combine;
   }
 }

@@ -24,6 +24,7 @@ import tranKh from "../utils/Translations/kh.json";
 import { useRouter } from "next/router";
 import { checkSocialMediaURL } from "../utils/checkSocialMediaUrl";
 import ImageComp from "../components/ImageComp";
+import { icon } from "@fortawesome/fontawesome-svg-core";
 const Footer = () => {
   const router = useRouter();
   const { state, dispatch } = useContext(DataContext);
@@ -46,7 +47,8 @@ const Footer = () => {
           },
           // mode: "no-cors",
           body: JSON.stringify({
-            name: "company_info",
+            // name: "company_info",
+            name: "testpage",
             lang: changeLng ? `${changeLng}` : "en",
           }),
         }
@@ -73,25 +75,37 @@ const Footer = () => {
             </p>
           </div>
           <div className={styles.media_link}>
-            {company_info.social
-              ? company_info.social.map((item, i) => {
-                  return (
-                    <Link
-                      target="_blank"
-                      href={checkSocialMediaURL(item.url)}
-                      key={i}
-                    >
-                      <Image
-                        src={"/images/send2.png"}
-                        width={20}
-                        height={20}
-                        alt="telegram"
-                        priority
-                      />
-                    </Link>
-                  );
-                })
-              : null}
+            {company_info.social &&
+              company_info.social.map((item, i) => {
+                return (
+                  <Link
+                    target="_blank"
+                    href={checkSocialMediaURL(item.url)}
+                    key={i}
+                    style={{ width: "35px", height: "35px" }}
+                  >
+                    <ImageComp imageUrl={item.icon} width={35} height={35} />
+                  </Link>
+                );
+              })}
+            {/* {company_info.social.map((item, i) => {
+              return (
+                <Link
+                  target="_blank"
+                  href={checkSocialMediaURL(item.url)}
+                  key={i}
+                >
+                  <Image
+                    src={item.icon}
+                    width={20}
+                    height={20}
+                    alt="telegram"
+                    priority
+                  />
+                </Link>
+              );
+            })} */}
+            {/* {console.log(company_info.social.length)} */}
           </div>
         </div>
         <div className={styles.footer_content}>

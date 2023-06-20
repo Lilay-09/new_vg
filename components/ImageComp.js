@@ -2,7 +2,7 @@ import Image from "next/image";
 import React from "react";
 import { useState } from "react";
 
-const ImageComp = ({ imageUrl, defaultImg, onClick }) => {
+const ImageComp = ({ imageUrl, defaultImg, onClick, width, height }) => {
   const [imageError, setImageError] = useState(false);
   const handleImageError = (e) => {
     setImageError(true);
@@ -12,11 +12,13 @@ const ImageComp = ({ imageUrl, defaultImg, onClick }) => {
     <React.Fragment>
       {!imageError ? (
         <Image
-          src={imageUrl}
+          src={
+            imageUrl ? imageUrl : defaultImg ? defaultImg : `/images/white.jpg`
+          }
           onError={handleImageError}
           alt="Image"
-          width={3000}
-          height={2000}
+          width={width ? `${width}` : 3000}
+          height={height ? `${height}` : 2000}
           priority
           onClick={onClick}
         />
@@ -25,8 +27,8 @@ const ImageComp = ({ imageUrl, defaultImg, onClick }) => {
           src={defaultImg ? defaultImg : `/images/white.jpg`}
           onError={handleImageError}
           alt="Image"
-          width={3000}
-          height={2000}
+          width={width ? `${width}` : 3000}
+          height={height ? `${height}` : 2000}
           priority
           onClick={onClick}
         />
