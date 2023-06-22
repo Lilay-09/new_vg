@@ -172,7 +172,10 @@ const Header = ({ title, path }) => {
             className={styles.navbar_logo}
             onClick={() => router.push(`/${changeLng}`)}
           >
-            <ImageComp imageUrl={company_info.logo} />
+            <ImageComp
+              imageUrl={company_info.logo}
+              defaultImg={"/images/logo2.png"}
+            />
           </div>
 
           <div className={styles.navbar_link}>

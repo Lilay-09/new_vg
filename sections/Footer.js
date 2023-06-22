@@ -64,7 +64,10 @@ const Footer = () => {
       <div className={styles.footer}>
         <div className={styles.footer_content}>
           <div className={styles.title}>
-            <ImageComp imageUrl={company_info.logo} />
+            <ImageComp
+              imageUrl={company_info.logo}
+              defaultImg={"/images/logo2.png"}
+            />
           </div>
           <div>
             <p>
@@ -88,24 +91,6 @@ const Footer = () => {
                   </Link>
                 );
               })}
-            {/* {company_info.social.map((item, i) => {
-              return (
-                <Link
-                  target="_blank"
-                  href={checkSocialMediaURL(item.url)}
-                  key={i}
-                >
-                  <Image
-                    src={item.icon}
-                    width={20}
-                    height={20}
-                    alt="telegram"
-                    priority
-                  />
-                </Link>
-              );
-            })} */}
-            {/* {console.log(company_info.social.length)} */}
           </div>
         </div>
         <div className={styles.footer_content}>
