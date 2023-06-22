@@ -65,9 +65,9 @@ const Careers = (props) => {
               <div className={styles.job_lst} key={i}>
                 <span>{item.title}</span>
                 <ul>
-                  {/* {item.lists.map((item, i) => {
-                    return <li key={i}>sdfsdfsdf</li>;
-                  })} */}
+                  {item.lists.map((item, i) => {
+                    return <li key={i}>{item.list}</li>;
+                  })}
                 </ul>
               </div>
             );
