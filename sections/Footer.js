@@ -153,10 +153,10 @@ const Footer = () => {
                   : null}
               </div>
             </div>
-            <div className="d-flex align-items-center gap-1">
+            {/* <div className="d-flex align-items-center gap-1">
               <FontAwesomeIcon icon={faMailBulk} width={18} />
               {company_info ? company_info.email : `email1@example`}
-            </div>
+            </div> */}
           </div>
         </div>
       </div>

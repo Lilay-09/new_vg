@@ -58,7 +58,11 @@
   width: 100%;
   display: flex;
   flex-direction: column;
+  /* justify-content: center; */
   justify-content: center;
+  position: relative;
+  top: 2rem;
+  /* background-color: #e6b269; */
 }
 .copyright_content {
   margin: 0 auto;

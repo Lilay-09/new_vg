@@ -33,8 +33,6 @@ const AboutUs = ({ page_api }) => {
         </div>
         <div className={styles.__banner_img}>
           {page_api.banner ? (
-            page_api.banner.image_url
-          ) : null ? (
             <ImageComp imageUrl={`${page_api.banner.image_url}`} />
           ) : null}
         </div>
