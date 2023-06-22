@@ -65,10 +65,11 @@ const Careers = (props) => {
               <div className={styles.job_lst} key={i}>
                 <span>{item.title}</span>
                 <ul>
-                  {item.lists.map((item, i) => {
-                    return <li key={i}>{item.list}</li>;
-                  })}
+                  {item.lists.map((item, i) =>
+                    item.list == null ? null : <li key={i}>{item.list}</li>
+                  )}
                 </ul>
+                {/* return <li key={i}>{item.list}</li>; */}
               </div>
             );
           })}
