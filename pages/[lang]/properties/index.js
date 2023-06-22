@@ -216,7 +216,11 @@ const OurProperty = (props) => {
   return (
     <Layout width={100}>
       <div className={`${styles.banner}`}>
-        <ImageComp imageUrl={page_api.banner.image_url} />
+        <ImageComp
+          imageUrl={
+            page_api.banner ? page_api.banner.image_url : page_api.image_url
+          }
+        />
         <div className={styles.banner_title}>
           <span>{translations.our_properties}</span>
         </div>

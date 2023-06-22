@@ -19,7 +19,7 @@ import {
 import ImageComp from "../../../components/ImageComp";
 const ContactUs = (props) => {
   let sends = [{ to: "Email" }, { to: "Telegram" }];
-  const { company_info } = props;
+  const { page_api } = props;
   const [sendTo, setSendTo] = useState("Email");
   const emailRef = useRef();
   const mapRef = useRef();
@@ -104,27 +104,15 @@ const ContactUs = (props) => {
     <Layout width={90}>
       <div className={`${styles.contact_banner} _hidden_item`}>
         <div className={styles.banner_bg}>
-          <Image
-            src="/images/contact.png"
-            width={3000}
-            height={3000}
-            alt="communicate"
-            priority
-          />
+          <ImageComp imageUrl={page_api.image_url} />
         </div>
         <div className={styles._contact_text}>
-          <span>We&apos;d Love to Hear From You</span>
+          <span>{page_api.description}</span>
           <div className={styles._contact_us_via}>
             <div className={styles._contact_us__note}>
-              <Image
-                src="/images/note.png"
-                width={1000}
-                height={1000}
-                alt="communicate"
-                priority
-              />
+              <ImageComp imageUrl={page_api.title.icon} />
               <div className="">
-                <h5>{translations.contact_us_via}:</h5>
+                <h5>{page_api.title.text}:</h5>
               </div>
             </div>
             <div className={styles._contact_media}>
@@ -132,14 +120,7 @@ const ContactUs = (props) => {
                 className={styles._contact_media_avatar}
                 onClick={() => handleMoveToSection(emailRef)}
               >
-                <Image
-                  src="/images/message.png"
-                  width={200}
-                  height={200}
-                  alt="communicate"
-                  priority
-                />
-                {translations.email}
+                <ImageComp imageUrl={page_api.by_email.icon} />
               </div>
               <div className={styles._contact_media_avatar}>
                 <div
@@ -147,13 +128,7 @@ const ContactUs = (props) => {
                   onClick={handleShowContact}
                   ref={toggleRef}
                 >
-                  <Image
-                    src="/images/phone-call.png"
-                    width={200}
-                    height={200}
-                    alt="communicate"
-                    priority
-                  />
+                  <ImageComp imageUrl={page_api.by_phone.icon} />
                 </div>
                 <div
                   className={`contact_mnu ${flip && "active"}`}
@@ -161,50 +136,29 @@ const ContactUs = (props) => {
                 >
                   <div className={styles.phone_number}>
                     <p>Phone Us</p>
-                    <div>{company_info ? company_info.phone_number : null}</div>
+                    <div>
+                      {page_api.by_phone.phone_numbers.map((item, i) => {
+                        return <li key={i}>{item.number}</li>;
+                      })}
+                    </div>
                   </div>
-                  <ScrollableContainer>
-                    <div className={styles.media_commu}>
-                      {company_info
-                        ? company_info.social_media.map((item, i) => {
-                            return (
-                              <Link
-                                className={styles.media_avatar}
-                                href={item.url}
-                                target="_blank"
-                                key={i}
-                              >
-                                <Image
-                                  src={
-                                    company_info
-                                      ? item.icon
-                                      : "/images/send.png"
-                                  }
-                                  width={200}
-                                  height={200}
-                                  alt="tele"
-                                  priority
-                                />
-                              </Link>
-                            );
-                          })
-                        : null}
-                    </div>{" "}
-                  </ScrollableContainer>
                 </div>
               </div>
               <div
                 className={styles._contact_media_avatar}
                 onClick={() => handleMoveToSection(mapRef)}
               >
-                <Image
+                <div className={styles.map_visit}>
+                  <ImageComp imageUrl={page_api.by_map.icon} />
+                </div>
+                {/* <Image
                   src="/images/map.png"
                   width={200}
                   height={200}
                   alt="communicate"
                   priority
-                />
-                {translations.visit_us}
+                /> */}
+                <p className={styles.visit_us}>{translations.visit_us}</p>
               </div>
             </div>
           </div>
@@ -212,7 +166,10 @@ const ContactUs = (props) => {
       </div>
 
       <div className={`${styles.email_section}`} ref={emailRef}>
-        <h2>Send us your feedback</h2>
+        <div>
+          <h2>Send us your feedback</h2>
+          <p>Our Email: ({page_api.by_email.email})</p>
+        </div>
         <div className="select__send__form">
           <span>Send to:</span>
           <div className="dd_box">
@@ -238,15 +195,15 @@ const ContactUs = (props) => {
           <div>
             <form className={`${styles._form_submit} our___item _hidden_item`}>
               <InputComp
-                placeholder={"Name"}
+                placeholder={"Your Name"}
                 color={"#9f7b4b"}
                 onChange={handleChangeInput}
                 name="name"
               />
               <InputComp
-                placeholder={"Email"}
+                placeholder={"Your Email"}
                 color={"#9f7b4b"}
-                name="email"
+                name="your email"
                 onChange={handleChangeInput}
               />
               <InputComp
@@ -314,36 +271,26 @@ const ContactUs = (props) => {
       </div>
 
       <div className="reveal" ref={mapRef} id="contact">
-        {company_info ? <GoogleMapComp url={company_info.map} /> : null}
+        {page_api.by_map.url ? (
+          <GoogleMapComp url={page_api.by_map.url} />
+        ) : null}
       </div>
     </Layout>
   );
 };
 
 export default ContactUs;
-export const getServerSideProps = async () => {
-  try {
-    const response = await postData("company-info");
-    const getData = await response;
-
-    if (response.status === 200) {
-      return {
-        props: {
-          company_info: getData.data,
-        },
-      };
-    }
-  } catch (error) {
-    if (error.response && error.response.status === 404) {
-      return {
-        notFound: true,
-      };
-    }
-
-    console.error(error);
-  }
+export const getServerSideProps = async (ctx) => {
+  const { lang } = ctx.query;
+  const response = await postData("page/contents", {
+    name: "contact_us",
+    lang: lang ? `${lang}` : "en",
+  });
+  const getData = await response;
 
   return {
-    props: {},
+    props: {
+      page_api: getData.data,
+    },
   };
 };

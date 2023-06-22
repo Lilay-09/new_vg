@@ -16,7 +16,7 @@ import tranKh from "../../../utils/Translations/kh.json";
 import { DataContext } from "../../../store/GlobalState";
 import { postData } from "../../../utils/fetchData";
 const Careers = (props) => {
-  const { page_api } = props;
+  const { page_api, map_api } = props;
   const { state, dispatch } = useContext(DataContext);
   const lang = state.lang.d_lang;
   let translations = state.trans;
@@ -29,7 +29,7 @@ const Careers = (props) => {
         <BannerImg
           height={35}
           img={
-            page_api.banner.image_url
+            page_api.banner.image_url !== "null"
               ? page_api.banner.image_url
               : page_api.banner.ïmage_url
           }
@@ -65,9 +65,9 @@ const Careers = (props) => {
               <div className={styles.job_lst} key={i}>
                 <span>{item.title}</span>
                 <ul>
-                  {item.lists.map((item, i) => {
-                    return <li key={i}>{item.list}</li>;
-                  })}
+                  {/* {item.lists.map((item, i) => {
+                    return <li key={i}>sdfsdfsdf</li>;
+                  })} */}
                 </ul>
               </div>
             );
@@ -107,7 +107,9 @@ const Careers = (props) => {
         </div>
         <div>
           <h4 className="p-4">Map</h4>
-          <GoogleMapComp width="100%" url={page_api.map} />
+          {map_api.by_map.url && (
+            <GoogleMapComp width="100%" url={map_api.by_map.url} />
+          )}
         </div>
       </div>
     </Layout>
@@ -126,14 +128,20 @@ export const getServerSideProps = async (context) => {
 
   //begin fetch
   const pageRes = await postData(`page/contents`, pageBody);
+  const mapRes = await postData(`page/contents`, {
+    name: "contact_us",
+    lang: lang ? `${lang}` : "en",
+  });
   //end fetch
 
   //begin assign
   const getPage = await pageRes;
+  const getMap = await mapRes;
   //end assign
   return {
     props: {
       page_api: getPage.data,
+      map_api: getMap.data,
     },
   };
 };

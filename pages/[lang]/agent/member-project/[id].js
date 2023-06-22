@@ -10,20 +10,15 @@ import { DataContext } from "../../../../store/GlobalState";
 const MemberProject = (props) => {
   const { agent_api, agentID, projectID } = props;
   const { state, dispatch } = useContext(DataContext);
-  const currentRef = useRef();
+  const currentRef = useRef([]);
   const router = useRouter();
   let lang = state.lang.d_lang;
 
-  useEffect(() => {
-    const item = agent_api.projects.find(
-      (item) => item.project_id === projectID
-    );
-    if (item && currentRef.current) {
-      currentRef.current.scrollIntoView({
-        behavior: "smooth",
-      });
-    }
-  }, [agent_api.projects, projectID]);
+  // const handleClick = () => {
+
+  // };
+
+  useEffect(() => {}, []);
   return (
     <Layout width={100}>
       <div className={`${styles.agent}`}>
@@ -63,20 +58,14 @@ const MemberProject = (props) => {
                   : styles["agent__project"]
               }
               key={i}
-              ref={currentRef}
+              id={`${item.project_id}`}
+              ref={(ref) => (currentRef.current[item.project_id] = ref)}
               onClick={() =>
                 router.push(`/${lang}/project/details/${item.project_id}`)
               }
             >
               <div className={styles.agent__project_img}>
                 <ImageComp imageUrl={item.image.image_url} />
-                {/* <Image
-                  src={`/${item.url}`}
-                  width={1000}
-                  height={1000}
-                  alt="l1"
-                  priority
-                /> */}
                 <div className={styles.project_status}>{item.status}</div>
               </div>
               <div className={styles.agent_project__details}>

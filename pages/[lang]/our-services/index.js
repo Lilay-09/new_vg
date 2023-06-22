@@ -16,7 +16,7 @@ const OurServices = (props) => {
   const { state, dispatch } = useContext(DataContext);
   let translations = state.trans;
   let lang = state.lang.d_lang;
-  const { services_api, service_lists_api } = props;
+  const { services_api, service_lists_api, categories_api } = props;
   const [bannerImg, setBannerImg] = useState(
     services_api.banner.images[0].image_url
   );
@@ -62,7 +62,7 @@ const OurServices = (props) => {
         </div>
         <div className={styles._categories_section_container}>
           <ScrollableContainer>
-            {services_api.categories.map((item, i) => {
+            {categories_api.categories.map((item, i) => {
               return (
                 <div
                   key={i}
@@ -71,7 +71,7 @@ const OurServices = (props) => {
                   <div className={styles._service_categories_img}>
                     <ImageComp imageUrl={item.image_url} />
                     <div className={styles._service_categories_status_text}>
-                      <span>{item.listing_type}</span>
+                      <span>{item.type}</span>
                     </div>
                   </div>
                 </div>
@@ -127,23 +127,31 @@ export const getServerSideProps = async (ctx) => {
   let { lang } = ctx.query;
   let pageBody = {
     name: "our_services",
-    lang: `${lang}`,
+    lang: lang ? `${lang}` : "en",
+  };
+
+  let categoryBody = {
+    name: "category",
+    lang: lang ? `${lang}` : "en",
   };
 
   // begin fetch
   const pageRes = await postData(`page/contents`, pageBody);
   const servicesRes = await postData(`project/list`);
+  const categoryRes = await postData(`page/contents`, categoryBody);
   //end fetch
 
   //begin assign
   const getServices = await pageRes;
   const getServiceLists = await servicesRes;
+  const getCategories = await categoryRes;
   //end assign
 
   return {
     props: {
       services_api: getServices.data,
       service_lists_api: getServiceLists.data,
+      categories_api: getCategories.data,
     },
   };
 };
