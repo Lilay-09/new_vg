@@ -21,6 +21,7 @@
   /* background-color: antiquewhite; */
   border: 3rem solid #191345;
   border-radius: 5rem 5rem 20rem 40rem/50rem;
+  overflow: hidden;
 }
 
 .__banner_img img {
@@ -92,8 +93,9 @@
   justify-content: center;
 }
 ._about_list_logo img {
-  width: 80%;
-  height: 80%;
+  width: 90%;
+  height: 90%;
+  border-radius: 50%;
 }
 ._about_details h4 {
   text-transform: uppercase;

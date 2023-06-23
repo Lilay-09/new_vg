@@ -22,7 +22,7 @@ const OurTeam = (props) => {
   return (
     <Layout width={100}>
       <div className={styles._our_team__container}>
-        <div className={`${styles._our__team_manager}`}>
+        {/* <div className={`${styles._our__team_manager}`}>
           <div>
             <h2>{translations.team_manager}</h2>
           </div>
@@ -68,7 +68,7 @@ const OurTeam = (props) => {
           <div className={styles._manager__description}>
             <p>{page_api.description}</p>
           </div>
-        </div>
+        </div> */}
         <div className={`${styles.our__team_member}`}>
           <div>
             <h2>{translations.team_members}</h2>
@@ -115,77 +115,6 @@ const OurTeam = (props) => {
               );
             })}
           </div>
-
-          {/* <div>
-            <h2>{translations.team_members}</h2>
-          </div>
-          <div className={styles._team_member_card_container}>
-            {teams.consultants.map((item, i) => {
-              return (
-                <div className={styles._team_member_card} key={i}>
-                  <div className={styles._team_member_card_img}>
-                    <Image
-                      src={`${item.profile}`}
-                      width={500}
-                      height={500}
-                      alt="p1"
-                      priority
-                    />
-                  </div>
-                  <div className={styles._team_details_card}>
-                    <div className={styles._team_member_media}>
-                      <div className={styles.media_avatar1}>
-                        <Image
-                          src={"/images/send.png"}
-                          width={200}
-                          height={200}
-                          alt="tele"
-                          priority
-                        />
-                      </div>
-                      <div className={styles.media_avatar1}>
-                        <Image
-                          src={"/images/facebook.png"}
-                          width={200}
-                          height={200}
-                          alt="tele"
-                          priority
-                        />
-                      </div>
-                      <div className={styles.media_avatar1}>
-                        <Image
-                          src={"/images/twit.png"}
-                          width={200}
-                          height={200}
-                          alt="tele"
-                          priority
-                        />
-                      </div>
-                      <div className={styles.media_avatar1}>
-                        <Image
-                          src={"/images/yt.png"}
-                          width={200}
-                          height={200}
-                          alt="tele"
-                          priority
-                        />
-                      </div>
-                    </div>
-                    <div className={styles._team__pos}>
-                      <h4>{item.name}</h4>
-                      <div>
-                        <p>
-                          {translations.phone}: {item.phone_number}
-                        </p>
-                      </div>
-
-                      <Link href={`/agent/${item.id}`}>View Page</Link>
-                    </div>
-                  </div>
-                </div>
-              );
-            })}
-          </div> */}
         </div>
       </div>
     </Layout>

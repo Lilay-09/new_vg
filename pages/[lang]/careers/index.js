@@ -65,11 +65,12 @@ const Careers = (props) => {
               <div className={styles.job_lst} key={i}>
                 <span>{item.title}</span>
                 <ul>
-                  {item.lists.map((item, i) =>
-                    item.list == null ? null : <li key={i}>{item.list}</li>
-                  )}
+                  {item.lists
+                    ? item.lists.map((item, i) =>
+                        item.list == null ? null : <li key={i}>{item.list}</li>
+                      )
+                    : null}
                 </ul>
-                {/* return <li key={i}>{item.list}</li>; */}
               </div>
             );
           })}
@@ -108,9 +109,7 @@ const Careers = (props) => {
         </div>
         <div>
           <h4 className="p-4">Map</h4>
-          {map_api.by_map.url && (
-            <GoogleMapComp width="100%" url={map_api.by_map.url} />
-          )}
+          {page_api.map && <GoogleMapComp width="100%" url={page_api.map} />}
         </div>
       </div>
     </Layout>
@@ -142,7 +141,6 @@ export const getServerSideProps = async (context) => {
   return {
     props: {
       page_api: getPage.data,
-      map_api: getMap.data,
     },
   };
 };
