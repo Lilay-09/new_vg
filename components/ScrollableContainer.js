@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 
-const ScrollableContainer = ({ children }) => {
+const ScrollableContainer = ({ children, gap }) => {
   useEffect(() => {
     const slider = document.querySelector(".items");
     let isDown = false;
@@ -29,7 +29,11 @@ const ScrollableContainer = ({ children }) => {
       slider.scrollLeft = scrollLeft - walk;
     });
   });
-  return <div className="items">{children}</div>;
+  return (
+    <div className="items" style={{ gap: `${gap}rem` }}>
+      {children}
+    </div>
+  );
 };
 
 export default ScrollableContainer;

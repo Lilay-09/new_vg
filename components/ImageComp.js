@@ -9,7 +9,7 @@ const ImageComp = ({ imageUrl, defaultImg, onClick, width, height }) => {
     e.target.onerror = null;
   };
   return (
-    <React.Fragment>
+    <>
       {!imageError ? (
         <Image
           src={
@@ -33,7 +33,7 @@ const ImageComp = ({ imageUrl, defaultImg, onClick, width, height }) => {
           onClick={onClick}
         />
       )}
-    </React.Fragment>
+    </>
   );
 };
 export default ImageComp;

@@ -12,6 +12,7 @@ import { DataContext } from "../../../store/GlobalState";
 import { postData } from "../../../utils/fetchData";
 import ImageComp from "../../../components/ImageComp";
 import { checkSocialMediaURL } from "../../../utils/checkSocialMediaUrl";
+import ScrollableContainer from "../../../components/ScrollableContainer";
 
 const OurTeam = (props) => {
   const { page_api, consultant_api, leader_api } = props;
@@ -22,53 +23,6 @@ const OurTeam = (props) => {
   return (
     <Layout width={100}>
       <div className={styles._our_team__container}>
-        {/* <div className={`${styles._our__team_manager}`}>
-          <div>
-            <h2>{translations.team_manager}</h2>
-          </div>
-          <div className={styles._our_team__manager_container}>
-            {leader_api.map((leader, i) => {
-              return (
-                <div
-                  className={`${styles._manager__card} our__team_item`}
-                  key={i}
-                >
-                  <div className={styles._team_avatar}>
-                    {leader.image_url ? (
-                      <ImageComp imageUrl={leader.image_url} />
-                    ) : null}
-                  </div>
-                  <h5>
-                    {translations.name}: {leader.name}
-                  </h5>
-                  <p>
-                    {translations.position}: {leader.position_title}
-                  </p>
-                  <div className={styles.social_media_icon}>
-                    {leader.social_media.map((media, i) => {
-                      return (
-                        <Link
-                          className={styles.media_avatar1}
-                          key={i}
-                          target="_blank"
-                          href={checkSocialMediaURL(media.url)}
-                        >
-                          {media.icon ? (
-                            <ImageComp imageUrl={media.icon} />
-                          ) : null}
-                        </Link>
-                      );
-                    })}
-                  </div>
-                </div>
-              );
-            })}
-          </div>
-
-          <div className={styles._manager__description}>
-            <p>{page_api.description}</p>
-          </div>
-        </div> */}
         <div className={`${styles.our__team_member}`}>
           <div>
             <h2>{translations.team_members}</h2>
@@ -76,12 +30,86 @@ const OurTeam = (props) => {
           <div className={styles._team_member_card_container}>
             {consultant_api.map((item, i) => {
               return (
+                <div key={i} className={styles.member_card_box}>
+                  <div className={styles.member__card_show}>
+                    <div className={styles.member_card_box_img}>
+                      {item.image_url ? (
+                        <ImageComp imageUrl={item.image_url} />
+                      ) : null}
+                      <div className={styles.__show_name}>
+                        <div className={styles._team__pos}>
+                          <h4>{item.name}</h4>
+                          <div>
+                            <p>
+                              {translations.phone}: {item.phone_number}
+                            </p>
+                          </div>
+
+                          <Link href={`/${lang}/agent/${item.id}`}>
+                            View Page
+                          </Link>
+                        </div>
+                      </div>
+                    </div>
+                    <div className={styles._media__show}>
+                      <div className={styles.media_}>
+                        <ScrollableContainer gap={1}>
+                          {item.social_media.map((media, i) => {
+                            return (
+                              <Link
+                                className={styles.media_avatar1}
+                                key={i}
+                                target="_blank"
+                                href={checkSocialMediaURL(media.url)}
+                              >
+                                {media.icon ? (
+                                  <ImageComp imageUrl={media.icon} />
+                                ) : null}
+                              </Link>
+                            );
+                          })}
+                        </ScrollableContainer>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              );
+            })}
+            {/* {consultant_api.map((item, i) => {
+              return (
                 <div className={styles._team_member_card} key={i}>
+                  <div className={styles._team_member_card_img}>
+                    {item.image_url ? (
+                      <div className={styles._for_hover}>
+                        <ImageComp imageUrl={item.image_url} />
+                      </div>
+                    ) : null}
+                    <div className={styles.media_}>
+                      <ScrollableContainer>
+                        {item.social_media.map((media, i) => {
+                          return (
+                            <Link
+                              className={styles.media_avatar1}
+                              key={i}
+                              target="_blank"
+                              href={checkSocialMediaURL(media.url)}
+                            >
+                              {media.icon ? (
+                                <ImageComp imageUrl={media.icon} />
+                              ) : null}
+                            </Link>
+                          );
+                        })}
+                      </ScrollableContainer>
+                    </div>
+                  </div>
                   <div className={styles._team_member_card_img}>
                     {item.image_url ? (
                       <ImageComp imageUrl={item.image_url} />
                     ) : null}
+                    <div>sdasdfsadff</div>
                   </div>
+
                   <div className={styles._team_details_card}>
                     <div className={styles._team_member_media}>
                       {item.social_media.map((media, i) => {
@@ -113,7 +141,7 @@ const OurTeam = (props) => {
                   </div>
                 </div>
               );
-            })}
+            })} */}
           </div>
         </div>
       </div>

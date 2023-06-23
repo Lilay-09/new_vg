@@ -119,16 +119,70 @@
   position: relative;
   min-width: 280px;
   transition: all 0.5s;
-  max-height: 300px;
+  max-height: 360px;
 }
 
 ._team_member_card img {
   width: 100%;
   height: 100%;
-  max-height: 300px;
   object-fit: fill;
 }
-._team_member_card:hover ._team_member_card_img {
+.media_ {
+  display: flex;
+  align-items: center;
+  /* background-color: #e6b269; */
+  width: 100%;
+  justify-content: center;
+  height: 30px;
+}
+.member_card_box {
+  /* background-color: red; */
+  width: 20vw;
+  max-width: 300px;
+  min-width: 240px;
+  overflow-y: hidden;
+  border: 1px solid #1913450a;
+}
+.member_card_box_img {
+  overflow: hidden;
+  position: relative;
+}
+.member__card_show {
+  overflow: hidden;
+}
+.__show_name {
+  transform: translateY(100%);
+  transition: all 0.5s;
+  width: 200px;
+  margin: 0 auto;
+  background-color: #191345;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  color: white;
+  border: 1px solid #e6b269;
+  border-radius: 15px;
+}
+.member_card_box_img:hover .__show_name {
+  transform: translateY(-10%);
+}
+.member_card_box_img img {
+  width: 100%;
+  max-height: 350px;
+  height: 20vw;
+  min-height: 300px;
+}
+._media__show {
+  display: flex;
+  align-items: center;
+  padding: 1rem;
+}
+
+/* ._team_member_card:hover ._team_member_card_img {
   filter: blur(2px);
 }
 ._team_member_card:hover ._team_details_card {
@@ -136,22 +190,22 @@
 }
 ._team_member_card:hover ._team_member_arrow {
   display: none;
-}
+} */
 ._team_member_card_img {
   /* background-color: aqua; */
   display: flex;
   width: 100%;
-  justify-content: center;
   position: relative;
   border: #191345 solid 1px;
   min-height: 300px;
   max-height: 300px;
   min-width: 90px;
+  flex-direction: column;
 }
 ._team_member_card_img img {
-  height: 100%;
+  height: 60%;
+  max-height: 250px;
   width: 100%;
-  min-height: 300px;
 }
 ._team_member_media {
   display: flex;
@@ -181,20 +235,22 @@
 .media_avatar1 {
   width: 2vw;
   height: 2vw;
+  height: 30px;
+  width: 30px;
   min-height: 35px;
   min-width: 35px;
-  background-color: #191345;
+  /* background-color: #191345; */
   display: flex;
   align-items: center;
   justify-content: center;
   border-radius: 50%;
-  padding: 0.3rem;
   border: 1px solid #e6b269;
 }
 .media_avatar1 img {
-  width: 80%;
-  height: 80%;
-  object-fit: cover;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  /* object-fit: cover; */
 }
 ._team__pos {
   margin-top: 2rem;
