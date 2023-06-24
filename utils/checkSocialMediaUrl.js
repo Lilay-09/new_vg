@@ -1,8 +1,7 @@
 export function checkSocialMediaURL(url) {
-  if (url !== null && url.includes("www")) {
+  let www = url.substring(0, 3);
+  if (url !== null && url !== "undefined" && www === "www") {
     return `https://${url}`;
-  } else if (url === null) {
-    return "";
   } else {
     return url;
   }
