@@ -12,31 +12,31 @@ import { DataContext } from "../store/GlobalState";
 const Layout = ({ title, children, noSlide, noFind, map, width, path }) => {
   const size = UsewindowSize();
   useEffect(() => {
-    function reveal() {
-      var reveals = document.querySelectorAll(".reveal");
-      var elementVisible = 10;
-      var windowHeight = innerHeight;
-      for (var i = 0; i < reveals.length; i++) {
-        var elementTop = reveals[i].getBoundingClientRect().top;
-        if (elementTop < windowHeight - elementVisible) {
-          reveals[i].classList.add("active");
-        } else {
-          reveals[i].classList.remove("active");
-        }
-      }
-    }
-    const isTablet = () => {
-      var reveals = document.querySelectorAll(".reveal");
-      var elementVisible = 10;
-      var windowHeight = innerHeight;
-      var reveals = document.querySelectorAll(".reveal");
-      var elementTop = reveals[0].getBoundingClientRect().top;
-      if (elementTop < windowHeight - elementVisible) {
-        if (size.width <= 768 || size.cWidth <= 768) {
-          reveals[0].classList.add("active");
-        }
-      }
-    };
+    // function reveal() {
+    //   var reveals = document.querySelectorAll(".reveal");
+    //   var elementVisible = 10;
+    //   var windowHeight = innerHeight;
+    //   for (var i = 0; i < reveals.length; i++) {
+    //     var elementTop = reveals[i].getBoundingClientRect().top;
+    //     if (elementTop < windowHeight - elementVisible) {
+    //       reveals[i].classList.add("active");
+    //     } else {
+    //       reveals[i].classList.remove("active");
+    //     }
+    //   }
+    // }
+    // const isTablet = () => {
+    //   var reveals = document.querySelectorAll(".reveal");
+    //   var elementVisible = 10;
+    //   var windowHeight = innerHeight;
+    //   var reveals = document.querySelectorAll(".reveal");
+    //   var elementTop = reveals[0].getBoundingClientRect().top;
+    //   if (elementTop < windowHeight - elementVisible) {
+    //     if (size.width <= 768 || size.cWidth <= 768) {
+    //       reveals[0].classList.add("active");
+    //     }
+    //   }
+    // };
 
     const hiddenEle = document.querySelectorAll("._hidden_item");
     const observer = new IntersectionObserver((entries) => {
@@ -55,15 +55,15 @@ const Layout = ({ title, children, noSlide, noFind, map, width, path }) => {
       "scroll",
       hiddenEle.forEach((ele) => observer.observe(ele))
     );
-    isTablet();
-    window.addEventListener("scroll", reveal);
-    return () => {
-      window.removeEventListener("scroll", reveal);
-      window.removeEventListener(
-        "scroll",
-        hiddenEle.forEach((ele) => observer.observe(ele))
-      );
-    };
+    // isTablet();
+    // window.addEventListener("scroll", reveal);
+    // return () => {
+    //   window.removeEventListener("scroll", reveal);
+    //   window.removeEventListener(
+    //     "scroll",
+    //     hiddenEle.forEach((ele) => observer.observe(ele))
+    //   );
+    // };
   }, [size]);
   let translations;
   const { state, dispatch } = useContext(DataContext);

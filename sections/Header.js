@@ -128,7 +128,7 @@ const Header = ({ title, path }) => {
     const handleFetch = async () => {
       const response = await fetch(
         `
-          https://admin.vanguardinvestconsult.com/backend/page/contents`,
+          ${process.env.API_GET_URL}/backend/page/contents`,
         {
           method: "POST",
           headers: {

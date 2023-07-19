@@ -38,7 +38,7 @@ const Footer = () => {
     const handleFetch = async () => {
       const response = await fetch(
         `
-          https://admin.vanguardinvestconsult.com/backend/page/contents`,
+          ${process.env.API_GET_URL}/backend/page/contents`,
         {
           method: "POST",
           headers: {
@@ -60,7 +60,7 @@ const Footer = () => {
   }, [changeLng]);
 
   return (
-    <div className={`${styles.__foot_container} reveal`}>
+    <div className={`${styles.__foot_container}`}>
       <div className={styles.footer}>
         <div className={styles.footer_content}>
           <div className={styles.title}>

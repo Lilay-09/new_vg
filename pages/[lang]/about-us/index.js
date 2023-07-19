@@ -21,7 +21,98 @@ const AboutUs = ({ page_api }) => {
   let translations = state.trans;
   return (
     <Layout width={100}>
-      <div className={`${styles.__banner} _hidden_item`}>
+      <div className={styles.ab__banner}>
+        <ImageComp imageUrl={`${page_api.banner.image_url}`} />
+        <span>{translations.about_us}</span>
+      </div>
+      <div className={styles.ab__body}>
+        <div className={styles.ab__content}>
+          <div className={styles.split__container}>
+            <div>
+              {/* <span>About</span> */}
+              <h3 className={styles.ab_title}>Company</h3>
+            </div>
+            <div>
+              <p>
+                Amet minim mollit non deserunt ullamco est sit aliqua dolor do
+                amet sint. Velit officia consequat duis enim velit mollit.
+                Exercitation veniam consequat sunt nostrud amet. Amet minim
+                mollit non deserunt ullamco est sit aliqua dolor do amet sint.
+                Velit officia consequat duis enim velit mollit. Exercitation
+                veniam consequat sunt nostrud amet.Amet minim mollit non
+                deserunt ullamco est sit aliqua dolor do amet sint. Velit
+                officia consequat duis enim velit mollit. Exercitation veniam
+                consequat sunt nostrud amet.Amet minim mollit non deserunt
+                ullamco est sit aliqua dolor do amet sint. Velit officia
+                consequat duis enim velit mollit. Exercitation veniam consequat
+                sunt nostrud amet.
+              </p>
+            </div>
+          </div>
+          <div className={styles.split__container}>
+            <ImageComp imageUrl={`${page_api.banner.image_url}`} />
+          </div>
+        </div>
+        <div className={styles.ab__content}>
+          <div className={styles.split__container}>
+            <ImageComp imageUrl={`${page_api.banner.image_url}`} />
+          </div>
+          <div className={styles.split__container}>
+            <div>
+              <h3 className={styles.ab_title}>Vision</h3>
+            </div>
+            <div>
+              <p>
+                Amet minim mollit non deserunt ullamco est sit aliqua dolor do
+                amet sint. Velit officia consequat duis enim velit mollit.
+                Exercitation veniam consequat sunt nostrud amet. Amet minim
+                mollit non deserunt ullamco est sit aliqua dolor do amet sint.
+              </p>
+            </div>
+            <div>
+              <h3 className={styles.ab_title}>Mission</h3>
+            </div>
+            <div>
+              <p>
+                Amet minim mollit non deserunt ullamco est sit aliqua dolor do
+                amet sint. Velit officia consequat duis enim velit mollit.
+                Exercitation veniam consequat sunt nostrud amet. Amet minim
+                mollit non deserunt ullamco est sit aliqua dolor do amet sint.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div className={styles.ab__content}>
+          <div className={styles.split__container}>
+            <div>
+              <h3 className={styles.ab_title}>Core Value</h3>
+            </div>
+            <ul>
+              <li>
+                Amet minim mollit non deserunt ullamco est sit aliqua dolor do
+              </li>
+              <li>
+                Amet minim mollit non deserunt ullamco est sit aliqua dolor do
+              </li>
+              <li>
+                Amet minim mollit non deserunt ullamco est sit aliqua dolor do
+              </li>
+              <li>
+                Amet minim mollit non deserunt ullamco est sit aliqua dolor do
+              </li>
+
+              <li>
+                Amet minim mollit non deserunt ullamco est sit aliqua dolor do
+              </li>
+            </ul>
+          </div>
+          <div className={styles.split__container}>
+            <ImageComp imageUrl={`${page_api.banner.image_url}`} />
+          </div>
+        </div>
+      </div>
+      {/* <div className={`${styles.__banner} _hidden_item`}>
         <div className={styles.__banner_content}>
           <h2>{page_api.banner ? page_api.banner.title : null}</h2>
           <div className={styles.__banner_content_text}>
@@ -76,7 +167,7 @@ const AboutUs = ({ page_api }) => {
             </div>
           );
         })}
-      </div>
+      </div> */}
     </Layout>
   );
 };

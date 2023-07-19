@@ -1,173 +1,72 @@
-.__banner {
-  width: 100%;
-  /* background-color: aqua; */
-  height: 45vw;
-  position: relative;
-  display: flex;
-  align-items: center;
-  min-height: 280px;
-
-  justify-content: space-evenly;
-}
-
-.__banner_img {
-  width: 30vw;
+.ab__banner {
+  width: 85%;
+  margin: 0 auto;
+  background-color: pink;
   height: 30vw;
-  min-height: 200px;
-  min-width: 200px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  /* background-color: antiquewhite; */
-  border: 3rem solid #191345;
-  border-radius: 5rem 5rem 20rem 40rem/50rem;
-  overflow: hidden;
+  min-height: 140px;
+  position: relative;
 }
-
-.__banner_img img {
+.ab__banner img {
   width: 100%;
   height: 100%;
+  z-index: -1;
 }
-.__banner_content {
-  /* background-color: aqua; */
-  width: 35vw;
-  height: 80%;
-  display: flex;
-  flex-direction: column;
-  position: relative;
+.ab__banner span {
+  position: absolute;
+  bottom: 1rem;
+  left: 1rem;
+  color: black;
+  font-size: 1.2vw;
+  font-weight: 700;
+  transition: 1s;
 }
-.__banner_content h2 {
-  font-size: 9vw;
-  color: #191345;
-  width: 20vw;
-  min-width: 300px;
+.ab__banner:hover span {
+  left: 2rem;
 }
-.__banner_content_text button {
-  border: none;
-  background-color: #191345;
-  color: white;
-  padding: 0.5rem 1rem;
-}
-.about_us {
-  width: 90%;
+.ab__body {
+  width: 85%;
   margin: 2rem auto;
 }
-._about_container {
+.ab__content {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-}
-._about_container_img {
-  width: 45%;
-  height: 25vw;
-  min-height: 280px;
-  min-width: 300px;
-  border: #191345 solid 2px;
-}
-._about_container_img img {
   width: 100%;
-  height: 100%;
+  flex-wrap: wrap;
 }
-._about_container_text {
-  width: 45%;
-  min-width: 300px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+.split__container {
+  background-color: rgb(255, 255, 255);
+  width: 50%;
+  padding: 0.8rem;
+  min-width: 400px;
 }
-._about_list {
-  display: flex;
-  gap: 2vw;
-  align-items: center;
+.split__container img {
+  width: 100%;
+  height: 20vw;
+  /* min-width: 300px; */
+  min-height: 300px;
 }
-
-._about_list_logo {
-  border-radius: 50%;
-  width: 5vw;
-  height: 5vw;
-  min-width: 50px;
-  min-height: 50px;
-  background-color: #e6b26931;
-  border: 1px solid #e6b269;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-._about_list_logo img {
-  width: 90%;
-  height: 90%;
-  border-radius: 50%;
-}
-._about_details h4 {
+.ab_title {
   text-transform: uppercase;
 }
-.accomplished {
-  width: 80%;
-  margin: 0 auto;
-  background-color: #281a92;
+.split__container ul {
   display: flex;
-  color: whitesmoke;
-  gap: 1vw;
-  justify-content: space-between;
-  height: 160px;
-  overflow-x: scroll;
-}
-.company__things {
-  width: 15vw;
-  /* background-color: #e6b269; */
-  min-width: 180px;
-  padding: 1rem;
-  display: flex;
-  align-items: center;
   flex-direction: column;
-  justify-content: center;
+  gap: 0.8rem;
 }
-@media screen and (max-width: 1380px) {
-  .__banner_content {
-    height: 100%;
-    /* width: 70%; */
-  }
+.split__container li {
+  list-style-type: none;
 }
+
 @media screen and (max-width: 1024px) {
-  .accomplished {
-    width: 90%;
+  .ab__banner span {
+    font-size: 20px;
   }
 }
-@media screen and (max-width: 768px) {
-  .__banner {
-    justify-content: space-between;
-    padding: 2rem;
+@media screen and (max-width: 941px) {
+  .split__container {
+    width: 100%;
+    min-width: 270px;
   }
-}
-@media screen and (max-width: 666px) {
-  ._about_container {
-    justify-content: center;
-  }
-  ._about_container_img {
-    width: 100vw;
-  }
-  ._about_container_text {
-    width: 100vw;
-  }
-}
-@media screen and (max-width: 650px) {
-  .__banner {
-    justify-content: space-between;
-    padding: 2rem;
-  }
-  .__banner_content_text p {
-    display: none;
-  }
-}
-@media screen and (max-width: 425px) {
-  .__banner_content h2 {
-    position: absolute;
-    right: -13rem;
-    top: 2rem;
-    color: #e6b269;
-  }
-  .__banner_content_text button {
-    position: absolute;
-    bottom: 0;
+  .split__container img {
+    width: 100%;
   }
 }
